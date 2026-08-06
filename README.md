@@ -36,6 +36,30 @@ CAC e ROAS entram como alvo fixo (`acumula=False`): comparam direto com o alvo,
 sem rateio por dia. Vendas, faturamento e investimento acumulam e por isso têm
 "esperado a esta altura" e "necessário por dia".
 
+## Filtro de período
+
+Todo o cálculo da aba Desempenho é feito no navegador a partir dos dados crus
+(`DATA.trafego` = uma linha por anúncio/dia, `DATA.vendas` = uma linha por venda).
+Por isso qualquer intervalo funciona: atalhos (Tudo, Hoje, Ontem, 7 dias, 14 dias,
+Este mês) ou as duas datas livres. A aba Metas ignora o filtro de propósito — ela
+mede o plano inteiro.
+
+## Tabelas
+
+Todo cabeçalho ordena: primeiro clique desce, segundo sobe. A ordem padrão é por
+investimento (campanhas e criativos) ou por receita (frentes e ofertas).
+
+## Chave do criativo
+
+`AD-11` sozinho NÃO identifica o anúncio: o mesmo código existe na campanha de
+estáticos e na de vídeos. A chave é `AD-11|VID`, montada a partir dos tokens do
+nome do anúncio e casada com os mesmos tokens do `utm_content` da Hubla. Sem isso
+os dois viram uma linha só e o custo por visita fica errado.
+
+O botão "prévia" abre o post do Instagram do anúncio (`Instagram Permalink URL`
+da planilha de tráfego). Anúncio sem permalink na planilha aparece como
+"sem prévia".
+
 ## Sinalização
 
 Verde/vermelho aparece só onde muda decisão: KPIs de ROAS e CAC contra a meta,

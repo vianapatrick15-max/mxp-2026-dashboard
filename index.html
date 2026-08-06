@@ -6,11 +6,10 @@
 <title>MXP-Fp01 2026 — Tráfego x Vendas reais</title>
 <style>
   :root{
-    --purple:#0178e6; --purple-d:#0160b8; --ink:#002656; --text:#12243a; --muted:#5e6c7b;
+    --blue:#0178e6; --blue-d:#0160b8; --ink:#002656; --text:#12243a; --muted:#5e6c7b;
     --line:#dde8f4; --bg:#f1f6fb; --card:#fff; --soft:#f6fafd; --lav:#eaf2fb;
-    --cyan:#52f2f8; --cyan-d:#0b8fa4;
     --pago:#0178e6; --proprio:#0b8fa4; --outros:#5e6c7b; --indef:#9aa7b4;
-    --good:#1ba05f; --good-bg:#e4f6ec; --warn:#b3781a; --warn-bg:#fdf4e4;
+    --good:#12855a; --good-bg:#e4f6ec; --warn:#a8720f; --warn-bg:#fdf4e4;
     --bad:#c62740; --bad-bg:#fbe8ec;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -18,12 +17,12 @@
     background:var(--bg);color:var(--text);line-height:1.45;-webkit-font-smoothing:antialiased}
   .wrap{max-width:1240px;margin:0 auto;padding:24px 20px 70px}
   header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;
-    border-bottom:2px solid var(--purple);padding-bottom:16px;margin-bottom:20px}
-  .ttl .kick{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--purple-d)}
+    border-bottom:2px solid var(--blue);padding-bottom:16px;margin-bottom:8px}
+  .ttl .kick{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-d)}
   .ttl h1{font-size:27px;font-weight:800;color:var(--ink);letter-spacing:-.01em;margin-top:3px}
   .ttl .sub{font-size:12.5px;color:var(--muted);margin-top:4px}
   .hero{text-align:right}
-  .hero .big{font-size:33px;font-weight:800;color:var(--purple);line-height:1}
+  .hero .big{font-size:33px;font-weight:800;color:var(--blue);line-height:1}
   .hero .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:5px}
 
   .seclab{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
@@ -36,7 +35,7 @@
   .kpi .v{font-size:24px;font-weight:800;color:var(--ink);margin-top:5px;line-height:1.1}
   .kpi .d{font-size:11.5px;color:var(--muted);margin-top:4px}
   .kpi.hl{background:linear-gradient(180deg,#eef7ff,#fff);border-color:#bcdcf8}
-  .kpi.hl .v{color:var(--purple-d)}
+  .kpi.hl .v{color:var(--blue-d)}
 
   .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
   .card h3{font-size:14.5px;font-weight:800;color:var(--ink)}
@@ -56,7 +55,12 @@
   .tbox{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
   .tscroll{overflow-x:auto}
   th{text-align:right;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-    color:var(--muted);padding:11px 12px;border-bottom:1px solid var(--line);white-space:nowrap;background:var(--lav)}
+    color:var(--muted);padding:11px 12px;border-bottom:1px solid var(--line);white-space:nowrap;
+    background:var(--lav);cursor:pointer;user-select:none}
+  th:hover{color:var(--ink);background:#e0ecf9}
+  th.sorted{color:var(--blue-d)}
+  th .arw{opacity:.35;margin-left:4px;font-size:9px}
+  th.sorted .arw{opacity:1}
   th:first-child,td:first-child{text-align:left}
   td{padding:9px 12px;border-bottom:1px solid #eef4fa;text-align:right;white-space:nowrap;color:var(--text)}
   tbody tr:hover{background:var(--soft)}
@@ -73,15 +77,19 @@
   .muted{color:var(--muted)}
   .bar{height:6px;border-radius:3px;display:block;margin-top:5px;background:var(--pago)}
 
+  .prev{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;
+    padding:3px 9px;border-radius:20px;border:1px solid #bcdcf8;background:#eef7ff;color:var(--blue-d);
+    text-decoration:none;margin-left:8px;vertical-align:middle;white-space:nowrap}
+  .prev:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .prev.off{border-color:var(--line);background:#f4f7fa;color:#9aa7b4;cursor:not-allowed}
+
   .note{border-radius:12px;padding:13px 16px;font-size:12.5px;margin-top:13px;border:1px solid}
   .note.warn{background:#eef7ff;border-color:#c7e2f8;color:#0f4c81}
-  .note.bad{background:var(--bad-bg);border-color:#f2c7cf;color:#96233a}
   .note b{font-weight:800}
-  .note+.note{margin-top:9px}
 
   .funil{display:flex;flex-direction:column;gap:7px;margin-top:14px}
   .fstep{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px}
-  .fbar{background:linear-gradient(90deg,var(--ink),var(--purple));border-radius:8px;color:#fff;
+  .fbar{background:linear-gradient(90deg,var(--ink),var(--blue));border-radius:8px;color:#fff;
     padding:10px 14px;min-width:130px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
   .fbar .e{font-size:12.5px;font-weight:700}
   .fbar .n{font-size:17px;font-weight:800}
@@ -89,30 +97,33 @@
   .fmeta b{display:block;font-size:13px;font-weight:800;color:var(--ink)}
   .fdrop{font-size:11px;color:var(--muted);padding-left:6px}
 
-  /* sinalizacao: so nas metricas cruciais */
-  .pos{color:#12855a}
-  .neg{color:#c62740}
-  .wrn{color:#a8720f}
-  .pill{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle}
-  .pill.pos{background:#e4f6ec;color:#12855a}
-  .pill.neg{background:#fbe8ec;color:#c62740}
-  .pill.wrn{background:#fdf4e4;color:#a8720f}
+  .pos{color:var(--good)} .neg{color:var(--bad)} .wrn{color:var(--warn)}
   td.sig{font-weight:800}
 
-  /* abas */
-  nav.tabs{display:flex;gap:4px;margin:18px 0 4px;border-bottom:1px solid var(--line)}
+  nav.tabs{display:flex;gap:4px;margin:16px 0 0;border-bottom:1px solid var(--line)}
   nav.tabs button{appearance:none;border:0;background:none;cursor:pointer;font:inherit;
     font-size:13px;font-weight:700;color:var(--muted);padding:10px 16px;border-radius:9px 9px 0 0;
     border-bottom:2px solid transparent;margin-bottom:-1px}
   nav.tabs button:hover{color:var(--ink);background:var(--soft)}
-  nav.tabs button.on{color:var(--purple-d);border-bottom-color:var(--purple);background:#fff}
-  .tab{display:none}
-  .tab.on{display:block}
+  nav.tabs button.on{color:var(--blue-d);border-bottom-color:var(--blue);background:#fff}
+  .tab{display:none} .tab.on{display:block}
 
-  /* metas */
+  .filtro{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);
+    border:1px solid var(--line);border-radius:13px;padding:12px 16px;margin-top:16px}
+  .filtro .lbl{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .presets{display:flex;gap:5px;flex-wrap:wrap}
+  .presets button{appearance:none;font:inherit;font-size:12px;font-weight:700;cursor:pointer;
+    padding:6px 12px;border-radius:20px;border:1px solid var(--line);background:#fff;color:var(--muted)}
+  .presets button:hover{border-color:#bcdcf8;color:var(--blue-d)}
+  .presets button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+  .filtro input[type=date]{font:inherit;font-size:12.5px;color:var(--text);padding:6px 10px;
+    border:1px solid var(--line);border-radius:8px;background:#fff}
+  .filtro .sep{color:var(--muted);font-size:12px}
+  .filtro .info{margin-left:auto;font-size:11.5px;color:var(--muted)}
+
   .prog{height:8px;border-radius:5px;background:#eaf0f7;overflow:hidden;margin-top:6px;position:relative}
-  .prog i{display:block;height:100%;border-radius:5px;background:var(--purple)}
-  .prog i.pos{background:#1ba05f}.prog i.neg{background:#d3455c}.prog i.wrn{background:#e0a33a}
+  .prog i{display:block;height:100%;border-radius:5px;background:var(--blue)}
+  .prog i.pos{background:#1ba05f}.prog i.neg{background:#d3455c}.prog i.warn{background:#e0a33a}
   .prog b{position:absolute;top:-1px;bottom:-1px;width:2px;background:var(--ink);opacity:.55}
   .bigneed{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:4px}
   .need{background:linear-gradient(160deg,#002656,#0178e6);color:#fff;border-radius:14px;padding:18px 20px}
@@ -147,6 +158,71 @@
     <button data-tab="metas">Metas e ritmo</button>
   </nav>
 
+  <section class="tab on" id="tab-desempenho">
+    <div class="filtro">
+      <span class="lbl">Período</span>
+      <div class="presets" id="presets"></div>
+      <span class="sep">de</span>
+      <input type="date" id="de">
+      <span class="sep">até</span>
+      <input type="date" id="ate">
+      <span class="info" id="infoPeriodo"></span>
+    </div>
+
+    <div class="seclab">Visão do negócio</div>
+    <div class="kpis" id="kpis"></div>
+
+    <div class="seclab">Vendas por frente (utm_source)</div>
+    <div class="tbox tscroll"><table id="tFrentes"></table></div>
+    <div class="card" style="margin-top:14px">
+      <h3>Participação na receita</h3>
+      <div class="hint">Quanto cada frente colocou no caixa. Só a frente paga tem custo de mídia associado.</div>
+      <div style="max-width:640px" id="chartFrentes"></div>
+    </div>
+
+    <div class="seclab">Funil do tráfego pago</div>
+    <div class="cards2">
+      <div class="card">
+        <h3>Da impressão à venda</h3>
+        <div class="hint">Etapas do Meta fechando na venda real da Hubla, não no pixel.</div>
+        <div class="funil" id="funil"></div>
+      </div>
+      <div class="card">
+        <h3>Custo por etapa</h3>
+        <div class="hint">Quanto custa mover uma pessoa até cada etapa, com o investimento do período.</div>
+        <div id="chartCusto"></div>
+      </div>
+    </div>
+
+    <div class="seclab">Evolução diária</div>
+    <div class="card">
+      <h3>Investimento x receita</h3>
+      <div class="hint">Barra = investimento no Meta no dia. Linha = receita total do dia (todas as frentes).</div>
+      <div class="legend">
+        <span><i class="dot" style="background:var(--pago)"></i>Investimento Meta</span>
+        <span><i class="dot" style="background:var(--proprio)"></i>Receita do dia</span>
+      </div>
+      <div id="chartDia"></div>
+    </div>
+
+    <div class="seclab">Campanhas</div>
+    <div class="tbox tscroll"><table id="tCamp"></table></div>
+
+    <div class="seclab">Criativos</div>
+    <div class="tbox tscroll"><table id="tCriativos"></table></div>
+    <div class="note warn" id="notaCriativos"></div>
+
+    <div class="seclab">Mix de ofertas</div>
+    <div class="cards2">
+      <div class="tbox tscroll"><table id="tOfertas"></table></div>
+      <div class="card">
+        <h3>Onde está o dinheiro</h3>
+        <div class="hint">Volume de vendas nem sempre é volume de receita. A barra é receita.</div>
+        <div id="chartOfertas"></div>
+      </div>
+    </div>
+  </section>
+
   <section class="tab" id="tab-metas">
     <div class="seclab">O que falta por dia até <span id="mDeadline"></span></div>
     <div class="bigneed" id="need"></div>
@@ -155,8 +231,10 @@
     <div class="tbox tscroll">
       <table>
         <thead><tr>
-          <th>Meta</th><th>Alvo até 15/08</th><th>Esperado a esta altura</th><th>Realizado</th>
-          <th>% da meta</th><th>Falta</th><th>Necessário por dia</th>
+          <th style="cursor:default">Meta</th><th style="cursor:default">Alvo</th>
+          <th style="cursor:default">Esperado a esta altura</th><th style="cursor:default">Realizado</th>
+          <th style="cursor:default">% da meta</th><th style="cursor:default">Falta</th>
+          <th style="cursor:default">Necessário por dia</th>
         </tr></thead>
         <tbody id="tbMetas"></tbody>
       </table>
@@ -168,91 +246,6 @@
     <div class="note warn" id="notaProj"></div>
   </section>
 
-  <section class="tab on" id="tab-desempenho">
-  <div class="seclab">Visão do negócio</div>
-  <div class="kpis" id="kpis"></div>
-
-  <div class="seclab">Vendas por frente (utm_source)</div>
-  <div class="tbox tscroll">
-    <table>
-      <thead><tr>
-        <th>Frente</th><th>Vendas</th><th>Receita</th><th>% receita</th><th>Ticket médio</th>
-        <th>Investido</th><th>CPA</th><th>ROAS</th>
-      </tr></thead>
-      <tbody id="tbFrentes"></tbody>
-      <tfoot id="tfFrentes"></tfoot>
-    </table>
-  </div>
-  <div class="card" style="margin-top:14px">
-    <h3>Participação na receita</h3>
-    <div class="hint">Quanto cada frente colocou no caixa. Só a frente paga tem custo de mídia associado.</div>
-    <div style="max-width:640px" id="chartFrentes"></div>
-  </div>
-
-  <div class="seclab">Funil do tráfego pago</div>
-  <div class="cards2">
-    <div class="card">
-      <h3>Da impressão à venda</h3>
-      <div class="hint">Etapas do Meta (planilha de tráfego) fechando na venda real da Hubla, não no pixel.</div>
-      <div class="funil" id="funil"></div>
-    </div>
-    <div class="card">
-      <h3>Custo por etapa</h3>
-      <div class="hint">Quanto custa mover uma pessoa até cada etapa, com o investimento total do período.</div>
-      <div id="chartCusto"></div>
-    </div>
-  </div>
-
-  <div class="seclab">Evolução diária</div>
-  <div class="card">
-    <h3>Investimento x receita</h3>
-    <div class="hint">Barra = investimento no Meta no dia. Linha = receita total do dia (todas as frentes).</div>
-    <div class="legend">
-      <span><i class="dot" style="background:var(--pago)"></i>Investimento Meta</span>
-      <span><i class="dot" style="background:var(--proprio)"></i>Receita do dia (todas as frentes)</span>
-    </div>
-    <div id="chartDia"></div>
-  </div>
-
-  <div class="seclab">Campanhas</div>
-  <div class="tbox tscroll">
-    <table>
-      <thead><tr>
-        <th>Campanha</th><th>Investido</th><th>Impressões</th><th>CPM</th><th>Cliques</th><th>CTR</th>
-        <th>Visitas</th><th>Custo/visita</th><th>Checkouts</th><th>Custo/checkout</th><th>Vendas</th><th>CPA</th>
-      </tr></thead>
-      <tbody id="tbCamp"></tbody>
-    </table>
-  </div>
-
-  <div class="seclab">Criativos</div>
-  <div class="tbox tscroll">
-    <table>
-      <thead><tr>
-        <th>Anúncio</th><th>Tipo</th><th>Status</th><th>Investido</th><th>Impressões</th><th>CPM</th>
-        <th>Cliques</th><th>CTR</th><th>Visitas</th><th>Custo/visita</th><th>Checkouts</th><th>Vendas</th><th>CPA</th>
-      </tr></thead>
-      <tbody id="tbCriativos"></tbody>
-    </table>
-  </div>
-  <div class="note warn" id="notaCriativos"></div>
-
-  <div class="seclab">Mix de ofertas</div>
-  <div class="cards2">
-    <div class="tbox tscroll">
-      <table>
-        <thead><tr><th>Oferta</th><th>Vendas</th><th>Receita</th><th>Ticket médio</th><th>% receita</th></tr></thead>
-        <tbody id="tbOfertas"></tbody>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Onde está o dinheiro</h3>
-      <div class="hint">Volume de vendas nem sempre é volume de receita. A barra é receita.</div>
-      <div id="chartOfertas"></div>
-    </div>
-  </div>
-  </section>
-
   <footer>
     <div>Fontes: Meta Ads (planilha MXP-Fp01 META ADS, nível anúncio/dia) e Hubla (planilha [MXP-FP01][VENDAS][2026], webhook n8n + backfill do export).</div>
     <div id="ger"></div>
@@ -260,42 +253,343 @@
 </div>
 
 <script>
-const DATA = {"gerado_em": "06/08/2026 10:00", "metas": {"deadline": "15/08/2026", "inicio": "01/08/2026", "hoje": "06/08/2026", "dias_totais": 15, "dias_corridos": 6, "dias_restantes": 10, "linhas": [{"chave": "vendas", "label": "Vendas", "acumula": true, "meta": 150, "realizado": 24, "esperado_hoje": 60.0, "pct": 16.0, "status": "neg", "unidade": "int", "direcao": "up", "falta": 126, "nec_dia": 12.6, "plano_dia": 10, "obs": "Toda venda registrada na Hubla, de qualquer frente."}, {"chave": "faturamento", "label": "Faturamento", "acumula": true, "meta": 29550.0, "realizado": 8975.49, "esperado_hoje": 11820.0, "pct": 30.4, "status": "neg", "unidade": "brl", "direcao": "up", "falta": 20574.51, "nec_dia": 2057.45, "plano_dia": 1970.0, "obs": "Receita bruta das vendas válidas."}, {"chave": "investimento", "label": "Investimento", "acumula": true, "meta": 22500.0, "realizado": 2638.03, "esperado_hoje": 9000.0, "pct": 11.7, "status": "neg", "unidade": "brl", "direcao": "up", "falta": 19861.97, "nec_dia": 1986.2, "plano_dia": 1500.0, "obs": "Verba prevista para o Meta no período."}, {"chave": "cac", "label": "CAC", "acumula": false, "meta": 150.0, "realizado": 109.92, "esperado_hoje": 150.0, "pct": 73.3, "status": "pos", "unidade": "brl", "direcao": "down", "falta": 0, "nec_dia": null, "plano_dia": null, "obs": "Investimento dividido por todas as vendas (blended, como no plano)."}, {"chave": "roas", "label": "ROAS", "acumula": false, "meta": 1.3, "realizado": 3.4, "esperado_hoje": 1.3, "pct": 261.7, "status": "pos", "unidade": "x", "direcao": "up", "falta": 0, "nec_dia": null, "plano_dia": null, "obs": "Faturamento dividido pelo investimento."}], "ritmo": {"vendas_dia": 4.0, "receita_dia": 1495.92, "spend_dia": 439.67, "vendas_dia_plano": 10, "spend_dia_plano": 1500.0}, "projecao": {"vendas": 60, "receita": 22438.73, "spend": 6595.07, "pct_meta": 40.0}, "cac_max": 150.0, "roas_meta": 1.3, "ticket_plano": 197.0, "ticket_real": 373.98}, "bench_lpv_ic": 3.0, "janela_trafego": ["2026-08-04", "2026-08-06"], "janela_vendas": ["2026-08-01", "2026-08-06"], "kpi": {"receita": 8975.49, "vendas": 24, "ticket": 373.98, "investido": 2638.03, "roas_geral": 3.4, "cac_blended": 109.92, "vendas_pagas": 1, "receita_paga": 197.0, "roas_pago": 0.07, "cpa_pago": 2638.03, "purch_pixel": 2, "reembolsos": 0, "receita_perdida": 0, "ads_ativos": 29}, "frentes": [{"frente": "WhatsApp", "tipo": "proprio", "vendas": 16, "receita": 6358.13, "pct_receita": 70.8, "ticket": 397.38, "investido": null, "cpa": null, "roas": null, "sources": ["whatsapp"]}, {"frente": "juliana_vieira", "tipo": "outros", "vendas": 1, "receita": 1103.8, "pct_receita": 12.3, "ticket": 1103.8, "investido": null, "cpa": null, "roas": null, "sources": ["juliana_vieira"]}, {"frente": "E-mail", "tipo": "proprio", "vendas": 4, "receita": 798.38, "pct_receita": 8.9, "ticket": 199.59, "investido": null, "cpa": null, "roas": null, "sources": ["email"]}, {"frente": "kaua_sequim", "tipo": "outros", "vendas": 1, "receita": 321.18, "pct_receita": 3.6, "ticket": 321.18, "investido": null, "cpa": null, "roas": null, "sources": ["kaua_sequim"]}, {"frente": "Meta Ads", "tipo": "pago", "vendas": 1, "receita": 197.0, "pct_receita": 2.2, "ticket": 197.0, "investido": 2638.03, "cpa": 2638.03, "roas": 0.07, "sources": ["meta_ads"]}, {"frente": "thaysalmeida", "tipo": "outros", "vendas": 1, "receita": 197.0, "pct_receita": 2.2, "ticket": 197.0, "investido": null, "cpa": null, "roas": null, "sources": ["ThaysAlmeida"]}], "funil": [{"etapa": "Impressões", "n": 28494, "taxa": null, "taxa_lbl": "", "custo": 92.58, "custo_lbl": "CPM"}, {"etapa": "Cliques no link", "n": 618, "taxa": 2.17, "taxa_lbl": "CTR", "custo": 4.27, "custo_lbl": "CPC"}, {"etapa": "Visitas na página", "n": 521, "taxa": 84.3, "taxa_lbl": "clique → página", "custo": 5.06, "custo_lbl": "custo/visita"}, {"etapa": "Checkouts iniciados", "n": 4, "taxa": 0.77, "taxa_lbl": "página → checkout", "custo": 659.51, "custo_lbl": "custo/checkout"}, {"etapa": "Vendas (Hubla)", "n": 1, "taxa": 25.0, "taxa_lbl": "checkout → venda", "custo": 2638.03, "custo_lbl": "CPA real"}], "serie": [{"data": "2026-08-01", "spend": 0, "lpv": 0, "ic": 0, "vendas": 1, "receita": 397.0, "vendas_pagas": 0, "receita_paga": 0}, {"data": "2026-08-02", "spend": 0, "lpv": 0, "ic": 0, "vendas": 1, "receita": 397.0, "vendas_pagas": 0, "receita_paga": 0}, {"data": "2026-08-03", "spend": 0, "lpv": 0, "ic": 0, "vendas": 6, "receita": 1239.94, "vendas_pagas": 0, "receita_paga": 0}, {"data": "2026-08-04", "spend": 1588.54, "lpv": 271, "ic": 2, "vendas": 11, "receita": 4620.39, "vendas_pagas": 0, "receita_paga": 0}, {"data": "2026-08-05", "spend": 939.09, "lpv": 229, "ic": 2, "vendas": 3, "receita": 1927.16, "vendas_pagas": 1, "receita_paga": 197.0}, {"data": "2026-08-06", "spend": 110.4, "lpv": 21, "ic": 0, "vendas": 2, "receita": 394.0, "vendas_pagas": 0, "receita_paga": 0}], "campanhas": [{"campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "spend": 1485.05, "impr": 18073, "clicks": 344, "lpv": 302, "ic": 3, "ctr": 1.9, "cpm": 82.17, "custo_lpv": 4.92, "custo_ic": 495.02, "vendas": 0, "receita": 0, "cpa": null}, {"campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]", "spend": 1152.98, "impr": 10421, "clicks": 274, "lpv": 219, "ic": 1, "ctr": 2.63, "cpm": 110.64, "custo_lpv": 5.26, "custo_ic": 1152.98, "vendas": 1, "receita": 197.0, "cpa": 1152.98}], "criativos": [{"ad": "AD-11", "nome": "[AD-11][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkLnCADWe/", "spend": 604.18, "impr": 4933, "clicks": 131, "lpv": 102, "ic": 1, "ctr": 2.66, "cpm": 122.48, "custo_lpv": 5.92, "vendas": 1, "receita": 197.0, "cpa": 604.18}, {"ad": "AD-34", "nome": "[AD-34][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "PAUSED", "ig": "https://www.instagram.com/p/DbnkQ29AhM6/", "spend": 369.78, "impr": 4425, "clicks": 107, "lpv": 101, "ic": 1, "ctr": 2.42, "cpm": 83.57, "custo_lpv": 3.66, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-15", "nome": "[AD-15][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQrfg_qZ/", "spend": 272.52, "impr": 2651, "clicks": 37, "lpv": 32, "ic": 0, "ctr": 1.4, "cpm": 102.8, "custo_lpv": 8.52, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-10", "nome": "[AD-10][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "PAUSED", "ig": "https://www.instagram.com/p/DbnkQMngL4h/", "spend": 238.02, "impr": 3764, "clicks": 51, "lpv": 48, "ic": 0, "ctr": 1.35, "cpm": 63.24, "custo_lpv": 4.96, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-31", "nome": "[AD-31][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQNZgRBj/", "spend": 188.12, "impr": 1901, "clicks": 44, "lpv": 40, "ic": 2, "ctr": 2.31, "cpm": 98.96, "custo_lpv": 4.7, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-01", "nome": "[AD-01][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQQlgMUM/", "spend": 104.65, "impr": 1396, "clicks": 40, "lpv": 30, "ic": 0, "ctr": 2.87, "cpm": 74.96, "custo_lpv": 3.49, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-20", "nome": "[AD-20][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQUwgeuF/", "spend": 96.09, "impr": 1273, "clicks": 15, "lpv": 9, "ic": 0, "ctr": 1.18, "cpm": 75.48, "custo_lpv": 10.68, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-45", "nome": "[AD-45][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQnBgB2p/", "spend": 92.86, "impr": 1031, "clicks": 28, "lpv": 23, "ic": 0, "ctr": 2.72, "cpm": 90.07, "custo_lpv": 4.04, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-41", "nome": "[AD-41][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQEdg3-D/", "spend": 80.26, "impr": 888, "clicks": 17, "lpv": 13, "ic": 0, "ctr": 1.91, "cpm": 90.38, "custo_lpv": 6.17, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-12", "nome": "[AD-12][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQkLAS7_/", "spend": 77.34, "impr": 956, "clicks": 18, "lpv": 16, "ic": 0, "ctr": 1.88, "cpm": 80.9, "custo_lpv": 4.83, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-37", "nome": "[AD-37][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQh_A-bG/", "spend": 76.58, "impr": 775, "clicks": 13, "lpv": 13, "ic": 0, "ctr": 1.68, "cpm": 98.81, "custo_lpv": 5.89, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-07", "nome": "[AD-07][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQmrAP68/", "spend": 67.79, "impr": 634, "clicks": 16, "lpv": 11, "ic": 0, "ctr": 2.52, "cpm": 106.92, "custo_lpv": 6.16, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-39", "nome": "[AD-39][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "PAUSED", "ig": "https://www.instagram.com/p/DbnkQ7QgQtG/", "spend": 60.69, "impr": 578, "clicks": 15, "lpv": 13, "ic": 0, "ctr": 2.6, "cpm": 105.0, "custo_lpv": 4.67, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-05", "nome": "[AD-05][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQ2dgUdK/", "spend": 45.61, "impr": 398, "clicks": 9, "lpv": 7, "ic": 0, "ctr": 2.26, "cpm": 114.6, "custo_lpv": 6.52, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-04", "nome": "[AD-04][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQzWgPYD/", "spend": 32.73, "impr": 421, "clicks": 7, "lpv": 5, "ic": 0, "ctr": 1.66, "cpm": 77.74, "custo_lpv": 6.55, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-14", "nome": "[AD-14][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQCUAoAs/", "spend": 32.28, "impr": 440, "clicks": 12, "lpv": 11, "ic": 0, "ctr": 2.73, "cpm": 73.36, "custo_lpv": 2.93, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-09", "nome": "[AD-09][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQk0g6Ef/", "spend": 27.89, "impr": 315, "clicks": 8, "lpv": 8, "ic": 0, "ctr": 2.54, "cpm": 88.54, "custo_lpv": 3.49, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-08", "nome": "[AD-08][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQw9AyCg/", "spend": 27.04, "impr": 135, "clicks": 1, "lpv": 0, "ic": 0, "ctr": 0.74, "cpm": 200.3, "custo_lpv": 0, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-17", "nome": "[AD-17][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "PAUSED", "ig": "https://www.instagram.com/p/DbnkQaAgvwL/", "spend": 26.67, "impr": 125, "clicks": 15, "lpv": 10, "ic": 0, "ctr": 12.0, "cpm": 213.36, "custo_lpv": 2.67, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-02", "nome": "[AD-02][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQL4AP9H/", "spend": 21.62, "impr": 283, "clicks": 9, "lpv": 8, "ic": 0, "ctr": 3.18, "cpm": 76.4, "custo_lpv": 2.7, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-06", "nome": "[AD-06][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQpMA7iB/", "spend": 19.99, "impr": 230, "clicks": 5, "lpv": 4, "ic": 0, "ctr": 2.17, "cpm": 86.91, "custo_lpv": 5.0, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-38", "nome": "[AD-38][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQ5pgjIr/", "spend": 17.6, "impr": 143, "clicks": 4, "lpv": 2, "ic": 0, "ctr": 2.8, "cpm": 123.08, "custo_lpv": 8.8, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-19", "nome": "[AD-19][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQeVABZY/", "spend": 15.56, "impr": 212, "clicks": 1, "lpv": 1, "ic": 0, "ctr": 0.47, "cpm": 73.4, "custo_lpv": 15.56, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-21", "nome": "[AD-21][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQHmAWFw/", "spend": 9.02, "impr": 147, "clicks": 3, "lpv": 3, "ic": 0, "ctr": 2.04, "cpm": 61.36, "custo_lpv": 3.01, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-18", "nome": "[AD-18][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkP9RABh1/", "spend": 8.39, "impr": 126, "clicks": 2, "lpv": 1, "ic": 0, "ctr": 1.59, "cpm": 66.59, "custo_lpv": 8.39, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-03", "nome": "[AD-03][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQxEAH22/", "spend": 7.92, "impr": 100, "clicks": 6, "lpv": 6, "ic": 0, "ctr": 6.0, "cpm": 79.2, "custo_lpv": 1.32, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-13", "nome": "[AD-13][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQdrghEG/", "spend": 6.75, "impr": 89, "clicks": 1, "lpv": 1, "ic": 0, "ctr": 1.12, "cpm": 75.84, "custo_lpv": 6.75, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-16", "nome": "[AD-16][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "PAUSED", "ig": "https://www.instagram.com/p/DbnkRNYgXKb/", "spend": 6.29, "impr": 81, "clicks": 1, "lpv": 1, "ic": 0, "ctr": 1.23, "cpm": 77.65, "custo_lpv": 6.29, "vendas": 0, "receita": 0, "cpa": null}, {"ad": "AD-42", "nome": "[AD-42][EST][VD][MXP-Fp01]", "campanha": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]", "tipo": "Estático", "status": "ACTIVE", "ig": "https://www.instagram.com/p/DbnkQZKAvHv/", "spend": 3.79, "impr": 44, "clicks": 2, "lpv": 2, "ic": 0, "ctr": 4.55, "cpm": 86.14, "custo_lpv": 1.9, "vendas": 0, "receita": 0, "cpa": null}], "ofertas": [{"oferta": "LITE", "vendas": 18, "receita": 3785.31, "ticket": 210.29}, {"oferta": "VIP - 1.197,00", "vendas": 2, "receita": 2971.2, "ticket": 1485.6}, {"oferta": "IMPERIUM", "vendas": 1, "receita": 1103.8, "ticket": 1103.8}, {"oferta": "START - R$397", "vendas": 2, "receita": 794.0, "ticket": 397.0}, {"oferta": "Upgrade Lite para Start - R$300", "vendas": 1, "receita": 321.18, "ticket": 321.18}]};
+const DATA = {"gerado_em":"06/08/2026 11:21","hoje":"2026-08-06","dias":["2026-08-01","2026-08-06"],"dias_trafego":["2026-08-04","2026-08-06"],"bench_lpv_ic":3.0,"metas":{"deadline":"15/08/2026","inicio":"01/08/2026","dias_totais":15,"dias_corridos":6,"dias_restantes":10,"linhas":[{"chave":"vendas","label":"Vendas","acumula":true,"meta":150,"realizado":24,"esperado_hoje":60.0,"pct":16.0,"status":"neg","unidade":"int","direcao":"up","falta":126,"nec_dia":12.6,"obs":"Toda venda registrada na Hubla, de qualquer frente."},{"chave":"faturamento","label":"Faturamento","acumula":true,"meta":29550.0,"realizado":8975.49,"esperado_hoje":11820.0,"pct":30.4,"status":"neg","unidade":"brl","direcao":"up","falta":20574.51,"nec_dia":2057.45,"obs":"Receita bruta das vendas válidas."},{"chave":"investimento","label":"Investimento","acumula":true,"meta":22500.0,"realizado":2638.03,"esperado_hoje":9000.0,"pct":11.7,"status":"neg","unidade":"brl","direcao":"up","falta":19861.97,"nec_dia":1986.2,"obs":"Verba prevista para o Meta no período."},{"chave":"cac","label":"CAC","acumula":false,"meta":150.0,"realizado":109.92,"esperado_hoje":150.0,"pct":73.3,"status":"pos","unidade":"brl","direcao":"down","falta":0,"nec_dia":null,"obs":"Investimento dividido por todas as vendas (blended, como no plano)."},{"chave":"roas","label":"ROAS","acumula":false,"meta":1.3,"realizado":3.4,"esperado_hoje":1.3,"pct":261.7,"status":"pos","unidade":"x","direcao":"up","falta":0,"nec_dia":null,"obs":"Faturamento dividido pelo investimento."}],"ritmo":{"vendas_dia":4.0,"spend_dia":439.67,"vendas_dia_plano":10,"spend_dia_plano":1500.0},"projecao":{"vendas":60,"receita":22438.73,"spend":6595.07,"pct_meta":40.0},"cac_max":150.0,"roas_meta":1.3,"ticket_plano":197.0,"ticket_real":373.98},"ads":{"AD-01|EST":{"nome":"[AD-01][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQQlgMUM/","status":"ACTIVE","rotulo":"AD-01 EST","tipo":"Estático"},"AD-02|EST":{"nome":"[AD-02][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQL4AP9H/","status":"ACTIVE","rotulo":"AD-02 EST","tipo":"Estático"},"AD-03|EST":{"nome":"[AD-03][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQxEAH22/","status":"ACTIVE","rotulo":"AD-03 EST","tipo":"Estático"},"AD-04|EST":{"nome":"[AD-04][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQzWgPYD/","status":"ACTIVE","rotulo":"AD-04 EST","tipo":"Estático"},"AD-05|EST":{"nome":"[AD-05][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQ2dgUdK/","status":"ACTIVE","rotulo":"AD-05 EST","tipo":"Estático"},"AD-06|EST":{"nome":"[AD-06][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQpMA7iB/","status":"ACTIVE","rotulo":"AD-06 EST","tipo":"Estático"},"AD-07|EST":{"nome":"[AD-07][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQmrAP68/","status":"ACTIVE","rotulo":"AD-07 EST","tipo":"Estático"},"AD-08|EST":{"nome":"[AD-08][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQw9AyCg/","status":"ACTIVE","rotulo":"AD-08 EST","tipo":"Estático"},"AD-09|EST":{"nome":"[AD-09][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQk0g6Ef/","status":"ACTIVE","rotulo":"AD-09 EST","tipo":"Estático"},"AD-10|EST":{"nome":"[AD-10][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQMngL4h/","status":"PAUSED","rotulo":"AD-10 EST","tipo":"Estático"},"AD-11|EST":{"nome":"[AD-11][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQI8g7Q7/","status":"ACTIVE","rotulo":"AD-11 EST","tipo":"Estático"},"AD-12|EST":{"nome":"[AD-12][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQkLAS7_/","status":"ACTIVE","rotulo":"AD-12 EST","tipo":"Estático"},"AD-13|EST":{"nome":"[AD-13][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQdrghEG/","status":"ACTIVE","rotulo":"AD-13 EST","tipo":"Estático"},"AD-14|EST":{"nome":"[AD-14][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQCUAoAs/","status":"ACTIVE","rotulo":"AD-14 EST","tipo":"Estático"},"AD-15|EST":{"nome":"[AD-15][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQrfg_qZ/","status":"ACTIVE","rotulo":"AD-15 EST","tipo":"Estático"},"AD-16|EST":{"nome":"[AD-16][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkRNYgXKb/","status":"PAUSED","rotulo":"AD-16 EST","tipo":"Estático"},"AD-17|EST":{"nome":"[AD-17][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQaAgvwL/","status":"PAUSED","rotulo":"AD-17 EST","tipo":"Estático"},"AD-18|EST":{"nome":"[AD-18][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkP9RABh1/","status":"ACTIVE","rotulo":"AD-18 EST","tipo":"Estático"},"AD-19|EST":{"nome":"[AD-19][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQeVABZY/","status":"ACTIVE","rotulo":"AD-19 EST","tipo":"Estático"},"AD-20|EST":{"nome":"[AD-20][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQUwgeuF/","status":"ACTIVE","rotulo":"AD-20 EST","tipo":"Estático"},"AD-21|EST":{"nome":"[AD-21][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQHmAWFw/","status":"ACTIVE","rotulo":"AD-21 EST","tipo":"Estático"},"AD-31|EST":{"nome":"[AD-31][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQNZgRBj/","status":"ACTIVE","rotulo":"AD-31 EST","tipo":"Estático"},"AD-34|EST":{"nome":"[AD-34][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQ29AhM6/","status":"PAUSED","rotulo":"AD-34 EST","tipo":"Estático"},"AD-37|EST":{"nome":"[AD-37][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQh_A-bG/","status":"ACTIVE","rotulo":"AD-37 EST","tipo":"Estático"},"AD-38|EST":{"nome":"[AD-38][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQ5pgjIr/","status":"ACTIVE","rotulo":"AD-38 EST","tipo":"Estático"},"AD-39|EST":{"nome":"[AD-39][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQ7QgQtG/","status":"PAUSED","rotulo":"AD-39 EST","tipo":"Estático"},"AD-41|EST":{"nome":"[AD-41][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQEdg3-D/","status":"ACTIVE","rotulo":"AD-41 EST","tipo":"Estático"},"AD-42|EST":{"nome":"[AD-42][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQZKAvHv/","status":"ACTIVE","rotulo":"AD-42 EST","tipo":"Estático"},"AD-45|EST":{"nome":"[AD-45][EST][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","ig":"https://www.instagram.com/p/DbnkQnBgB2p/","status":"ACTIVE","rotulo":"AD-45 EST","tipo":"Estático"},"AD-01|VID":{"nome":"[AD-01][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-01 VID","tipo":"Vídeo"},"AD-02|VID":{"nome":"[AD-02][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-02 VID","tipo":"Vídeo"},"AD-03|VID":{"nome":"[AD-03][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-03 VID","tipo":"Vídeo"},"AD-04|VID":{"nome":"[AD-04][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-04 VID","tipo":"Vídeo"},"AD-05|VID":{"nome":"[AD-05][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-05 VID","tipo":"Vídeo"},"AD-06|VID":{"nome":"[AD-06][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-06 VID","tipo":"Vídeo"},"AD-07|VID":{"nome":"[AD-07][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-07 VID","tipo":"Vídeo"},"AD-08|VID":{"nome":"[AD-08][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-08 VID","tipo":"Vídeo"},"AD-09|VID":{"nome":"[AD-09][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-09 VID","tipo":"Vídeo"},"AD-10|VID":{"nome":"[AD-10][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-10 VID","tipo":"Vídeo"},"AD-11|VID":{"nome":"[AD-11][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"https://www.instagram.com/p/DbnkLnCADWe/","status":"ACTIVE","rotulo":"AD-11 VID","tipo":"Vídeo"},"AD-12|VID":{"nome":"[AD-12][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-12 VID","tipo":"Vídeo"},"AD-13|VID":{"nome":"[AD-13][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-13 VID","tipo":"Vídeo"},"AD-14|VID":{"nome":"[AD-14][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-14 VID","tipo":"Vídeo"},"AD-15|VID":{"nome":"[AD-15][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"https://www.instagram.com/p/DbnkL5QANR3/","status":"PAUSED","rotulo":"AD-15 VID","tipo":"Vídeo"},"AD-16|VID":{"nome":"[AD-16][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-16 VID","tipo":"Vídeo"},"AD-17|VID":{"nome":"[AD-17][VID][VD][MXP-Fp01]","camp":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","ig":"","status":"ACTIVE","rotulo":"AD-17 VID","tipo":"Vídeo"}},"trafego":[{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-01|EST","s":2.55,"i":28,"k":1,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-02|EST","s":6.62,"i":90,"k":1,"l":1,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-03|EST","s":0.09,"i":10,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-04|EST","s":15.98,"i":220,"k":4,"l":3,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-05|EST","s":6.24,"i":82,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-06|EST","s":1.22,"i":13,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-07|EST","s":7.86,"i":112,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-08|EST","s":0.75,"i":16,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-09|EST","s":7.51,"i":80,"k":2,"l":3,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-10|EST","s":237.39,"i":3741,"k":51,"l":48,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-11|EST","s":22.79,"i":215,"k":2,"l":1,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-12|EST","s":25.04,"i":431,"k":5,"l":5,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-13|EST","s":1.06,"i":16,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-14|EST","s":3.44,"i":37,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-15|EST","s":32.27,"i":367,"k":3,"l":3,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-16|EST","s":1.09,"i":12,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-17|EST","s":4.67,"i":64,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-18|EST","s":3.19,"i":49,"k":1,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-19|EST","s":12.54,"i":172,"k":1,"l":1,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-20|EST","s":95.32,"i":1257,"k":14,"l":8,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-21|EST","s":1.44,"i":26,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-31|EST","s":71.74,"i":682,"k":14,"l":13,"ic":1,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-34|EST","s":132.82,"i":1797,"k":48,"l":41,"ic":1,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-37|EST","s":61.01,"i":603,"k":6,"l":6,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-38|EST","s":3.83,"i":56,"k":2,"l":1,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-39|EST","s":36.95,"i":312,"k":8,"l":7,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-41|EST","s":58.07,"i":670,"k":7,"l":6,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-42|EST","s":2.35,"i":24,"k":2,"l":2,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-45|EST","s":77.9,"i":877,"k":19,"l":15,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-01|VID","s":81.16,"i":1124,"k":20,"l":16,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-02|VID","s":2.54,"i":41,"k":3,"l":2,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-03|VID","s":2.0,"i":14,"k":3,"l":3,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-04|VID","s":2.19,"i":39,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-05|VID","s":29.78,"i":248,"k":5,"l":5,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-06|VID","s":5.16,"i":53,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-07|VID","s":34.87,"i":252,"k":8,"l":7,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-08|VID","s":23.06,"i":84,"k":1,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-09|VID","s":8.25,"i":102,"k":3,"l":3,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-10|VID","s":0.56,"i":20,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-11|VID","s":158.45,"i":1499,"k":34,"l":30,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-12|VID","s":26.48,"i":246,"k":5,"l":4,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-13|VID","s":4.85,"i":58,"k":1,"l":1,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-14|VID","s":17.41,"i":250,"k":5,"l":5,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-15|VID","s":234.35,"i":2230,"k":34,"l":29,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-16|VID","s":4.3,"i":47,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-04","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-17|VID","s":19.4,"i":37,"k":2,"l":2,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-01|EST","s":5.71,"i":42,"k":3,"l":2,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-02|EST","s":7.17,"i":84,"k":2,"l":1,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-03|EST","s":5.68,"i":68,"k":3,"l":3,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-04|EST","s":10.5,"i":119,"k":2,"l":2,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-05|EST","s":2.62,"i":28,"k":1,"l":1,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-06|EST","s":2.52,"i":23,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-07|EST","s":8.45,"i":113,"k":4,"l":1,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-08|EST","s":2.09,"i":18,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-09|EST","s":8.8,"i":89,"k":3,"l":2,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-11|EST","s":5.27,"i":106,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-12|EST","s":7.05,"i":101,"k":2,"l":3,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-13|EST","s":0.61,"i":9,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-14|EST","s":1.82,"i":22,"k":2,"l":1,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-15|EST","s":5.46,"i":44,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-18|EST","s":4.9,"i":69,"k":1,"l":1,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-19|EST","s":2.97,"i":39,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-20|EST","s":0.57,"i":12,"k":1,"l":1,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-21|EST","s":6.61,"i":107,"k":3,"l":3,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-31|EST","s":97.38,"i":978,"k":25,"l":22,"ic":1,"p":1},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-34|EST","s":236.96,"i":2628,"k":59,"l":60,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-37|EST","s":13.24,"i":137,"k":7,"l":7,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-38|EST","s":11.05,"i":67,"k":1,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-39|EST","s":23.74,"i":266,"k":7,"l":6,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-41|EST","s":19.35,"i":196,"k":9,"l":7,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-42|EST","s":0.39,"i":17,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-45|EST","s":14.83,"i":149,"k":9,"l":8,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-01|VID","s":13.28,"i":167,"k":13,"l":10,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-02|VID","s":3.95,"i":61,"k":3,"l":4,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-03|VID","s":0.0,"i":2,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-04|VID","s":0.45,"i":13,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-05|VID","s":1.41,"i":21,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-06|VID","s":8.64,"i":110,"k":4,"l":4,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-07|VID","s":14.29,"i":127,"k":4,"l":2,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-08|VID","s":0.61,"i":12,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-09|VID","s":1.8,"i":31,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-10|VID","s":0.07,"i":3,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-11|VID","s":367.12,"i":2843,"k":85,"l":62,"ic":1,"p":1},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-12|VID","s":13.4,"i":140,"k":3,"l":3,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-13|VID","s":0.14,"i":4,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-14|VID","s":4.75,"i":110,"k":4,"l":4,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-15|VID","s":0.0,"i":0,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-16|VID","s":0.87,"i":21,"k":1,"l":1,"ic":0,"p":0},{"d":"2026-08-05","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-17|VID","s":2.57,"i":21,"k":13,"l":8,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-01|EST","s":0.46,"i":7,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-02|EST","s":0.72,"i":5,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-03|EST","s":0.15,"i":6,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-04|EST","s":3.57,"i":27,"k":1,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-05|EST","s":4.59,"i":14,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-06|EST","s":1.2,"i":7,"k":1,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-07|EST","s":1.58,"i":16,"k":0,"l":1,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-08|EST","s":0.36,"i":2,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-09|EST","s":1.5,"i":11,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-11|EST","s":0.34,"i":8,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-12|EST","s":1.02,"i":15,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-14|EST","s":0.06,"i":2,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-15|EST","s":0.44,"i":10,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-18|EST","s":0.3,"i":8,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-19|EST","s":0.05,"i":1,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-20|EST","s":0.2,"i":4,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-21|EST","s":0.97,"i":14,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-31|EST","s":19.0,"i":241,"k":5,"l":5,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-34|EST","s":0.0,"i":0,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-37|EST","s":2.33,"i":35,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-38|EST","s":2.72,"i":20,"k":1,"l":1,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-41|EST","s":2.84,"i":22,"k":1,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-42|EST","s":1.05,"i":3,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]","a":"AD-45|EST","s":0.13,"i":5,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-01|VID","s":1.49,"i":28,"k":3,"l":2,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-02|VID","s":0.62,"i":2,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-04|VID","s":0.04,"i":3,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-05|VID","s":0.97,"i":5,"k":3,"l":1,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-06|VID","s":1.25,"i":24,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-07|VID","s":0.74,"i":14,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-08|VID","s":0.17,"i":3,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-09|VID","s":0.03,"i":2,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-11|VID","s":50.21,"i":262,"k":10,"l":9,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-12|VID","s":4.35,"i":23,"k":3,"l":1,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-13|VID","s":0.09,"i":2,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-14|VID","s":4.8,"i":19,"k":1,"l":1,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-16|VID","s":0.03,"i":1,"k":0,"l":0,"ic":0,"p":0},{"d":"2026-08-06","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","a":"AD-17|VID","s":0.03,"i":3,"k":0,"l":0,"ic":0,"p":0}],"vendas":[{"d":"2026-08-01","f":"WhatsApp","t":"proprio","v":397.0,"o":"START - R$397","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-02","f":"WhatsApp","t":"proprio","v":397.0,"o":"START - R$397","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-03","f":"WhatsApp","t":"proprio","v":197.0,"o":"LITE","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-03","f":"E-mail","t":"proprio","v":197.0,"o":"LITE","a":"","c":"mxp-26","src":"email"},{"d":"2026-08-03","f":"E-mail","t":"proprio","v":207.38,"o":"LITE","a":"","c":"mxp-26","src":"email"},{"d":"2026-08-03","f":"WhatsApp","t":"proprio","v":197.0,"o":"LITE","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-03","f":"WhatsApp","t":"proprio","v":244.56,"o":"LITE","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-03","f":"WhatsApp","t":"proprio","v":197.0,"o":"LITE","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-04","f":"WhatsApp","t":"proprio","v":244.56,"o":"LITE","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-04","f":"WhatsApp","t":"proprio","v":244.56,"o":"LITE","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-04","f":"WhatsApp","t":"proprio","v":197.0,"o":"LITE","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-04","f":"kaua_sequim","t":"outros","v":321.18,"o":"Upgrade Lite para Start - R$300","a":"","c":"Orgânico_geral","src":"kaua_sequim"},{"d":"2026-08-04","f":"WhatsApp","t":"proprio","v":197.0,"o":"LITE","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-06","f":"E-mail","t":"proprio","v":197.0,"o":"LITE","a":"","c":"mxp-26","src":"email"},{"d":"2026-08-04","f":"WhatsApp","t":"proprio","v":1485.6,"o":"VIP - 1.197,00","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-04","f":"E-mail","t":"proprio","v":197.0,"o":"LITE","a":"","c":"mxp-26","src":"email"},{"d":"2026-08-04","f":"WhatsApp","t":"proprio","v":221.76,"o":"LITE","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-04","f":"WhatsApp","t":"proprio","v":197.0,"o":"LITE","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-04","f":"WhatsApp","t":"proprio","v":210.93,"o":"LITE","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-04","f":"juliana_vieira","t":"outros","v":1103.8,"o":"IMPERIUM","a":"","c":"organico","src":"juliana_vieira"},{"d":"2026-08-05","f":"WhatsApp","t":"proprio","v":244.56,"o":"LITE","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-05","f":"Meta Ads","t":"pago","v":197.0,"o":"LITE","a":"AD-11|VID","c":"[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]","src":"meta_ads"},{"d":"2026-08-05","f":"WhatsApp","t":"proprio","v":1485.6,"o":"VIP - 1.197,00","a":"","c":"mxp-26","src":"whatsapp"},{"d":"2026-08-06","f":"thaysalmeida","t":"outros","v":197.0,"o":"LITE","a":"","c":"","src":"ThaysAlmeida"}],"reembolsos":0};
 
 const brl = v => 'R$ ' + (v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
 const brl0 = v => 'R$ ' + Math.round(v||0).toLocaleString('pt-BR');
-const int = v => (v||0).toLocaleString('pt-BR');
+const int = v => Math.round(v||0).toLocaleString('pt-BR');
 const pct = v => (v==null?'—':(v).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%');
+const xm  = v => (v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'x';
 const dia = d => d ? d.slice(8,10)+'/'+d.slice(5,7) : '';
-const esc = s => String(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-
-const K = DATA.kpi;
-
-document.getElementById('sub').textContent =
-  'Tráfego ' + dia(DATA.janela_trafego[0]) + ' a ' + dia(DATA.janela_trafego[1]) +
-  '  ·  Vendas ' + dia(DATA.janela_vendas[0]) + ' a ' + dia(DATA.janela_vendas[1]);
-document.getElementById('heroReceita').textContent = brl0(K.receita);
-document.getElementById('ger').textContent = 'Atualizado em ' + DATA.gerado_em;
-
-/* ---------- KPIs ---------- */
+const esc = s => String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const MD = '<span class="muted">—</span>';
 const M = DATA.metas;
-const roasSig = K.roas_geral >= M.roas_meta ? 'pos' : (K.roas_geral < M.roas_meta*0.8 ? 'neg' : '');
-const cacSig  = K.cac_blended <= M.cac_max ? 'pos' : (K.cac_blended > M.cac_max*1.2 ? 'neg' : '');
-const kpis = [
-  ['Receita total', brl0(K.receita), K.vendas + ' vendas \u00b7 ticket ' + brl0(K.ticket), true, ''],
-  ['Investimento Meta', brl0(K.investido), K.ads_ativos + ' an\u00fancios com verba', false, ''],
-  ['ROAS geral', (K.roas_geral).toLocaleString('pt-BR',{minimumFractionDigits:2}) + 'x',
-   'meta ' + M.roas_meta.toLocaleString('pt-BR',{minimumFractionDigits:1}) + 'x', true, roasSig],
-  ['CAC blended', brl0(K.cac_blended), 'teto ' + brl0(M.cac_max), false, cacSig],
-  ['Vendas do pago', int(K.vendas_pagas), brl0(K.receita_paga) + ' de receita', false, ''],
-  ['CPA real (pago)', K.vendas_pagas ? brl0(K.cpa_pago) : '\u2014',
-   K.vendas_pagas ? 'teto ' + brl0(M.cac_max) : 'sem venda atribu\u00edda', false,
-   K.vendas_pagas ? (K.cpa_pago <= M.cac_max ? 'pos' : 'neg') : ''],
-];
-document.getElementById('kpis').innerHTML = kpis.map(([k,v,d,hl,sig]) =>
-  `<div class="kpi${hl?' hl':''}"><div class="k">${k}</div><div class="v ${sig}">${v}</div><div class="d">${d}</div></div>`).join('');
 
-/* ---------- abas ---------- */
+/* ================= agregação por período ================= */
+function agrega(de, ate){
+  const T = DATA.trafego.filter(r => r.d>=de && r.d<=ate);
+  const V = DATA.vendas.filter(r => r.d>=de && r.d<=ate);
+  const t = {s:0,i:0,k:0,l:0,ic:0,p:0};
+  T.forEach(r=>{ t.s+=r.s; t.i+=r.i; t.k+=r.k; t.l+=r.l; t.ic+=r.ic; t.p+=r.p; });
+
+  const receita = V.reduce((a,b)=>a+b.v,0);
+  const pagas = V.filter(v=>v.t==='pago');
+  const receitaPaga = pagas.reduce((a,b)=>a+b.v,0);
+
+  const fr = {};
+  V.forEach(v=>{ const f = fr[v.f] || (fr[v.f]={frente:v.f,tipo:v.t,vendas:0,receita:0});
+                 f.vendas++; f.receita+=v.v; });
+  const frentes = Object.values(fr).map(f=>{
+    const pago = f.tipo==='pago';
+    return Object.assign({}, f, {
+      pct_receita: receita? 100*f.receita/receita : 0,
+      ticket: f.vendas? f.receita/f.vendas : 0,
+      investido: pago? t.s : null,
+      cpa: pago && f.vendas? t.s/f.vendas : null,
+      roas: pago && t.s? f.receita/t.s : null});
+  });
+
+  const taxa=(a,b)=>b? 100*a/b : 0, custo=b=>b? t.s/b : 0;
+  const funil = [
+    {etapa:'Impressões', n:t.i, taxa:null, taxa_lbl:'', custo:t.i?1000*t.s/t.i:0, custo_lbl:'CPM'},
+    {etapa:'Cliques no link', n:t.k, taxa:taxa(t.k,t.i), taxa_lbl:'CTR', custo:custo(t.k), custo_lbl:'CPC'},
+    {etapa:'Visitas na página', n:t.l, taxa:taxa(t.l,t.k), taxa_lbl:'clique → página', custo:custo(t.l), custo_lbl:'custo/visita'},
+    {etapa:'Checkouts iniciados', n:t.ic, taxa:taxa(t.ic,t.l), taxa_lbl:'página → checkout', custo:custo(t.ic), custo_lbl:'custo/checkout'},
+    {etapa:'Vendas (Hubla)', n:pagas.length, taxa:taxa(pagas.length,t.ic), taxa_lbl:'checkout → venda', custo:custo(pagas.length), custo_lbl:'CPA real'},
+  ];
+
+  const dias = [...new Set(T.map(r=>r.d).concat(V.map(r=>r.d)))].sort();
+  const serie = dias.map(d=>{
+    const td = T.filter(r=>r.d===d), vd = V.filter(r=>r.d===d);
+    return {data:d, spend:td.reduce((a,b)=>a+b.s,0), lpv:td.reduce((a,b)=>a+b.l,0),
+            vendas:vd.length, receita:vd.reduce((a,b)=>a+b.v,0)};
+  });
+
+  const grupo = (rows, key) => {
+    const g = {};
+    rows.forEach(r=>{ const o = g[r[key]] || (g[r[key]]={id:r[key],s:0,i:0,k:0,l:0,ic:0,vendas:0,receita:0});
+                      o.s+=r.s; o.i+=r.i; o.k+=r.k; o.l+=r.l; o.ic+=r.ic; });
+    return g;
+  };
+  const derivar = o => Object.assign(o, {ctr:taxa(o.k,o.i), cpm:o.i?1000*o.s/o.i:0,
+    custo_lpv:o.l?o.s/o.l:0, custo_ic:o.ic?o.s/o.ic:0, cpa:o.vendas?o.s/o.vendas:null});
+
+  const gc = grupo(T,'c');
+  pagas.forEach(v=>{ for (const c in gc)
+    if (v.c && v.c.toLowerCase()===c.toLowerCase()){ gc[c].vendas++; gc[c].receita+=v.v; } });
+  const campanhas = Object.values(gc).map(derivar);
+
+  const ga = grupo(T,'a');
+  pagas.forEach(v=>{ if (v.a && ga[v.a]){ ga[v.a].vendas++; ga[v.a].receita+=v.v; } });
+  const criativos = Object.values(ga).map(o=>{
+    const meta = DATA.ads[o.id] || {};
+    return Object.assign(derivar(o), {rotulo:meta.rotulo||o.id, tipoAd:meta.tipo||'',
+                                      status:meta.status||'', ig:meta.ig||''});
+  });
+
+  const go = {};
+  V.forEach(v=>{ const o = go[v.o] || (go[v.o]={oferta:v.o,vendas:0,receita:0}); o.vendas++; o.receita+=v.v; });
+  const ofertas = Object.values(go).map(o=>Object.assign(o, {ticket:o.receita/o.vendas,
+    pct: receita? 100*o.receita/receita : 0}));
+
+  return {t, receita, vendas:V.length, ticket: V.length? receita/V.length : 0,
+          pagas: pagas.length, receitaPaga,
+          cac: V.length? t.s/V.length : 0, roas: t.s? receita/t.s : 0,
+          cpaPago: pagas.length? t.s/pagas.length : 0,
+          adsComVerba: Object.values(ga).filter(a=>a.s>0).length,
+          frentes, funil, serie, campanhas, criativos, ofertas, dias};
+}
+
+/* ================= tabelas ordenáveis ================= */
+const SORT = {};
+function tabela(id, cols, rows, def, rodape){
+  if (!SORT[id]) SORT[id] = {k:def.k, dir:def.dir||'desc'};
+  const st = SORT[id];
+  const ord = rows.slice().sort((a,b)=>{
+    let x = a[st.k], y = b[st.k];
+    if (x==null) x = -Infinity;
+    if (y==null) y = -Infinity;
+    if (typeof x==='string' || typeof y==='string')
+      return (st.dir==='asc'?1:-1)*String(x).localeCompare(String(y),'pt-BR');
+    return (st.dir==='asc'?1:-1)*(x-y);
+  });
+  const seta = c => c.k===st.k ? (st.dir==='asc'?'▲':'▼') : '↕';
+  const el = document.getElementById(id);
+  el.innerHTML =
+    '<thead><tr>' + cols.map(c=>
+      `<th data-k="${c.k}" class="${c.k===st.k?'sorted':''}" title="Ordenar por ${esc(c.lbl)}">${esc(c.lbl)}<span class="arw">${seta(c)}</span></th>`
+    ).join('') + '</tr></thead><tbody>' +
+    (ord.length ? ord.map(r=>'<tr>'+cols.map((c,ci)=>{
+      const cls = ((c.cls? c.cls(r) : '') + (ci===0?' name':'')).trim();
+      return `<td class="${cls}">${c.fmt(r)}</td>`;
+    }).join('')+'</tr>').join('')
+    : `<tr><td colspan="${cols.length}" class="muted" style="text-align:center;padding:22px">Sem dado neste período.</td></tr>`) +
+    '</tbody>' + (rodape? `<tfoot><tr>${rodape}</tr></tfoot>` : '');
+  el.querySelectorAll('th').forEach(th=>{
+    th.onclick = () => {
+      const k = th.dataset.k;
+      if (st.k===k) st.dir = st.dir==='desc' ? 'asc' : 'desc';
+      else { st.k = k; st.dir = 'desc'; }
+      render();
+    };
+  });
+}
+
+/* ================= render ================= */
+let DE = DATA.dias[0], ATE = DATA.dias[1];
+
+function render(){
+  const v = agrega(DE, ATE);
+  const nd = v.dias.length || 0;
+
+  document.getElementById('sub').textContent =
+    'Período ' + dia(DE) + ' a ' + dia(ATE) + '  ·  ' + nd + ' dia(s) com dado';
+  document.getElementById('heroReceita').textContent = brl0(v.receita);
+  document.getElementById('infoPeriodo').textContent =
+    v.vendas + ' venda(s) · ' + brl0(v.t.s) + ' investido';
+
+  const roasSig = v.t.s ? (v.roas>=M.roas_meta ? 'pos' : (v.roas < M.roas_meta*0.8 ? 'neg' : '')) : '';
+  const cacSig  = v.vendas && v.t.s ? (v.cac<=M.cac_max ? 'pos' : (v.cac>M.cac_max*1.2 ? 'neg' : '')) : '';
+  document.getElementById('kpis').innerHTML = [
+    ['Receita total', brl0(v.receita), v.vendas+' vendas · ticket '+brl0(v.ticket), true, ''],
+    ['Investimento Meta', brl0(v.t.s), v.adsComVerba+' anúncios com verba', false, ''],
+    ['ROAS geral', v.t.s?xm(v.roas):'—', 'meta '+xm(M.roas_meta), true, roasSig],
+    ['CAC blended', v.vendas?brl0(v.cac):'—', 'teto '+brl0(M.cac_max), false, cacSig],
+    ['Vendas do pago', int(v.pagas), brl0(v.receitaPaga)+' de receita', false, ''],
+    ['CPA real (pago)', v.pagas?brl0(v.cpaPago):'—', v.pagas?'teto '+brl0(M.cac_max):'sem venda atribuída',
+     false, v.pagas ? (v.cpaPago<=M.cac_max?'pos':'neg') : ''],
+  ].map(function(a){
+    return `<div class="kpi${a[3]?' hl':''}"><div class="k">${a[0]}</div><div class="v ${a[4]}">${a[1]}</div><div class="d">${a[2]}</div></div>`;
+  }).join('');
+
+  /* frentes */
+  tabela('tFrentes', [
+    {k:'frente', lbl:'Frente', fmt:r=>`${esc(r.frente)} <span class="tag ${r.tipo}">${r.tipo}</span>
+       <span class="bar" style="width:${Math.max(r.pct_receita,1.5)}%;background:var(--${r.tipo==='pago'?'pago':r.tipo==='proprio'?'proprio':r.tipo==='outros'?'outros':'indef'})"></span>`},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'pct_receita', lbl:'% receita', fmt:r=>pct(r.pct_receita)},
+    {k:'ticket', lbl:'Ticket médio', fmt:r=>brl(r.ticket)},
+    {k:'investido', lbl:'Investido', fmt:r=>r.investido==null?MD:brl(r.investido)},
+    {k:'cpa', lbl:'CPA', fmt:r=>r.cpa==null?MD:brl(r.cpa), cls:r=>r.cpa==null?'':(r.cpa<=M.cac_max?'pos sig':'neg sig')},
+    {k:'roas', lbl:'ROAS', fmt:r=>r.roas==null?MD:xm(r.roas), cls:r=>r.roas==null?'':(r.roas>=M.roas_meta?'pos sig':'neg sig')},
+  ], v.frentes, {k:'receita'},
+  `<td>Total</td><td>${int(v.vendas)}</td><td>${brl(v.receita)}</td><td>${v.receita?'100,0%':'—'}</td>
+   <td>${brl(v.ticket)}</td><td>${brl(v.t.s)}</td><td>${v.vendas?brl(v.cac):MD}</td><td>${v.t.s?xm(v.roas):MD}</td>`);
+
+  chartBarras('chartFrentes', v.frentes.slice().sort((a,b)=>b.receita-a.receita).map(f=>({
+    lbl:f.frente, val:f.receita, sub:f.vendas+' venda(s) · '+pct(f.pct_receita),
+    cor:f.tipo==='pago'?'#0178e6':f.tipo==='proprio'?'#0b8fa4':f.tipo==='outros'?'#5e6c7b':'#9aa7b4'})), 150);
+
+  /* funil */
+  const mx = Math.max.apply(null, v.funil.map(x=>x.n).concat([1]));
+  document.getElementById('funil').innerHTML = v.funil.map((x,i)=>{
+    const crit = x.taxa_lbl==='página → checkout';
+    const sg = crit && v.t.l ? (x.taxa>=DATA.bench_lpv_ic?'pos':'neg') : '';
+    const alvo = crit ? ` <span class="muted">(esperado ${pct(DATA.bench_lpv_ic)} ou mais)</span>` : '';
+    const w = 34 + 66*Math.sqrt(x.n/mx);
+    return `${i?`<div class="fdrop">↓ ${x.taxa_lbl}: <b class="${sg}">${pct(x.taxa)}</b>${alvo}</div>`:''}
+      <div class="fstep">
+        <div class="fbar" style="width:${w}%"><span class="e">${x.etapa}</span><span class="n">${int(x.n)}</span></div>
+        <div class="fmeta"><b>${brl(x.custo)}</b>${x.custo_lbl}</div>
+      </div>`;
+  }).join('');
+  chartBarras('chartCusto', v.funil.filter(x=>x.custo>0).map(x=>({
+    lbl:x.custo_lbl, val:x.custo, sub:x.etapa, cor:'#0178e6', fmt:brl})), 132);
+
+  chartDia(v.serie);
+
+  /* campanhas */
+  tabela('tCamp', [
+    {k:'id', lbl:'Campanha', fmt:r=>esc(r.id)},
+    {k:'s', lbl:'Investido', fmt:r=>brl(r.s)},
+    {k:'i', lbl:'Impressões', fmt:r=>int(r.i)},
+    {k:'cpm', lbl:'CPM', fmt:r=>brl(r.cpm)},
+    {k:'k', lbl:'Cliques', fmt:r=>int(r.k)},
+    {k:'ctr', lbl:'CTR', fmt:r=>pct(r.ctr)},
+    {k:'l', lbl:'Visitas', fmt:r=>int(r.l)},
+    {k:'custo_lpv', lbl:'Custo/visita', fmt:r=>r.l?brl(r.custo_lpv):MD},
+    {k:'ic', lbl:'Checkouts', fmt:r=>int(r.ic)},
+    {k:'custo_ic', lbl:'Custo/checkout', fmt:r=>r.ic?brl(r.custo_ic):MD},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'cpa', lbl:'CPA', fmt:r=>r.cpa==null?MD:brl(r.cpa), cls:r=>r.cpa==null?'':(r.cpa<=M.cac_max?'pos sig':'neg sig')},
+  ], v.campanhas, {k:'s'});
+
+  /* criativos */
+  const lpvs = v.criativos.filter(c=>c.l>0).map(c=>c.custo_lpv).sort((a,b)=>a-b);
+  const MED = lpvs.length ? lpvs[Math.floor(lpvs.length/2)] : 0;
+  tabela('tCriativos', [
+    {k:'rotulo', lbl:'Anúncio', fmt:r=> esc(r.rotulo) + (r.ig
+        ? `<a class="prev" href="${esc(r.ig)}" target="_blank" rel="noopener">▶ prévia</a>`
+        : `<span class="prev off" title="Este anúncio não tem post do Instagram vinculado">sem prévia</span>`)},
+    {k:'tipoAd', lbl:'Tipo', fmt:r=>r.tipoAd||MD},
+    {k:'status', lbl:'Status', fmt:r=>`<span class="tag ${r.status==='ACTIVE'?'on':'off'}">${r.status==='ACTIVE'?'ativo':'pausado'}</span>`},
+    {k:'s', lbl:'Investido', fmt:r=>brl(r.s)},
+    {k:'i', lbl:'Impressões', fmt:r=>int(r.i)},
+    {k:'cpm', lbl:'CPM', fmt:r=>brl(r.cpm)},
+    {k:'k', lbl:'Cliques', fmt:r=>int(r.k)},
+    {k:'ctr', lbl:'CTR', fmt:r=>pct(r.ctr)},
+    {k:'l', lbl:'Visitas', fmt:r=>int(r.l)},
+    {k:'custo_lpv', lbl:'Custo/visita', fmt:r=>r.l?brl(r.custo_lpv):MD,
+     cls:r=>!r.l?'':(r.custo_lpv<=MED*0.6?'pos sig':(r.custo_lpv>=MED*2?'neg sig':''))},
+    {k:'ic', lbl:'Checkouts', fmt:r=>int(r.ic)},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'cpa', lbl:'CPA', fmt:r=>r.cpa==null?MD:brl(r.cpa), cls:r=>r.cpa==null?'':(r.cpa<=M.cac_max?'pos sig':'neg sig')},
+  ], v.criativos, {k:'s'});
+
+  const comVenda = v.criativos.filter(c=>c.vendas>0).length;
+  const medio = v.criativos.length ? v.t.s/v.criativos.length : 0;
+  document.getElementById('notaCriativos').innerHTML =
+    `<b>Leia com cuidado:</b> ${v.criativos.length} anúncios dividiram ${brl0(v.t.s)} neste período, uma média de ${brl0(medio)} por anúncio, e ${comVenda} tem venda registrada. ` +
+    `Com esse volume por criativo, diferença de CTR ou de custo por visita entre anúncios ainda é ruído. ` +
+    `A métrica utilizável neste estágio é o <b>custo por visita</b>, e mesmo ela só decide depois de aproximadamente R$ 150 a R$ 200 gastos no mesmo anúncio. ` +
+    `O verde e o vermelho nessa coluna comparam com a mediana do período (${brl(MED)}), não com a meta.`;
+
+  /* ofertas */
+  tabela('tOfertas', [
+    {k:'oferta', lbl:'Oferta', fmt:r=>esc(r.oferta)},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'ticket', lbl:'Ticket médio', fmt:r=>brl(r.ticket)},
+    {k:'pct', lbl:'% receita', fmt:r=>pct(r.pct)},
+  ], v.ofertas, {k:'receita'});
+  chartBarras('chartOfertas', v.ofertas.slice().sort((a,b)=>b.receita-a.receita).map(o=>({
+    lbl:o.oferta, val:o.receita, sub:o.vendas+' venda(s) · ticket '+brl0(o.ticket), cor:'#0178e6'})), 168);
+}
+
+/* ================= gráficos ================= */
+function chartBarras(id, itens, lab){
+  const el = document.getElementById(id);
+  if (!itens.length){ el.innerHTML = '<p class="muted" style="font-size:12px;padding:14px 0">Sem dado neste período.</p>'; return; }
+  const W=440, rowH=34, H=itens.length*rowH+10;
+  const max = Math.max.apply(null, itens.map(x=>x.val).concat([1])), bw = W-lab-72;
+  let s = `<svg viewBox="0 0 ${W} ${H}">`;
+  itens.forEach((x,i)=>{
+    const y=i*rowH+8, w=Math.max(bw*x.val/max,2);
+    s+=`<text class="axis" x="0" y="${y+13}" style="font-weight:700;fill:#002656">${esc(String(x.lbl).slice(0,22))}</text>`;
+    s+=`<rect x="${lab}" y="${y+2}" width="${w}" height="15" rx="4" fill="${x.cor}"/>`;
+    s+=`<text class="axis" x="${lab+w+7}" y="${y+14}">${(x.fmt||brl0)(x.val)}</text>`;
+    s+=`<text class="axis" x="0" y="${y+25}" style="font-size:9.5px">${esc(x.sub)}</text>`;
+  });
+  el.innerHTML = s+'</svg>';
+}
+
+function chartDia(d){
+  const el = document.getElementById('chartDia');
+  if (!d.length){ el.innerHTML='<p class="muted" style="font-size:12px;padding:14px 0">Sem dado neste período.</p>'; return; }
+  const W=1100,H=280,pl=64,pr=58,pt=18,pb=38, iw=W-pl-pr, ih=H-pt-pb;
+  const maxS=Math.max.apply(null, d.map(x=>x.spend).concat([1]));
+  const maxR=Math.max.apply(null, d.map(x=>x.receita).concat([1]));
+  const bw=Math.min(52, iw/d.length*0.5), X=i=>pl+iw*(i+0.5)/d.length;
+  let s=`<svg viewBox="0 0 ${W} ${H}">`;
+  for(let g=0;g<=4;g++){const y=pt+ih*g/4;
+    s+=`<line class="gridline" x1="${pl}" y1="${y}" x2="${W-pr}" y2="${y}"/>`;
+    s+=`<text class="axis" x="${pl-8}" y="${y+4}" text-anchor="end">${brl0(maxS*(1-g/4))}</text>`;
+    s+=`<text class="axis" x="${W-pr+8}" y="${y+4}">${brl0(maxR*(1-g/4))}</text>`;}
+  d.forEach((x,i)=>{const h=ih*x.spend/maxS, xx=X(i)-bw/2;
+    s+=`<rect x="${xx}" y="${pt+ih-h}" width="${bw}" height="${h}" rx="4" fill="#0178e6" opacity=".9"/>`;
+    s+=`<text class="axis" x="${X(i)}" y="${H-16}" text-anchor="middle">${dia(x.data)}</text>`;
+    if(x.spend) s+=`<text class="vlabel" x="${X(i)}" y="${pt+ih-h-6}" text-anchor="middle">${brl0(x.spend)}</text>`;});
+  s+=`<polyline points="${d.map((x,i)=>X(i)+','+(pt+ih-ih*x.receita/maxR)).join(' ')}" fill="none" stroke="#0b8fa4" stroke-width="3"/>`;
+  d.forEach((x,i)=>{const y=pt+ih-ih*x.receita/maxR;
+    s+=`<circle cx="${X(i)}" cy="${y}" r="4.5" fill="#0b8fa4"/>`;
+    if(x.receita) s+=`<text class="vlabel" x="${X(i)}" y="${y-11}" text-anchor="middle" style="fill:#08707f">${brl0(x.receita)}${x.vendas?' ('+x.vendas+')':''}</text>`;});
+  el.innerHTML = s+'</svg>';
+}
+
+/* ================= filtro de período ================= */
+const menos = (iso,n) => { const d=new Date(iso+'T12:00:00'); d.setDate(d.getDate()-n);
+  return d.toISOString().slice(0,10); };
+const clamp = d => d < DATA.dias[0] ? DATA.dias[0] : (d > DATA.dias[1] ? DATA.dias[1] : d);
+const HOJE = clamp(DATA.hoje);
+const PRESETS = [
+  ['Tudo',     () => [DATA.dias[0], DATA.dias[1]]],
+  ['Hoje',     () => [HOJE, HOJE]],
+  ['Ontem',    () => [clamp(menos(HOJE,1)), clamp(menos(HOJE,1))]],
+  ['7 dias',   () => [clamp(menos(HOJE,6)), HOJE]],
+  ['14 dias',  () => [clamp(menos(HOJE,13)), HOJE]],
+  ['Este mês', () => [clamp(HOJE.slice(0,8)+'01'), HOJE]],
+];
+
+document.getElementById('presets').innerHTML =
+  PRESETS.map((p,i)=>`<button data-i="${i}" class="${i===0?'on':''}">${p[0]}</button>`).join('') +
+  '<button data-i="-1">Personalizado</button>';
+
+function marcaPreset(i){
+  document.querySelectorAll('#presets button').forEach(b=>
+    b.classList.toggle('on', Number(b.dataset.i) === i));
+}
+
+document.querySelectorAll('#presets button').forEach(b=>{
+  b.onclick = () => {
+    const i = Number(b.dataset.i);
+    if (i >= 0){
+      const r = PRESETS[i][1]();
+      DE = r[0]; ATE = r[1];
+      document.getElementById('de').value = DE;
+      document.getElementById('ate').value = ATE;
+    }
+    marcaPreset(i);
+    render();
+  };
+});
+
+['de','ate'].forEach(id=>{
+  const el = document.getElementById(id);
+  el.min = DATA.dias[0];
+  el.max = DATA.dias[1];
+  el.onchange = () => {
+    let a = document.getElementById('de').value, b = document.getElementById('ate').value;
+    if (!a || !b) return;
+    if (a > b){ const t=a; a=b; b=t;
+      document.getElementById('de').value=a; document.getElementById('ate').value=b; }
+    DE=a; ATE=b; marcaPreset(-1); render();
+  };
+});
+document.getElementById('de').value = DE;
+document.getElementById('ate').value = ATE;
+
+/* ================= abas ================= */
 document.querySelectorAll('nav.tabs button').forEach(b=>{
   b.onclick = () => {
     document.querySelectorAll('nav.tabs button').forEach(x=>x.classList.toggle('on', x===b));
@@ -304,199 +598,66 @@ document.querySelectorAll('nav.tabs button').forEach(b=>{
   };
 });
 
-/* ---------- frentes ---------- */
-document.getElementById('tbFrentes').innerHTML = DATA.frentes.map(f => `
-  <tr>
-    <td class="name">${esc(f.frente)} <span class="tag ${f.tipo}">${f.tipo}</span>
-      <span class="bar" style="width:${Math.max(f.pct_receita,1.5)}%;background:var(--${f.tipo==='pago'?'pago':f.tipo==='proprio'?'proprio':f.tipo==='outros'?'outros':'indef'})"></span></td>
-    <td>${int(f.vendas)}</td><td>${brl(f.receita)}</td><td>${pct(f.pct_receita)}</td><td>${brl(f.ticket)}</td>
-    <td>${f.investido==null?'<span class="muted">—</span>':brl(f.investido)}</td>
-    <td>${f.cpa==null?'<span class="muted">—</span>':brl(f.cpa)}</td>
-    <td class="${f.roas==null?'':(f.roas>=DATA.metas.roas_meta?'pos sig':'neg sig')}">${f.roas==null?'<span class="muted">—</span>':f.roas.toLocaleString('pt-BR',{minimumFractionDigits:2})+'x'}</td>
-  </tr>`).join('');
-document.getElementById('tfFrentes').innerHTML =
-  `<tr><td>Total</td><td>${int(K.vendas)}</td><td>${brl(K.receita)}</td><td>100,0%</td>
-   <td>${brl(K.ticket)}</td><td>${brl(K.investido)}</td><td>${brl(K.cac_blended)}</td>
-   <td>${K.roas_geral.toLocaleString('pt-BR',{minimumFractionDigits:2})}x</td></tr>`;
-
-/* barras horizontais de receita por frente */
+/* ================= metas (período cheio do plano) ================= */
 (function(){
-  const d = DATA.frentes, W=440, rowH=34, H=d.length*rowH+10;
-  const max = Math.max(...d.map(x=>x.receita),1), lab=150, bw=W-lab-70;
-  const cor = t => t==='pago'?'#0178e6':t==='proprio'?'#0b8fa4':t==='outros'?'#5e6c7b':'#9aa7b4';
-  let s=`<svg viewBox="0 0 ${W} ${H}">`;
-  d.forEach((x,i)=>{
-    const y=i*rowH+8, w=Math.max(bw*x.receita/max,2);
-    s+=`<text class="axis" x="0" y="${y+13}" style="font-weight:700;fill:#002656">${esc(x.frente.slice(0,18))}</text>`;
-    s+=`<rect x="${lab}" y="${y+2}" width="${w}" height="15" rx="4" fill="${cor(x.tipo)}"/>`;
-    s+=`<text class="axis" x="${lab+w+7}" y="${y+14}">${brl0(x.receita)}</text>`;
-    s+=`<text class="axis" x="0" y="${y+25}" style="font-size:9.5px">${x.vendas} venda(s) · ${pct(x.pct_receita)}</text>`;
-  });
-  document.getElementById('chartFrentes').innerHTML=s+'</svg>';
-})();
+  const fmt = (v,u) => u==='brl' ? brl0(v) : u==='x' ? xm(v) : int(v);
+  document.getElementById('mDeadline').textContent = M.deadline;
+  const lv = M.linhas.filter(x=>x.chave==='vendas')[0];
+  const li = M.linhas.filter(x=>x.chave==='investimento')[0];
+  document.getElementById('need').innerHTML = [
+    ['need','Vendas por dia', Math.ceil(lv.nec_dia),
+     'faltam '+int(lv.falta)+' vendas em '+M.dias_restantes+' dia(s). O plano previa '+M.ritmo.vendas_dia_plano+'/dia.'],
+    ['need','Investimento por dia', brl0(li.nec_dia),
+     'faltam '+brl0(li.falta)+' de verba. O plano previa '+brl0(M.ritmo.spend_dia_plano)+'/dia.'],
+    ['need flat','Ritmo atual de vendas', M.ritmo.vendas_dia.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'/dia',
+     M.dias_corridos+' dia(s) corridos desde '+M.inicio+'.'],
+    ['need flat','Ritmo atual de verba', brl0(M.ritmo.spend_dia)+'/dia',
+     Math.round(100*M.ritmo.spend_dia/M.ritmo.spend_dia_plano)+'% do investimento diário previsto.'],
+  ].map(a=>`<div class="${a[0]}"><div class="k">${a[1]}</div><div class="v">${a[2]}</div><div class="d">${a[3]}</div></div>`).join('');
 
-/* ---------- funil ---------- */
-(function(){
-  const f = DATA.funil, max = Math.max(...f.map(x=>x.n),1);
-  document.getElementById('funil').innerHTML = f.map((x,i)=>{
-    const w = 34 + 66*Math.sqrt(x.n/max);
-    const crit = x.taxa_lbl==='página → checkout';
-    const sg = crit ? (x.taxa >= DATA.bench_lpv_ic ? 'pos' : 'neg') : '';
-    const alvo = crit ? ` <span class="muted">(esperado ${pct(DATA.bench_lpv_ic)} ou mais)</span>` : '';
-    return `${i?`<div class="fdrop">↓ ${x.taxa_lbl}: <b class="${sg}">${pct(x.taxa)}</b>${alvo}</div>`:''}
-      <div class="fstep">
-        <div class="fbar" style="width:${w}%"><span class="e">${x.etapa}</span><span class="n">${int(x.n)}</span></div>
-        <div class="fmeta"><b>${brl(x.custo)}</b>${x.custo_lbl}</div>
-      </div>`;
-  }).join('');
-})();
-
-/* custo por etapa */
-(function(){
-  const d = DATA.funil.filter(x=>x.custo>0), W=440, rowH=40, H=d.length*rowH+8;
-  const max=Math.max(...d.map(x=>x.custo),1), lab=132, bw=W-lab-78;
-  let s=`<svg viewBox="0 0 ${W} ${H}">`;
-  d.forEach((x,i)=>{
-    const y=i*rowH+10, w=Math.max(bw*x.custo/max,2);
-    s+=`<text class="axis" x="0" y="${y+13}" style="font-weight:700;fill:#002656">${x.custo_lbl}</text>`;
-    s+=`<text class="axis" x="0" y="${y+25}" style="font-size:9.5px">${x.etapa}</text>`;
-    s+=`<rect x="${lab}" y="${y+3}" width="${w}" height="15" rx="4" fill="#0178e6"/>`;
-    s+=`<text class="axis" x="${lab+w+7}" y="${y+15}" style="font-weight:700;fill:#002656">${brl(x.custo)}</text>`;
-  });
-  document.getElementById('chartCusto').innerHTML=s+'</svg>';
-})();
-
-/* ---------- série diária ---------- */
-(function(){
-  const d=DATA.serie; if(!d.length){document.getElementById('chartDia').innerHTML='';return;}
-  const W=1100,H=280,pl=64,pr=58,pt=18,pb=38, iw=W-pl-pr, ih=H-pt-pb;
-  const maxS=Math.max(...d.map(x=>x.spend),1), maxR=Math.max(...d.map(x=>x.receita),1);
-
-  const bw=Math.min(52, iw/d.length*0.5);
-  const X=i=>pl+iw*(i+0.5)/d.length;
-  let s=`<svg viewBox="0 0 ${W} ${H}">`;
-  for(let g=0;g<=4;g++){const y=pt+ih*g/4;
-    s+=`<line class="gridline" x1="${pl}" y1="${y}" x2="${W-pr}" y2="${y}"/>`;
-    s+=`<text class="axis" x="${pl-8}" y="${y+4}" text-anchor="end">${brl0(maxS*(1-g/4))}</text>`;
-    s+=`<text class="axis" x="${W-pr+8}" y="${y+4}">${brl0(maxR*(1-g/4))}</text>`;}
-  d.forEach((x,i)=>{const h=ih*x.spend/maxS, xx=X(i)-bw/2;
-    s+=`<rect x="${xx}" y="${pt+ih-h}" width="${bw}" height="${h}" rx="4" fill="#0178e6" opacity=".85"/>`;
-    s+=`<text class="axis" x="${X(i)}" y="${H-16}" text-anchor="middle">${dia(x.data)}</text>`;
-    s+=`<text class="vlabel" x="${X(i)}" y="${pt+ih-h-6}" text-anchor="middle">${brl0(x.spend)}</text>`;});
-  const pR=d.map((x,i)=>`${X(i)},${pt+ih-ih*x.receita/maxR}`).join(' ');
-  s+=`<polyline points="${pR}" fill="none" stroke="#0b8fa4" stroke-width="3"/>`;
-  d.forEach((x,i)=>{const y=pt+ih-ih*x.receita/maxR;
-    s+=`<circle cx="${X(i)}" cy="${y}" r="4.5" fill="#0b8fa4"/>`;
-    s+=`<text class="vlabel" x="${X(i)}" y="${y-11}" text-anchor="middle" style="fill:#08707f">${brl0(x.receita)}${x.vendas?' ('+x.vendas+')':''}</text>`;});
-  document.getElementById('chartDia').innerHTML=s+'</svg>';
-})();
-
-/* ---------- campanhas ---------- */
-document.getElementById('tbCamp').innerHTML = DATA.campanhas.map(c=>`
-  <tr><td class="name">${esc(c.campanha)}</td>
-  <td>${brl(c.spend)}</td><td>${int(c.impr)}</td><td>${brl(c.cpm)}</td><td>${int(c.clicks)}</td>
-  <td>${pct(c.ctr)}</td><td>${int(c.lpv)}</td><td>${brl(c.custo_lpv)}</td><td>${int(c.ic)}</td>
-  <td>${c.ic?brl(c.custo_ic):'<span class="muted">—</span>'}</td><td>${int(c.vendas)}</td>
-  <td>${c.cpa==null?'<span class="muted">—</span>':brl(c.cpa)}</td></tr>`).join('');
-
-/* ---------- criativos ---------- */
-const _lpvs = DATA.criativos.filter(c=>c.lpv>0).map(c=>c.custo_lpv).sort((a,b)=>a-b);
-const MED_LPV = _lpvs.length ? _lpvs[Math.floor(_lpvs.length/2)] : 0;
-document.getElementById('tbCriativos').innerHTML = DATA.criativos.map(c=>`
-  <tr><td class="name">${c.ig?`<a href="${esc(c.ig)}" target="_blank" style="color:var(--purple-d);text-decoration:none">${esc(c.ad)}</a>`:esc(c.ad)}</td>
-  <td>${c.tipo}</td><td><span class="tag ${c.status==='ACTIVE'?'on':'off'}">${c.status==='ACTIVE'?'ativo':'pausado'}</span></td>
-  <td>${brl(c.spend)}</td><td>${int(c.impr)}</td><td>${brl(c.cpm)}</td><td>${int(c.clicks)}</td>
-  <td>${pct(c.ctr)}</td><td>${int(c.lpv)}</td><td class="${c.lpv? (c.custo_lpv<=MED_LPV*0.6?'pos sig':(c.custo_lpv>=MED_LPV*2?'neg sig':'')) : ''}">${c.lpv?brl(c.custo_lpv):'<span class="muted">—</span>'}</td>
-  <td>${int(c.ic)}</td><td>${int(c.vendas)}</td>
-  <td>${c.cpa==null?'<span class="muted">—</span>':brl(c.cpa)}</td></tr>`).join('');
-
-(function(){
-  const c=DATA.criativos, comVenda=c.filter(x=>x.vendas>0).length;
-  const gastoMedio = c.length ? DATA.kpi.investido/c.length : 0;
-  document.getElementById('notaCriativos').innerHTML =
-   `<b>Leia com cuidado:</b> ${c.length} anúncios dividiram ${brl0(DATA.kpi.investido)}, uma média de ${brl0(gastoMedio)} por anúncio, e apenas ${comVenda} tem venda registrada. ` +
-   `Com esse volume por criativo, diferença de CTR ou de custo por visita entre anúncios ainda é ruído: nenhum tem amostra para ser declarado vencedor ou perdedor. ` +
-   `A métrica utilizável neste estágio é o <b>custo por visita na página</b>, e mesmo ela só decide depois de aproximadamente R$ 150 a R$ 200 gastos no mesmo anúncio.`;
-})();
-
-/* ---------- ofertas ---------- */
-document.getElementById('tbOfertas').innerHTML = DATA.ofertas.map(o=>`
-  <tr><td class="name">${esc(o.oferta)}</td><td>${int(o.vendas)}</td><td>${brl(o.receita)}</td>
-  <td>${brl(o.ticket)}</td><td>${pct(100*o.receita/DATA.kpi.receita)}</td></tr>`).join('');
-
-(function(){
-  const d=DATA.ofertas, W=440, rowH=34, H=d.length*rowH+10;
-  const max=Math.max(...d.map(x=>x.receita),1), lab=168, bw=W-lab-72;
-  let s=`<svg viewBox="0 0 ${W} ${H}">`;
-  d.forEach((x,i)=>{const y=i*rowH+8, w=Math.max(bw*x.receita/max,2);
-    s+=`<text class="axis" x="0" y="${y+13}" style="font-weight:700;fill:#002656">${esc(x.oferta.slice(0,22))}</text>`;
-    s+=`<rect x="${lab}" y="${y+2}" width="${w}" height="15" rx="4" fill="#0178e6"/>`;
-    s+=`<text class="axis" x="${lab+w+7}" y="${y+14}">${brl0(x.receita)}</text>`;
-    s+=`<text class="axis" x="0" y="${y+25}" style="font-size:9.5px">${x.vendas} venda(s) · ticket ${brl0(x.ticket)}</text>`;});
-  document.getElementById('chartOfertas').innerHTML=s+'</svg>';
-})();
-
-/* ---------- metas e ritmo ---------- */
-(function(){
-  const m = DATA.metas;
-  const fmt = (v,u) => u==='brl' ? brl0(v) : u==='x' ? v.toLocaleString('pt-BR',{minimumFractionDigits:2})+'x'
-                     : Math.round(v).toLocaleString('pt-BR');
-  document.getElementById('mDeadline').textContent = m.deadline;
-
-  const lv = m.linhas.find(x=>x.chave==='vendas');
-  const li = m.linhas.find(x=>x.chave==='investimento');
-  const need = [
-    ['need', 'Vendas por dia', Math.ceil(lv.nec_dia),
-     `faltam ${fmt(lv.falta,'int')} vendas em ${m.dias_restantes} dia(s). O plano previa ${m.ritmo.vendas_dia_plano}/dia.`],
-    ['need', 'Investimento por dia', brl0(li.nec_dia),
-     `faltam ${brl0(li.falta)} de verba. O plano previa ${brl0(m.ritmo.spend_dia_plano)}/dia.`],
-    ['need flat', 'Ritmo atual de vendas', m.ritmo.vendas_dia.toLocaleString('pt-BR',{minimumFractionDigits:1}) + '/dia',
-     `${m.dias_corridos} dia(s) corridos desde ${m.inicio}.`],
-    ['need flat', 'Ritmo atual de verba', brl0(m.ritmo.spend_dia) + '/dia',
-     `${Math.round(100*m.ritmo.spend_dia/m.ritmo.spend_dia_plano)}% do investimento diário previsto.`],
-  ];
-  document.getElementById('need').innerHTML = need.map(([c,k,v,d]) =>
-    `<div class="${c}"><div class="k">${k}</div><div class="v">${v}</div><div class="d">${d}</div></div>`).join('');
-
-  document.getElementById('tbMetas').innerHTML = m.linhas.map(l => {
-    const pctBar = Math.min(100, Math.max(0, l.direcao==='up' ? 100*l.realizado/l.meta : 100*l.meta/Math.max(l.realizado,0.01)));
-    const marca = l.acumula ? 100*m.dias_corridos/m.dias_totais : 100;
+  document.getElementById('tbMetas').innerHTML = M.linhas.map(l=>{
+    const barra = Math.min(100, Math.max(0, l.direcao==='up' ? 100*l.realizado/l.meta : 100*l.meta/Math.max(l.realizado,.01)));
+    const marca = l.acumula ? 100*M.dias_corridos/M.dias_totais : 100;
     return `<tr>
       <td class="name">${l.label}
-        <div class="prog"><i class="${l.status}" style="width:${pctBar}%"></i><b style="left:${Math.min(marca,99.5)}%"></b></div>
+        <div class="prog"><i class="${l.status}" style="width:${barra}%"></i><b style="left:${Math.min(marca,99.5)}%"></b></div>
         <div style="font-size:10.5px;color:var(--muted);margin-top:4px">${l.obs}</div></td>
       <td>${fmt(l.meta,l.unidade)}</td>
       <td>${l.acumula?fmt(l.esperado_hoje,l.unidade):'<span class="muted">alvo fixo</span>'}</td>
       <td class="sig ${l.status==='warn'?'wrn':l.status}">${fmt(l.realizado,l.unidade)}</td>
       <td>${pct(l.pct)}</td>
-      <td>${l.acumula?fmt(l.falta,l.unidade):'<span class="muted">—</span>'}</td>
-      <td class="sig">${(!l.acumula||l.nec_dia==null)?'<span class="muted">—</span>':fmt(l.nec_dia,l.unidade)}</td>
-    </tr>`;
-  }).join('');
+      <td>${l.acumula?fmt(l.falta,l.unidade):MD}</td>
+      <td class="sig">${(!l.acumula||l.nec_dia==null)?MD:fmt(l.nec_dia,l.unidade)}</td>
+    </tr>`;}).join('');
 
-  const atras = m.linhas.filter(l=>l.acumula && l.status!=='pos').map(l=>l.label.toLowerCase());
+  const atras = M.linhas.filter(l=>l.acumula && l.status!=='pos').map(l=>l.label.toLowerCase());
   document.getElementById('notaMetas').innerHTML =
-    `<b>Como ler:</b> a barra é o quanto já foi feito e o traço escuro é onde deveríamos estar hoje (${m.dias_corridos} de ${m.dias_totais} dias). ` +
-    `Verde significa dentro ou à frente do ritmo, vermelho significa abaixo de 80% do esperado a esta altura. ` +
-    (atras.length ? `Hoje está atrás do ritmo em: <b>${atras.join(', ')}</b>.` : `Todas as metas de volume estão dentro do ritmo.`);
+    `<b>Esta aba ignora o filtro de período</b> — ela sempre olha o plano inteiro, de ${M.inicio} a ${M.deadline}. ` +
+    `A barra é o quanto já foi feito e o traço escuro é onde deveríamos estar hoje (${M.dias_corridos} de ${M.dias_totais} dias). ` +
+    `Verde é dentro ou à frente do ritmo, vermelho é abaixo de 80% do esperado a esta altura. ` +
+    (atras.length ? `Hoje está atrás do ritmo em: <b>${atras.join(', ')}</b>.` : 'Todas as metas de volume estão dentro do ritmo.');
 
-  const p = m.projecao, pj = p.pct_meta;
-  const sg = pj>=100?'pos':(pj<80?'neg':'wrn');
+  const p = M.projecao;
+  const sg = p.pct_meta>=100?'pos':(p.pct_meta<80?'neg':'wrn');
   document.getElementById('kpisProj').innerHTML = [
-    ['Vendas projetadas', int(p.vendas), `meta ${int(m.linhas[0].meta)} · ${pct(pj)} da meta`, sg],
-    ['Faturamento projetado', brl0(p.receita), `meta ${brl0(m.linhas[1].meta)}`, p.receita>=m.linhas[1].meta?'pos':(p.receita<m.linhas[1].meta*0.8?'neg':'wrn')],
-    ['Investimento projetado', brl0(p.spend), `previsto ${brl0(m.linhas[2].meta)}`, ''],
-    ['Ticket médio', brl0(m.ticket_real), `o plano assume ${brl0(m.ticket_plano)}`, m.ticket_real>=m.ticket_plano?'pos':'neg'],
-  ].map(([k,v,d,s]) => `<div class="kpi"><div class="k">${k}</div><div class="v ${s==='wrn'?'wrn':s}">${v}</div><div class="d">${d}</div></div>`).join('');
+    ['Vendas projetadas', int(p.vendas), 'meta '+int(M.linhas[0].meta)+' · '+pct(p.pct_meta)+' da meta', sg],
+    ['Faturamento projetado', brl0(p.receita), 'meta '+brl0(M.linhas[1].meta),
+     p.receita>=M.linhas[1].meta?'pos':(p.receita<M.linhas[1].meta*0.8?'neg':'wrn')],
+    ['Investimento projetado', brl0(p.spend), 'previsto '+brl0(M.linhas[2].meta), ''],
+    ['Ticket médio', brl0(M.ticket_real), 'o plano assume '+brl0(M.ticket_plano),
+     M.ticket_real>=M.ticket_plano?'pos':'neg'],
+  ].map(a=>`<div class="kpi"><div class="k">${a[0]}</div><div class="v ${a[3]==='wrn'?'wrn':a[3]}">${a[1]}</div><div class="d">${a[2]}</div></div>`).join('');
 
   document.getElementById('notaProj').innerHTML =
-    `<b>A projeção é linear:</b> repete o ritmo médio dos ${m.dias_corridos} dias corridos até ${m.deadline}. ` +
-    `Ela não considera aceleração de fim de prazo nem aumento de verba, então serve para responder uma coisa só: ` +
-    `mantendo tudo como está, a meta é atingida ou não. ` +
-    (m.ticket_real > m.ticket_plano
-      ? `Um ponto a favor: o ticket real (${brl0(m.ticket_real)}) está acima do que o plano assumiu (${brl0(m.ticket_plano)}), então o faturamento não precisa das 150 vendas cheias para bater.`
-      : `Atenção: o ticket real (${brl0(m.ticket_real)}) está abaixo do que o plano assumiu (${brl0(m.ticket_plano)}), então bater 150 vendas ainda deixaria o faturamento curto.`);
+    `<b>A projeção é linear:</b> repete o ritmo médio dos ${M.dias_corridos} dias corridos até ${M.deadline}. ` +
+    'Não considera aceleração de fim de prazo nem aumento de verba, então responde uma coisa só: mantendo tudo como está, a meta é atingida ou não. ' +
+    (M.ticket_real > M.ticket_plano
+      ? `A favor: o ticket real (${brl0(M.ticket_real)}) está acima do que o plano assumiu (${brl0(M.ticket_plano)}), então o faturamento não precisa das ${int(M.linhas[0].meta)} vendas cheias para bater.`
+      : `Atenção: o ticket real (${brl0(M.ticket_real)}) está abaixo do que o plano assumiu (${brl0(M.ticket_plano)}), então bater a meta de vendas ainda deixaria o faturamento curto.`);
 })();
+
+document.getElementById('ger').textContent = 'Atualizado em ' + DATA.gerado_em;
+render();
 </script>
 </body>
 </html>

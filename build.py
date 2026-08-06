@@ -79,13 +79,26 @@ def parse_dt(s):
     return None
 
 
+MIDIA = {"VID": "Vídeo", "EST": "Estático", "CAR": "Carrossel", "IMG": "Imagem"}
+
+
 def ad_code(s):
-    """'[AD-11][VID][VD][MXP-Fp01]' -> 'AD-11'. Casa utm_content com Ad Name."""
-    m = re.search(r"\[?(AD-?\d+)\]?", str(s or "").upper().replace("_", "-"))
+    """'[AD-11][VID][VD][MXP-Fp01]' -> 'AD-11|VID'.
+
+    O codigo sozinho NAO identifica o anuncio: AD-11 existe na campanha de
+    estaticos E na de videos. A chave tem que levar o formato junto, senao os
+    dois viram uma linha so. Mesma regra vale pro utm_content da Hubla, que
+    carrega os mesmos tokens.
+    """
+    up = str(s or "").upper().replace("_", "-")
+    m = re.search(r"\[?(AD-?\d+)\]?", up)
     if not m:
         return ""
     n = re.sub(r"\D", "", m.group(1))
-    return f"AD-{int(n):02d}" if n else ""
+    if not n:
+        return ""
+    fmt = next((k for k in MIDIA if f"[{k}]" in up), "")
+    return f"AD-{int(n):02d}" + (f"|{fmt}" if fmt else "")
 
 
 def frente(src):
@@ -167,148 +180,39 @@ def soma(rows, chave):
 def build():
     trafego, vendas = coletar()
 
-    # venda valida = nao reembolsada/cancelada
-    perdidas = [v for v in vendas if v["status"] in ("refunded", "canceled", "chargeback")]
-    vendas_ok = [v for v in vendas if v not in perdidas]
+    perdidas = {"refunded", "canceled", "chargeback"}
+    vendas_ok = [v for v in vendas if v["status"] not in perdidas]
 
-    tot_t = Counter()
+    # --- dados crus para o navegador agregar por periodo -------------------
+    # chaves curtas: o arquivo vai embutido no HTML.
+    ads = {}
     for r in trafego:
-        for m in MET:
-            tot_t[m] += r[m]
+        k = r["ad_code"] or r["ad"]
+        fmt = k.split("|")[1] if "|" in k else ""
+        a = ads.setdefault(k, {"nome": r["ad"], "camp": r["campanha"], "ig": "",
+                               "status": r["status_ad"],
+                               "rotulo": k.replace("|", " "),
+                               "tipo": MIDIA.get(fmt, "")})
+        if r["ig"]:
+            a["ig"] = r["ig"]
+        if r["status_ad"] == "ACTIVE":
+            a["status"] = "ACTIVE"
 
+    traf = [{"d": r["data"], "c": r["campanha"], "a": r["ad_code"] or r["ad"],
+             "s": round(r["spend"], 2), "i": int(r["impr"]), "k": int(r["clicks"]),
+             "l": int(r["lpv"]), "ic": int(r["ic"]), "p": int(r["purch_pixel"])}
+            for r in trafego]
+
+    vds = [{"d": v["data"], "f": v["frente"], "t": v["tipo"], "v": round(v["valor"], 2),
+            "o": v["oferta"], "a": v["ad_code"], "c": v["utm_campaign"],
+            "src": v["utm_source"]}
+           for v in vendas_ok if v["data"]]
+
+    # --- metas: sempre no periodo cheio do plano, independem do filtro ----
+    tot_spend = sum(r["spend"] for r in trafego)
     receita = sum(v["valor"] for v in vendas_ok)
     n_vendas = len(vendas_ok)
 
-    # --- frentes (utm_source) -------------------------------------------
-    fr = defaultdict(lambda: {"vendas": 0, "receita": 0.0, "tipo": "", "sources": set()})
-    for v in vendas_ok:
-        f = fr[v["frente"]]
-        f["vendas"] += 1
-        f["receita"] += v["valor"]
-        f["tipo"] = v["tipo"]
-        f["sources"].add(v["utm_source"] or "(vazio)")
-    frentes = []
-    for nome, d in sorted(fr.items(), key=lambda x: -x[1]["receita"]):
-        pago = d["tipo"] == "pago"
-        frentes.append({
-            "frente": nome, "tipo": d["tipo"], "vendas": d["vendas"],
-            "receita": round(d["receita"], 2),
-            "pct_receita": round(100 * d["receita"] / receita, 1) if receita else 0,
-            "ticket": round(d["receita"] / d["vendas"], 2) if d["vendas"] else 0,
-            "investido": round(tot_t["spend"], 2) if pago else None,
-            "cpa": round(tot_t["spend"] / d["vendas"], 2) if pago and d["vendas"] else None,
-            "roas": round(d["receita"] / tot_t["spend"], 2) if pago and tot_t["spend"] else None,
-            "sources": sorted(d["sources"]),
-        })
-
-    vendas_pagas = [v for v in vendas_ok if v["tipo"] == "pago"]
-    receita_paga = sum(v["valor"] for v in vendas_pagas)
-
-    # --- funil pago ------------------------------------------------------
-    def taxa(a, b):
-        return round(100 * a / b, 2) if b else 0
-
-    def custo(b):
-        return round(tot_t["spend"] / b, 2) if b else 0
-
-    funil = [
-        {"etapa": "Impressões", "n": int(tot_t["impr"]), "taxa": None,
-         "taxa_lbl": "", "custo": round(1000 * tot_t["spend"] / tot_t["impr"], 2) if tot_t["impr"] else 0,
-         "custo_lbl": "CPM"},
-        {"etapa": "Cliques no link", "n": int(tot_t["clicks"]),
-         "taxa": taxa(tot_t["clicks"], tot_t["impr"]), "taxa_lbl": "CTR",
-         "custo": custo(tot_t["clicks"]), "custo_lbl": "CPC"},
-        {"etapa": "Visitas na página", "n": int(tot_t["lpv"]),
-         "taxa": taxa(tot_t["lpv"], tot_t["clicks"]), "taxa_lbl": "clique → página",
-         "custo": custo(tot_t["lpv"]), "custo_lbl": "custo/visita"},
-        {"etapa": "Checkouts iniciados", "n": int(tot_t["ic"]),
-         "taxa": taxa(tot_t["ic"], tot_t["lpv"]), "taxa_lbl": "página → checkout",
-         "custo": custo(tot_t["ic"]), "custo_lbl": "custo/checkout"},
-        {"etapa": "Vendas (Hubla)", "n": len(vendas_pagas),
-         "taxa": taxa(len(vendas_pagas), tot_t["ic"]), "taxa_lbl": "checkout → venda",
-         "custo": custo(len(vendas_pagas)), "custo_lbl": "CPA real"},
-    ]
-
-    # --- serie diaria ----------------------------------------------------
-    dias = sorted({r["data"] for r in trafego} | {v["data"] for v in vendas_ok if v["data"]})
-    por_dia_t = soma(trafego, "data")
-    serie = []
-    for d in dias:
-        vd = [v for v in vendas_ok if v["data"] == d]
-        vp = [v for v in vd if v["tipo"] == "pago"]
-        serie.append({
-            "data": d,
-            "spend": round(por_dia_t[d]["spend"], 2),
-            "lpv": int(por_dia_t[d]["lpv"]),
-            "ic": int(por_dia_t[d]["ic"]),
-            "vendas": len(vd), "receita": round(sum(x["valor"] for x in vd), 2),
-            "vendas_pagas": len(vp), "receita_paga": round(sum(x["valor"] for x in vp), 2),
-        })
-
-    # --- campanhas -------------------------------------------------------
-    por_camp = soma(trafego, "campanha")
-    vendas_camp = Counter()
-    receita_camp = Counter()
-    for v in vendas_pagas:
-        for c in por_camp:
-            if v["utm_campaign"] and v["utm_campaign"].lower() == c.lower():
-                vendas_camp[c] += 1
-                receita_camp[c] += v["valor"]
-    campanhas = []
-    for c, m in sorted(por_camp.items(), key=lambda x: -x[1]["spend"]):
-        campanhas.append({
-            "campanha": c, "spend": round(m["spend"], 2), "impr": int(m["impr"]),
-            "clicks": int(m["clicks"]), "lpv": int(m["lpv"]), "ic": int(m["ic"]),
-            "ctr": taxa(m["clicks"], m["impr"]),
-            "cpm": round(1000 * m["spend"] / m["impr"], 2) if m["impr"] else 0,
-            "custo_lpv": round(m["spend"] / m["lpv"], 2) if m["lpv"] else 0,
-            "custo_ic": round(m["spend"] / m["ic"], 2) if m["ic"] else 0,
-            "vendas": vendas_camp[c], "receita": round(receita_camp[c], 2),
-            "cpa": round(m["spend"] / vendas_camp[c], 2) if vendas_camp[c] else None,
-        })
-
-    # --- criativos -------------------------------------------------------
-    por_ad = defaultdict(lambda: Counter())
-    meta_ad = {}
-    for r in trafego:
-        k = r["ad_code"] or r["ad"]
-        for m in MET:
-            por_ad[k][m] += r[m]
-        meta_ad.setdefault(k, {"ad": r["ad"], "campanha": r["campanha"], "ig": r["ig"],
-                               "status": r["status_ad"]})
-        if r["ig"]:
-            meta_ad[k]["ig"] = r["ig"]
-    vendas_ad = Counter()
-    receita_ad = Counter()
-    for v in vendas_pagas:
-        if v["ad_code"]:
-            vendas_ad[v["ad_code"]] += 1
-            receita_ad[v["ad_code"]] += v["valor"]
-    criativos = []
-    for k, m in sorted(por_ad.items(), key=lambda x: -x[1]["spend"]):
-        criativos.append({
-            "ad": k, "nome": meta_ad[k]["ad"], "campanha": meta_ad[k]["campanha"],
-            "tipo": "Vídeo" if "[VID]" in meta_ad[k]["ad"].upper() else "Estático",
-            "status": meta_ad[k]["status"], "ig": meta_ad[k]["ig"],
-            "spend": round(m["spend"], 2), "impr": int(m["impr"]),
-            "clicks": int(m["clicks"]), "lpv": int(m["lpv"]), "ic": int(m["ic"]),
-            "ctr": taxa(m["clicks"], m["impr"]),
-            "cpm": round(1000 * m["spend"] / m["impr"], 2) if m["impr"] else 0,
-            "custo_lpv": round(m["spend"] / m["lpv"], 2) if m["lpv"] else 0,
-            "vendas": vendas_ad[k], "receita": round(receita_ad[k], 2),
-            "cpa": round(m["spend"] / vendas_ad[k], 2) if vendas_ad[k] else None,
-        })
-
-    # --- ofertas ---------------------------------------------------------
-    of = defaultdict(lambda: {"n": 0, "receita": 0.0})
-    for v in vendas_ok:
-        of[v["oferta"]]["n"] += 1
-        of[v["oferta"]]["receita"] += v["valor"]
-    ofertas = [{"oferta": k, "vendas": d["n"], "receita": round(d["receita"], 2),
-                "ticket": round(d["receita"] / d["n"], 2)}
-               for k, d in sorted(of.items(), key=lambda x: -x[1]["receita"])]
-
-    # --- metas e pacing ---------------------------------------------------
     hoje = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
     ini = datetime.strptime(METAS["inicio"], "%Y-%m-%d")
     fim = datetime.strptime(METAS["deadline"], "%Y-%m-%d")
@@ -317,112 +221,84 @@ def build():
     dias_restantes = max(1, (fim - hoje).days + 1)
     fracao = dias_corridos / dias_totais
 
-    def linha(chave, label, meta, real, direcao, unidade, plano_dia=None, obs="",
-              acumula=True):
-        """direcao 'up' = quanto maior melhor; 'down' = quanto menor melhor.
-        acumula=False para razoes (CAC, ROAS): comparam direto com o alvo, sem
-        rateio por dia e sem 'falta'."""
+    def linha(chave, label, meta, real, direcao, unidade, obs="", acumula=True):
         esperado = meta * fracao if (direcao == "up" and acumula) else meta
-        if direcao == "up" and acumula:
+        falta, nec_dia = 0, None
+        if acumula:
             razao = real / esperado if esperado else 0
             status = "pos" if razao >= 1 else ("neg" if razao < 0.8 else "warn")
             falta = max(meta - real, 0)
             nec_dia = falta / dias_restantes
+        elif direcao == "up":
+            status = "pos" if real >= meta else ("neg" if real < meta * 0.8 else "warn")
         else:
-            razao = real / meta if meta else 0
             status = "pos" if real <= meta else ("neg" if real > meta * 1.2 else "warn")
-            falta, nec_dia = 0, None
-        if not acumula:
-            razao = real / meta if meta else 0
-            if direcao == "up":
-                status = "pos" if real >= meta else ("neg" if real < meta * 0.8 else "warn")
-            falta, nec_dia = 0, None
         return {"chave": chave, "label": label, "acumula": acumula,
-                "meta": round(meta, 2),
-                "realizado": round(real, 2), "esperado_hoje": round(esperado, 2),
+                "meta": round(meta, 2), "realizado": round(real, 2),
+                "esperado_hoje": round(esperado, 2),
                 "pct": round(100 * real / meta, 1) if meta else 0,
                 "status": status, "unidade": unidade, "direcao": direcao,
                 "falta": round(falta, 2),
                 "nec_dia": round(nec_dia, 2) if nec_dia is not None else None,
-                "plano_dia": plano_dia, "obs": obs}
+                "obs": obs}
 
-    ritmo_vendas = n_vendas / dias_corridos
-    ritmo_receita = receita / dias_corridos
-    ritmo_spend = tot_t["spend"] / dias_corridos
-    cac_atual = tot_t["spend"] / n_vendas if n_vendas else 0
-    roas_atual = receita / tot_t["spend"] if tot_t["spend"] else 0
-
+    cac = tot_spend / n_vendas if n_vendas else 0
+    roas = receita / tot_spend if tot_spend else 0
     metas = {
         "deadline": fim.strftime("%d/%m/%Y"), "inicio": ini.strftime("%d/%m/%Y"),
-        "hoje": hoje.strftime("%d/%m/%Y"),
         "dias_totais": dias_totais, "dias_corridos": dias_corridos,
         "dias_restantes": dias_restantes,
         "linhas": [
             linha("vendas", "Vendas", METAS["vendas"], n_vendas, "up", "int",
-                  METAS["vendas_dia"], "Toda venda registrada na Hubla, de qualquer frente."),
+                  "Toda venda registrada na Hubla, de qualquer frente."),
             linha("faturamento", "Faturamento", METAS["faturamento"], receita, "up", "brl",
-                  METAS["faturamento"] / dias_totais, "Receita bruta das vendas válidas."),
-            linha("investimento", "Investimento", METAS["investimento"], tot_t["spend"], "up", "brl",
-                  METAS["investimento_dia"], "Verba prevista para o Meta no período."),
-            linha("cac", "CAC", METAS["cac_max"], cac_atual, "down", "brl", None,
+                  "Receita bruta das vendas válidas."),
+            linha("investimento", "Investimento", METAS["investimento"], tot_spend, "up", "brl",
+                  "Verba prevista para o Meta no período."),
+            linha("cac", "CAC", METAS["cac_max"], cac, "down", "brl",
                   "Investimento dividido por todas as vendas (blended, como no plano).",
                   acumula=False),
-            linha("roas", "ROAS", METAS["roas"], roas_atual, "up", "x", None,
+            linha("roas", "ROAS", METAS["roas"], roas, "up", "x",
                   "Faturamento dividido pelo investimento.", acumula=False),
         ],
         "ritmo": {
-            "vendas_dia": round(ritmo_vendas, 2),
-            "receita_dia": round(ritmo_receita, 2),
-            "spend_dia": round(ritmo_spend, 2),
+            "vendas_dia": round(n_vendas / dias_corridos, 2),
+            "spend_dia": round(tot_spend / dias_corridos, 2),
             "vendas_dia_plano": METAS["vendas_dia"],
             "spend_dia_plano": METAS["investimento_dia"],
         },
         "projecao": {
-            "vendas": round(ritmo_vendas * dias_totais),
-            "receita": round(ritmo_receita * dias_totais, 2),
-            "spend": round(ritmo_spend * dias_totais, 2),
-            "pct_meta": round(100 * ritmo_vendas * dias_totais / METAS["vendas"], 1),
+            "vendas": round(n_vendas / dias_corridos * dias_totais),
+            "receita": round(receita / dias_corridos * dias_totais, 2),
+            "spend": round(tot_spend / dias_corridos * dias_totais, 2),
+            "pct_meta": round(100 * (n_vendas / dias_corridos * dias_totais) / METAS["vendas"], 1),
         },
         "cac_max": METAS["cac_max"], "roas_meta": METAS["roas"],
         "ticket_plano": round(METAS["faturamento"] / METAS["vendas"], 2),
         "ticket_real": round(receita / n_vendas, 2) if n_vendas else 0,
     }
 
+    dias = sorted({r["d"] for r in traf} | {v["d"] for v in vds})
     data = {
         "gerado_em": datetime.now().strftime("%d/%m/%Y %H:%M"),
-        "metas": metas, "bench_lpv_ic": BENCH_LPV_IC,
-        "janela_trafego": [min(r["data"] for r in trafego), max(r["data"] for r in trafego)] if trafego else ["", ""],
-        "janela_vendas": [min(v["data"] for v in vendas_ok if v["data"]),
-                          max(v["data"] for v in vendas_ok if v["data"])] if vendas_ok else ["", ""],
-        "kpi": {
-            "receita": round(receita, 2), "vendas": n_vendas,
-            "ticket": round(receita / n_vendas, 2) if n_vendas else 0,
-            "investido": round(tot_t["spend"], 2),
-            "roas_geral": round(receita / tot_t["spend"], 2) if tot_t["spend"] else 0,
-            "cac_blended": round(tot_t["spend"] / n_vendas, 2) if n_vendas else 0,
-            "vendas_pagas": len(vendas_pagas), "receita_paga": round(receita_paga, 2),
-            "roas_pago": round(receita_paga / tot_t["spend"], 2) if tot_t["spend"] else 0,
-            "cpa_pago": round(tot_t["spend"] / len(vendas_pagas), 2) if vendas_pagas else 0,
-            "purch_pixel": int(tot_t["purch_pixel"]),
-            "reembolsos": len(perdidas),
-            "receita_perdida": round(sum(v["valor"] for v in perdidas), 2),
-            "ads_ativos": sum(1 for c in criativos if c["spend"] > 0),
-        },
-        "frentes": frentes, "funil": funil, "serie": serie,
-        "campanhas": campanhas, "criativos": criativos, "ofertas": ofertas,
+        "hoje": hoje.strftime("%Y-%m-%d"),
+        "dias": [dias[0], dias[-1]] if dias else ["", ""],
+        "dias_trafego": [min(r["d"] for r in traf), max(r["d"] for r in traf)] if traf else ["", ""],
+        "bench_lpv_ic": BENCH_LPV_IC,
+        "metas": metas, "ads": ads, "trafego": traf, "vendas": vds,
+        "reembolsos": len(vendas) - len(vendas_ok),
     }
 
     with open(os.path.join(HERE, "data.json"), "w", encoding="utf-8") as fh:
         json.dump(data, fh, ensure_ascii=False, indent=1)
 
     tpl = open(os.path.join(HERE, "template.html"), encoding="utf-8").read()
-    html = tpl.replace("/*__DATA__*/", json.dumps(data, ensure_ascii=False))
+    html = tpl.replace("/*__DATA__*/", json.dumps(data, ensure_ascii=False, separators=(",", ":")))
     with open(os.path.join(HERE, "index.html"), "w", encoding="utf-8") as fh:
         fh.write(html)
 
-    print(f"trafego: {len(trafego)} linhas | vendas: {len(vendas_ok)} (perdidas {len(perdidas)})")
-    print(f"investido R$ {tot_t['spend']:.2f} | receita R$ {receita:.2f} | ROAS geral {data['kpi']['roas_geral']}")
-    print(f"pago: {len(vendas_pagas)} vendas | CPA R$ {data['kpi']['cpa_pago']} | ROAS {data['kpi']['roas_pago']}")
+    print(f"trafego: {len(traf)} linhas | vendas: {len(vds)} | ads: {len(ads)}")
+    print(f"investido R$ {tot_spend:.2f} | receita R$ {receita:.2f} | {n_vendas} vendas")
     print("index.html + data.json gerados")
 
 

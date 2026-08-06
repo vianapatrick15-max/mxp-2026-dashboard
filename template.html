@@ -6,11 +6,10 @@
 <title>MXP-Fp01 2026 — Tráfego x Vendas reais</title>
 <style>
   :root{
-    --purple:#0178e6; --purple-d:#0160b8; --ink:#002656; --text:#12243a; --muted:#5e6c7b;
+    --blue:#0178e6; --blue-d:#0160b8; --ink:#002656; --text:#12243a; --muted:#5e6c7b;
     --line:#dde8f4; --bg:#f1f6fb; --card:#fff; --soft:#f6fafd; --lav:#eaf2fb;
-    --cyan:#52f2f8; --cyan-d:#0b8fa4;
     --pago:#0178e6; --proprio:#0b8fa4; --outros:#5e6c7b; --indef:#9aa7b4;
-    --good:#1ba05f; --good-bg:#e4f6ec; --warn:#b3781a; --warn-bg:#fdf4e4;
+    --good:#12855a; --good-bg:#e4f6ec; --warn:#a8720f; --warn-bg:#fdf4e4;
     --bad:#c62740; --bad-bg:#fbe8ec;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -18,12 +17,12 @@
     background:var(--bg);color:var(--text);line-height:1.45;-webkit-font-smoothing:antialiased}
   .wrap{max-width:1240px;margin:0 auto;padding:24px 20px 70px}
   header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;
-    border-bottom:2px solid var(--purple);padding-bottom:16px;margin-bottom:20px}
-  .ttl .kick{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--purple-d)}
+    border-bottom:2px solid var(--blue);padding-bottom:16px;margin-bottom:8px}
+  .ttl .kick{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-d)}
   .ttl h1{font-size:27px;font-weight:800;color:var(--ink);letter-spacing:-.01em;margin-top:3px}
   .ttl .sub{font-size:12.5px;color:var(--muted);margin-top:4px}
   .hero{text-align:right}
-  .hero .big{font-size:33px;font-weight:800;color:var(--purple);line-height:1}
+  .hero .big{font-size:33px;font-weight:800;color:var(--blue);line-height:1}
   .hero .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:5px}
 
   .seclab{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
@@ -36,7 +35,7 @@
   .kpi .v{font-size:24px;font-weight:800;color:var(--ink);margin-top:5px;line-height:1.1}
   .kpi .d{font-size:11.5px;color:var(--muted);margin-top:4px}
   .kpi.hl{background:linear-gradient(180deg,#eef7ff,#fff);border-color:#bcdcf8}
-  .kpi.hl .v{color:var(--purple-d)}
+  .kpi.hl .v{color:var(--blue-d)}
 
   .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
   .card h3{font-size:14.5px;font-weight:800;color:var(--ink)}
@@ -56,7 +55,12 @@
   .tbox{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
   .tscroll{overflow-x:auto}
   th{text-align:right;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-    color:var(--muted);padding:11px 12px;border-bottom:1px solid var(--line);white-space:nowrap;background:var(--lav)}
+    color:var(--muted);padding:11px 12px;border-bottom:1px solid var(--line);white-space:nowrap;
+    background:var(--lav);cursor:pointer;user-select:none}
+  th:hover{color:var(--ink);background:#e0ecf9}
+  th.sorted{color:var(--blue-d)}
+  th .arw{opacity:.35;margin-left:4px;font-size:9px}
+  th.sorted .arw{opacity:1}
   th:first-child,td:first-child{text-align:left}
   td{padding:9px 12px;border-bottom:1px solid #eef4fa;text-align:right;white-space:nowrap;color:var(--text)}
   tbody tr:hover{background:var(--soft)}
@@ -73,15 +77,19 @@
   .muted{color:var(--muted)}
   .bar{height:6px;border-radius:3px;display:block;margin-top:5px;background:var(--pago)}
 
+  .prev{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;
+    padding:3px 9px;border-radius:20px;border:1px solid #bcdcf8;background:#eef7ff;color:var(--blue-d);
+    text-decoration:none;margin-left:8px;vertical-align:middle;white-space:nowrap}
+  .prev:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .prev.off{border-color:var(--line);background:#f4f7fa;color:#9aa7b4;cursor:not-allowed}
+
   .note{border-radius:12px;padding:13px 16px;font-size:12.5px;margin-top:13px;border:1px solid}
   .note.warn{background:#eef7ff;border-color:#c7e2f8;color:#0f4c81}
-  .note.bad{background:var(--bad-bg);border-color:#f2c7cf;color:#96233a}
   .note b{font-weight:800}
-  .note+.note{margin-top:9px}
 
   .funil{display:flex;flex-direction:column;gap:7px;margin-top:14px}
   .fstep{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px}
-  .fbar{background:linear-gradient(90deg,var(--ink),var(--purple));border-radius:8px;color:#fff;
+  .fbar{background:linear-gradient(90deg,var(--ink),var(--blue));border-radius:8px;color:#fff;
     padding:10px 14px;min-width:130px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
   .fbar .e{font-size:12.5px;font-weight:700}
   .fbar .n{font-size:17px;font-weight:800}
@@ -89,30 +97,33 @@
   .fmeta b{display:block;font-size:13px;font-weight:800;color:var(--ink)}
   .fdrop{font-size:11px;color:var(--muted);padding-left:6px}
 
-  /* sinalizacao: so nas metricas cruciais */
-  .pos{color:#12855a}
-  .neg{color:#c62740}
-  .wrn{color:#a8720f}
-  .pill{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle}
-  .pill.pos{background:#e4f6ec;color:#12855a}
-  .pill.neg{background:#fbe8ec;color:#c62740}
-  .pill.wrn{background:#fdf4e4;color:#a8720f}
+  .pos{color:var(--good)} .neg{color:var(--bad)} .wrn{color:var(--warn)}
   td.sig{font-weight:800}
 
-  /* abas */
-  nav.tabs{display:flex;gap:4px;margin:18px 0 4px;border-bottom:1px solid var(--line)}
+  nav.tabs{display:flex;gap:4px;margin:16px 0 0;border-bottom:1px solid var(--line)}
   nav.tabs button{appearance:none;border:0;background:none;cursor:pointer;font:inherit;
     font-size:13px;font-weight:700;color:var(--muted);padding:10px 16px;border-radius:9px 9px 0 0;
     border-bottom:2px solid transparent;margin-bottom:-1px}
   nav.tabs button:hover{color:var(--ink);background:var(--soft)}
-  nav.tabs button.on{color:var(--purple-d);border-bottom-color:var(--purple);background:#fff}
-  .tab{display:none}
-  .tab.on{display:block}
+  nav.tabs button.on{color:var(--blue-d);border-bottom-color:var(--blue);background:#fff}
+  .tab{display:none} .tab.on{display:block}
 
-  /* metas */
+  .filtro{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);
+    border:1px solid var(--line);border-radius:13px;padding:12px 16px;margin-top:16px}
+  .filtro .lbl{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .presets{display:flex;gap:5px;flex-wrap:wrap}
+  .presets button{appearance:none;font:inherit;font-size:12px;font-weight:700;cursor:pointer;
+    padding:6px 12px;border-radius:20px;border:1px solid var(--line);background:#fff;color:var(--muted)}
+  .presets button:hover{border-color:#bcdcf8;color:var(--blue-d)}
+  .presets button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+  .filtro input[type=date]{font:inherit;font-size:12.5px;color:var(--text);padding:6px 10px;
+    border:1px solid var(--line);border-radius:8px;background:#fff}
+  .filtro .sep{color:var(--muted);font-size:12px}
+  .filtro .info{margin-left:auto;font-size:11.5px;color:var(--muted)}
+
   .prog{height:8px;border-radius:5px;background:#eaf0f7;overflow:hidden;margin-top:6px;position:relative}
-  .prog i{display:block;height:100%;border-radius:5px;background:var(--purple)}
-  .prog i.pos{background:#1ba05f}.prog i.neg{background:#d3455c}.prog i.wrn{background:#e0a33a}
+  .prog i{display:block;height:100%;border-radius:5px;background:var(--blue)}
+  .prog i.pos{background:#1ba05f}.prog i.neg{background:#d3455c}.prog i.warn{background:#e0a33a}
   .prog b{position:absolute;top:-1px;bottom:-1px;width:2px;background:var(--ink);opacity:.55}
   .bigneed{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:4px}
   .need{background:linear-gradient(160deg,#002656,#0178e6);color:#fff;border-radius:14px;padding:18px 20px}
@@ -147,6 +158,71 @@
     <button data-tab="metas">Metas e ritmo</button>
   </nav>
 
+  <section class="tab on" id="tab-desempenho">
+    <div class="filtro">
+      <span class="lbl">Período</span>
+      <div class="presets" id="presets"></div>
+      <span class="sep">de</span>
+      <input type="date" id="de">
+      <span class="sep">até</span>
+      <input type="date" id="ate">
+      <span class="info" id="infoPeriodo"></span>
+    </div>
+
+    <div class="seclab">Visão do negócio</div>
+    <div class="kpis" id="kpis"></div>
+
+    <div class="seclab">Vendas por frente (utm_source)</div>
+    <div class="tbox tscroll"><table id="tFrentes"></table></div>
+    <div class="card" style="margin-top:14px">
+      <h3>Participação na receita</h3>
+      <div class="hint">Quanto cada frente colocou no caixa. Só a frente paga tem custo de mídia associado.</div>
+      <div style="max-width:640px" id="chartFrentes"></div>
+    </div>
+
+    <div class="seclab">Funil do tráfego pago</div>
+    <div class="cards2">
+      <div class="card">
+        <h3>Da impressão à venda</h3>
+        <div class="hint">Etapas do Meta fechando na venda real da Hubla, não no pixel.</div>
+        <div class="funil" id="funil"></div>
+      </div>
+      <div class="card">
+        <h3>Custo por etapa</h3>
+        <div class="hint">Quanto custa mover uma pessoa até cada etapa, com o investimento do período.</div>
+        <div id="chartCusto"></div>
+      </div>
+    </div>
+
+    <div class="seclab">Evolução diária</div>
+    <div class="card">
+      <h3>Investimento x receita</h3>
+      <div class="hint">Barra = investimento no Meta no dia. Linha = receita total do dia (todas as frentes).</div>
+      <div class="legend">
+        <span><i class="dot" style="background:var(--pago)"></i>Investimento Meta</span>
+        <span><i class="dot" style="background:var(--proprio)"></i>Receita do dia</span>
+      </div>
+      <div id="chartDia"></div>
+    </div>
+
+    <div class="seclab">Campanhas</div>
+    <div class="tbox tscroll"><table id="tCamp"></table></div>
+
+    <div class="seclab">Criativos</div>
+    <div class="tbox tscroll"><table id="tCriativos"></table></div>
+    <div class="note warn" id="notaCriativos"></div>
+
+    <div class="seclab">Mix de ofertas</div>
+    <div class="cards2">
+      <div class="tbox tscroll"><table id="tOfertas"></table></div>
+      <div class="card">
+        <h3>Onde está o dinheiro</h3>
+        <div class="hint">Volume de vendas nem sempre é volume de receita. A barra é receita.</div>
+        <div id="chartOfertas"></div>
+      </div>
+    </div>
+  </section>
+
   <section class="tab" id="tab-metas">
     <div class="seclab">O que falta por dia até <span id="mDeadline"></span></div>
     <div class="bigneed" id="need"></div>
@@ -155,8 +231,10 @@
     <div class="tbox tscroll">
       <table>
         <thead><tr>
-          <th>Meta</th><th>Alvo até 15/08</th><th>Esperado a esta altura</th><th>Realizado</th>
-          <th>% da meta</th><th>Falta</th><th>Necessário por dia</th>
+          <th style="cursor:default">Meta</th><th style="cursor:default">Alvo</th>
+          <th style="cursor:default">Esperado a esta altura</th><th style="cursor:default">Realizado</th>
+          <th style="cursor:default">% da meta</th><th style="cursor:default">Falta</th>
+          <th style="cursor:default">Necessário por dia</th>
         </tr></thead>
         <tbody id="tbMetas"></tbody>
       </table>
@@ -166,91 +244,6 @@
     <div class="seclab">Projeção no ritmo atual</div>
     <div class="kpis" id="kpisProj"></div>
     <div class="note warn" id="notaProj"></div>
-  </section>
-
-  <section class="tab on" id="tab-desempenho">
-  <div class="seclab">Visão do negócio</div>
-  <div class="kpis" id="kpis"></div>
-
-  <div class="seclab">Vendas por frente (utm_source)</div>
-  <div class="tbox tscroll">
-    <table>
-      <thead><tr>
-        <th>Frente</th><th>Vendas</th><th>Receita</th><th>% receita</th><th>Ticket médio</th>
-        <th>Investido</th><th>CPA</th><th>ROAS</th>
-      </tr></thead>
-      <tbody id="tbFrentes"></tbody>
-      <tfoot id="tfFrentes"></tfoot>
-    </table>
-  </div>
-  <div class="card" style="margin-top:14px">
-    <h3>Participação na receita</h3>
-    <div class="hint">Quanto cada frente colocou no caixa. Só a frente paga tem custo de mídia associado.</div>
-    <div style="max-width:640px" id="chartFrentes"></div>
-  </div>
-
-  <div class="seclab">Funil do tráfego pago</div>
-  <div class="cards2">
-    <div class="card">
-      <h3>Da impressão à venda</h3>
-      <div class="hint">Etapas do Meta (planilha de tráfego) fechando na venda real da Hubla, não no pixel.</div>
-      <div class="funil" id="funil"></div>
-    </div>
-    <div class="card">
-      <h3>Custo por etapa</h3>
-      <div class="hint">Quanto custa mover uma pessoa até cada etapa, com o investimento total do período.</div>
-      <div id="chartCusto"></div>
-    </div>
-  </div>
-
-  <div class="seclab">Evolução diária</div>
-  <div class="card">
-    <h3>Investimento x receita</h3>
-    <div class="hint">Barra = investimento no Meta no dia. Linha = receita total do dia (todas as frentes).</div>
-    <div class="legend">
-      <span><i class="dot" style="background:var(--pago)"></i>Investimento Meta</span>
-      <span><i class="dot" style="background:var(--proprio)"></i>Receita do dia (todas as frentes)</span>
-    </div>
-    <div id="chartDia"></div>
-  </div>
-
-  <div class="seclab">Campanhas</div>
-  <div class="tbox tscroll">
-    <table>
-      <thead><tr>
-        <th>Campanha</th><th>Investido</th><th>Impressões</th><th>CPM</th><th>Cliques</th><th>CTR</th>
-        <th>Visitas</th><th>Custo/visita</th><th>Checkouts</th><th>Custo/checkout</th><th>Vendas</th><th>CPA</th>
-      </tr></thead>
-      <tbody id="tbCamp"></tbody>
-    </table>
-  </div>
-
-  <div class="seclab">Criativos</div>
-  <div class="tbox tscroll">
-    <table>
-      <thead><tr>
-        <th>Anúncio</th><th>Tipo</th><th>Status</th><th>Investido</th><th>Impressões</th><th>CPM</th>
-        <th>Cliques</th><th>CTR</th><th>Visitas</th><th>Custo/visita</th><th>Checkouts</th><th>Vendas</th><th>CPA</th>
-      </tr></thead>
-      <tbody id="tbCriativos"></tbody>
-    </table>
-  </div>
-  <div class="note warn" id="notaCriativos"></div>
-
-  <div class="seclab">Mix de ofertas</div>
-  <div class="cards2">
-    <div class="tbox tscroll">
-      <table>
-        <thead><tr><th>Oferta</th><th>Vendas</th><th>Receita</th><th>Ticket médio</th><th>% receita</th></tr></thead>
-        <tbody id="tbOfertas"></tbody>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Onde está o dinheiro</h3>
-      <div class="hint">Volume de vendas nem sempre é volume de receita. A barra é receita.</div>
-      <div id="chartOfertas"></div>
-    </div>
-  </div>
   </section>
 
   <footer>
@@ -264,38 +257,339 @@ const DATA = /*__DATA__*/;
 
 const brl = v => 'R$ ' + (v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
 const brl0 = v => 'R$ ' + Math.round(v||0).toLocaleString('pt-BR');
-const int = v => (v||0).toLocaleString('pt-BR');
+const int = v => Math.round(v||0).toLocaleString('pt-BR');
 const pct = v => (v==null?'—':(v).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%');
+const xm  = v => (v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'x';
 const dia = d => d ? d.slice(8,10)+'/'+d.slice(5,7) : '';
-const esc = s => String(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-
-const K = DATA.kpi;
-
-document.getElementById('sub').textContent =
-  'Tráfego ' + dia(DATA.janela_trafego[0]) + ' a ' + dia(DATA.janela_trafego[1]) +
-  '  ·  Vendas ' + dia(DATA.janela_vendas[0]) + ' a ' + dia(DATA.janela_vendas[1]);
-document.getElementById('heroReceita').textContent = brl0(K.receita);
-document.getElementById('ger').textContent = 'Atualizado em ' + DATA.gerado_em;
-
-/* ---------- KPIs ---------- */
+const esc = s => String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const MD = '<span class="muted">—</span>';
 const M = DATA.metas;
-const roasSig = K.roas_geral >= M.roas_meta ? 'pos' : (K.roas_geral < M.roas_meta*0.8 ? 'neg' : '');
-const cacSig  = K.cac_blended <= M.cac_max ? 'pos' : (K.cac_blended > M.cac_max*1.2 ? 'neg' : '');
-const kpis = [
-  ['Receita total', brl0(K.receita), K.vendas + ' vendas \u00b7 ticket ' + brl0(K.ticket), true, ''],
-  ['Investimento Meta', brl0(K.investido), K.ads_ativos + ' an\u00fancios com verba', false, ''],
-  ['ROAS geral', (K.roas_geral).toLocaleString('pt-BR',{minimumFractionDigits:2}) + 'x',
-   'meta ' + M.roas_meta.toLocaleString('pt-BR',{minimumFractionDigits:1}) + 'x', true, roasSig],
-  ['CAC blended', brl0(K.cac_blended), 'teto ' + brl0(M.cac_max), false, cacSig],
-  ['Vendas do pago', int(K.vendas_pagas), brl0(K.receita_paga) + ' de receita', false, ''],
-  ['CPA real (pago)', K.vendas_pagas ? brl0(K.cpa_pago) : '\u2014',
-   K.vendas_pagas ? 'teto ' + brl0(M.cac_max) : 'sem venda atribu\u00edda', false,
-   K.vendas_pagas ? (K.cpa_pago <= M.cac_max ? 'pos' : 'neg') : ''],
-];
-document.getElementById('kpis').innerHTML = kpis.map(([k,v,d,hl,sig]) =>
-  `<div class="kpi${hl?' hl':''}"><div class="k">${k}</div><div class="v ${sig}">${v}</div><div class="d">${d}</div></div>`).join('');
 
-/* ---------- abas ---------- */
+/* ================= agregação por período ================= */
+function agrega(de, ate){
+  const T = DATA.trafego.filter(r => r.d>=de && r.d<=ate);
+  const V = DATA.vendas.filter(r => r.d>=de && r.d<=ate);
+  const t = {s:0,i:0,k:0,l:0,ic:0,p:0};
+  T.forEach(r=>{ t.s+=r.s; t.i+=r.i; t.k+=r.k; t.l+=r.l; t.ic+=r.ic; t.p+=r.p; });
+
+  const receita = V.reduce((a,b)=>a+b.v,0);
+  const pagas = V.filter(v=>v.t==='pago');
+  const receitaPaga = pagas.reduce((a,b)=>a+b.v,0);
+
+  const fr = {};
+  V.forEach(v=>{ const f = fr[v.f] || (fr[v.f]={frente:v.f,tipo:v.t,vendas:0,receita:0});
+                 f.vendas++; f.receita+=v.v; });
+  const frentes = Object.values(fr).map(f=>{
+    const pago = f.tipo==='pago';
+    return Object.assign({}, f, {
+      pct_receita: receita? 100*f.receita/receita : 0,
+      ticket: f.vendas? f.receita/f.vendas : 0,
+      investido: pago? t.s : null,
+      cpa: pago && f.vendas? t.s/f.vendas : null,
+      roas: pago && t.s? f.receita/t.s : null});
+  });
+
+  const taxa=(a,b)=>b? 100*a/b : 0, custo=b=>b? t.s/b : 0;
+  const funil = [
+    {etapa:'Impressões', n:t.i, taxa:null, taxa_lbl:'', custo:t.i?1000*t.s/t.i:0, custo_lbl:'CPM'},
+    {etapa:'Cliques no link', n:t.k, taxa:taxa(t.k,t.i), taxa_lbl:'CTR', custo:custo(t.k), custo_lbl:'CPC'},
+    {etapa:'Visitas na página', n:t.l, taxa:taxa(t.l,t.k), taxa_lbl:'clique → página', custo:custo(t.l), custo_lbl:'custo/visita'},
+    {etapa:'Checkouts iniciados', n:t.ic, taxa:taxa(t.ic,t.l), taxa_lbl:'página → checkout', custo:custo(t.ic), custo_lbl:'custo/checkout'},
+    {etapa:'Vendas (Hubla)', n:pagas.length, taxa:taxa(pagas.length,t.ic), taxa_lbl:'checkout → venda', custo:custo(pagas.length), custo_lbl:'CPA real'},
+  ];
+
+  const dias = [...new Set(T.map(r=>r.d).concat(V.map(r=>r.d)))].sort();
+  const serie = dias.map(d=>{
+    const td = T.filter(r=>r.d===d), vd = V.filter(r=>r.d===d);
+    return {data:d, spend:td.reduce((a,b)=>a+b.s,0), lpv:td.reduce((a,b)=>a+b.l,0),
+            vendas:vd.length, receita:vd.reduce((a,b)=>a+b.v,0)};
+  });
+
+  const grupo = (rows, key) => {
+    const g = {};
+    rows.forEach(r=>{ const o = g[r[key]] || (g[r[key]]={id:r[key],s:0,i:0,k:0,l:0,ic:0,vendas:0,receita:0});
+                      o.s+=r.s; o.i+=r.i; o.k+=r.k; o.l+=r.l; o.ic+=r.ic; });
+    return g;
+  };
+  const derivar = o => Object.assign(o, {ctr:taxa(o.k,o.i), cpm:o.i?1000*o.s/o.i:0,
+    custo_lpv:o.l?o.s/o.l:0, custo_ic:o.ic?o.s/o.ic:0, cpa:o.vendas?o.s/o.vendas:null});
+
+  const gc = grupo(T,'c');
+  pagas.forEach(v=>{ for (const c in gc)
+    if (v.c && v.c.toLowerCase()===c.toLowerCase()){ gc[c].vendas++; gc[c].receita+=v.v; } });
+  const campanhas = Object.values(gc).map(derivar);
+
+  const ga = grupo(T,'a');
+  pagas.forEach(v=>{ if (v.a && ga[v.a]){ ga[v.a].vendas++; ga[v.a].receita+=v.v; } });
+  const criativos = Object.values(ga).map(o=>{
+    const meta = DATA.ads[o.id] || {};
+    return Object.assign(derivar(o), {rotulo:meta.rotulo||o.id, tipoAd:meta.tipo||'',
+                                      status:meta.status||'', ig:meta.ig||''});
+  });
+
+  const go = {};
+  V.forEach(v=>{ const o = go[v.o] || (go[v.o]={oferta:v.o,vendas:0,receita:0}); o.vendas++; o.receita+=v.v; });
+  const ofertas = Object.values(go).map(o=>Object.assign(o, {ticket:o.receita/o.vendas,
+    pct: receita? 100*o.receita/receita : 0}));
+
+  return {t, receita, vendas:V.length, ticket: V.length? receita/V.length : 0,
+          pagas: pagas.length, receitaPaga,
+          cac: V.length? t.s/V.length : 0, roas: t.s? receita/t.s : 0,
+          cpaPago: pagas.length? t.s/pagas.length : 0,
+          adsComVerba: Object.values(ga).filter(a=>a.s>0).length,
+          frentes, funil, serie, campanhas, criativos, ofertas, dias};
+}
+
+/* ================= tabelas ordenáveis ================= */
+const SORT = {};
+function tabela(id, cols, rows, def, rodape){
+  if (!SORT[id]) SORT[id] = {k:def.k, dir:def.dir||'desc'};
+  const st = SORT[id];
+  const ord = rows.slice().sort((a,b)=>{
+    let x = a[st.k], y = b[st.k];
+    if (x==null) x = -Infinity;
+    if (y==null) y = -Infinity;
+    if (typeof x==='string' || typeof y==='string')
+      return (st.dir==='asc'?1:-1)*String(x).localeCompare(String(y),'pt-BR');
+    return (st.dir==='asc'?1:-1)*(x-y);
+  });
+  const seta = c => c.k===st.k ? (st.dir==='asc'?'▲':'▼') : '↕';
+  const el = document.getElementById(id);
+  el.innerHTML =
+    '<thead><tr>' + cols.map(c=>
+      `<th data-k="${c.k}" class="${c.k===st.k?'sorted':''}" title="Ordenar por ${esc(c.lbl)}">${esc(c.lbl)}<span class="arw">${seta(c)}</span></th>`
+    ).join('') + '</tr></thead><tbody>' +
+    (ord.length ? ord.map(r=>'<tr>'+cols.map((c,ci)=>{
+      const cls = ((c.cls? c.cls(r) : '') + (ci===0?' name':'')).trim();
+      return `<td class="${cls}">${c.fmt(r)}</td>`;
+    }).join('')+'</tr>').join('')
+    : `<tr><td colspan="${cols.length}" class="muted" style="text-align:center;padding:22px">Sem dado neste período.</td></tr>`) +
+    '</tbody>' + (rodape? `<tfoot><tr>${rodape}</tr></tfoot>` : '');
+  el.querySelectorAll('th').forEach(th=>{
+    th.onclick = () => {
+      const k = th.dataset.k;
+      if (st.k===k) st.dir = st.dir==='desc' ? 'asc' : 'desc';
+      else { st.k = k; st.dir = 'desc'; }
+      render();
+    };
+  });
+}
+
+/* ================= render ================= */
+let DE = DATA.dias[0], ATE = DATA.dias[1];
+
+function render(){
+  const v = agrega(DE, ATE);
+  const nd = v.dias.length || 0;
+
+  document.getElementById('sub').textContent =
+    'Período ' + dia(DE) + ' a ' + dia(ATE) + '  ·  ' + nd + ' dia(s) com dado';
+  document.getElementById('heroReceita').textContent = brl0(v.receita);
+  document.getElementById('infoPeriodo').textContent =
+    v.vendas + ' venda(s) · ' + brl0(v.t.s) + ' investido';
+
+  const roasSig = v.t.s ? (v.roas>=M.roas_meta ? 'pos' : (v.roas < M.roas_meta*0.8 ? 'neg' : '')) : '';
+  const cacSig  = v.vendas && v.t.s ? (v.cac<=M.cac_max ? 'pos' : (v.cac>M.cac_max*1.2 ? 'neg' : '')) : '';
+  document.getElementById('kpis').innerHTML = [
+    ['Receita total', brl0(v.receita), v.vendas+' vendas · ticket '+brl0(v.ticket), true, ''],
+    ['Investimento Meta', brl0(v.t.s), v.adsComVerba+' anúncios com verba', false, ''],
+    ['ROAS geral', v.t.s?xm(v.roas):'—', 'meta '+xm(M.roas_meta), true, roasSig],
+    ['CAC blended', v.vendas?brl0(v.cac):'—', 'teto '+brl0(M.cac_max), false, cacSig],
+    ['Vendas do pago', int(v.pagas), brl0(v.receitaPaga)+' de receita', false, ''],
+    ['CPA real (pago)', v.pagas?brl0(v.cpaPago):'—', v.pagas?'teto '+brl0(M.cac_max):'sem venda atribuída',
+     false, v.pagas ? (v.cpaPago<=M.cac_max?'pos':'neg') : ''],
+  ].map(function(a){
+    return `<div class="kpi${a[3]?' hl':''}"><div class="k">${a[0]}</div><div class="v ${a[4]}">${a[1]}</div><div class="d">${a[2]}</div></div>`;
+  }).join('');
+
+  /* frentes */
+  tabela('tFrentes', [
+    {k:'frente', lbl:'Frente', fmt:r=>`${esc(r.frente)} <span class="tag ${r.tipo}">${r.tipo}</span>
+       <span class="bar" style="width:${Math.max(r.pct_receita,1.5)}%;background:var(--${r.tipo==='pago'?'pago':r.tipo==='proprio'?'proprio':r.tipo==='outros'?'outros':'indef'})"></span>`},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'pct_receita', lbl:'% receita', fmt:r=>pct(r.pct_receita)},
+    {k:'ticket', lbl:'Ticket médio', fmt:r=>brl(r.ticket)},
+    {k:'investido', lbl:'Investido', fmt:r=>r.investido==null?MD:brl(r.investido)},
+    {k:'cpa', lbl:'CPA', fmt:r=>r.cpa==null?MD:brl(r.cpa), cls:r=>r.cpa==null?'':(r.cpa<=M.cac_max?'pos sig':'neg sig')},
+    {k:'roas', lbl:'ROAS', fmt:r=>r.roas==null?MD:xm(r.roas), cls:r=>r.roas==null?'':(r.roas>=M.roas_meta?'pos sig':'neg sig')},
+  ], v.frentes, {k:'receita'},
+  `<td>Total</td><td>${int(v.vendas)}</td><td>${brl(v.receita)}</td><td>${v.receita?'100,0%':'—'}</td>
+   <td>${brl(v.ticket)}</td><td>${brl(v.t.s)}</td><td>${v.vendas?brl(v.cac):MD}</td><td>${v.t.s?xm(v.roas):MD}</td>`);
+
+  chartBarras('chartFrentes', v.frentes.slice().sort((a,b)=>b.receita-a.receita).map(f=>({
+    lbl:f.frente, val:f.receita, sub:f.vendas+' venda(s) · '+pct(f.pct_receita),
+    cor:f.tipo==='pago'?'#0178e6':f.tipo==='proprio'?'#0b8fa4':f.tipo==='outros'?'#5e6c7b':'#9aa7b4'})), 150);
+
+  /* funil */
+  const mx = Math.max.apply(null, v.funil.map(x=>x.n).concat([1]));
+  document.getElementById('funil').innerHTML = v.funil.map((x,i)=>{
+    const crit = x.taxa_lbl==='página → checkout';
+    const sg = crit && v.t.l ? (x.taxa>=DATA.bench_lpv_ic?'pos':'neg') : '';
+    const alvo = crit ? ` <span class="muted">(esperado ${pct(DATA.bench_lpv_ic)} ou mais)</span>` : '';
+    const w = 34 + 66*Math.sqrt(x.n/mx);
+    return `${i?`<div class="fdrop">↓ ${x.taxa_lbl}: <b class="${sg}">${pct(x.taxa)}</b>${alvo}</div>`:''}
+      <div class="fstep">
+        <div class="fbar" style="width:${w}%"><span class="e">${x.etapa}</span><span class="n">${int(x.n)}</span></div>
+        <div class="fmeta"><b>${brl(x.custo)}</b>${x.custo_lbl}</div>
+      </div>`;
+  }).join('');
+  chartBarras('chartCusto', v.funil.filter(x=>x.custo>0).map(x=>({
+    lbl:x.custo_lbl, val:x.custo, sub:x.etapa, cor:'#0178e6', fmt:brl})), 132);
+
+  chartDia(v.serie);
+
+  /* campanhas */
+  tabela('tCamp', [
+    {k:'id', lbl:'Campanha', fmt:r=>esc(r.id)},
+    {k:'s', lbl:'Investido', fmt:r=>brl(r.s)},
+    {k:'i', lbl:'Impressões', fmt:r=>int(r.i)},
+    {k:'cpm', lbl:'CPM', fmt:r=>brl(r.cpm)},
+    {k:'k', lbl:'Cliques', fmt:r=>int(r.k)},
+    {k:'ctr', lbl:'CTR', fmt:r=>pct(r.ctr)},
+    {k:'l', lbl:'Visitas', fmt:r=>int(r.l)},
+    {k:'custo_lpv', lbl:'Custo/visita', fmt:r=>r.l?brl(r.custo_lpv):MD},
+    {k:'ic', lbl:'Checkouts', fmt:r=>int(r.ic)},
+    {k:'custo_ic', lbl:'Custo/checkout', fmt:r=>r.ic?brl(r.custo_ic):MD},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'cpa', lbl:'CPA', fmt:r=>r.cpa==null?MD:brl(r.cpa), cls:r=>r.cpa==null?'':(r.cpa<=M.cac_max?'pos sig':'neg sig')},
+  ], v.campanhas, {k:'s'});
+
+  /* criativos */
+  const lpvs = v.criativos.filter(c=>c.l>0).map(c=>c.custo_lpv).sort((a,b)=>a-b);
+  const MED = lpvs.length ? lpvs[Math.floor(lpvs.length/2)] : 0;
+  tabela('tCriativos', [
+    {k:'rotulo', lbl:'Anúncio', fmt:r=> esc(r.rotulo) + (r.ig
+        ? `<a class="prev" href="${esc(r.ig)}" target="_blank" rel="noopener">▶ prévia</a>`
+        : `<span class="prev off" title="Este anúncio não tem post do Instagram vinculado">sem prévia</span>`)},
+    {k:'tipoAd', lbl:'Tipo', fmt:r=>r.tipoAd||MD},
+    {k:'status', lbl:'Status', fmt:r=>`<span class="tag ${r.status==='ACTIVE'?'on':'off'}">${r.status==='ACTIVE'?'ativo':'pausado'}</span>`},
+    {k:'s', lbl:'Investido', fmt:r=>brl(r.s)},
+    {k:'i', lbl:'Impressões', fmt:r=>int(r.i)},
+    {k:'cpm', lbl:'CPM', fmt:r=>brl(r.cpm)},
+    {k:'k', lbl:'Cliques', fmt:r=>int(r.k)},
+    {k:'ctr', lbl:'CTR', fmt:r=>pct(r.ctr)},
+    {k:'l', lbl:'Visitas', fmt:r=>int(r.l)},
+    {k:'custo_lpv', lbl:'Custo/visita', fmt:r=>r.l?brl(r.custo_lpv):MD,
+     cls:r=>!r.l?'':(r.custo_lpv<=MED*0.6?'pos sig':(r.custo_lpv>=MED*2?'neg sig':''))},
+    {k:'ic', lbl:'Checkouts', fmt:r=>int(r.ic)},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'cpa', lbl:'CPA', fmt:r=>r.cpa==null?MD:brl(r.cpa), cls:r=>r.cpa==null?'':(r.cpa<=M.cac_max?'pos sig':'neg sig')},
+  ], v.criativos, {k:'s'});
+
+  const comVenda = v.criativos.filter(c=>c.vendas>0).length;
+  const medio = v.criativos.length ? v.t.s/v.criativos.length : 0;
+  document.getElementById('notaCriativos').innerHTML =
+    `<b>Leia com cuidado:</b> ${v.criativos.length} anúncios dividiram ${brl0(v.t.s)} neste período, uma média de ${brl0(medio)} por anúncio, e ${comVenda} tem venda registrada. ` +
+    `Com esse volume por criativo, diferença de CTR ou de custo por visita entre anúncios ainda é ruído. ` +
+    `A métrica utilizável neste estágio é o <b>custo por visita</b>, e mesmo ela só decide depois de aproximadamente R$ 150 a R$ 200 gastos no mesmo anúncio. ` +
+    `O verde e o vermelho nessa coluna comparam com a mediana do período (${brl(MED)}), não com a meta.`;
+
+  /* ofertas */
+  tabela('tOfertas', [
+    {k:'oferta', lbl:'Oferta', fmt:r=>esc(r.oferta)},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'ticket', lbl:'Ticket médio', fmt:r=>brl(r.ticket)},
+    {k:'pct', lbl:'% receita', fmt:r=>pct(r.pct)},
+  ], v.ofertas, {k:'receita'});
+  chartBarras('chartOfertas', v.ofertas.slice().sort((a,b)=>b.receita-a.receita).map(o=>({
+    lbl:o.oferta, val:o.receita, sub:o.vendas+' venda(s) · ticket '+brl0(o.ticket), cor:'#0178e6'})), 168);
+}
+
+/* ================= gráficos ================= */
+function chartBarras(id, itens, lab){
+  const el = document.getElementById(id);
+  if (!itens.length){ el.innerHTML = '<p class="muted" style="font-size:12px;padding:14px 0">Sem dado neste período.</p>'; return; }
+  const W=440, rowH=34, H=itens.length*rowH+10;
+  const max = Math.max.apply(null, itens.map(x=>x.val).concat([1])), bw = W-lab-72;
+  let s = `<svg viewBox="0 0 ${W} ${H}">`;
+  itens.forEach((x,i)=>{
+    const y=i*rowH+8, w=Math.max(bw*x.val/max,2);
+    s+=`<text class="axis" x="0" y="${y+13}" style="font-weight:700;fill:#002656">${esc(String(x.lbl).slice(0,22))}</text>`;
+    s+=`<rect x="${lab}" y="${y+2}" width="${w}" height="15" rx="4" fill="${x.cor}"/>`;
+    s+=`<text class="axis" x="${lab+w+7}" y="${y+14}">${(x.fmt||brl0)(x.val)}</text>`;
+    s+=`<text class="axis" x="0" y="${y+25}" style="font-size:9.5px">${esc(x.sub)}</text>`;
+  });
+  el.innerHTML = s+'</svg>';
+}
+
+function chartDia(d){
+  const el = document.getElementById('chartDia');
+  if (!d.length){ el.innerHTML='<p class="muted" style="font-size:12px;padding:14px 0">Sem dado neste período.</p>'; return; }
+  const W=1100,H=280,pl=64,pr=58,pt=18,pb=38, iw=W-pl-pr, ih=H-pt-pb;
+  const maxS=Math.max.apply(null, d.map(x=>x.spend).concat([1]));
+  const maxR=Math.max.apply(null, d.map(x=>x.receita).concat([1]));
+  const bw=Math.min(52, iw/d.length*0.5), X=i=>pl+iw*(i+0.5)/d.length;
+  let s=`<svg viewBox="0 0 ${W} ${H}">`;
+  for(let g=0;g<=4;g++){const y=pt+ih*g/4;
+    s+=`<line class="gridline" x1="${pl}" y1="${y}" x2="${W-pr}" y2="${y}"/>`;
+    s+=`<text class="axis" x="${pl-8}" y="${y+4}" text-anchor="end">${brl0(maxS*(1-g/4))}</text>`;
+    s+=`<text class="axis" x="${W-pr+8}" y="${y+4}">${brl0(maxR*(1-g/4))}</text>`;}
+  d.forEach((x,i)=>{const h=ih*x.spend/maxS, xx=X(i)-bw/2;
+    s+=`<rect x="${xx}" y="${pt+ih-h}" width="${bw}" height="${h}" rx="4" fill="#0178e6" opacity=".9"/>`;
+    s+=`<text class="axis" x="${X(i)}" y="${H-16}" text-anchor="middle">${dia(x.data)}</text>`;
+    if(x.spend) s+=`<text class="vlabel" x="${X(i)}" y="${pt+ih-h-6}" text-anchor="middle">${brl0(x.spend)}</text>`;});
+  s+=`<polyline points="${d.map((x,i)=>X(i)+','+(pt+ih-ih*x.receita/maxR)).join(' ')}" fill="none" stroke="#0b8fa4" stroke-width="3"/>`;
+  d.forEach((x,i)=>{const y=pt+ih-ih*x.receita/maxR;
+    s+=`<circle cx="${X(i)}" cy="${y}" r="4.5" fill="#0b8fa4"/>`;
+    if(x.receita) s+=`<text class="vlabel" x="${X(i)}" y="${y-11}" text-anchor="middle" style="fill:#08707f">${brl0(x.receita)}${x.vendas?' ('+x.vendas+')':''}</text>`;});
+  el.innerHTML = s+'</svg>';
+}
+
+/* ================= filtro de período ================= */
+const menos = (iso,n) => { const d=new Date(iso+'T12:00:00'); d.setDate(d.getDate()-n);
+  return d.toISOString().slice(0,10); };
+const clamp = d => d < DATA.dias[0] ? DATA.dias[0] : (d > DATA.dias[1] ? DATA.dias[1] : d);
+const HOJE = clamp(DATA.hoje);
+const PRESETS = [
+  ['Tudo',     () => [DATA.dias[0], DATA.dias[1]]],
+  ['Hoje',     () => [HOJE, HOJE]],
+  ['Ontem',    () => [clamp(menos(HOJE,1)), clamp(menos(HOJE,1))]],
+  ['7 dias',   () => [clamp(menos(HOJE,6)), HOJE]],
+  ['14 dias',  () => [clamp(menos(HOJE,13)), HOJE]],
+  ['Este mês', () => [clamp(HOJE.slice(0,8)+'01'), HOJE]],
+];
+
+document.getElementById('presets').innerHTML =
+  PRESETS.map((p,i)=>`<button data-i="${i}" class="${i===0?'on':''}">${p[0]}</button>`).join('') +
+  '<button data-i="-1">Personalizado</button>';
+
+function marcaPreset(i){
+  document.querySelectorAll('#presets button').forEach(b=>
+    b.classList.toggle('on', Number(b.dataset.i) === i));
+}
+
+document.querySelectorAll('#presets button').forEach(b=>{
+  b.onclick = () => {
+    const i = Number(b.dataset.i);
+    if (i >= 0){
+      const r = PRESETS[i][1]();
+      DE = r[0]; ATE = r[1];
+      document.getElementById('de').value = DE;
+      document.getElementById('ate').value = ATE;
+    }
+    marcaPreset(i);
+    render();
+  };
+});
+
+['de','ate'].forEach(id=>{
+  const el = document.getElementById(id);
+  el.min = DATA.dias[0];
+  el.max = DATA.dias[1];
+  el.onchange = () => {
+    let a = document.getElementById('de').value, b = document.getElementById('ate').value;
+    if (!a || !b) return;
+    if (a > b){ const t=a; a=b; b=t;
+      document.getElementById('de').value=a; document.getElementById('ate').value=b; }
+    DE=a; ATE=b; marcaPreset(-1); render();
+  };
+});
+document.getElementById('de').value = DE;
+document.getElementById('ate').value = ATE;
+
+/* ================= abas ================= */
 document.querySelectorAll('nav.tabs button').forEach(b=>{
   b.onclick = () => {
     document.querySelectorAll('nav.tabs button').forEach(x=>x.classList.toggle('on', x===b));
@@ -304,199 +598,66 @@ document.querySelectorAll('nav.tabs button').forEach(b=>{
   };
 });
 
-/* ---------- frentes ---------- */
-document.getElementById('tbFrentes').innerHTML = DATA.frentes.map(f => `
-  <tr>
-    <td class="name">${esc(f.frente)} <span class="tag ${f.tipo}">${f.tipo}</span>
-      <span class="bar" style="width:${Math.max(f.pct_receita,1.5)}%;background:var(--${f.tipo==='pago'?'pago':f.tipo==='proprio'?'proprio':f.tipo==='outros'?'outros':'indef'})"></span></td>
-    <td>${int(f.vendas)}</td><td>${brl(f.receita)}</td><td>${pct(f.pct_receita)}</td><td>${brl(f.ticket)}</td>
-    <td>${f.investido==null?'<span class="muted">—</span>':brl(f.investido)}</td>
-    <td>${f.cpa==null?'<span class="muted">—</span>':brl(f.cpa)}</td>
-    <td class="${f.roas==null?'':(f.roas>=DATA.metas.roas_meta?'pos sig':'neg sig')}">${f.roas==null?'<span class="muted">—</span>':f.roas.toLocaleString('pt-BR',{minimumFractionDigits:2})+'x'}</td>
-  </tr>`).join('');
-document.getElementById('tfFrentes').innerHTML =
-  `<tr><td>Total</td><td>${int(K.vendas)}</td><td>${brl(K.receita)}</td><td>100,0%</td>
-   <td>${brl(K.ticket)}</td><td>${brl(K.investido)}</td><td>${brl(K.cac_blended)}</td>
-   <td>${K.roas_geral.toLocaleString('pt-BR',{minimumFractionDigits:2})}x</td></tr>`;
-
-/* barras horizontais de receita por frente */
+/* ================= metas (período cheio do plano) ================= */
 (function(){
-  const d = DATA.frentes, W=440, rowH=34, H=d.length*rowH+10;
-  const max = Math.max(...d.map(x=>x.receita),1), lab=150, bw=W-lab-70;
-  const cor = t => t==='pago'?'#0178e6':t==='proprio'?'#0b8fa4':t==='outros'?'#5e6c7b':'#9aa7b4';
-  let s=`<svg viewBox="0 0 ${W} ${H}">`;
-  d.forEach((x,i)=>{
-    const y=i*rowH+8, w=Math.max(bw*x.receita/max,2);
-    s+=`<text class="axis" x="0" y="${y+13}" style="font-weight:700;fill:#002656">${esc(x.frente.slice(0,18))}</text>`;
-    s+=`<rect x="${lab}" y="${y+2}" width="${w}" height="15" rx="4" fill="${cor(x.tipo)}"/>`;
-    s+=`<text class="axis" x="${lab+w+7}" y="${y+14}">${brl0(x.receita)}</text>`;
-    s+=`<text class="axis" x="0" y="${y+25}" style="font-size:9.5px">${x.vendas} venda(s) · ${pct(x.pct_receita)}</text>`;
-  });
-  document.getElementById('chartFrentes').innerHTML=s+'</svg>';
-})();
+  const fmt = (v,u) => u==='brl' ? brl0(v) : u==='x' ? xm(v) : int(v);
+  document.getElementById('mDeadline').textContent = M.deadline;
+  const lv = M.linhas.filter(x=>x.chave==='vendas')[0];
+  const li = M.linhas.filter(x=>x.chave==='investimento')[0];
+  document.getElementById('need').innerHTML = [
+    ['need','Vendas por dia', Math.ceil(lv.nec_dia),
+     'faltam '+int(lv.falta)+' vendas em '+M.dias_restantes+' dia(s). O plano previa '+M.ritmo.vendas_dia_plano+'/dia.'],
+    ['need','Investimento por dia', brl0(li.nec_dia),
+     'faltam '+brl0(li.falta)+' de verba. O plano previa '+brl0(M.ritmo.spend_dia_plano)+'/dia.'],
+    ['need flat','Ritmo atual de vendas', M.ritmo.vendas_dia.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'/dia',
+     M.dias_corridos+' dia(s) corridos desde '+M.inicio+'.'],
+    ['need flat','Ritmo atual de verba', brl0(M.ritmo.spend_dia)+'/dia',
+     Math.round(100*M.ritmo.spend_dia/M.ritmo.spend_dia_plano)+'% do investimento diário previsto.'],
+  ].map(a=>`<div class="${a[0]}"><div class="k">${a[1]}</div><div class="v">${a[2]}</div><div class="d">${a[3]}</div></div>`).join('');
 
-/* ---------- funil ---------- */
-(function(){
-  const f = DATA.funil, max = Math.max(...f.map(x=>x.n),1);
-  document.getElementById('funil').innerHTML = f.map((x,i)=>{
-    const w = 34 + 66*Math.sqrt(x.n/max);
-    const crit = x.taxa_lbl==='página → checkout';
-    const sg = crit ? (x.taxa >= DATA.bench_lpv_ic ? 'pos' : 'neg') : '';
-    const alvo = crit ? ` <span class="muted">(esperado ${pct(DATA.bench_lpv_ic)} ou mais)</span>` : '';
-    return `${i?`<div class="fdrop">↓ ${x.taxa_lbl}: <b class="${sg}">${pct(x.taxa)}</b>${alvo}</div>`:''}
-      <div class="fstep">
-        <div class="fbar" style="width:${w}%"><span class="e">${x.etapa}</span><span class="n">${int(x.n)}</span></div>
-        <div class="fmeta"><b>${brl(x.custo)}</b>${x.custo_lbl}</div>
-      </div>`;
-  }).join('');
-})();
-
-/* custo por etapa */
-(function(){
-  const d = DATA.funil.filter(x=>x.custo>0), W=440, rowH=40, H=d.length*rowH+8;
-  const max=Math.max(...d.map(x=>x.custo),1), lab=132, bw=W-lab-78;
-  let s=`<svg viewBox="0 0 ${W} ${H}">`;
-  d.forEach((x,i)=>{
-    const y=i*rowH+10, w=Math.max(bw*x.custo/max,2);
-    s+=`<text class="axis" x="0" y="${y+13}" style="font-weight:700;fill:#002656">${x.custo_lbl}</text>`;
-    s+=`<text class="axis" x="0" y="${y+25}" style="font-size:9.5px">${x.etapa}</text>`;
-    s+=`<rect x="${lab}" y="${y+3}" width="${w}" height="15" rx="4" fill="#0178e6"/>`;
-    s+=`<text class="axis" x="${lab+w+7}" y="${y+15}" style="font-weight:700;fill:#002656">${brl(x.custo)}</text>`;
-  });
-  document.getElementById('chartCusto').innerHTML=s+'</svg>';
-})();
-
-/* ---------- série diária ---------- */
-(function(){
-  const d=DATA.serie; if(!d.length){document.getElementById('chartDia').innerHTML='';return;}
-  const W=1100,H=280,pl=64,pr=58,pt=18,pb=38, iw=W-pl-pr, ih=H-pt-pb;
-  const maxS=Math.max(...d.map(x=>x.spend),1), maxR=Math.max(...d.map(x=>x.receita),1);
-
-  const bw=Math.min(52, iw/d.length*0.5);
-  const X=i=>pl+iw*(i+0.5)/d.length;
-  let s=`<svg viewBox="0 0 ${W} ${H}">`;
-  for(let g=0;g<=4;g++){const y=pt+ih*g/4;
-    s+=`<line class="gridline" x1="${pl}" y1="${y}" x2="${W-pr}" y2="${y}"/>`;
-    s+=`<text class="axis" x="${pl-8}" y="${y+4}" text-anchor="end">${brl0(maxS*(1-g/4))}</text>`;
-    s+=`<text class="axis" x="${W-pr+8}" y="${y+4}">${brl0(maxR*(1-g/4))}</text>`;}
-  d.forEach((x,i)=>{const h=ih*x.spend/maxS, xx=X(i)-bw/2;
-    s+=`<rect x="${xx}" y="${pt+ih-h}" width="${bw}" height="${h}" rx="4" fill="#0178e6" opacity=".85"/>`;
-    s+=`<text class="axis" x="${X(i)}" y="${H-16}" text-anchor="middle">${dia(x.data)}</text>`;
-    s+=`<text class="vlabel" x="${X(i)}" y="${pt+ih-h-6}" text-anchor="middle">${brl0(x.spend)}</text>`;});
-  const pR=d.map((x,i)=>`${X(i)},${pt+ih-ih*x.receita/maxR}`).join(' ');
-  s+=`<polyline points="${pR}" fill="none" stroke="#0b8fa4" stroke-width="3"/>`;
-  d.forEach((x,i)=>{const y=pt+ih-ih*x.receita/maxR;
-    s+=`<circle cx="${X(i)}" cy="${y}" r="4.5" fill="#0b8fa4"/>`;
-    s+=`<text class="vlabel" x="${X(i)}" y="${y-11}" text-anchor="middle" style="fill:#08707f">${brl0(x.receita)}${x.vendas?' ('+x.vendas+')':''}</text>`;});
-  document.getElementById('chartDia').innerHTML=s+'</svg>';
-})();
-
-/* ---------- campanhas ---------- */
-document.getElementById('tbCamp').innerHTML = DATA.campanhas.map(c=>`
-  <tr><td class="name">${esc(c.campanha)}</td>
-  <td>${brl(c.spend)}</td><td>${int(c.impr)}</td><td>${brl(c.cpm)}</td><td>${int(c.clicks)}</td>
-  <td>${pct(c.ctr)}</td><td>${int(c.lpv)}</td><td>${brl(c.custo_lpv)}</td><td>${int(c.ic)}</td>
-  <td>${c.ic?brl(c.custo_ic):'<span class="muted">—</span>'}</td><td>${int(c.vendas)}</td>
-  <td>${c.cpa==null?'<span class="muted">—</span>':brl(c.cpa)}</td></tr>`).join('');
-
-/* ---------- criativos ---------- */
-const _lpvs = DATA.criativos.filter(c=>c.lpv>0).map(c=>c.custo_lpv).sort((a,b)=>a-b);
-const MED_LPV = _lpvs.length ? _lpvs[Math.floor(_lpvs.length/2)] : 0;
-document.getElementById('tbCriativos').innerHTML = DATA.criativos.map(c=>`
-  <tr><td class="name">${c.ig?`<a href="${esc(c.ig)}" target="_blank" style="color:var(--purple-d);text-decoration:none">${esc(c.ad)}</a>`:esc(c.ad)}</td>
-  <td>${c.tipo}</td><td><span class="tag ${c.status==='ACTIVE'?'on':'off'}">${c.status==='ACTIVE'?'ativo':'pausado'}</span></td>
-  <td>${brl(c.spend)}</td><td>${int(c.impr)}</td><td>${brl(c.cpm)}</td><td>${int(c.clicks)}</td>
-  <td>${pct(c.ctr)}</td><td>${int(c.lpv)}</td><td class="${c.lpv? (c.custo_lpv<=MED_LPV*0.6?'pos sig':(c.custo_lpv>=MED_LPV*2?'neg sig':'')) : ''}">${c.lpv?brl(c.custo_lpv):'<span class="muted">—</span>'}</td>
-  <td>${int(c.ic)}</td><td>${int(c.vendas)}</td>
-  <td>${c.cpa==null?'<span class="muted">—</span>':brl(c.cpa)}</td></tr>`).join('');
-
-(function(){
-  const c=DATA.criativos, comVenda=c.filter(x=>x.vendas>0).length;
-  const gastoMedio = c.length ? DATA.kpi.investido/c.length : 0;
-  document.getElementById('notaCriativos').innerHTML =
-   `<b>Leia com cuidado:</b> ${c.length} anúncios dividiram ${brl0(DATA.kpi.investido)}, uma média de ${brl0(gastoMedio)} por anúncio, e apenas ${comVenda} tem venda registrada. ` +
-   `Com esse volume por criativo, diferença de CTR ou de custo por visita entre anúncios ainda é ruído: nenhum tem amostra para ser declarado vencedor ou perdedor. ` +
-   `A métrica utilizável neste estágio é o <b>custo por visita na página</b>, e mesmo ela só decide depois de aproximadamente R$ 150 a R$ 200 gastos no mesmo anúncio.`;
-})();
-
-/* ---------- ofertas ---------- */
-document.getElementById('tbOfertas').innerHTML = DATA.ofertas.map(o=>`
-  <tr><td class="name">${esc(o.oferta)}</td><td>${int(o.vendas)}</td><td>${brl(o.receita)}</td>
-  <td>${brl(o.ticket)}</td><td>${pct(100*o.receita/DATA.kpi.receita)}</td></tr>`).join('');
-
-(function(){
-  const d=DATA.ofertas, W=440, rowH=34, H=d.length*rowH+10;
-  const max=Math.max(...d.map(x=>x.receita),1), lab=168, bw=W-lab-72;
-  let s=`<svg viewBox="0 0 ${W} ${H}">`;
-  d.forEach((x,i)=>{const y=i*rowH+8, w=Math.max(bw*x.receita/max,2);
-    s+=`<text class="axis" x="0" y="${y+13}" style="font-weight:700;fill:#002656">${esc(x.oferta.slice(0,22))}</text>`;
-    s+=`<rect x="${lab}" y="${y+2}" width="${w}" height="15" rx="4" fill="#0178e6"/>`;
-    s+=`<text class="axis" x="${lab+w+7}" y="${y+14}">${brl0(x.receita)}</text>`;
-    s+=`<text class="axis" x="0" y="${y+25}" style="font-size:9.5px">${x.vendas} venda(s) · ticket ${brl0(x.ticket)}</text>`;});
-  document.getElementById('chartOfertas').innerHTML=s+'</svg>';
-})();
-
-/* ---------- metas e ritmo ---------- */
-(function(){
-  const m = DATA.metas;
-  const fmt = (v,u) => u==='brl' ? brl0(v) : u==='x' ? v.toLocaleString('pt-BR',{minimumFractionDigits:2})+'x'
-                     : Math.round(v).toLocaleString('pt-BR');
-  document.getElementById('mDeadline').textContent = m.deadline;
-
-  const lv = m.linhas.find(x=>x.chave==='vendas');
-  const li = m.linhas.find(x=>x.chave==='investimento');
-  const need = [
-    ['need', 'Vendas por dia', Math.ceil(lv.nec_dia),
-     `faltam ${fmt(lv.falta,'int')} vendas em ${m.dias_restantes} dia(s). O plano previa ${m.ritmo.vendas_dia_plano}/dia.`],
-    ['need', 'Investimento por dia', brl0(li.nec_dia),
-     `faltam ${brl0(li.falta)} de verba. O plano previa ${brl0(m.ritmo.spend_dia_plano)}/dia.`],
-    ['need flat', 'Ritmo atual de vendas', m.ritmo.vendas_dia.toLocaleString('pt-BR',{minimumFractionDigits:1}) + '/dia',
-     `${m.dias_corridos} dia(s) corridos desde ${m.inicio}.`],
-    ['need flat', 'Ritmo atual de verba', brl0(m.ritmo.spend_dia) + '/dia',
-     `${Math.round(100*m.ritmo.spend_dia/m.ritmo.spend_dia_plano)}% do investimento diário previsto.`],
-  ];
-  document.getElementById('need').innerHTML = need.map(([c,k,v,d]) =>
-    `<div class="${c}"><div class="k">${k}</div><div class="v">${v}</div><div class="d">${d}</div></div>`).join('');
-
-  document.getElementById('tbMetas').innerHTML = m.linhas.map(l => {
-    const pctBar = Math.min(100, Math.max(0, l.direcao==='up' ? 100*l.realizado/l.meta : 100*l.meta/Math.max(l.realizado,0.01)));
-    const marca = l.acumula ? 100*m.dias_corridos/m.dias_totais : 100;
+  document.getElementById('tbMetas').innerHTML = M.linhas.map(l=>{
+    const barra = Math.min(100, Math.max(0, l.direcao==='up' ? 100*l.realizado/l.meta : 100*l.meta/Math.max(l.realizado,.01)));
+    const marca = l.acumula ? 100*M.dias_corridos/M.dias_totais : 100;
     return `<tr>
       <td class="name">${l.label}
-        <div class="prog"><i class="${l.status}" style="width:${pctBar}%"></i><b style="left:${Math.min(marca,99.5)}%"></b></div>
+        <div class="prog"><i class="${l.status}" style="width:${barra}%"></i><b style="left:${Math.min(marca,99.5)}%"></b></div>
         <div style="font-size:10.5px;color:var(--muted);margin-top:4px">${l.obs}</div></td>
       <td>${fmt(l.meta,l.unidade)}</td>
       <td>${l.acumula?fmt(l.esperado_hoje,l.unidade):'<span class="muted">alvo fixo</span>'}</td>
       <td class="sig ${l.status==='warn'?'wrn':l.status}">${fmt(l.realizado,l.unidade)}</td>
       <td>${pct(l.pct)}</td>
-      <td>${l.acumula?fmt(l.falta,l.unidade):'<span class="muted">—</span>'}</td>
-      <td class="sig">${(!l.acumula||l.nec_dia==null)?'<span class="muted">—</span>':fmt(l.nec_dia,l.unidade)}</td>
-    </tr>`;
-  }).join('');
+      <td>${l.acumula?fmt(l.falta,l.unidade):MD}</td>
+      <td class="sig">${(!l.acumula||l.nec_dia==null)?MD:fmt(l.nec_dia,l.unidade)}</td>
+    </tr>`;}).join('');
 
-  const atras = m.linhas.filter(l=>l.acumula && l.status!=='pos').map(l=>l.label.toLowerCase());
+  const atras = M.linhas.filter(l=>l.acumula && l.status!=='pos').map(l=>l.label.toLowerCase());
   document.getElementById('notaMetas').innerHTML =
-    `<b>Como ler:</b> a barra é o quanto já foi feito e o traço escuro é onde deveríamos estar hoje (${m.dias_corridos} de ${m.dias_totais} dias). ` +
-    `Verde significa dentro ou à frente do ritmo, vermelho significa abaixo de 80% do esperado a esta altura. ` +
-    (atras.length ? `Hoje está atrás do ritmo em: <b>${atras.join(', ')}</b>.` : `Todas as metas de volume estão dentro do ritmo.`);
+    `<b>Esta aba ignora o filtro de período</b> — ela sempre olha o plano inteiro, de ${M.inicio} a ${M.deadline}. ` +
+    `A barra é o quanto já foi feito e o traço escuro é onde deveríamos estar hoje (${M.dias_corridos} de ${M.dias_totais} dias). ` +
+    `Verde é dentro ou à frente do ritmo, vermelho é abaixo de 80% do esperado a esta altura. ` +
+    (atras.length ? `Hoje está atrás do ritmo em: <b>${atras.join(', ')}</b>.` : 'Todas as metas de volume estão dentro do ritmo.');
 
-  const p = m.projecao, pj = p.pct_meta;
-  const sg = pj>=100?'pos':(pj<80?'neg':'wrn');
+  const p = M.projecao;
+  const sg = p.pct_meta>=100?'pos':(p.pct_meta<80?'neg':'wrn');
   document.getElementById('kpisProj').innerHTML = [
-    ['Vendas projetadas', int(p.vendas), `meta ${int(m.linhas[0].meta)} · ${pct(pj)} da meta`, sg],
-    ['Faturamento projetado', brl0(p.receita), `meta ${brl0(m.linhas[1].meta)}`, p.receita>=m.linhas[1].meta?'pos':(p.receita<m.linhas[1].meta*0.8?'neg':'wrn')],
-    ['Investimento projetado', brl0(p.spend), `previsto ${brl0(m.linhas[2].meta)}`, ''],
-    ['Ticket médio', brl0(m.ticket_real), `o plano assume ${brl0(m.ticket_plano)}`, m.ticket_real>=m.ticket_plano?'pos':'neg'],
-  ].map(([k,v,d,s]) => `<div class="kpi"><div class="k">${k}</div><div class="v ${s==='wrn'?'wrn':s}">${v}</div><div class="d">${d}</div></div>`).join('');
+    ['Vendas projetadas', int(p.vendas), 'meta '+int(M.linhas[0].meta)+' · '+pct(p.pct_meta)+' da meta', sg],
+    ['Faturamento projetado', brl0(p.receita), 'meta '+brl0(M.linhas[1].meta),
+     p.receita>=M.linhas[1].meta?'pos':(p.receita<M.linhas[1].meta*0.8?'neg':'wrn')],
+    ['Investimento projetado', brl0(p.spend), 'previsto '+brl0(M.linhas[2].meta), ''],
+    ['Ticket médio', brl0(M.ticket_real), 'o plano assume '+brl0(M.ticket_plano),
+     M.ticket_real>=M.ticket_plano?'pos':'neg'],
+  ].map(a=>`<div class="kpi"><div class="k">${a[0]}</div><div class="v ${a[3]==='wrn'?'wrn':a[3]}">${a[1]}</div><div class="d">${a[2]}</div></div>`).join('');
 
   document.getElementById('notaProj').innerHTML =
-    `<b>A projeção é linear:</b> repete o ritmo médio dos ${m.dias_corridos} dias corridos até ${m.deadline}. ` +
-    `Ela não considera aceleração de fim de prazo nem aumento de verba, então serve para responder uma coisa só: ` +
-    `mantendo tudo como está, a meta é atingida ou não. ` +
-    (m.ticket_real > m.ticket_plano
-      ? `Um ponto a favor: o ticket real (${brl0(m.ticket_real)}) está acima do que o plano assumiu (${brl0(m.ticket_plano)}), então o faturamento não precisa das 150 vendas cheias para bater.`
-      : `Atenção: o ticket real (${brl0(m.ticket_real)}) está abaixo do que o plano assumiu (${brl0(m.ticket_plano)}), então bater 150 vendas ainda deixaria o faturamento curto.`);
+    `<b>A projeção é linear:</b> repete o ritmo médio dos ${M.dias_corridos} dias corridos até ${M.deadline}. ` +
+    'Não considera aceleração de fim de prazo nem aumento de verba, então responde uma coisa só: mantendo tudo como está, a meta é atingida ou não. ' +
+    (M.ticket_real > M.ticket_plano
+      ? `A favor: o ticket real (${brl0(M.ticket_real)}) está acima do que o plano assumiu (${brl0(M.ticket_plano)}), então o faturamento não precisa das ${int(M.linhas[0].meta)} vendas cheias para bater.`
+      : `Atenção: o ticket real (${brl0(M.ticket_real)}) está abaixo do que o plano assumiu (${brl0(M.ticket_plano)}), então bater a meta de vendas ainda deixaria o faturamento curto.`);
 })();
+
+document.getElementById('ger').textContent = 'Atualizado em ' + DATA.gerado_em;
+render();
 </script>
 </body>
 </html>
