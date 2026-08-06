@@ -25,7 +25,37 @@ A aba VENDAS é alimentada em tempo real pelo workflow n8n `[MXP-FP01] VENDAS HU
 - **Venda por criativo** cruza `utm_content` da Hubla com o Ad Name do Meta pelo código `AD-nn`.
 - ROAS geral do topo é leitura de **caixa**, não de eficiência de mídia, sempre que a janela de vendas começar antes da janela de tráfego.
 
-## Atualizar
+## Metas (revisar 15/08)
+
+Fechadas com o cliente e travadas no topo do `build.py` (dict `METAS`):
+150 vendas, R$ 29.550 de faturamento, R$ 22.500 de investimento, CAC teto R$ 150,
+ROAS 1,3x, prazo 15/08. A aba "Metas e ritmo" calcula sozinha o esperado a esta
+altura, o que falta e o necessário por dia. Para revisar, editar só esse dict.
+
+CAC e ROAS entram como alvo fixo (`acumula=False`): comparam direto com o alvo,
+sem rateio por dia. Vendas, faturamento e investimento acumulam e por isso têm
+"esperado a esta altura" e "necessário por dia".
+
+## Sinalização
+
+Verde/vermelho aparece só onde muda decisão: KPIs de ROAS e CAC contra a meta,
+linhas de meta contra o ritmo (vermelho abaixo de 80% do esperado), a queda
+página → checkout contra o benchmark de 3% (`BENCH_LPV_IC`) e o custo por visita
+por criativo quando sai muito da mediana. O resto fica neutro de propósito.
+
+## Publicar
+
+```bash
+./deploy.sh    # rebuild + Cloudflare Pages
+```
+
+No ar em https://mxp-2026-dashboard.pages.dev/
+
+O GitHub Pages deste repo ficou travado num deployment fantasma do lado do
+GitHub ("Deployment cancelled" / "due to in progress deployment"), por isso o
+Cloudflare virou o canal principal.
+
+## Atualizar sem publicar
 
 ```bash
 cd ~/Documents/CLAUDE_CODE_2026/dashboards/MXP-2026-Dash && python3 build.py
