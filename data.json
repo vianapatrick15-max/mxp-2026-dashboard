@@ -1,5 +1,5 @@
 {
- "gerado_em": "06/08/2026 11:21",
+ "gerado_em": "06/08/2026 12:43",
  "hoje": "2026-08-06",
  "dias": [
   "2026-08-01",
@@ -22,14 +22,14 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 24,
+    "realizado": 25,
     "esperado_hoje": 60.0,
-    "pct": 16.0,
+    "pct": 16.7,
     "status": "neg",
     "unidade": "int",
     "direcao": "up",
-    "falta": 126,
-    "nec_dia": 12.6,
+    "falta": 125,
+    "nec_dia": 12.5,
     "obs": "Toda venda registrada na Hubla, de qualquer frente."
    },
    {
@@ -37,14 +37,14 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 8975.49,
+    "realizado": 9468.21,
     "esperado_hoje": 11820.0,
-    "pct": 30.4,
-    "status": "neg",
+    "pct": 32.0,
+    "status": "warn",
     "unidade": "brl",
     "direcao": "up",
-    "falta": 20574.51,
-    "nec_dia": 2057.45,
+    "falta": 20081.79,
+    "nec_dia": 2008.18,
     "obs": "Receita bruta das vendas válidas."
    },
    {
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 109.92,
+    "realizado": 105.52,
     "esperado_hoje": 150.0,
-    "pct": 73.3,
+    "pct": 70.3,
     "status": "pos",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 3.4,
+    "realizado": 3.59,
     "esperado_hoje": 1.3,
-    "pct": 261.7,
+    "pct": 276.1,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 4.0,
+   "vendas_dia": 4.17,
    "spend_dia": 439.67,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 60,
-   "receita": 22438.73,
+   "vendas": 63,
+   "receita": 23670.53,
    "spend": 6595.07,
-   "pct_meta": 40.0
+   "pct_meta": 41.7
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 373.98
+  "ticket_real": 378.73
  },
  "ads": {
   "AD-01|EST": {
@@ -2119,6 +2119,16 @@
    "a": "",
    "c": "",
    "src": "ThaysAlmeida"
+  },
+  {
+   "d": "2026-08-06",
+   "f": "WhatsApp",
+   "t": "proprio",
+   "v": 492.72,
+   "o": "START - R$397",
+   "a": "",
+   "c": "mxp-26",
+   "src": "whatsapp"
   }
  ],
  "reembolsos": 0

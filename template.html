@@ -205,6 +205,10 @@
       <div id="chartDia"></div>
     </div>
 
+    <div class="seclab">Dia a dia</div>
+    <div class="tbox tscroll"><table id="tDias"></table></div>
+    <div class="note warn" id="notaDias"></div>
+
     <div class="seclab">Campanhas</div>
     <div class="tbox tscroll"><table id="tCamp"></table></div>
 
@@ -263,6 +267,7 @@ const xm  = v => (v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumF
 const dia = d => d ? d.slice(8,10)+'/'+d.slice(5,7) : '';
 const esc = s => String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const MD = '<span class="muted">—</span>';
+const DIA_SEMANA = ['dom','seg','ter','qua','qui','sex','sáb'];
 const M = DATA.metas;
 
 /* ================= agregação por período ================= */
@@ -301,8 +306,12 @@ function agrega(de, ate){
   const dias = [...new Set(T.map(r=>r.d).concat(V.map(r=>r.d)))].sort();
   const serie = dias.map(d=>{
     const td = T.filter(r=>r.d===d), vd = V.filter(r=>r.d===d);
-    return {data:d, spend:td.reduce((a,b)=>a+b.s,0), lpv:td.reduce((a,b)=>a+b.l,0),
-            vendas:vd.length, receita:vd.reduce((a,b)=>a+b.v,0)};
+    const vp = vd.filter(x=>x.t==='pago');
+    const sp = td.reduce((a,b)=>a+b.s,0), rc = vd.reduce((a,b)=>a+b.v,0);
+    return {data:d, spend:sp, lpv:td.reduce((a,b)=>a+b.l,0), ic:td.reduce((a,b)=>a+b.ic,0),
+            vendas:vd.length, receita:rc, ticket: vd.length? rc/vd.length : 0,
+            vendasPagas:vp.length, cac: (vd.length && sp)? sp/vd.length : null,
+            roas: sp? rc/sp : null};
   });
 
   const grupo = (rows, key) => {
@@ -439,6 +448,37 @@ function render(){
 
   chartDia(v.serie);
 
+  /* dia a dia */
+  const metaDia = M.ritmo.vendas_dia_plano;
+  tabela('tDias', [
+    {k:'data', lbl:'Dia', fmt:r=>dia(r.data)+'<span class="muted" style="font-weight:400"> · '+DIA_SEMANA[new Date(r.data+'T12:00:00').getDay()]+'</span>'},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas),
+     cls:r=>r.vendas>=metaDia?'pos sig':(r.vendas<metaDia*0.8?'neg sig':'sig')},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'ticket', lbl:'Ticket médio', fmt:r=>r.vendas?brl(r.ticket):MD},
+    {k:'vendasPagas', lbl:'Vendas do pago', fmt:r=>int(r.vendasPagas)},
+    {k:'spend', lbl:'Investido', fmt:r=>brl(r.spend)},
+    {k:'cac', lbl:'CAC do dia', fmt:r=>r.cac==null?MD:brl(r.cac),
+     cls:r=>r.cac==null?'':(r.cac<=M.cac_max?'pos sig':'neg sig')},
+    {k:'roas', lbl:'ROAS do dia', fmt:r=>r.roas==null?MD:xm(r.roas),
+     cls:r=>r.roas==null?'':(r.roas>=M.roas_meta?'pos sig':'neg sig')},
+    {k:'lpv', lbl:'Visitas', fmt:r=>int(r.lpv)},
+    {k:'ic', lbl:'Checkouts', fmt:r=>int(r.ic)},
+  ], v.serie, {k:'data'},
+  `<td>Total</td><td>${int(v.vendas)}</td><td>${brl(v.receita)}</td><td>${brl(v.ticket)}</td>
+   <td>${int(v.pagas)}</td><td>${brl(v.t.s)}</td><td>${v.vendas?brl(v.cac):MD}</td>
+   <td>${v.t.s?xm(v.roas):MD}</td><td>${int(v.t.l)}</td><td>${int(v.t.ic)}</td>`);
+
+  const comMeta = v.serie.filter(d=>d.vendas>=metaDia).length;
+  const melhor = v.serie.slice().sort((a,b)=>b.vendas-a.vendas)[0];
+  const mediaDia = v.serie.length ? v.vendas/v.serie.length : 0;
+  document.getElementById('notaDias').innerHTML = v.serie.length ?
+    `<b>Média de ${mediaDia.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})} vendas por dia</b> neste período, contra ${metaDia}/dia do plano. ` +
+    `${comMeta} de ${v.serie.length} dia(s) bateram a meta diária. ` +
+    (melhor ? `O melhor dia foi ${dia(melhor.data)}, com ${melhor.vendas} venda(s) e ${brl0(melhor.receita)}. ` : '') +
+    `Verde na coluna de vendas é dia que bateu ${metaDia}, vermelho é dia abaixo de ${Math.round(metaDia*0.8)}.`
+    : 'Sem dado neste período.';
+
   /* campanhas */
   tabela('tCamp', [
     {k:'id', lbl:'Campanha', fmt:r=>esc(r.id)},
@@ -517,10 +557,11 @@ function chartBarras(id, itens, lab){
 function chartDia(d){
   const el = document.getElementById('chartDia');
   if (!d.length){ el.innerHTML='<p class="muted" style="font-size:12px;padding:14px 0">Sem dado neste período.</p>'; return; }
-  const W=1100,H=280,pl=64,pr=58,pt=18,pb=38, iw=W-pl-pr, ih=H-pt-pb;
+  const W=1100,H=290,pl=64,pr=58,pt=18,pb=48, iw=W-pl-pr, ih=H-pt-pb;
   const maxS=Math.max.apply(null, d.map(x=>x.spend).concat([1]));
   const maxR=Math.max.apply(null, d.map(x=>x.receita).concat([1]));
   const bw=Math.min(52, iw/d.length*0.5), X=i=>pl+iw*(i+0.5)/d.length;
+  const metaDiaChart = M.ritmo.vendas_dia_plano;
   let s=`<svg viewBox="0 0 ${W} ${H}">`;
   for(let g=0;g<=4;g++){const y=pt+ih*g/4;
     s+=`<line class="gridline" x1="${pl}" y1="${y}" x2="${W-pr}" y2="${y}"/>`;
@@ -528,12 +569,18 @@ function chartDia(d){
     s+=`<text class="axis" x="${W-pr+8}" y="${y+4}">${brl0(maxR*(1-g/4))}</text>`;}
   d.forEach((x,i)=>{const h=ih*x.spend/maxS, xx=X(i)-bw/2;
     s+=`<rect x="${xx}" y="${pt+ih-h}" width="${bw}" height="${h}" rx="4" fill="#0178e6" opacity=".9"/>`;
-    s+=`<text class="axis" x="${X(i)}" y="${H-16}" text-anchor="middle">${dia(x.data)}</text>`;
-    if(x.spend) s+=`<text class="vlabel" x="${X(i)}" y="${pt+ih-h-6}" text-anchor="middle">${brl0(x.spend)}</text>`;});
+    s+=`<text class="axis" x="${X(i)}" y="${H-19}" text-anchor="middle">${dia(x.data)}</text>`;
+    s+=`<text class="axis" x="${X(i)}" y="${H-6}" text-anchor="middle" style="font-size:9.5px;font-weight:700;fill:${x.vendas>=metaDiaChart?'#12855a':(x.vendas?'#5e6c7b':'#9aa7b4')}">${x.vendas} venda(s)</text>`;
+    if(x.spend){
+      // barra alta: rotulo na BASE da barra, em branco. No topo ele colidia com a linha de receita.
+      s += h>26
+        ? `<text x="${X(i)}" y="${pt+ih-7}" text-anchor="middle" style="font-size:10.5px;font-weight:700;fill:#fff">${brl0(x.spend)}</text>`
+        : `<text class="vlabel" x="${X(i)}" y="${pt+ih-h-6}" text-anchor="middle">${brl0(x.spend)}</text>`;
+    }});
   s+=`<polyline points="${d.map((x,i)=>X(i)+','+(pt+ih-ih*x.receita/maxR)).join(' ')}" fill="none" stroke="#0b8fa4" stroke-width="3"/>`;
   d.forEach((x,i)=>{const y=pt+ih-ih*x.receita/maxR;
     s+=`<circle cx="${X(i)}" cy="${y}" r="4.5" fill="#0b8fa4"/>`;
-    if(x.receita) s+=`<text class="vlabel" x="${X(i)}" y="${y-11}" text-anchor="middle" style="fill:#08707f">${brl0(x.receita)}${x.vendas?' ('+x.vendas+')':''}</text>`;});
+    if(x.receita) s+=`<text class="vlabel" x="${X(i)}" y="${y-11}" text-anchor="middle" style="fill:#08707f">${brl0(x.receita)}</text>`;});
   el.innerHTML = s+'</svg>';
 }
 
