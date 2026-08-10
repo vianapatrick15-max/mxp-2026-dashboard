@@ -1,0 +1,42 @@
+name: refresh
+
+# A cada 4 horas (UTC). Tambem da pra rodar na mao pela aba Actions.
+on:
+  schedule:
+    - cron: "0 */4 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: pip install --quiet gspread google-auth
+
+      - name: Gerar index.html e data.json
+        env:
+          GOOGLE_SHEETS_CREDENTIALS_JSON: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS_JSON }}
+        run: python build.py
+
+      - name: Publicar no Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          mkdir -p _site && cp index.html _site/index.html
+          npx --yes wrangler@4 pages deploy _site \
+            --project-name mxp-2026-dashboard --branch main --commit-dirty=true
+
+      - name: Commitar os dados novos
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html data.json
+          git diff --staged --quiet || git commit -m "refresh automatico"
+          git push

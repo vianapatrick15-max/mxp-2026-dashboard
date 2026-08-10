@@ -14,8 +14,27 @@ import sys
 from collections import Counter, defaultdict
 from datetime import datetime
 
-sys.path.insert(0, os.path.expanduser("~/.claude/skills/google-sheets/scripts"))
-from lib.auth import get_gspread_client  # noqa: E402
+def get_gspread_client():
+    """Autentica no Sheets. Local usa a lib da skill; no CI usa o segredo."""
+    import gspread
+    from google.oauth2.service_account import Credentials
+
+    scopes = ["https://www.googleapis.com/auth/spreadsheets",
+              "https://www.googleapis.com/auth/drive"]
+
+    raw = os.getenv("GOOGLE_SHEETS_CREDENTIALS_JSON")
+    if raw:
+        return gspread.authorize(
+            Credentials.from_service_account_info(json.loads(raw), scopes=scopes))
+
+    path = os.getenv("GOOGLE_SHEETS_CREDENTIALS_PATH")
+    if path and os.path.exists(path):
+        return gspread.authorize(
+            Credentials.from_service_account_file(path, scopes=scopes))
+
+    sys.path.insert(0, os.path.expanduser("~/.claude/skills/google-sheets/scripts"))
+    from lib.auth import get_gspread_client as _local
+    return _local()
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TRAFEGO_ID = "12ldEcVBAyIWcX2APu3CVS82aeswbwxsbJZCYIGN4KKY"
