@@ -321,7 +321,11 @@ function agrega(de, ate){
     return g;
   };
   const derivar = o => Object.assign(o, {ctr:taxa(o.k,o.i), cpm:o.i?1000*o.s/o.i:0,
-    custo_lpv:o.l?o.s/o.l:0, custo_ic:o.ic?o.s/o.ic:0, cpa:o.vendas?o.s/o.vendas:null});
+    custo_lpv:o.l?o.s/o.l:0, custo_ic:o.ic?o.s/o.ic:0, cpa:o.vendas?o.s/o.vendas:null,
+    // conversao da PAGINA = visita -> checkout iniciado
+    conv_pag: o.l? 100*o.ic/o.l : null,
+    // conversao do CHECKOUT = checkout iniciado -> venda paga
+    conv_chk: o.ic? 100*o.vendas/o.ic : null});
 
   const gc = grupo(T,'c');
   pagas.forEach(v=>{ for (const c in gc)
@@ -490,8 +494,11 @@ function render(){
     {k:'l', lbl:'Visitas', fmt:r=>int(r.l)},
     {k:'custo_lpv', lbl:'Custo/visita', fmt:r=>r.l?brl(r.custo_lpv):MD},
     {k:'ic', lbl:'Checkouts', fmt:r=>int(r.ic)},
+    {k:'conv_pag', lbl:'Conv. página', fmt:r=>r.conv_pag==null?MD:pct(r.conv_pag),
+     cls:r=>r.conv_pag==null?'':(r.conv_pag>=DATA.bench_lpv_ic?'pos sig':'neg sig')},
     {k:'custo_ic', lbl:'Custo/checkout', fmt:r=>r.ic?brl(r.custo_ic):MD},
     {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'conv_chk', lbl:'Conv. checkout', fmt:r=>r.conv_chk==null?MD:pct(r.conv_chk)},
     {k:'cpa', lbl:'CPA', fmt:r=>r.cpa==null?MD:brl(r.cpa), cls:r=>r.cpa==null?'':(r.cpa<=M.cac_max?'pos sig':'neg sig')},
   ], v.campanhas, {k:'s'});
 
@@ -513,7 +520,10 @@ function render(){
     {k:'custo_lpv', lbl:'Custo/visita', fmt:r=>r.l?brl(r.custo_lpv):MD,
      cls:r=>!r.l?'':(r.custo_lpv<=MED*0.6?'pos sig':(r.custo_lpv>=MED*2?'neg sig':''))},
     {k:'ic', lbl:'Checkouts', fmt:r=>int(r.ic)},
+    {k:'conv_pag', lbl:'Conv. página', fmt:r=>r.conv_pag==null?MD:pct(r.conv_pag),
+     cls:r=>r.conv_pag==null?'':(r.conv_pag>=DATA.bench_lpv_ic?'pos sig':'neg sig')},
     {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'conv_chk', lbl:'Conv. checkout', fmt:r=>r.conv_chk==null?MD:pct(r.conv_chk)},
     {k:'cpa', lbl:'CPA', fmt:r=>r.cpa==null?MD:brl(r.cpa), cls:r=>r.cpa==null?'':(r.cpa<=M.cac_max?'pos sig':'neg sig')},
   ], v.criativos, {k:'s'});
 
@@ -523,7 +533,11 @@ function render(){
     `<b>Leia com cuidado:</b> ${v.criativos.length} anúncios dividiram ${brl0(v.t.s)} neste período, uma média de ${brl0(medio)} por anúncio, e ${comVenda} tem venda registrada. ` +
     `Com esse volume por criativo, diferença de CTR ou de custo por visita entre anúncios ainda é ruído. ` +
     `A métrica utilizável neste estágio é o <b>custo por visita</b>, e mesmo ela só decide depois de aproximadamente R$ 150 a R$ 200 gastos no mesmo anúncio. ` +
-    `O verde e o vermelho nessa coluna comparam com a mediana do período (${brl(MED)}), não com a meta.`;
+    `O verde e o vermelho nessa coluna comparam com a mediana do período (${brl(MED)}), não com a meta.<br><br>` +
+    `<b>Conv. página</b> = visitas que iniciaram checkout, e <b>conv. checkout</b> = checkouts que viraram venda paga. ` +
+    `A conv. página fica verde a partir de ${pct(DATA.bench_lpv_ic)}, que é o piso saudável em venda de ingresso. ` +
+    `A conv. checkout não tem cor porque, com ${int(v.t.ic)} checkout(s) no período inteiro, ela só produz 0% ou 100% por anúncio — ` +
+    `serve para localizar onde a venda aconteceu, não para comparar anúncios.`;
 
   /* ofertas */
   tabela('tOfertas', [
