@@ -3,7 +3,7 @@
 
 Duas fontes:
   TRAFEGO = planilha "MXP-Fp01 META ADS", aba dados_trafego (Meta, nivel ad/dia)
-  VENDAS  = planilha "[MXP-FP01][VENDAS][2026]", aba VENDAS (Hubla, webhook n8n + backfill)
+  VENDAS  = planilha "[MXP-FP01][2026][BACKUP]", aba VENDAS (Hubla, webhook n8n + backfill)
 
 Gera data.json + index.html auto-contido (SVG nativo, sem lib externa).
 """
@@ -39,7 +39,7 @@ def get_gspread_client():
 HERE = os.path.dirname(os.path.abspath(__file__))
 TRAFEGO_ID = "12ldEcVBAyIWcX2APu3CVS82aeswbwxsbJZCYIGN4KKY"
 TRAFEGO_TAB = "dados_trafego"
-VENDAS_ID = "13uDvwhiiaLsiob1IDzSiGwpktCuZXWUWYXnzyL__3vQ"
+VENDAS_ID = "1JmhAHqs8kdDSuhWtZGw721GOIZec0MN9QjhLnuL3V1U"  # [MXP-FP01][2026][BACKUP], desde 18/08
 VENDAS_TAB = "VENDAS"
 
 # ---------------------------------------------------------------- metas

@@ -12,7 +12,11 @@ Dashboard que cruza a mídia paga (Meta) com a venda real da Hubla, separada por
 | O quê | Planilha | Aba |
 |---|---|---|
 | Tráfego (Meta, nível anúncio/dia) | `12ldEcVBAyIWcX2APu3CVS82aeswbwxsbJZCYIGN4KKY` | `dados_trafego` |
-| Vendas (Hubla) | `13uDvwhiiaLsiob1IDzSiGwpktCuZXWUWYXnzyL__3vQ` | `VENDAS` |
+| Vendas (Hubla) | `1JmhAHqs8kdDSuhWtZGw721GOIZec0MN9QjhLnuL3V1U` | `VENDAS` |
+
+Em 18/08/2026 a planilha de vendas mudou: a antiga (`13uDvw...`) parou de aceitar escrita do n8n
+e foi substituída pela `[MXP-FP01][2026][BACKUP]`, com todo o histórico copiado. A conta que o n8n
+usa é `tathi@palestrantememoravel.com.br` — ela precisa ser Editora da planilha, senão volta o 403.
 
 A aba VENDAS é alimentada em tempo real pelo workflow n8n `[MXP-FP01] VENDAS HUBLA 2026`
 (webhook `/webhook/mxp-2026-vendas`) e pelo backfill `_scripts/hubla_backfill_mxp.py`.
