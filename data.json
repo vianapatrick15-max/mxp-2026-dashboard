@@ -1,5 +1,5 @@
 {
- "gerado_em": "20/08/2026 08:21",
+ "gerado_em": "20/08/2026 12:18",
  "hoje": "2026-08-20",
  "dias": [
   "2026-08-01",
@@ -22,14 +22,14 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 95,
+    "realizado": 97,
     "esperado_hoje": 150.0,
-    "pct": 63.3,
+    "pct": 64.7,
     "status": "neg",
     "unidade": "int",
     "direcao": "up",
-    "falta": 55,
-    "nec_dia": 55.0,
+    "falta": 53,
+    "nec_dia": 53.0,
     "obs": "Toda venda registrada na Hubla, de qualquer frente."
    },
    {
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 51293.89,
+    "realizado": 51687.89,
     "esperado_hoje": 29550.0,
-    "pct": 173.6,
+    "pct": 174.9,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 271.77,
+    "realizado": 266.17,
     "esperado_hoje": 150.0,
-    "pct": 181.2,
+    "pct": 177.4,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 1.99,
+    "realizado": 2.0,
     "esperado_hoje": 1.3,
-    "pct": 152.8,
+    "pct": 154.0,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 6.33,
+   "vendas_dia": 6.47,
    "spend_dia": 1721.24,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 95,
-   "receita": 51293.89,
+   "vendas": 97,
+   "receita": 51687.89,
    "spend": 25818.62,
-   "pct_meta": 63.3
+   "pct_meta": 64.7
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 539.94
+  "ticket_real": 532.86
  },
  "ads": {
   "AD-01|EST": {
@@ -10736,6 +10736,26 @@
    "o": "LITE",
    "a": "AD-31|EST",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][AD-31_VARIACOES][17_08]",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-08-20",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "",
+   "c": "{{campaign.name}}",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-08-20",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "",
+   "c": "{{campaign.name}}",
    "src": "meta_ads"
   }
  ],
