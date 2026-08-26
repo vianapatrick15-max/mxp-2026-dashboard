@@ -135,6 +135,42 @@
   .need.flat .v{color:var(--ink)}
   .need.flat .d{color:var(--muted);opacity:1}
 
+  /* ---- aba Ads: card do criativo (preview + metricas) ---- */
+  .adsbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);
+    border:1px solid var(--line);border-radius:13px;padding:12px 16px;margin-top:12px}
+  .adsbar .lbl{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .adsbar .div{width:1px;align-self:stretch;background:var(--line);margin:0 4px}
+  .adsbar .info{margin-left:auto;font-size:11.5px;color:var(--muted)}
+  .ads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px;margin-top:14px}
+  .adc{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    display:flex;flex-direction:column}
+  .adc:hover{border-color:#bcdcf8}
+    /* 4:5 + contain: o criativo aparece inteiro. Cortar em 1:1 comeria a headline
+     dos 4:5 e decapitaria os 9:16, que e justamente o que se quer conferir aqui. */
+  .adc .thumb{aspect-ratio:4/5;background:#0d1b2c;position:relative;display:flex;
+    align-items:center;justify-content:center;border-bottom:1px solid var(--line)}
+  .adc .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+  .adc .thumb .ph{font-size:12px;color:var(--muted);text-align:center;padding:18px;line-height:1.5}
+  .adc .rank{position:absolute;z-index:2;top:8px;left:8px;background:#fff;color:var(--blue-d);font-size:11.5px;
+    font-weight:800;border-radius:8px;padding:2px 8px;border:1px solid #bcdcf8}
+  .adc .stb{position:absolute;z-index:2;top:8px;right:8px;font-size:10px;font-weight:800;border-radius:6px;
+    padding:3px 8px;text-transform:uppercase;letter-spacing:.04em;background:#fff;border:1px solid var(--line)}
+  .adc .stb.on{color:#2f7d51;border-color:#bfe6cf;background:var(--good-bg)}
+  .adc .stb.off{color:#5a6270}
+  .adc .body{padding:12px 14px 14px;display:flex;flex-direction:column;flex:1}
+  .adc .nm{font-size:14px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:7px}
+  .adc .cp{font-size:10.5px;color:var(--muted);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .adc .mx{display:grid;grid-template-columns:repeat(3,1fr);gap:9px 6px;margin-top:11px}
+  .adc .mx .ml{font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .adc .mx .mv{font-size:15px;font-weight:800;color:var(--ink);margin-top:1px;line-height:1.15}
+  .adc .sec{margin-top:11px;padding-top:9px;border-top:1px solid #eef4fa;font-size:11px;
+    color:var(--muted);display:flex;flex-wrap:wrap;gap:3px 10px}
+  .adc .sec b{color:var(--text);font-weight:700}
+  .adc .lk{margin-top:11px}
+  .adc .lk .prev{margin-left:0}
+  .vazio{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px;
+    text-align:center;color:var(--muted);font-size:12.5px;margin-top:14px}
+
   footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--line);
     font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 </style>
@@ -155,20 +191,22 @@
 
   <nav class="tabs">
     <button class="on" data-tab="desempenho">Desempenho</button>
+    <button data-tab="ads">Ads</button>
     <button data-tab="metas">Metas e ritmo</button>
   </nav>
 
-  <section class="tab on" id="tab-desempenho">
-    <div class="filtro">
-      <span class="lbl">Período</span>
-      <div class="presets" id="presets"></div>
-      <span class="sep">de</span>
-      <input type="date" id="de">
-      <span class="sep">até</span>
-      <input type="date" id="ate">
-      <span class="info" id="infoPeriodo"></span>
-    </div>
+  <div class="filtro" id="barraPeriodo">
+    <span class="lbl">Período</span>
+    <div class="presets" id="presets"></div>
+    <span class="sep">de</span>
+    <input type="date" id="de">
+    <span class="sep">até</span>
+    <input type="date" id="ate">
+    <span class="info" id="infoPeriodo"></span>
+  </div>
 
+
+  <section class="tab on" id="tab-desempenho">
     <div class="seclab">Visão do negócio</div>
     <div class="kpis" id="kpis"></div>
 
@@ -225,6 +263,22 @@
         <div id="chartOfertas"></div>
       </div>
     </div>
+  </section>
+
+  <section class="tab" id="tab-ads">
+    <div class="adsbar">
+      <span class="lbl">Ordenar</span>
+      <div class="presets" id="adsSort"></div>
+      <span class="div"></span>
+      <span class="lbl">Tipo</span>
+      <div class="presets" id="adsTipo"></div>
+      <span class="div"></span>
+      <span class="lbl">Status</span>
+      <div class="presets" id="adsStatus"></div>
+      <span class="info" id="adsInfo"></span>
+    </div>
+    <div id="adsGrid" class="ads-grid"></div>
+    <div class="note warn" id="notaAds"></div>
   </section>
 
   <section class="tab" id="tab-metas">
@@ -316,8 +370,8 @@ function agrega(de, ate){
 
   const grupo = (rows, key) => {
     const g = {};
-    rows.forEach(r=>{ const o = g[r[key]] || (g[r[key]]={id:r[key],s:0,i:0,k:0,l:0,ic:0,vendas:0,receita:0});
-                      o.s+=r.s; o.i+=r.i; o.k+=r.k; o.l+=r.l; o.ic+=r.ic; });
+    rows.forEach(r=>{ const o = g[r[key]] || (g[r[key]]={id:r[key],s:0,i:0,k:0,l:0,ic:0,v:0,vendas:0,receita:0});
+                      o.s+=r.s; o.i+=r.i; o.k+=r.k; o.l+=r.l; o.ic+=r.ic; o.v+=(r.v||0); });
     return g;
   };
   const derivar = o => Object.assign(o, {ctr:taxa(o.k,o.i), cpm:o.i?1000*o.s/o.i:0,
@@ -337,7 +391,12 @@ function agrega(de, ate){
   const criativos = Object.values(ga).map(o=>{
     const meta = DATA.ads[o.id] || {};
     return Object.assign(derivar(o), {rotulo:meta.rotulo||o.id, tipoAd:meta.tipo||'',
-                                      status:meta.status||'', ig:meta.ig||''});
+      status:meta.status||'', ig:meta.ig||'', thumb:meta.thumb||'',
+      nome:meta.nome||o.id, camp:meta.camp||'',
+      roas: o.s? o.receita/o.s : null,
+      // hook = visualizacoes de video / impressoes. So faz sentido em ad de video:
+      // estatico registra um punhado de video_view em Reels e sairia com 0,2%.
+      hook: (meta.tipo==='Vídeo' && o.i && o.v>=30)? 100*o.v/o.i : null});
   });
 
   const go = {};
@@ -393,6 +452,7 @@ let DE = DATA.dias[0], ATE = DATA.dias[1];
 
 function render(){
   const v = agrega(DE, ATE);
+  renderAds(v);
   const nd = v.dias.length || 0;
 
   document.getElementById('sub').textContent =
@@ -598,6 +658,99 @@ function chartDia(d){
   el.innerHTML = s+'</svg>';
 }
 
+/* ================= aba Ads: cards de criativo ================= */
+const ADS_SORT = [
+  ['Vendas',        r => -r.vendas],
+  ['Receita',       r => -r.receita],
+  ['Investido',     r => -r.s],
+  ['CPA',           r => r.cpa==null ? Infinity : r.cpa],
+  ['ROAS',          r => r.roas==null ? Infinity : -r.roas],
+  ['Custo/visita',  r => r.l ? r.custo_lpv : Infinity],
+  ['CTR',           r => -r.ctr],
+  ['Hook',          r => r.hook==null ? Infinity : -r.hook],
+];
+const adsSt = {sort:0, tipo:'Todos', status:'Todos'};
+
+function chips(id, itens, ativo, onPick){
+  const el = document.getElementById(id);
+  el.innerHTML = itens.map((t,i)=>`<button data-i="${i}" class="${t===ativo||i===ativo?'on':''}">${esc(t)}</button>`).join('');
+  el.querySelectorAll('button').forEach(b=>{
+    b.onclick = () => { onPick(Number(b.dataset.i), itens[Number(b.dataset.i)]); render(); };
+  });
+}
+
+function cardAd(r, i){
+  const thumb = r.thumb
+    ? `<img src="${esc(r.thumb)}" loading="lazy" alt="${esc(r.rotulo)}">`
+    : `<div class="ph">${r.ig
+        ? `<a class="prev" href="${esc(r.ig)}" target="_blank" rel="noopener">▶ ver no Instagram</a>`
+        : 'sem prévia'}</div>`;
+  const on = r.status === 'ACTIVE';
+  // Metrica ausente vira travessao de proposito: R$ 0,00 num anuncio sem venda
+  // le como "custa zero", que e o contrario do que o numero diz.
+  const cpa  = r.cpa==null ? MD : `<span class="${r.cpa<=M.cac_max?'pos':'neg'}">${brl0(r.cpa)}</span>`;
+  const roas = r.roas==null||!r.s ? MD : `<span class="${r.roas>=M.roas_meta?'pos':'neg'}">${xm(r.roas)}</span>`;
+  const cvp  = r.conv_pag==null ? MD
+    : `<b class="${r.conv_pag>=DATA.bench_lpv_ic?'pos':'neg'}">${pct(r.conv_pag)}</b>`;
+  return `<div class="adc">
+    <div class="thumb"><span class="rank">#${i+1}</span>
+      <span class="stb ${on?'on':'off'}">${on?'ativo':'pausado'}</span>${thumb}</div>
+    <div class="body">
+      <div class="nm">${esc(r.rotulo)}${r.tipoAd?`<span class="tag outros">${esc(r.tipoAd)}</span>`:''}</div>
+      <div class="cp" title="${esc(r.camp)}">${esc(r.camp)||'&nbsp;'}</div>
+      <div class="mx">
+        <div><div class="ml">Vendas</div><div class="mv">${int(r.vendas)}</div></div>
+        <div><div class="ml">Receita</div><div class="mv">${r.receita?brl0(r.receita):MD}</div></div>
+        <div><div class="ml">Investido</div><div class="mv">${brl0(r.s)}</div></div>
+        <div><div class="ml">CPA</div><div class="mv">${cpa}</div></div>
+        <div><div class="ml">ROAS</div><div class="mv">${roas}</div></div>
+        <div><div class="ml">Custo/visita</div><div class="mv">${r.l?brl(r.custo_lpv):MD}</div></div>
+      </div>
+      <div class="sec">
+        <span>${int(r.i)} impr.</span><span>CTR <b>${pct(r.ctr)}</b></span>
+        <span>${int(r.l)} visitas</span><span>${int(r.ic)} checkouts</span>
+        <span>conv. página ${cvp}</span>
+        ${r.hook!=null?`<span title="Visualizações de vídeo ÷ impressões">hook <b>${pct(r.hook)}</b></span>`:''}
+      </div>
+      <div class="lk">${r.ig
+        ? `<a class="prev" href="${esc(r.ig)}" target="_blank" rel="noopener">▶ prévia no Instagram</a>`
+        : `<span class="prev off" title="Este anúncio não tem post do Instagram vinculado">sem prévia</span>`}</div>
+    </div></div>`;
+}
+
+function renderAds(v){
+  const todos = v.criativos;
+  const tipos = ['Todos', ...[...new Set(todos.map(r=>r.tipoAd).filter(Boolean))].sort()];
+  if (!tipos.includes(adsSt.tipo)) adsSt.tipo = 'Todos';
+  chips('adsSort', ADS_SORT.map(a=>a[0]), adsSt.sort, i => adsSt.sort = i);
+  chips('adsTipo', tipos, adsSt.tipo, (i,t) => adsSt.tipo = t);
+  chips('adsStatus', ['Todos','Ativos','Pausados'], adsSt.status, (i,t) => adsSt.status = t);
+
+  const lista = todos.filter(r =>
+      (adsSt.tipo==='Todos' || r.tipoAd===adsSt.tipo) &&
+      (adsSt.status==='Todos' ||
+       (adsSt.status==='Ativos' ? r.status==='ACTIVE' : r.status!=='ACTIVE')));
+  const key = ADS_SORT[adsSt.sort][1];
+  // desempate por investimento: sem isso, os empates em 0 venda embaralham a cada render
+  lista.sort((a,b)=> (key(a)-key(b)) || (b.s-a.s));
+
+  const gasto = lista.reduce((a,b)=>a+b.s,0), vendas = lista.reduce((a,b)=>a+b.vendas,0);
+  document.getElementById('adsInfo').textContent =
+    `${lista.length} de ${todos.length} anúncios · ${brl0(gasto)} · ${int(vendas)} venda(s)`;
+  document.getElementById('adsGrid').innerHTML = lista.length
+    ? lista.map(cardAd).join('')
+    : '<div class="vazio">Nenhum anúncio com investimento neste período e filtro.</div>';
+
+  const comVenda = todos.filter(r=>r.vendas>0).length;
+  const maduros = todos.filter(r=>r.s>=200).length;
+  document.getElementById('notaAds').innerHTML =
+    `<b>Como ler:</b> a venda é da Hubla, cruzada pelo <b>utm_content</b>, nunca o pixel. ` +
+    `No período há ${todos.length} anúncios com verba, ${comVenda} com venda registrada e ${maduros} com ao menos R$ 200 gastos. ` +
+    `Só esses ${maduros} sustentam decisão de CPA — abaixo disso a leitura é <b>custo por visita</b> e <b>conv. página</b>. ` +
+    `Verde/vermelho no CPA é contra o teto de ${brl0(M.cac_max)}, no ROAS contra ${xm(M.roas_meta)} e na conv. página contra o benchmark de ${pct(DATA.bench_lpv_ic)}. ` +
+    `A prévia abre o post do Instagram do anúncio; a imagem do card vem do criativo na Meta.`;
+}
+
 /* ================= filtro de período ================= */
 const menos = (iso,n) => { const d=new Date(iso+'T12:00:00'); d.setDate(d.getDate()-n);
   return d.toISOString().slice(0,10); };
@@ -655,6 +808,9 @@ document.querySelectorAll('nav.tabs button').forEach(b=>{
   b.onclick = () => {
     document.querySelectorAll('nav.tabs button').forEach(x=>x.classList.toggle('on', x===b));
     document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on', t.id==='tab-'+b.dataset.tab));
+    // a aba Metas mede o plano inteiro, entao o filtro de periodo nao se aplica a ela
+    document.getElementById('barraPeriodo').style.display =
+      b.dataset.tab === 'metas' ? 'none' : '';
     window.scrollTo({top:0,behavior:'smooth'});
   };
 });

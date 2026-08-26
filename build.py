@@ -217,9 +217,24 @@ def build():
         if r["status_ad"] == "ACTIVE":
             a["status"] = "ACTIVE"
 
+    # thumbnail dos criativos: enriquecimento manual (pull_thumbs.py). Sem o
+    # arquivo o card cai no link do Instagram, o dashboard nao quebra.
+    try:
+        with open(os.path.join(HERE, "thumbs.json"), encoding="utf-8") as fh:
+            thumbs = json.load(fh)
+    except (OSError, ValueError):
+        thumbs = {}
+    sem_thumb = 0
+    for k, a in ads.items():
+        url = (thumbs.get(k) or {}).get("thumb")
+        a["thumb"] = url or ""
+        if not url:
+            sem_thumb += 1
+
     traf = [{"d": r["data"], "c": r["campanha"], "a": r["ad_code"] or r["ad"],
              "s": round(r["spend"], 2), "i": int(r["impr"]), "k": int(r["clicks"]),
-             "l": int(r["lpv"]), "ic": int(r["ic"]), "p": int(r["purch_pixel"])}
+             "l": int(r["lpv"]), "ic": int(r["ic"]), "p": int(r["purch_pixel"]),
+             "v": int(r["vv"])}
             for r in trafego]
 
     vds = [{"d": v["data"], "f": v["frente"], "t": v["tipo"], "v": round(v["valor"], 2),
@@ -316,7 +331,8 @@ def build():
     with open(os.path.join(HERE, "index.html"), "w", encoding="utf-8") as fh:
         fh.write(html)
 
-    print(f"trafego: {len(traf)} linhas | vendas: {len(vds)} | ads: {len(ads)}")
+    print(f"trafego: {len(traf)} linhas | vendas: {len(vds)} | ads: {len(ads)}"
+          f" ({len(ads) - sem_thumb} com thumb)")
     print(f"investido R$ {tot_spend:.2f} | receita R$ {receita:.2f} | {n_vendas} vendas")
     print("index.html + data.json gerados")
 

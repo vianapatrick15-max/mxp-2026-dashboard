@@ -6,6 +6,7 @@ Dashboard que cruza a mídia paga (Meta) com a venda real da Hubla, separada por
 - `data.json` — dataset agregado (sem PII)
 - `build.py` — lê as duas planilhas e gera `data.json` + `index.html`
 - `template.html` — layout/JS; `build.py` injeta os dados no lugar de `/*__DATA__*/`
+- `thumbs.json` — imagem de cada criativo (enriquecimento manual, `pull_thumbs.py`)
 
 ## Fontes
 
@@ -53,6 +54,47 @@ mede o plano inteiro.
 Todo cabeçalho ordena: primeiro clique desce, segundo sobe. A ordem padrão é por
 investimento (campanhas e criativos) ou por receita (frentes e ofertas).
 
+## Aba Ads
+
+Um card por anúncio: imagem do criativo, status, investimento, vendas, receita,
+CPA, ROAS, custo por visita, e a linha de volume (impressões, CTR, visitas,
+checkouts, conversão da página, hook nos vídeos). Ordenável por qualquer uma
+dessas colunas e filtrável por tipo (estático/vídeo) e status. Respeita o filtro
+de período do topo, que agora é global e vale para Desempenho e Ads (a aba Metas
+mede o plano inteiro e por isso esconde o filtro).
+
+A venda do card é a mesma regra do resto do dashboard: Hubla cruzada pelo
+`utm_content`, nunca o pixel. Verde/vermelho compara CPA com o teto de CAC, ROAS
+com a meta e conversão da página com o `BENCH_LPV_IC`.
+
+**Hook rate** = visualizações de vídeo ÷ impressões, só em anúncio `[VID]` e a
+partir de 30 visualizações. Estático registra um punhado de video_view em Reels e
+sairia com 0,2%, que é ruído de posicionamento, não leitura. A planilha traz
+`Action Video View` mas não os quartis, então não há hold rate nem curva de
+retenção aqui (o DP100K tem porque puxa vídeo direto da API).
+
+### Imagem dos criativos (`pull_thumbs.py`)
+
+```bash
+/usr/bin/python3 pull_thumbs.py    # o SDK da Meta só está nesse Python
+```
+
+Roda **local**, fora do CI, e grava `thumbs.json` (`ad_code → {thumb, nome}`).
+O refresh de 4 em 4 horas só relê o arquivo já commitado, então: **anúncio novo
+na conta só ganha imagem depois de rodar isso e commitar.** Sem o arquivo o
+dashboard não quebra, o card cai no link do Instagram.
+
+Lê a **C3 [MEMORÁVEL GLOBAL]** (`act_422653132521856`), filtrando anúncio com
+"MXP" no nome porque FA-Fp01 mora na mesma conta.
+
+> O caminho é `image_hash → /adimages → permalink_url`, e não o `image_url` do
+> criativo, porque esse campo volta com `stp=..._p64x64_...` na maioria dos
+> anúncios: uma miniatura de 64px que num card de 288px vira borrão. O hash pode
+> estar em quatro lugares — campo do criativo, `link_data`, `video_data` e
+> `asset_feed_spec` (Advantage+ com asset por posicionamento, que é o caso de ~40
+> anúncios aqui). O `permalink_url` ainda tem a vantagem de não ser URL assinada,
+> então não expira como as `scontent`.
+
 ## Chave do criativo
 
 `AD-11` sozinho NÃO identifica o anúncio: o mesmo código existe na campanha de
@@ -62,7 +104,7 @@ os dois viram uma linha só e o custo por visita fica errado.
 
 O botão "prévia" abre o post do Instagram do anúncio (`Instagram Permalink URL`
 da planilha de tráfego). Anúncio sem permalink na planilha aparece como
-"sem prévia".
+"sem prévia". A imagem do card da aba Ads não vem daí — vem do `thumbs.json`.
 
 ## Sinalização
 
