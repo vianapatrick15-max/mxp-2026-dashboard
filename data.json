@@ -1,13 +1,13 @@
 {
- "gerado_em": "26/08/2026 04:27",
+ "gerado_em": "26/08/2026 08:26",
  "hoje": "2026-08-26",
  "dias": [
   "2026-08-01",
-  "2026-08-25"
+  "2026-08-26"
  ],
  "dias_trafego": [
   "2026-08-04",
-  "2026-08-25"
+  "2026-08-26"
  ],
  "bench_lpv_ic": 3.0,
  "metas": {
@@ -52,7 +52,7 @@
     "label": "Investimento",
     "acumula": true,
     "meta": 22500.0,
-    "realizado": 37213.12,
+    "realizado": 37213.9,
     "esperado_hoje": 22500.0,
     "pct": 165.4,
     "status": "pos",
@@ -67,7 +67,7 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 310.11,
+    "realizado": 310.12,
     "esperado_hoje": 150.0,
     "pct": 206.7,
     "status": "neg",
@@ -95,14 +95,14 @@
   ],
   "ritmo": {
    "vendas_dia": 8.0,
-   "spend_dia": 2480.87,
+   "spend_dia": 2480.93,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
    "vendas": 120,
    "receita": 71428.72,
-   "spend": 37213.12,
+   "spend": 37213.9,
    "pct_meta": 80.0
   },
   "cac_max": 150.0,
@@ -162,7 +162,7 @@
   "AD-07|EST": {
    "nome": "[AD-07][EST][VD][MXP-Fp01]",
    "camp": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
-   "ig": "https://www.instagram.com/p/DcbHXGjAVKw/",
+   "ig": "https://www.instagram.com/p/DcReqyHgm50/",
    "status": "ACTIVE",
    "rotulo": "AD-07 EST",
    "tipo": "Estático"
@@ -13068,8 +13068,8 @@
    "d": "2026-08-25",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_CHECKOUT][SUL_SUDESTE][25_08]",
    "a": "AD-31|EST",
-   "s": 5.21,
-   "i": 46,
+   "s": 5.24,
+   "i": 47,
    "k": 0,
    "l": 0,
    "ic": 0,
@@ -13530,8 +13530,8 @@
    "d": "2026-08-25",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][AD-31_VARIACOES][17_08]",
    "a": "AD-31|EST",
-   "s": 73.12,
-   "i": 857,
+   "s": 73.14,
+   "i": 858,
    "k": 4,
    "l": 3,
    "ic": 0,
@@ -13794,8 +13794,8 @@
    "d": "2026-08-25",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
    "a": "AD-60|EST",
-   "s": 69.78,
-   "i": 740,
+   "s": 69.93,
+   "i": 741,
    "k": 10,
    "l": 9,
    "ic": 0,
@@ -14157,8 +14157,8 @@
    "d": "2026-08-25",
    "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
    "a": "AD-07|EST",
-   "s": 5.59,
-   "i": 146,
+   "s": 5.62,
+   "i": 147,
    "k": 1,
    "l": 1,
    "ic": 0,
@@ -14201,8 +14201,8 @@
    "d": "2026-08-25",
    "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
    "a": "AD-60|EST",
-   "s": 48.99,
-   "i": 1783,
+   "s": 49.04,
+   "i": 1787,
    "k": 8,
    "l": 8,
    "ic": 0,
@@ -14223,10 +14223,21 @@
    "d": "2026-08-25",
    "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
    "a": "AD-72|EST",
-   "s": 41.87,
-   "i": 1195,
+   "s": 42.37,
+   "i": 1197,
    "k": 6,
    "l": 5,
+   "ic": 0,
+   "p": 0
+  },
+  {
+   "d": "2026-08-26",
+   "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PAGINA]",
+   "a": "AD-07|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
    "ic": 0,
    "p": 0
   }
