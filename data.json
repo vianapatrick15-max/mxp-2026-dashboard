@@ -1,13 +1,13 @@
 {
- "gerado_em": "27/08/2026 05:12",
+ "gerado_em": "27/08/2026 18:25",
  "hoje": "2026-08-27",
  "dias": [
   "2026-08-01",
-  "2026-08-26"
+  "2026-08-27"
  ],
  "dias_trafego": [
   "2026-08-04",
-  "2026-08-26"
+  "2026-08-27"
  ],
  "bench_lpv_ic": 3.0,
  "metas": {
@@ -52,7 +52,7 @@
     "label": "Investimento",
     "acumula": true,
     "meta": 22500.0,
-    "realizado": 37214.42,
+    "realizado": 37214.49,
     "esperado_hoje": 22500.0,
     "pct": 165.4,
     "status": "pos",
@@ -95,14 +95,14 @@
   ],
   "ritmo": {
    "vendas_dia": 7.93,
-   "spend_dia": 2480.96,
+   "spend_dia": 2480.97,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
    "vendas": 119,
    "receita": 71231.72,
-   "spend": 37214.42,
+   "spend": 37214.49,
    "pct_meta": 79.3
   },
   "cac_max": 150.0,
@@ -150,7 +150,7 @@
   "AD-05|EST": {
    "nome": "[AD-05][EST][VD][MXP-Fp01]",
    "camp": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
-   "ig": "https://www.instagram.com/p/DcbHWNdgWbf/",
+   "ig": "https://www.instagram.com/p/DcReqjRgJqn/",
    "status": "ACTIVE",
    "rotulo": "AD-05 EST",
    "tipo": "Estático",
@@ -564,7 +564,7 @@
   "AD-50|EST": {
    "nome": "[AD-50][EST][VD][MXP-Fp01]",
    "camp": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
-   "ig": "https://www.instagram.com/p/DcBWbZUAxwo/",
+   "ig": "https://www.instagram.com/p/Db9Eap9gasR/",
    "status": "ACTIVE",
    "rotulo": "AD-50 EST",
    "tipo": "Estático",
@@ -699,7 +699,7 @@
   "AD-72|EST": {
    "nome": "[AD-72][EST][VD][MXP-Fp01]",
    "camp": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_ADS][NOVOS][21_08]",
-   "ig": "https://www.instagram.com/p/DcbHW68A1eA/",
+   "ig": "https://www.instagram.com/p/DcTlKFgAETi/",
    "status": "ACTIVE",
    "rotulo": "AD-72 EST",
    "tipo": "Estático",
@@ -14751,8 +14751,8 @@
    "d": "2026-08-25",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][AD-31_VARIACOES][17_08]",
    "a": "AD-31|EST",
-   "s": 140.88,
-   "i": 1104,
+   "s": 140.95,
+   "i": 1105,
    "k": 16,
    "l": 12,
    "ic": 0,
@@ -15819,6 +15819,162 @@
    "d": "2026-08-26",
    "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
    "a": "AD-72|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_ADS][NOVOS][21_08]",
+   "a": "AD-37|VID",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_ADS][NOVOS][21_08]",
+   "a": "AD-64|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_ADS][NOVOS][21_08]",
+   "a": "AD-72|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_ADS][NOVOS][21_08]",
+   "a": "AD-75|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][AD-31_VARIACOES][17_08]",
+   "a": "AD-31|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
+   "a": "AD-47|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
+   "a": "AD-48|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
+   "a": "AD-50|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
+   "a": "AD-56|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PAGINA]",
+   "a": "AD-05|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
+   "a": "AD-07|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
+   "a": "AD-31|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
+   "a": "AD-60|EST",
    "s": 0.0,
    "i": 0,
    "k": 0,
