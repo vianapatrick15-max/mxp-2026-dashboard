@@ -1,13 +1,13 @@
 {
- "gerado_em": "28/08/2026 03:52",
+ "gerado_em": "28/08/2026 15:42",
  "hoje": "2026-08-28",
  "dias": [
   "2026-08-01",
-  "2026-08-27"
+  "2026-08-28"
  ],
  "dias_trafego": [
   "2026-08-04",
-  "2026-08-27"
+  "2026-08-28"
  ],
  "bench_lpv_ic": 3.0,
  "metas": {
@@ -22,14 +22,14 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 119,
+    "realizado": 122,
     "esperado_hoje": 150.0,
-    "pct": 79.3,
-    "status": "neg",
+    "pct": 81.3,
+    "status": "warn",
     "unidade": "int",
     "direcao": "up",
-    "falta": 31,
-    "nec_dia": 31.0,
+    "falta": 28,
+    "nec_dia": 28.0,
     "obs": "Toda venda registrada na Hubla, de qualquer frente."
    },
    {
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 71231.72,
+    "realizado": 72067.28,
     "esperado_hoje": 29550.0,
-    "pct": 241.1,
+    "pct": 243.9,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 312.73,
+    "realizado": 305.04,
     "esperado_hoje": 150.0,
-    "pct": 208.5,
+    "pct": 203.4,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 1.91,
+    "realizado": 1.94,
     "esperado_hoje": 1.3,
-    "pct": 147.2,
+    "pct": 149.0,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 7.93,
+   "vendas_dia": 8.13,
    "spend_dia": 2480.97,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 119,
-   "receita": 71231.72,
+   "vendas": 122,
+   "receita": 72067.28,
    "spend": 37214.49,
-   "pct_meta": 79.3
+   "pct_meta": 81.3
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 598.59
+  "ticket_real": 590.72
  },
  "ads": {
   "AD-01|EST": {
@@ -15830,6 +15830,18 @@
   {
    "d": "2026-08-27",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_ADS][NOVOS][21_08]",
+   "a": "AD-22|VID",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_ADS][NOVOS][21_08]",
    "a": "AD-34|VID",
    "s": 0.0,
    "i": 0,
@@ -16057,6 +16069,18 @@
   },
   {
    "d": "2026-08-27",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
+   "a": "AD-60|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-27",
    "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PAGINA]",
    "a": "AD-05|EST",
    "s": 0.0,
@@ -16107,6 +16131,30 @@
    "d": "2026-08-27",
    "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
    "a": "AD-72|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-28",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_ADS][NOVOS][21_08]",
+   "a": "AD-22|VID",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-08-28",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
+   "a": "AD-50|EST",
    "s": 0.0,
    "i": 0,
    "k": 0,
@@ -17306,6 +17354,36 @@
    "a": "",
    "c": "",
    "src": "kaua_sequim"
+  },
+  {
+   "d": "2026-08-28",
+   "f": "E-mail",
+   "t": "proprio",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "",
+   "c": "conteudo",
+   "src": "email"
+  },
+  {
+   "d": "2026-08-28",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 244.56,
+   "o": "LITE",
+   "a": "AD-31|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][AD-31_VARIACOES][17_08]",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-08-28",
+   "f": "E-mail",
+   "t": "proprio",
+   "v": 394.0,
+   "o": "LITE",
+   "a": "",
+   "c": "conteudo",
+   "src": "email"
   }
  ],
  "reembolsos": 5
