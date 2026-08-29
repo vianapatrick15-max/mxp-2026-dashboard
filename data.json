@@ -1,5 +1,5 @@
 {
- "gerado_em": "29/08/2026 10:29",
+ "gerado_em": "29/08/2026 15:46",
  "hoje": "2026-08-29",
  "dias": [
   "2026-08-01",
@@ -22,14 +22,14 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 123,
+    "realizado": 125,
     "esperado_hoje": 150.0,
-    "pct": 82.0,
+    "pct": 83.3,
     "status": "warn",
     "unidade": "int",
     "direcao": "up",
-    "falta": 27,
-    "nec_dia": 27.0,
+    "falta": 25,
+    "nec_dia": 25.0,
     "obs": "Toda venda registrada na Hubla, de qualquer frente."
    },
    {
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 72311.84,
+    "realizado": 73588.72,
     "esperado_hoje": 29550.0,
-    "pct": 244.7,
+    "pct": 249.0,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 302.83,
+    "realizado": 297.99,
     "esperado_hoje": 150.0,
-    "pct": 201.9,
+    "pct": 198.7,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 1.94,
+    "realizado": 1.98,
     "esperado_hoje": 1.3,
-    "pct": 149.3,
+    "pct": 152.0,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 8.2,
+   "vendas_dia": 8.33,
    "spend_dia": 2483.21,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 123,
-   "receita": 72311.84,
+   "vendas": 125,
+   "receita": 73588.72,
    "spend": 37248.22,
-   "pct_meta": 82.0
+   "pct_meta": 83.3
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 587.9
+  "ticket_real": 588.71
  },
  "ads": {
   "AD-01|EST": {
@@ -17921,6 +17921,26 @@
    "o": "LITE",
    "a": "AD-31|EST",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][AD-31_VARIACOES][17_08]",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-08-29",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "AD-60|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-08-29",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 1079.88,
+   "o": "Upgrade Lite para VIP - R$1.000",
+   "a": "AD-60|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
    "src": "meta_ads"
   }
  ],
