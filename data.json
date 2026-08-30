@@ -1,5 +1,5 @@
 {
- "gerado_em": "30/08/2026 15:30",
+ "gerado_em": "30/08/2026 18:51",
  "hoje": "2026-08-30",
  "dias": [
   "2026-08-01",
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 75516.32,
+    "realizado": 75468.76,
     "esperado_hoje": 29550.0,
-    "pct": 255.6,
+    "pct": 255.4,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -84,7 +84,7 @@
     "meta": 1.3,
     "realizado": 2.03,
     "esperado_hoje": 1.3,
-    "pct": 155.9,
+    "pct": 155.8,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -101,14 +101,14 @@
   },
   "projecao": {
    "vendas": 127,
-   "receita": 75516.32,
+   "receita": 75468.76,
    "spend": 37249.82,
    "pct_meta": 84.7
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 594.62
+  "ticket_real": 594.24
  },
  "ads": {
   "AD-01|EST": {
@@ -17745,16 +17745,6 @@
   },
   {
    "d": "2026-08-23",
-   "f": "Meta Ads",
-   "t": "pago",
-   "v": 244.56,
-   "o": "LITE",
-   "a": "AD-72|EST",
-   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_ADS][NOVOS][21_08]",
-   "src": "meta_ads"
-  },
-  {
-   "d": "2026-08-23",
    "f": "activecampaign",
    "t": "outros",
    "v": 1068.6,
@@ -17962,7 +17952,17 @@
    "a": "AD-46|EST",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
    "src": "meta_ads"
+  },
+  {
+   "d": "2026-08-30",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "AD-55|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
+   "src": "meta_ads"
   }
  ],
- "reembolsos": 6
+ "reembolsos": 7
 }
