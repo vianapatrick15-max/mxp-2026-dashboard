@@ -1,9 +1,9 @@
 {
- "gerado_em": "30/08/2026 09:29",
+ "gerado_em": "30/08/2026 15:30",
  "hoje": "2026-08-30",
  "dias": [
   "2026-08-01",
-  "2026-08-29"
+  "2026-08-30"
  ],
  "dias_trafego": [
   "2026-08-04",
@@ -22,14 +22,14 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 126,
+    "realizado": 127,
     "esperado_hoje": 150.0,
-    "pct": 84.0,
+    "pct": 84.7,
     "status": "warn",
     "unidade": "int",
     "direcao": "up",
-    "falta": 24,
-    "nec_dia": 24.0,
+    "falta": 23,
+    "nec_dia": 23.0,
     "obs": "Toda venda registrada na Hubla, de qualquer frente."
    },
    {
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 75027.32,
+    "realizado": 75516.32,
     "esperado_hoje": 29550.0,
-    "pct": 253.9,
+    "pct": 255.6,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 295.63,
+    "realizado": 293.31,
     "esperado_hoje": 150.0,
-    "pct": 197.1,
+    "pct": 195.5,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 2.01,
+    "realizado": 2.03,
     "esperado_hoje": 1.3,
-    "pct": 154.9,
+    "pct": 155.9,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 8.4,
+   "vendas_dia": 8.47,
    "spend_dia": 2483.32,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 126,
-   "receita": 75027.32,
+   "vendas": 127,
+   "receita": 75516.32,
    "spend": 37249.82,
-   "pct_meta": 84.0
+   "pct_meta": 84.7
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 595.45
+  "ticket_real": 594.62
  },
  "ads": {
   "AD-01|EST": {
@@ -17952,6 +17952,16 @@
    "a": "",
    "c": "Orgânico_geral",
    "src": "kaua_sequim"
+  },
+  {
+   "d": "2026-08-30",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 489.0,
+   "o": "LITE",
+   "a": "AD-46|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
+   "src": "meta_ads"
   }
  ],
  "reembolsos": 6
