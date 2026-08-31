@@ -234,11 +234,11 @@
 
     <div class="seclab">Evolução diária</div>
     <div class="card">
-      <h3>Investimento x receita</h3>
-      <div class="hint">Barra = investimento no Meta no dia. Linha = receita total do dia (todas as frentes).</div>
+      <h3>Investimento x vendas</h3>
+      <div class="hint">Barra = investimento no Meta no dia. Linha = vendas do dia (todas as frentes). Verde quando bate a meta diária.</div>
       <div class="legend">
         <span><i class="dot" style="background:var(--pago)"></i>Investimento Meta</span>
-        <span><i class="dot" style="background:var(--proprio)"></i>Receita do dia</span>
+        <span><i class="dot" style="background:var(--proprio)"></i>Vendas do dia</span>
       </div>
       <div id="chartDia"></div>
     </div>
@@ -631,30 +631,34 @@ function chartBarras(id, itens, lab){
 function chartDia(d){
   const el = document.getElementById('chartDia');
   if (!d.length){ el.innerHTML='<p class="muted" style="font-size:12px;padding:14px 0">Sem dado neste período.</p>'; return; }
-  const W=1100,H=290,pl=64,pr=58,pt=18,pb=48, iw=W-pl-pr, ih=H-pt-pb;
+  const W=1100,H=276,pl=64,pr=58,pt=18,pb=34, iw=W-pl-pr, ih=H-pt-pb;
   const maxS=Math.max.apply(null, d.map(x=>x.spend).concat([1]));
-  const maxR=Math.max.apply(null, d.map(x=>x.receita).concat([1]));
-  const bw=Math.min(52, iw/d.length*0.5), X=i=>pl+iw*(i+0.5)/d.length;
   const metaDiaChart = M.ritmo.vendas_dia_plano;
+  // eixo direito em venda inteira: arredonda pra multiplo de 4 pra grade nao cair em fracao
+  const maxV=Math.max(4, Math.ceil(Math.max.apply(null, d.map(x=>x.vendas).concat([metaDiaChart,1]))/4)*4);
+  const bw=Math.min(52, iw/d.length*0.5), X=i=>pl+iw*(i+0.5)/d.length;
   let s=`<svg viewBox="0 0 ${W} ${H}">`;
   for(let g=0;g<=4;g++){const y=pt+ih*g/4;
     s+=`<line class="gridline" x1="${pl}" y1="${y}" x2="${W-pr}" y2="${y}"/>`;
     s+=`<text class="axis" x="${pl-8}" y="${y+4}" text-anchor="end">${brl0(maxS*(1-g/4))}</text>`;
-    s+=`<text class="axis" x="${W-pr+8}" y="${y+4}">${brl0(maxR*(1-g/4))}</text>`;}
+    s+=`<text class="axis" x="${W-pr+8}" y="${y+4}">${int(maxV*(1-g/4))}</text>`;}
   d.forEach((x,i)=>{const h=ih*x.spend/maxS, xx=X(i)-bw/2;
     s+=`<rect x="${xx}" y="${pt+ih-h}" width="${bw}" height="${h}" rx="4" fill="#0178e6" opacity=".9"/>`;
     s+=`<text class="axis" x="${X(i)}" y="${H-19}" text-anchor="middle">${dia(x.data)}</text>`;
-    s+=`<text class="axis" x="${X(i)}" y="${H-6}" text-anchor="middle" style="font-size:9.5px;font-weight:700;fill:${x.vendas>=metaDiaChart?'#12855a':(x.vendas?'#5e6c7b':'#9aa7b4')}">${x.vendas} venda(s)</text>`;
     if(x.spend){
-      // barra alta: rotulo na BASE da barra, em branco. No topo ele colidia com a linha de receita.
+      // barra alta: rotulo na BASE da barra, em branco. No topo ele colidia com a linha de vendas.
       s += h>26
         ? `<text x="${X(i)}" y="${pt+ih-7}" text-anchor="middle" style="font-size:10.5px;font-weight:700;fill:#fff">${brl0(x.spend)}</text>`
         : `<text class="vlabel" x="${X(i)}" y="${pt+ih-h-6}" text-anchor="middle">${brl0(x.spend)}</text>`;
     }});
-  s+=`<polyline points="${d.map((x,i)=>X(i)+','+(pt+ih-ih*x.receita/maxR)).join(' ')}" fill="none" stroke="#0b8fa4" stroke-width="3"/>`;
-  d.forEach((x,i)=>{const y=pt+ih-ih*x.receita/maxR;
+  // linha de referencia da meta diaria: sem ela a linha de vendas nao diz se o dia foi bom
+  const yMeta = pt+ih-ih*metaDiaChart/maxV;
+  s+=`<line x1="${pl}" y1="${yMeta}" x2="${W-pr}" y2="${yMeta}" stroke="#12855a" stroke-width="1.5" stroke-dasharray="5 4" opacity=".55"/>`;
+  s+=`<text class="axis" x="${W-pr-4}" y="${yMeta-5}" text-anchor="end" style="fill:#12855a;font-weight:700">meta ${xm(metaDiaChart)}/dia</text>`;
+  s+=`<polyline points="${d.map((x,i)=>X(i)+','+(pt+ih-ih*x.vendas/maxV)).join(' ')}" fill="none" stroke="#0b8fa4" stroke-width="3"/>`;
+  d.forEach((x,i)=>{const y=pt+ih-ih*x.vendas/maxV;
     s+=`<circle cx="${X(i)}" cy="${y}" r="4.5" fill="#0b8fa4"/>`;
-    if(x.receita) s+=`<text class="vlabel" x="${X(i)}" y="${y-11}" text-anchor="middle" style="fill:#08707f">${brl0(x.receita)}</text>`;});
+    if(x.vendas) s+=`<text class="vlabel" x="${X(i)}" y="${y-11}" text-anchor="middle" style="fill:${x.vendas>=metaDiaChart?'#12855a':'#08707f'}">${int(x.vendas)}</text>`;});
   el.innerHTML = s+'</svg>';
 }
 
