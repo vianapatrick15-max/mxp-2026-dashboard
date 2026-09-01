@@ -1,5 +1,5 @@
 {
- "gerado_em": "01/09/2026 15:36",
+ "gerado_em": "01/09/2026 14:39",
  "hoje": "2026-09-01",
  "dias": [
   "2026-08-01",
@@ -22,14 +22,14 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 135,
+    "realizado": 136,
     "esperado_hoje": 150.0,
-    "pct": 90.0,
+    "pct": 90.7,
     "status": "warn",
     "unidade": "int",
     "direcao": "up",
-    "falta": 15,
-    "nec_dia": 15.0,
+    "falta": 14,
+    "nec_dia": 14.0,
     "obs": "Toda venda registrada na Hubla, de qualquer frente."
    },
    {
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 80617.96,
+    "realizado": 80814.96,
     "esperado_hoje": 29550.0,
-    "pct": 272.8,
+    "pct": 273.5,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 313.98,
+    "realizado": 311.67,
     "esperado_hoje": 150.0,
-    "pct": 209.3,
+    "pct": 207.8,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 1.9,
+    "realizado": 1.91,
     "esperado_hoje": 1.3,
-    "pct": 146.3,
+    "pct": 146.7,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 9.0,
+   "vendas_dia": 9.07,
    "spend_dia": 2825.82,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 135,
-   "receita": 80617.96,
+   "vendas": 136,
+   "receita": 80814.96,
    "spend": 42387.35,
-   "pct_meta": 90.0
+   "pct_meta": 90.7
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 597.17
+  "ticket_real": 594.23
  },
  "ads": {
   "AD-01|EST": {
@@ -23045,6 +23045,16 @@
    "o": "LITE",
    "a": "AD-121|EST",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV ][TESTE_ADS][ESTATICOS_121-126][01_09]",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-09-01",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "AD-27|VID",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_ADS][NOVOS][21_08]",
    "src": "meta_ads"
   }
  ],
