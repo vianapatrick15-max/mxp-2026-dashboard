@@ -1,5 +1,5 @@
-"""Enriquecimento (rodar local/manual) — puxa a imagem dos criativos MXP-Fp01 na
-Meta API e grava thumbs.json {ad_code: {thumb, nome}}.
+"""Enriquecimento (rodar local/manual) — puxa a imagem dos criativos MXP-Fp01 nas
+contas C4 (atual) e C3 (legado) da Meta API e grava thumbs.json {ad_code: {thumb, nome}}.
 
 O build.py mescla isso no dict `ads`, que alimenta os cards da aba Ads.
 
@@ -30,7 +30,12 @@ from build import ad_code  # mesma chave AD-nn|FMT usada no dashboard
 
 # MXP-Fp01 roda na C3 [MEMORAVEL GLOBAL]. FA-Fp01 mora na mesma conta, por isso
 # o filtro por nome (o token tambem enxerga contas que nao interessam aqui).
-CONTA = "act_422653132521856"
+# O MXP roda hoje na C4; a C3 fica porque ainda hospeda os criativos antigos.
+# A ordem importa: a primeira conta que trouxer o codigo com imagem ganha.
+CONTAS = [
+    ("C4", "act_1631219441753243"),
+    ("C3", "act_422653132521856"),
+]
 FILTER = [{"field": "name", "operator": "CONTAIN", "value": "MXP"}]
 FIELDS = ["name", "creative{image_hash,image_url,thumbnail_url,object_story_spec,asset_feed_spec}"]
 LOTE = 40  # /adimages aceita a lista de hashes de uma vez; 40 mantem a URL curta
@@ -71,38 +76,50 @@ def extrai(cr):
     return h, (url or cr.get("image_url") or cr.get("thumbnail_url") or "")
 
 
-acc = AdAccount(CONTA)
-por_ad, hashes = {}, set()
-vistos = 0
-for ad in acc.get_ads(fields=FIELDS, params={"limit": 100, "filtering": FILTER}):
-    vistos += 1
-    k = ad_code(ad.get("name") or "")
-    if not k:
-        continue
-    h, url = extrai(ad.get("creative") or {})
-    ja = por_ad.get(k)
-    # o mesmo AD aparece em varios conjuntos; fica o primeiro que trouxer hash
-    if ja and ja[1]:
-        continue
-    por_ad[k] = ((ad.get("name") or "").strip(), h, url)
-    if h:
-        hashes.add(h)
-print(f"{vistos} anuncios MXP na conta -> {len(por_ad)} codigos, {len(hashes)} hashes",
-      file=sys.stderr)
+por_ad = {}
+for rotulo, conta in CONTAS:
+    acc = AdAccount(conta)
+    local, hashes = {}, set()
+    vistos = 0
+    for ad in acc.get_ads(fields=FIELDS, params={"limit": 100, "filtering": FILTER}):
+        vistos += 1
+        k = ad_code(ad.get("name") or "")
+        if not k:
+            continue
+        h, url = extrai(ad.get("creative") or {})
+        ja = local.get(k)
+        # o mesmo AD aparece em varios conjuntos; fica o primeiro que trouxer hash
+        if ja and ja[1]:
+            continue
+        local[k] = ((ad.get("name") or "").strip(), h, url)
+        if h:
+            hashes.add(h)
 
-full = {}
-lista = sorted(hashes)
-for i in range(0, len(lista), LOTE):
-    for img in acc.get_ad_images(fields=["hash", "permalink_url", "url"],
-                                 params={"hashes": lista[i:i + LOTE]}):
-        u = img.get("permalink_url") or img.get("url")
-        if u:
-            full[img["hash"]] = u
-print(f"/adimages resolveu {len(full)}/{len(hashes)} hashes", file=sys.stderr)
+    # /adimages e por conta: o hash so resolve na conta que hospeda a imagem
+    full = {}
+    lista = sorted(hashes)
+    for i in range(0, len(lista), LOTE):
+        for img in acc.get_ad_images(fields=["hash", "permalink_url", "url"],
+                                     params={"hashes": lista[i:i + LOTE]}):
+            u = img.get("permalink_url") or img.get("url")
+            if u:
+                full[img["hash"]] = u
+    print(f"{rotulo} {conta}: {vistos} anuncios MXP -> {len(local)} codigos, "
+          f"{len(hashes)} hashes, /adimages resolveu {len(full)}", file=sys.stderr)
+
+    novos = 0
+    for k, (nome, h, url) in local.items():
+        u = full.get(h) or url
+        # so sobrescreve se o que ja temos nao tem imagem
+        if k in por_ad and por_ad[k][1]:
+            continue
+        if k not in por_ad or u:
+            por_ad[k] = (nome, u)
+            novos += 1
+    print(f"   {novos} codigos novos/melhorados vindos da {rotulo}", file=sys.stderr)
 
 thumbs, sem = {}, []
-for k, (nome, h, url) in sorted(por_ad.items()):
-    u = full.get(h) or url
+for k, (nome, u) in sorted(por_ad.items()):
     if not u:
         sem.append(k)
         continue
