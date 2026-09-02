@@ -1,5 +1,5 @@
 {
- "gerado_em": "02/09/2026 18:59",
+ "gerado_em": "02/09/2026 22:02",
  "hoje": "2026-09-02",
  "dias": [
   "2026-08-01",
@@ -22,14 +22,14 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 147,
+    "realizado": 151,
     "esperado_hoje": 150.0,
-    "pct": 98.0,
-    "status": "warn",
+    "pct": 100.7,
+    "status": "pos",
     "unidade": "int",
     "direcao": "up",
-    "falta": 3,
-    "nec_dia": 3.0,
+    "falta": 0,
+    "nec_dia": 0.0,
     "obs": "Toda venda registrada na Hubla, de qualquer frente."
    },
    {
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 84724.12,
+    "realizado": 86461.5,
     "esperado_hoje": 29550.0,
-    "pct": 286.7,
+    "pct": 292.6,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 337.43,
+    "realizado": 328.49,
     "esperado_hoje": 150.0,
-    "pct": 225.0,
+    "pct": 219.0,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 1.71,
+    "realizado": 1.74,
     "esperado_hoje": 1.3,
-    "pct": 131.4,
+    "pct": 134.1,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 9.8,
+   "vendas_dia": 10.07,
    "spend_dia": 3306.83,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 147,
-   "receita": 84724.12,
+   "vendas": 151,
+   "receita": 86461.5,
    "spend": 49602.47,
-   "pct_meta": 98.0
+   "pct_meta": 100.7
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 576.35
+  "ticket_real": 572.59
  },
  "ads": {
   "AD-01|EST": {
@@ -26247,6 +26247,46 @@
    "a": "",
    "c": "",
    "src": "juliana_vieira"
+  },
+  {
+   "d": "2026-09-02",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 207.38,
+   "o": "LITE",
+   "a": "AD-102|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV ][TESTE_ADS][ESTATICOS_80-110][01_09]",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-09-02",
+   "f": "embaixador",
+   "t": "outros",
+   "v": 1197.0,
+   "o": "VIP - 1.197,00",
+   "a": "",
+   "c": "mxp-260",
+   "src": "embaixador"
+  },
+  {
+   "d": "2026-09-02",
+   "f": "thays_almeida",
+   "t": "outros",
+   "v": 136.0,
+   "o": "Upgrade Start para Imperuim - R$136",
+   "a": "",
+   "c": "",
+   "src": "thays_almeida"
+  },
+  {
+   "d": "2026-09-02",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "AD-46|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
+   "src": "meta_ads"
   }
  ],
  "reembolsos": 7
