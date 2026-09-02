@@ -1,5 +1,5 @@
 {
- "gerado_em": "02/09/2026 08:10",
+ "gerado_em": "02/09/2026 08:25",
  "hoje": "2026-09-02",
  "dias": [
   "2026-08-01",
@@ -22,14 +22,14 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 142,
+    "realizado": 145,
     "esperado_hoje": 150.0,
-    "pct": 94.7,
+    "pct": 96.7,
     "status": "warn",
     "unidade": "int",
     "direcao": "up",
-    "falta": 8,
-    "nec_dia": 8.0,
+    "falta": 5,
+    "nec_dia": 5.0,
     "obs": "Toda venda registrada na Hubla, de qualquer frente."
    },
    {
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 82746.34,
+    "realizado": 84381.5,
     "esperado_hoje": 29550.0,
-    "pct": 280.0,
+    "pct": 285.6,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 332.0,
+    "realizado": 325.14,
     "esperado_hoje": 150.0,
-    "pct": 221.3,
+    "pct": 216.8,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 1.76,
+    "realizado": 1.79,
     "esperado_hoje": 1.3,
-    "pct": 135.0,
+    "pct": 137.7,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 9.47,
+   "vendas_dia": 9.67,
    "spend_dia": 3142.97,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 142,
-   "receita": 82746.34,
+   "vendas": 145,
+   "receita": 84381.5,
    "spend": 47144.59,
-   "pct_meta": 94.7
+   "pct_meta": 96.7
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 582.72
+  "ticket_real": 581.94
  },
  "ads": {
   "AD-01|EST": {
@@ -118,7 +118,7 @@
    "status": "PAUSED",
    "rotulo": "AD-01 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKjy99nTTaYOnF20WlaKa3pD1YeUvXLiVujzjAsLWWBH0akoFlyXONdM9ThdUoeDQDqzXJjnz7QVLsPUwFy3FZKtSAb4aC7WEGBEnyDQEMlFLr97bMCh5fVU6B9thqLQpRqJdSIOCe2FU8FFG6Vrpua"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKHgoN1hPLRmMA8jrTQzfca25owEq9aG2lTGN4zvrNP_qGlkEAjKy6SsP469J5jyIXx6qys0CxVVu36zkrfxmEuZ6pDz47JVlVq1EV1P2-VBOWIxRvwqhFhgTr-kyz6g6emYOtL8o5hb2DKCOAAaaZS"
   },
   "AD-02|EST": {
    "nome": "[AD-02][EST][VD][MXP-Fp01]",
@@ -127,7 +127,7 @@
    "status": "PAUSED",
    "rotulo": "AD-02 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJlu2H8WRW5I-Yx1A4I4gwALZ7Z-Mp3BQy2SJa4C-CHiMUCHaE6SSoOrU6-Dk2SN-ABpgMOkmHCiPKOUsH2dKB3WG82I2pbU0wbA1dPnKUwpjZx-6FP29JOR7R8erFnO5-O5gq5tv2Pmg05dsHgE4HB"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLypfmQxWRsIrCTjyDQY-swHW2ucDSpcL3fdL4dobcllcUsIb6WoPVAJcv3UZYjAvmywirbOalBGGuPaVylb9muhBvUYFSu6Vpzw0K3M9VviYGi1UcQwdHGbnjGNE3Ed7oalXrngjTbh5BPGzXHUPpk"
   },
   "AD-03|EST": {
    "nome": "[AD-03][EST][VD][MXP-Fp01]",
@@ -136,7 +136,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-03 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKEiLdi2GIKCUdG89i8VDy1kwdBACSJLUJ2lv5gfYiJCfwzRnZGiYPZq1DlcoweU5n5mqvbgHE1e4NOhB7huPhXOYYDsCW98yTKWf3eD2qQols_qz6wNWSKoaT4TEjqJiDlstjVnKViYdYiDE7gWNQ3"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKAUoAVPbz4U7dzavnKC7sTOUpk0Of_SlewWwx-wvQynu9HEuJ2w7o21EgCFfgKlqGtxHwS6Dna-fSuZNka5tXGvguruIPIRjiCN3Sn77SCnEoZwiRE0xN-HN5kYKBTh5AwoylTVsy2Bq3RMIeihHHO"
   },
   "AD-04|EST": {
    "nome": "[AD-04][EST][VD][MXP-Fp01]",
@@ -145,7 +145,7 @@
    "status": "PAUSED",
    "rotulo": "AD-04 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKYC7dp_hWxKECrmxTKLHApQYzFWaG-PLDwQ7fBaHoYAP1oKfKuy-idpuzlV0XPRMUNqaqsBRGJZPQFnkdO7q1FEWY-QwJbXbSwcD2riJB0kMxQtx6wczpUVKO9ZPN_g9iW2Co35-Y1-BPU5sK9ovJ3"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJrh4AebcXJeQqYHRzD5q9TfC8VVijXZ8t3iV6aOPWn4Bm8KOen-PkWvSnB_WDPKhpygAvd3pYEBVOyh3_K_URUsWosOynh6SlpWCdFkULh1EWjA7W6hsXQ59nn0AH6YgfMAJewggfjSLJicd2ePvbz"
   },
   "AD-05|EST": {
    "nome": "[AD-05][EST][VD][MXP-Fp01]",
@@ -154,7 +154,7 @@
    "status": "PAUSED",
    "rotulo": "AD-05 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQK1oR2Q2E1GwdCHmc5DkFWtqaQmkyJ_gwTMWzLptilWtxi1qnGKEN1g8_IpOEwyU6sw2qKXFDXuFoyl1MF9FAVFQj4BksyH5LQ-twKgeV8mFYpfVC-vg5MrhiRZNrj2nz-ZPhW0VylAZmQqSlbzmMue"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLdkE_DOTxaf92I877ivrQGOC7T_H22M6iiNXV26YvKXMnkW2KEQGX_PCQs2vgxSF--pI_9BsSjj3vA13SHhAcOk3bofAFflAk8jjHtjnbCNO1AbsLHM9TUqugms-jIH48Dn1CAsPv1L-FfOmE6PJ0E"
   },
   "AD-06|EST": {
    "nome": "[AD-06][EST][VD][MXP-Fp01]",
@@ -163,7 +163,7 @@
    "status": "PAUSED",
    "rotulo": "AD-06 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLwj7YNfsDUAecOj_uoDrXLP4kwndXdtWwyW82k3aZHXTgEEWmw9RaRhHfC6H7mKeOd2xnZLNaXr3tprl1Ahk5RS_3GTPopl-RVtsx3YCLse6FVS22diBq8BSRPLu0YPK_KDzVvUbYcyMxJkPgiMG0Z"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKHmZYg-h7CQZaH-BufZyqxe7WNjEp-0YMkvO6crUowjbkfhnNFTUrGAUXo0JycCgGxY_30eEqJRAN6p8SrVKY2sjmW8pOpeFozP-fLJMP7r-0kepoOMvnUl8aibqd8v6oJiduvyNI7UQCCPMXS5s0Z"
   },
   "AD-07|EST": {
    "nome": "[AD-07][EST][VD][MXP-Fp01]",
@@ -172,7 +172,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-07 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLbLdizLdCDrlYI4bCsNyazl_4TMeJG7eEjaaUqrlvHV36e8LN2Kllxz4o1D_AOJrBclfuJMkMa3b7jF26sD1tRez5MzZnZtvUrka7j7LWqhgLmukLGAQP3A0FxvI36_5S_F1RB4pszAzmhVwb_jKqk"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJVRs1lW1WOBp9jRptuI6A_bPSXvWKRG8I024YSf2C7IZLtjqsYu2-aMN-AwPSrVI9qTe5UcPEZto_luFXXFALpIc7viM_hyD9n3-UbshPQba7sSoQhUyECoLLrNL8o5xHhSkkM0svnqb5ix1qsUIBF"
   },
   "AD-08|EST": {
    "nome": "[AD-08][EST][VD][MXP-Fp01]",
@@ -181,7 +181,7 @@
    "status": "PAUSED",
    "rotulo": "AD-08 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLsX2-zZw5nd6ENZaC3z3syhndBhgeLxCFIdUqfDGLgIrgHcwJM6nL6Tz-45asROkjfPYA9vWIkLx4czZ8i9icpstb8Skwjhdc4puIgK28r8E2bL8D9cffBrUJd6dO7f_rkGXiOLTKolhTmM6Zdmh2L"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKUSkGvrGb9mf9KPsLWqBt8gAyKloTYBFMn1TNs5EklpTW6-XroKLNtYO16VwsItMK6cx1bE57yA7JOynZX1gu7Rp23D_2fbEZj5Z1urpvIUMn59AZ0cs4b7faBF0aloGaBpJhnWiDjPrVznO60Q-QA"
   },
   "AD-09|EST": {
    "nome": "[AD-09][EST][VD][MXP-Fp01]",
@@ -190,7 +190,7 @@
    "status": "PAUSED",
    "rotulo": "AD-09 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIqt3R35RmbfvBV8yNV34xB-meVz9O7Q0nMESFGkavqLf7Ny7TVjoJhMLUnme_doLdqX8B-NwN45DznPv5G875yP4ySnjV6iorsK8y_eRa6ZsSnir1Ssg8iquNPWPMq5DP7DxXQTOir6Xe9SnGO5Eri"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJZ7eU1nLnuXwh3h7YV9RNGvYGiVOPalXQYEa0dD8BLD1sFePcUVsAHZuBGC7bra-hsYHwZakTCy-WBifiVkZECM-jK15oK1UMrBwRgOndgwR69-408KMDPftQq6H_AvT8YoKG1TAOmJmPOiB9RQkfM"
   },
   "AD-10|EST": {
    "nome": "[AD-10][EST][VD][MXP-Fp01]",
@@ -199,7 +199,7 @@
    "status": "PAUSED",
    "rotulo": "AD-10 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKrxUm6hUtb_eZ8q9BNBRhkwBYYZBthj6Io8dc2_paz77SEQhOSPGW4joJvxKXcup4SFDxr8DUy7f43P3xZA3v3OUczMWpvMGxjY6u3aA33Ihnb8qRwzANVTqN67cu9s8vLY-5S4DHALJpI62Occ05r"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKUcc_tUDS6fr-ekA0Ea0OCX6JMrNuhZRmA9MCerLGdIkl4lMP8hq6ZJxv5jrYwmzi0WI5eL36SoggXFNxZTzkf8Br8rFe2LVL562QwYX6ElAfd_jwIuX4G5sx-c7IQzg5cagRS5SkjabNQi-QkF2DB"
   },
   "AD-11|EST": {
    "nome": "[AD-11][EST][VD][MXP-Fp01]",
@@ -208,7 +208,7 @@
    "status": "PAUSED",
    "rotulo": "AD-11 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQI2CkCkxCDk3lzaNBuBR9rZ-7YbdMEDQ8-LnDiK8AoX5jJPUoz9DDbC7uSRApAawe47Zuc-fUmxm4JTzwmD4Tl3E9jRfQ8PuAabLf_KdwfY0RgPUXTuq_rV6x8nMCKO83eQF9UjBjGpWDtMTwntM2Jc"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLjrtQdYBxY-svZgtjJzGXZvnMulWoOcIRvSX6zrL6ITSR5jzpuxPhAis3bUj2Vc-JF4fIE6q1Bc63dBDRuZY6QhGBbLwJB3vc5tLzCKYMI4MscquNtQuFt6HcTatwIU56e1lYO_cAHQyPIUc8DPQ2O"
   },
   "AD-12|EST": {
    "nome": "[AD-12][EST][VD][MXP-Fp01]",
@@ -217,7 +217,7 @@
    "status": "PAUSED",
    "rotulo": "AD-12 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQL4J-BZ5chnurjeVlX9Q2-s5Dqw2YrvX9DcKIAafNnkKaAlrvZnlHAUTR7yYupjTfl8G-PCOqQkNldco8MyyiikeE7O4TQsecZYKb3WfOemNkwRqbNVe4rPO69_motBZdOqL_7VZJDZXkd16U6V6J-5"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIc6iExRR1mtjq18FLhhcRUXY46pweP6F5AoCgqJt1haDbXfOZhqbTu6Wjm09yx_1J9LYCbLE7wc6zqfhZRPQ2RBUTn_u9wPZtAGwHk2ELqs_QNxtY2Hv6ijcE3RAFjGk10bXfbMNnThkg3Cdzk4H2F"
   },
   "AD-13|EST": {
    "nome": "[AD-13][EST][VD][MXP-Fp01]",
@@ -226,7 +226,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-13 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJ6uiSWQe_i0WXwXHEqPy9U7OWhKqMA3QZlV2zOro9sL7Yjr3zDR01CbooeLCr-9w5wXgn7k8M7k0rmqRdiczoRKTEiT7vhug8GqZTFmC6moq4K09DmkBMv872KNkFTQgk2GdHduXyeIZD9IdTsigQ7"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJvFztrvIMi3Ur0jV1ohur3OisSYy4F1etXOOiN9DHMtaoY_bGsFWMxCTnfX3TU3UK_JS6eLBQnmNb4oThSKM3lytfR4_PO9LwDQoipSXfDWux-QYnBu3NoJE-aAlWLzKypjcUmO2JvfMBryBNvn24h"
   },
   "AD-14|EST": {
    "nome": "[AD-14][EST][VD][MXP-Fp01]",
@@ -235,7 +235,7 @@
    "status": "PAUSED",
    "rotulo": "AD-14 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKB0FcWwcOvuTk48Wua4JJh7SnoD58_WRNVGSaHya1NfBMkUrv5NyTEA3l0o3A5jLijHt0bcx1KhchvTb_6tb_8U5-Wnurp1TqEa_oIbeovIEDGEu3TQU-QwlfzIEEFHRKa-V2xlvhSkWxiCXDHDls6"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJo9W0Re4qLnJ2iN5UQaXf-IoctXV4IPfJrTz12UdiwuJTzgh40POn02CFjoZCEyLuc5uA_3-a7uNRzq5EyumpAwCPjtvs0B397f8jJMVPxU9bkXT1xFtu0QurICUewd_k8GphhctZHiUvKjcf-aRPL"
   },
   "AD-15|EST": {
    "nome": "[AD-15][EST][VD][MXP-Fp01]",
@@ -244,7 +244,7 @@
    "status": "PAUSED",
    "rotulo": "AD-15 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIfP2GX6r9PtHRXPbN1Jxw55wtKW3BTmYHQ11g01CdQArTilxNv0P_mEZORWifSvoVgOZRuihjEMzd6d_f8k5r0RBxub0dcv8eZ2WQ74NokspCZnW9LPJBwAmyMPpKqpDB29lpKYqe11TTGedGfyZBb"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLIStZNUW3Va7vuFAeNafZEdvGH2jRyClK6BIlzHrRaw0bCP2nqNrBIU4gdZmEtKdNy0XMQe6FHEPKBcju3VphtL8fWB_1wIUIqyOMTjNuWdxIqcgZvrDguNac4PwbDsX3B8c8i5llk5fDjt2UTTPds"
   },
   "AD-16|EST": {
    "nome": "[AD-16][EST][VD][MXP-Fp01]",
@@ -253,7 +253,7 @@
    "status": "PAUSED",
    "rotulo": "AD-16 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQL4Zhmgk6h_eAlHQMV4atzicMKNyjkIzuHILWpysEkSdCZjVPJNn3BGu7dJzOFnu05kQ_bET-PLcSIvNEwg02SywnnB_dzak0nSkk8u1Ow_x9gaG92SLhV59WrNQ4l4IeuGJSK1Yvca1v8xoqTU-7_z"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKdXIos5WPpdV8m2KPuqM6JywlIqXj898GKRGuidk6tySh06l4kKvlktQglw2pj2V9MzmW42LmqyA05NPdWI5oMJq01tZ4vUFbBq-z0Xve_8LdWMksnU5b0fPSACjrdMUtRJs8EbmGz_qpCfNIHlIZM"
   },
   "AD-17|EST": {
    "nome": "[AD-17][EST][VD][MXP-Fp01]",
@@ -262,7 +262,7 @@
    "status": "PAUSED",
    "rotulo": "AD-17 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLgzlz1l3Z22hqX89GeUzOQ_VmctgRUdUVn-qhALztMpUcdpTvfmYBfK6-tQYyvIcFREvDUuRavfKbc5taGX87hmsHreWr7MYB4AWo56dW7Cpnjx9T5tWQg8fs427tHBntBvk6NAdHYq2Tub3kK6C1A"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLgln0JO2GKTuF0afEDbEUq0yqeLof32aCALVNVvGUCK-5cuhfSflYuho_qjPEwmhllYpGhDTMw-i-CIpZ8Os0bGNB5dY7xyppURry48J7ccZr-WqZ-7npuhCeFQOwxWTzYIfZiGrgamTR_oytFoGnz"
   },
   "AD-18|EST": {
    "nome": "[AD-18][EST][VD][MXP-Fp01]",
@@ -271,7 +271,7 @@
    "status": "PAUSED",
    "rotulo": "AD-18 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJTNxob_ST-amk2B3OhzYem7GAn3_lSngR2jFRws-QhV8gkd_I6YC1eUXEP41D8LMVZX3mPRU8Huh4FtfiP6LeZM_KDf3XmilEO9vUDgRfsvOejfD3aP1yQVBc2HgCFfuZgb6dpQ_yIRdKEm4e2RjR4"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKYp6zb83juz-djmK9ReLPY4KjMfKkj1qNchDBEFdHDJU03qTnhzus381XTUysORFz1W3HNlUloZCrENL3qwAY9vhkPCmWNiLGt0VHcoRkpswUu3udN5ZHZh0iO1wNeG4-_s7zQ4cPOFkkGgFmPdLGC"
   },
   "AD-19|EST": {
    "nome": "[AD-19][EST][VD][MXP-Fp01]",
@@ -280,7 +280,7 @@
    "status": "PAUSED",
    "rotulo": "AD-19 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIMltxxqVbJKsDU7LVo0TLz9MMBHUEnEnkF1K0xz-KmuXa2cKoL6Zzzm8Y6fE_GwPu3s9-SeElE0l6I5xOBHJ98Rvk9JIGEalwQ0NqCCe7jKcatEhBZBZjRA2F_GnUu8vNJ-LZSMM0WIDfmQcHCkztl"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQI2iciTGiVXJYUMEvHS7QEKN4GGH3S7EJ1etMBqy7QOoy7R6sg7y82FjpW5d_On0wU69mwLxoUcYyAlRfGZu7nrP0r_g46dZHc3pLKaTm9NlbmLPH3f92Cm5x320_5OutxfgdY2V0lJIY3nYdr0U7Lp"
   },
   "AD-20|EST": {
    "nome": "[AD-20][EST][VD][MXP-Fp01]",
@@ -289,7 +289,7 @@
    "status": "PAUSED",
    "rotulo": "AD-20 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLc7PAh8I5HD71ln9KBoaBRBvHjdSDAtJu8Xbjh_HCaXIlkcfZpaJ7GbkhllEZOhabxb5oMfg-BZTg-EdC6f8UAO68P0irqnWIas0Sl_D2SjgjSKydHu8vH2HZetxYCQCQhk8Zd8qeB0wPXHIgadwR2"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLyVahYt9aQxcvPs30xWP-A50nbwr2yiK2pgTeAe2vx5GM_g0sqL0lXUjOR1cbW3kC8LtpMFa5sqVxi-S-3ayFuGMvPYc4yATV4iUO3ewb6bKv_z-A8HbCHAcqJ_bfBO5cu3ta_yCodtNENdiLJvGDq"
   },
   "AD-21|EST": {
    "nome": "[AD-21][EST][VD][MXP-Fp01]",
@@ -298,7 +298,7 @@
    "status": "PAUSED",
    "rotulo": "AD-21 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKjhaCfAtpdtKjJX4_PIPUJt98-6UbK_tBGoaYAkmcVXcIJ0ezd4ARMlJVOgBWNf2adql_O7k6GsARnOlTpsmBwOomJhyzwwHxj0ZU3JucXDJZ_0Pm1rL30PB3wghDxu5POZ61nmWh-eAONqI91siHm"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKbr4K7CQAeMhZbvyip_LNSKVnC67xQzzdkbuCsgLPbG5H9j1s3d5WD6Hi3l_9UggVvYjq5MjJLNDTIaiRR7MEC0M-LrZ_yIusqrpTxbFm4OBdlrx-xU6bubZMAtyxz6CKREdDj48UTBawVyNAXAppE"
   },
   "AD-31|EST": {
    "nome": "[AD-31][EST][VD][MXP-Fp01]",
@@ -307,7 +307,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-31 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKt6zQsKxwV75RzZVpK9rNA4I6kgB72PDfLNSb_nkgBvE-ILBurYik5e7OUZPVntZfHuZPnq3dLuqIHv8xjF9ecvISk2d4xxO8d8v67B-Us5F2es3I7wpZxDyrbTHCOzzfwz_uV-1gUt0JszkYFRk2g"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLSvWFPK2wpyAXastSsCeSm3_5FhdCJXvD6B8JXkU01Oks922qtKjSIgFXDUhMqECDbTwbwOuJWJJZa5yekR8IzzTXpTP3-jGV61s4lvfd7YVs1mFQ6IZnO1Jq3aBGKDJluEKuwK_8PqO-kP-75FUin"
   },
   "AD-34|EST": {
    "nome": "[AD-34][EST][VD][MXP-Fp01]",
@@ -316,7 +316,7 @@
    "status": "PAUSED",
    "rotulo": "AD-34 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKSulPC3cMoPWRmoYXdFT_14aPamciHUEzx4-HqbQxq5cpIMbcVz9C21EZ9x-kStqkgF26_ETErdb95JslpWBTHEO3THo4yVMAt3R9hyPcExJb59q7A6POFnS0a25b6aDWG1VM4uoKTjl4tsdnqM1NQ"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJy4GSShAjxt-9qmU1JcOg1B6Q95ZkEFRMW6tr5ASdoUUirmRCPiFNdtw1MODQE4FTCRRMtsS5HvC6xkRIwx-cNmu40Rb4vcOmtdW1bPYtmDKtyey7aR0_kxNPjNogcjSxUc_PJeGAqxT6zeA63c4ch"
   },
   "AD-37|EST": {
    "nome": "[AD-37][EST][VD][MXP-Fp01]",
@@ -325,7 +325,7 @@
    "status": "PAUSED",
    "rotulo": "AD-37 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQI8T6ihfgKhrAqd1iBL5skGJovPhB2HqRKcZ_lrkgKH1SjAHqTeyVyBEJWmT4vLhnty3D8BZomRoV9DTuMhj8OYLpG4RJULqqulqYAlz_LEPhqqzujg7yFtk2qNGeVvgLYVMv-qXa0JmuTedcP1V3oZ"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJ9sP3pcgWtnL5mAqcPwIKsxvcPF8oFXXQiaNSHgckdFSLD7SpZ7MkgvVOwdCwFP8hPbqEhWoWCW-vV-y1hxlrpFdHRuROOI9g40YxV3bL382FU3fX7LocXB6UaOdJ9eZKFjEnQd1L9IrOTrK3F0zVF"
   },
   "AD-38|EST": {
    "nome": "[AD-38][EST][VD][MXP-Fp01]",
@@ -334,7 +334,7 @@
    "status": "PAUSED",
    "rotulo": "AD-38 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJpHBjoxRw_xEJh79lLtwLB_2wi2bEfxvJqPxz3QMyUeLMUIdqwf8p6krTlSXgIteTZ9h-D1Ok_dCxoCBDpamCgBsB8i3rtLqa1vFpl876gSqoYaUDPh18AWUjsk5AN7BYjvrgg6fWAGfx1QYyBmFO4"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJM4ChWM00MQ3RrwMfETgEG09M4KYms15ko6vHiYx2pcy0AuIrBVOhKV5JpfDnsHSgQM33aJ0AIR58DIjA10z03AKxXYDLcvGy4iiop1924exV0sYET190dC46oj2OCVCpS3sE654AEAGau9MwyaO5l"
   },
   "AD-39|EST": {
    "nome": "[AD-39][EST][VD][MXP-Fp01]",
@@ -343,7 +343,7 @@
    "status": "PAUSED",
    "rotulo": "AD-39 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQI1-SSrCcvcM2RZTuvPBrJWlBwLboX53DhswUJWjEK-aqK_4beiGa_oD1dFah-h8OyAxRF1kFIMOjj3XflAIkPeo4d2druUqk8nR5fdL7X5vLe48hBr3m-5dryOnXe2UNXm9F3V9yw7yc5v7b6qiL7y"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLGekzxOY7FsnUhS6MsOv61Bexx8Q6m3bV6gkJmO1p5Xb6Zs3xU6C-MaNFkpEsLbvfxarTMIpf8CjP1JFHHZxxmOiO36BndTxn_yEOmQAnOt4SAviMw_DxP_mLG-qg3hYVEDhB_werzr-CtbkPyFiHr"
   },
   "AD-41|EST": {
    "nome": "[AD-41][EST][VD][MXP-Fp01]",
@@ -352,7 +352,7 @@
    "status": "PAUSED",
    "rotulo": "AD-41 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJuHa_g0ZX4wOtrtsVaMVYwCvqmNHsAbM3tq7HHKMdQER7orWhnZwQis5gdF5BgnPO_9YQ-BNXc5l5c3gGfBttJts6_z1flj5bkt1zcP5VabCaDynBH3h4v-Lz0YBVi2nbnbh6nMixi9-eGRlObJWlI"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJeTuLBJkDcKwdUjTWN6-a6J3KqBpcZKbcuAUxivPRuycrSIyEVhOY_qwDTwEiQ4Wf9bLQDDJIs7a4prj2yumU4KOuskuhrB9c0llkoDj4hbkEjv8ZbNmuSnGtfQXbV0Ws07wS94Kqw1uKegxphgJTM"
   },
   "AD-42|EST": {
    "nome": "[AD-42][EST][VD][MXP-Fp01]",
@@ -361,7 +361,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-42 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKfC5lu0vq9XOqUe7UArzC_Ovd5mW6cN0TIEfD7ZSqmISXlrFOJ3T383-agDpvKtW6s_PmfHJRVUn_1okEzALZ7VbqEWuqSWfNXtiuTIPbaF0JElmi2aCCzh5D4XTfkXSIyINBBaD_nfFTgs8wXpuVU"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQK_7wbG7hNeMDJ46rVv-GfDoqelfvGdMFYq356MkK5WirhIYjNyW1-FlY4sE9ptUlHC43hWjFr7M-1GGDTDX2buvt30FHCxFwyBE8UFwO9maaSZzG_iAGZ6JmqyTGHYcLRgRM7QmPt2xR7yDZFVxOT1"
   },
   "AD-45|EST": {
    "nome": "[AD-45][EST][VD][MXP-Fp01]",
@@ -370,7 +370,7 @@
    "status": "PAUSED",
    "rotulo": "AD-45 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQK4RxK7Lv-ZMKOOWmhzRnJsHmP8z5byMko0qTL8HM11zDZfaQOu22w8zOwKHbN45JT8DpgffxNtnVomJMeK-51vp4zEUHSDH6vuoIYzTUPWYs4s07TFGGkRUmirZEbYWXWz9s68AgHurTEDuhcjgl_Z"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJzHHLQlWIy2q2ak8x_pFH0mNY-c7YvK3k42w4YyFuSU_GIrruY1TBnVbRu8kB7SQGONFF8uCySUARmADNEKJ1sZvl12LUqyY6s3Ity7UeKV6aiVBFT-M8cirFzdvm49_-gW4Mu-3Kv_8Gnu435MZ_V"
   },
   "AD-01|VID": {
    "nome": "[AD-01][VID][VD][MXP-Fp01]",
@@ -379,7 +379,7 @@
    "status": "PAUSED",
    "rotulo": "AD-01 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKrtZK1npqSPGmGbQUt2_01lAveeYGCphUKYGoMwtVKQUitwGAa16ze12czUfsikhQ8HijdNSSmSUVAOoEg6-PEL2cjcpXPmrMsCm_fv9G-D3yodS-ZHI1gSsRxdqiRlm0y_zHchQ_miv5LVS9o_joi"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIHG4GwHa_c8-sgocGWaGInz015z2nQGJiF1wfeNT393ozAy1Sp0j837_KaSE2O1Y2qSZw5ahpmag22kAOZIEItxJe2Oz0EFzCYg8fRPqEt4kwCTOq4LqUXLa2drOtoU0B592B4t6RDdVMemA95y8iL"
   },
   "AD-02|VID": {
    "nome": "[AD-02][VID][VD][MXP-Fp01]",
@@ -388,7 +388,7 @@
    "status": "PAUSED",
    "rotulo": "AD-02 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIXpqeyRLvsZlYf6CPMiGSJ6EDYbc3LHCeuaMGPeuIgigabXxFpjWf-J5gJTiJp_L2BwgXqm2meUSvr4p8JM6BR1zfIQAkk70sEqPiNXHTOqA3nHyRlUUypiIb1dPu6wGbBmbCnPoTn7hIaPkGWjh_e"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJfD7VAtqrdJd02J7zVulMYZ7U4XfxWyePXMBTua_oBnDxL98pInUB-8NfNokyQ_wRL5CkbXZ3KO3pdY9Insgd9h5I7910fQamEsNZh8qg1EE6UFCrVhQvlkAS75CKQfC6660f8DhUc0N9AsyAm_Pel"
   },
   "AD-03|VID": {
    "nome": "[AD-03][VID][VD][MXP-Fp01]",
@@ -397,7 +397,7 @@
    "status": "PAUSED",
    "rotulo": "AD-03 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJyRV1z7NP4CxL4K8K-dO2lUXzjeDSj6TjmZFLN_C9z2iRm7Gjr1qQXyGwtYjzMwdI2zK1JCf4HeXP_jqxeVKTgn1z6aLVYqRMTQp16lKCREFsYAP1paIJzHp9LSYEojaLFKIEJFbnE-KlOXcoxuePJ"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLa6ED6lic82m0W0w2EAffCf74hUrviDAsxm503f8Qz4qk7ucmjq6vnnk7Lz5iEBWr6eUG5VBVVwmUCFUaZB6qIsbkmdYavcybv_bG6u1m1iU6-VqLdtShimcbAOuMx9KoaJS0dDSAhSwGseWECh27C"
   },
   "AD-04|VID": {
    "nome": "[AD-04][VID][VD][MXP-Fp01]",
@@ -406,7 +406,7 @@
    "status": "PAUSED",
    "rotulo": "AD-04 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLaZXUj0tPJcAA3UBt9CjglK-nqiR1LRGIGlxr1bN8tD25e9JlOALq2_fT7KUcLoDiypd1_BQGJUoE26GFQZ0hOpPCR3MzAtE400Igo21sDE9VwbvxUV8vg4gWPq5oba_jPNazSlt3vPpy3qjXcHF82"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJnbAGLiCHCkraCmLkJmFlfvdwDmvMx4Vplld1zCqJa4hdTpVuC2TE-E665PeUiVjDEQnwqxVZmZqlPZIEiUmoHwI879v5_49dORFMlefmsYwbsr9WS8I90jWmgOHLPodjmp9ysqm0ZGoUPImBy_Rkf"
   },
   "AD-05|VID": {
    "nome": "[AD-05][VID][VD][MXP-Fp01]",
@@ -415,7 +415,7 @@
    "status": "PAUSED",
    "rotulo": "AD-05 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQImR9X2eqYdarbMvk4mcVZmo5OOH3OF5r0oVnb4rpSzfS_sd_zJLx-ccU5sNOkUYC4RmBi1-Ys5w-r2kX5Zgm2bJD-zGra2hhmCJsew7Bko9TvXAnqZTxelcNCBW85Q7XW3MMuzfpYWPeJw4U1Oz7cY"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKzEs_ir_OIJs150myrWgNbIBFPufUXbui2q6z8kNJfiUHAIzb32HalMmB4WQSmBZKUYqJZrHMqm2xXh_7ScTiaN7Cpvjf4ayB9OuncGOXcSiBODvly5KfR6853W5fSuMPDDe-6oDg_gcbY1PwQQNGv"
   },
   "AD-06|VID": {
    "nome": "[AD-06][VID][VD][MXP-Fp01]",
@@ -424,7 +424,7 @@
    "status": "PAUSED",
    "rotulo": "AD-06 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJZ3bbdQ2X-R8pAUpWr4ZaF7C65n6bP5t7-K08nLRU_bbA1aAG159i4KcAndZDP1TpFlweP9ElkVVCp7-FhpMYtxgbnmtFyxrCKePVwQr12yXymOpAzJYOpa0Jhld3NLOPetBwLJT-WcGwKSiTnk6qT"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJp9xChPiTSGRB8e7sPYP70EeCGcNatCsvyKOMoueopWH-1SAhAA1Rwkw6bZYp6WMJB0QggbVFEaYJhZQS2Mq_udVCeWLyKnKOv5xIri4lTLBgG3QNki0K4vpg-e8FVfLKJRZrRE6FJ4PMD6HCxdeeB"
   },
   "AD-07|VID": {
    "nome": "[AD-07][VID][VD][MXP-Fp01]",
@@ -433,7 +433,7 @@
    "status": "PAUSED",
    "rotulo": "AD-07 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJZ3bbdQ2X-R8pAUpWr4ZaF7C65n6bP5t7-K08nLRU_bbA1aAG159i4KcAndZDP1TpFlweP9ElkVVCp7-FhpMYtxgbnmtFyxrCKePVwQr12yXymOpAzJYOpa0Jhld3NLOPetBwLJT-WcGwKSiTnk6qT"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJp9xChPiTSGRB8e7sPYP70EeCGcNatCsvyKOMoueopWH-1SAhAA1Rwkw6bZYp6WMJB0QggbVFEaYJhZQS2Mq_udVCeWLyKnKOv5xIri4lTLBgG3QNki0K4vpg-e8FVfLKJRZrRE6FJ4PMD6HCxdeeB"
   },
   "AD-08|VID": {
    "nome": "[AD-08][VID][VD][MXP-Fp01]",
@@ -442,7 +442,7 @@
    "status": "PAUSED",
    "rotulo": "AD-08 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKiCWQmTLdLPD17K4mYUYDWNpRYOdmT3Qht3SiWfNTaY280XkMX9NZFX-8x6fnLqOd2hs-We4iOG06yw86MSvCjnFWLk__XHmmTTFYdEya4JaosYj_fHycmpbcuiFry6IJeyf-UtviDdZB88evhi-3r"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKW3t9j4Ux93XCkBhf_PRkynG6uXnlETbSNIFQvcYu_wP_PfQ_mJGMGBO_dKu3cCyI-k57SGudDnX8MVJ8RRrRQ5g8fh0kpRKUh-hTbnxacuuQlkL8C5HrG6Kg9-SgkNkr8mV7aYUQzk5ZSje32rm3s"
   },
   "AD-09|VID": {
    "nome": "[AD-09][VID][VD][MXP-Fp01]",
@@ -451,7 +451,7 @@
    "status": "PAUSED",
    "rotulo": "AD-09 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIq0XKQI8370ZAZzZA2OaI4seIFwr9tW_rLM3PIaivQ2X3TGpdVBcElyvt_oY41hRiw2Hhb6Z4cmkr0p8KDyY6hAE2LBvL6OGZff9SStCgcD4amHgGe6RpZIE7S0LnJOy-zfoUfqKdK4uX7oUsCzcuJ"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKCNpFNuQkSVs_cLUzRLiutkLoppBfnqtjauDcgQ1tUMQ3DkRG82KmsyUh1bXZFqQxC4UR6AZPRK7sZQiPm0FkgkZ00XxkPJqS3mbPiPG1j8XCRdXC0ju502p5usD4xad8_tlHv-et7FmMwa4a0zdaL"
   },
   "AD-10|VID": {
    "nome": "[AD-10][VID][VD][MXP-Fp01]",
@@ -460,7 +460,7 @@
    "status": "PAUSED",
    "rotulo": "AD-10 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKzudW0Mdja2Zx0mryY2UcCEVzAkDVp4y1AcQViyPt7O0KYBoKs2el_d_hYg-P7c3AMCuDIWbqIsc4lnopN9YjbFcuUpL8tvv5jC3uQoT3VrC_h7P7maqQaSN-XXH9nYzwR1mk96mzMsK5rOUZhq1qZ"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKNCTakXSgqCLE9eJxRHAVKoGS3wq8AUZqwgBl0Rm_8LvhpOaLf23Wp82mi_zE8GopfVIpXZIayiqNMdw4PHk8UvyGPlClp8ZQ8i8u1gMAwVVkTwUPn-O8326YKlECbZWAn0p5hA-bK3fDIUmWdCo0Q"
   },
   "AD-11|VID": {
    "nome": "[AD-11][VID][VD][MXP-Fp01]",
@@ -469,7 +469,7 @@
    "status": "PAUSED",
    "rotulo": "AD-11 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJ2ByJK-oGSYaTvYiQjZw2mN8pYiJue1x-9oaruMYq8NL3CM-u4vC5ITpPxICc8IjzaJQcLvIKqFRxO5JvpsygCngFu9FBV9Ubgcx2VepLO8Byh9jDUxAOgZ2kPPS_83YAAUVw8zgg94kSluYrsziHp"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQK70jb4gddizXzS9W2F7UejYANlbZ1XeC1f-Rnkg0O0RdbyUzG2LOw6o0p5JutZz0ky2yNyWUZ3s8T6VHvJAA_TpkraLZ1yHZfJjOn58g9QemCzZN5abbIQxQVh8cG4E6V8M7LjlLbO7E8ANOsBLLbn"
   },
   "AD-12|VID": {
    "nome": "[AD-12][VID][VD][MXP-Fp01]",
@@ -478,7 +478,7 @@
    "status": "PAUSED",
    "rotulo": "AD-12 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJ97lVSsAUjGo2Ja-rBEotMFmoN75UUwGySbe_2EWRlW_xKve408x9ST5z2vPxpT_jn5so6w6BzlCarVWLIYCrm2rax0kvvT4hklE_MQK-A22fXvgw7wlJeTPRIi9nCrKQ86_08ihuArJPLQDKKSIE_"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJQ3DB6TyJw-hybHfgWsGd1aQ0YRcaO_x9KTzkHjfG8ok_T2SQz1z7qqolwauR4vXd4H0c1nMergfqkOhcj752oUx6sF25_1xuhuUcSeofraJKVux_LMvywG36roYwUQc2dwDC2rSorp0tOK_24q_t5"
   },
   "AD-13|VID": {
    "nome": "[AD-13][VID][VD][MXP-Fp01]",
@@ -487,7 +487,7 @@
    "status": "PAUSED",
    "rotulo": "AD-13 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIfow6j8bAUFEp092zUxYfAMp6MdZntTjbFIxc35p7rIetb2KZoAXTYq8OkzCxMl21PAOjCb335AmzMAPB_7ZfzlbW20ya8IoWHb6mdTSQ7Lu2rbcOnOT2JGtXOjSJ6m_I63akNabRMnjbMtPU-4bSM"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLRmM8CQ3Wz2F_xI4GRRx9stX490F66vu6r7z4favThnxzyiVeovXOlCjXpQ_h5Z90IQcrpQRjbAlrPsNkcVNrKVnKX4bzCUyGTGYu2vKQvJeFBLSy32ZyKYr-Rj5YxvtcTj7NOkvPQL3venqkGUVo7"
   },
   "AD-14|VID": {
    "nome": "[AD-14][VID][VD][MXP-Fp01]",
@@ -496,7 +496,7 @@
    "status": "PAUSED",
    "rotulo": "AD-14 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJ3liaHaD5cEnyhOTzboG0e2EXo8bKUa4PuJssG3HliQz30ggdO0yHj_RmtRmadryr8QsFa6WFsIDLtfU8uUyQ3fJSE1uAxYFMyA7Z3yA1G6g05EAOvDTsAhF-avk2Qku4tRGeNPmwqSvxihJIjwndX"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIZ5bUk-ilfpz2ns15X8Sg4LvzT8t3KZcp3bNyoZGejhJ3vk1jn_c5KYRwp4TlfdpNiw28gjtEPqO_MCma_Ct4NRdMUU2Hu_jR5sULl-OohThGtmgHGgaQVnVm_CpW8NRK6Y0Mny87HLHblALT4p5Ue"
   },
   "AD-15|VID": {
    "nome": "[AD-15][VID][VD][MXP-Fp01]",
@@ -505,7 +505,7 @@
    "status": "PAUSED",
    "rotulo": "AD-15 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLw_Nl62cr1Z018vfqw8mLHYdz0DazPxLBu-EZk0JC0wBOXUt1lAWXPFRaRwXXQlTwFRWTCD12m3sU1iqh5OQCT0-aC6WHBfseRLjEOwAQpJCgPdzYKXoQ_JFyv0wMenVQFXgVxq6ZfIgAP52IhaJWJ"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQI11oNFfuGgd1eZj02CPvFPsagLQIN9jeevdlkx2k4OeMM1pm04GTnHq4QugLRq4czek1jUrjuvLG9k3CByKFMh9lDQMMIM0JK0lrlPwQix7Q-DWyU8ohxQshnUb-VixPMsJURdzqXtk-qzME2bduld"
   },
   "AD-16|VID": {
    "nome": "[AD-16][VID][VD][MXP-Fp01]",
@@ -514,7 +514,7 @@
    "status": "PAUSED",
    "rotulo": "AD-16 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQK2hrqRvzEag7Y_RsByK5Er7R_1QQQc8sz0-11vp5qjWPAP2uda1NKPHzQ1YaLaMwe78lekM9hUrweT9XqhKskztN-bjAxt-nmIVfW-NXsctMkxVoHgfsp8oZaBFNG-ztI3tDlYnoRqtYqCuwxmconC"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJvUZHAcNBSzVygZHVMrpnNrrNT-krVRj4AFN91aa6mDxD5cIgK6Jg5sFc8k3jEmOOprm2jPxXy5znVEgBK-i6P3HB3m_sgZn-apywpVZByAsqJy0bztUMNIgc2HOrtdHM5VW96M9CPrPGhntRhFSWe"
   },
   "AD-17|VID": {
    "nome": "[AD-17][VID][VD][MXP-Fp01]",
@@ -523,7 +523,7 @@
    "status": "PAUSED",
    "rotulo": "AD-17 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJ4Nls_gzQm1kbyzIrCSvqoMKNJU822rQGoxnigzinaWIJYbgkiH_5VArHSafd3Zn9TykNujI1HyZtFDlpbkXc3GGLv8ICom2BRf_zjWs1Yi11k0_SW2XJM94m1uWmGQfJA-x79mddtEzE88joCHmTk"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKp2HYYJBrBine-GlRpFN2-_y1Xi9UNxjZgsWujFY_tLIMRqlGvB5tSYuemV_GHNNlYNf_hZoFi_P8K3C0m6jEG7kwpk4P__RX8L_37zXrmCSeEK3C1g9z_M_mWzXThZAluy-jhikyURuUm8qw3yXGC"
   },
   "AD-46|EST": {
    "nome": "[AD-46][EST][VD][MXP-Fp01]",
@@ -532,7 +532,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-46 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLjY725C7C3ozJIVh49ng687eFhKIOPPmpxmJMcMSj7sSMOu_6sK3gU8DJjpqfoEFu7Ua-gQoKzjN_zy4zXKpY1VhsQVjM5AjG3uAiVClbIsH2kQ5n6J9yvwrl8dQoV0mdGXwWlaec6lpAY3JjeBxKw"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJccQUNaNfw35Oyhab3z3Klx28o0xq9cZBRgq1J1c8zSEheXQ988EpqC-NSOGodPgv2aOz7FbC_wbMZM45g_N1iFeD_FoIv4L_QLXG7GTDnUqqqyjnjgQz9yzeCEf-oP5yqfKmJQFgYG-J05_p6FBkH"
   },
   "AD-47|EST": {
    "nome": "[AD-47][EST][VD][MXP-Fp01]",
@@ -541,7 +541,7 @@
    "status": "PAUSED",
    "rotulo": "AD-47 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJ89TKpxD0J0UTh7EBqWNaD8Q76KiOQDjgtly79Or4kKH-sCntn18QIb6tj4jRP_xU6vymC-2d2brU2-mKfoS0dfJrkkwO5sLKcgcjX5RQE11jWSmACgd5cdnrRSBVT_Jq6SeMkw6VZXlDo9WQYMRnW"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKPRwCzevR_yrd5_o3ESsDIxsS-jN6lRlOoDMpOQL9R2vadZkXZw2uEBuDezP90zW0TdjSZ6MxTT_FfR03WtVmfKuTqgvuvhUnwbqsgsbGaMFIk5oYkb3kaSUAYUuTBaPZevHMhl-vNQUGCKPllLXo1"
   },
   "AD-48|EST": {
    "nome": "[AD-48][EST][VD][MXP-Fp01]",
@@ -550,7 +550,7 @@
    "status": "PAUSED",
    "rotulo": "AD-48 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJony6-_MCOgX194UYAbMJiybQ4xWOxxkb0stFzLKf5xmUO9kIHF5p9JeR2BfLtI4bgzjzfLPOgi5PhYsyPl_ukSIV4qF-kvr6e3vuscR0RjV-t533KHHoPP1HX6ZNZQstd19DqZ-zmW6gFO7pXao9V"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJ_vNEtE8SDniVSmrO8ANLp6VuSH4R7MrcSpf9ckMyYQXbZxXmNkt5GUQmO2TM4_u0qRp45d-TwJ05it1WaAgzD2Bsboh9_mibj-ApsfhLwub5v849XVrBfUk0mw9-cCl4WIQjMKOVUEIGfqvHHtpNh"
   },
   "AD-49|EST": {
    "nome": "[AD-49][EST][VD][MXP-Fp01]",
@@ -559,7 +559,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-49 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJIp8HEObrIrR7dsEaNSfqftPTqjyOlCRgoHV1__F8kHCsiDc7yFeyZSWX0yoU_QS0hxOEsw4xWcgwmJx4eIUPO0OjV5UTYcE4GNE2eTL_7axLKvWNqdyIUQ0ooKHSppBsSvGX9ECtzZmhC3y1Ib69n"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLYfVmz5I7Jt28OxIxkq3y2g5f77NQXl_3pU7y2eLrZjJusisVtBkof7KxRhlk8DarWlyqc_ZftDjaSxtIBxaEC0OuXbXjcw1F6Qa5FbTqyOLxCaHYQgJs-fnIGZ9cl9bIU8CetlecoQIgElgB0U8Zv"
   },
   "AD-50|EST": {
    "nome": "[AD-50][EST][VD][MXP-Fp01]",
@@ -568,7 +568,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-50 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKvpYugz8IN6E4utdwtHgrX9cVtyf5FCH5p9OegA5bfzVS1_PTsHSC2PM2LRA6-BiHEzpoiu2Mi-fFiLsbipYa1ttnn5qTcYWWRCo_dCGLBIZxbHR5F_zDpcNlk2Ue-O8j9rL_n-u4c_2RQJhDgWEy1"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIgdRoC_iSN9qch5LWMLGrgQQNbU97R_Zk9WCOg4CLp92q-WaBOPhTawmdTv2JUOTRKmLjbMjftXFWBCEkWxeCXr_YjHs4iI4F2TUzWnARojVIOCEzWUdCPOBShupjFw6OJtY8Zo59Jw3-puwKlMBB1"
   },
   "AD-51|EST": {
    "nome": "[AD-51][EST][VD][MXP-Fp01]",
@@ -577,7 +577,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-51 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKZI13gZtlvfn414roghQj9j9c4vWrs-ZFUhvl--V3qAhOc0R9gAyspmh1UBoW7W9t7zgJXkc9wnCr6YyHsPeeHqN8HWc7Z6GCluHtVd2KrhpUCCJeIlWg9JeRLe8UIFPna9BaJok1GLIjf8urzktna"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKxiAqC2CpKQ0uwstXPJhyCmdb1setz-Wqk4w4EPbhl9vKJ5CSl3RSm55gGG2N7Cn3IGX9ndwq8oHNOQBOKnnVQL5XWp35NdGxOP2NGl8zIAn9e1UBLTcKdoJ1dtBgF3rO26yrkF7at1ib5ZNFNsYgn"
   },
   "AD-52|EST": {
    "nome": "[AD-52][EST][VD][MXP-Fp01]",
@@ -586,7 +586,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-52 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLDGAbF0uEddyAPaw73nN9H6NQGXonQA1bWtMxtNOEwjucXVbNuGxw_-QGYQALCSxawkATVSR0fxoWpKW8glUdsL_pgYpxVNzdyn-1XnPjg1C4AAa4euQKQhAY7ynnSmnXngnwlIzrIfiliVVSbFMDP"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIxDYf1-ObB2acPTDGlDKVIfloXCzLRyH7TNUDZ8l9cM515OM-ydfBoSepbVE2CxWrYLQVHMi1qyXW-Cxj8HdhNjGkduUMMA4UjF7qE-cILcWfWlcf_S6uBUzlqz6yN9mfhHHOp5PhdzJ00_MdVqm7n"
   },
   "AD-53|EST": {
    "nome": "[AD-53][EST][VD][MXP-Fp01]",
@@ -595,7 +595,7 @@
    "status": "PAUSED",
    "rotulo": "AD-53 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKY1Ja2BsEGWfOk3drlV-S67nJBNi_NI2o-td8U2XEX1jmt1V-58K69hirn9PRA8mV1_FR8LfzNRTZnKumYRaSxd8zm4dgWYwlnvsKPl4P6hZyWNkljMMz-tS8xir89oVyPnNPCyhJcqJfCWsE0MPeY"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQI23yN8GJJi8L3dTX7roP00qV6-eXwx8uginpdRkGRK3L-fOcMYEgjTjufapzsjL62pniLSkX6M-Ncm6TncpiKatNKKj7HRV9pybX3VykTP2mN_h9dqNVRrP8v4yWvm883Z-3so3X73Tjtud_FOUSKy"
   },
   "AD-54|EST": {
    "nome": "[AD-54][EST][VD][MXP-Fp01]",
@@ -604,7 +604,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-54 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKRmjC9QRag1dLr7z0mY2LHmG_pgwc4WFFwIwitXm2ZRCwQWf6PMYCHDENKS6dMLvIx0ftHsx6SdCdPD3RGkmWi1rpddTBSjCTQgnwRRqyYpOgQAIgwHWc9pQm-LyS-D--FPPdSbC6CknRS4K8uUaOx"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKQz9VQNTBa2YzYacpSoSo_dZHMg5xZ-0hz9BGXsISXIwHCZUqeZ8-3QQFSkHVSuWW6BdtjTHUIdAcO9QQCc0xSnNBfqmtn2BnMfu7qjaMunE0rriY0WDE8k-2xKtrzeox1jFU9sxBnVMU4QIlOV4Ms"
   },
   "AD-55|EST": {
    "nome": "[AD-55][EST][VD][MXP-Fp01]",
@@ -613,7 +613,7 @@
    "status": "PAUSED",
    "rotulo": "AD-55 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJn_kdP_5vYMYqMNUMnACr_QEm_wgGjUdJrlWluQJzNeJsNotIrQlMJaIV2OO0I4ULIBJFx3_KH1ryQd0TTxLib4vJgHapT_7gAKYjGsUWiMCt1tJysXH9q_aJijnwUt61VMDfzFnSw4zRmWO3OTlAN"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJAKh3o3I01vknDhxI7PI_JgzyywCP_tzDm__jtYtYM_slmNbMrnLdWvtKyNlJ7TAlzfJqESkMIiDVEYUoqs1TfiXCDDwGmptbc75JAdn4U3bo7CPaBra5TI4Iw8g-nT9YvIKJNH3Vpjv_-Kt-fAT_H"
   },
   "AD-56|EST": {
    "nome": "[AD-56][EST][VD][MXP-Fp01]",
@@ -622,7 +622,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-56 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKLLzWfOwwngvJqIzr6ktO2CYsmH3Z3zfG08TRwrjcvE9LQsg_nbQedXQTHXsaPoVgLA06WHF0Qo0AIaIypLlMZRN-C04zAKHLHyJUIKkjVfId4UaPwFoZX37dmKmJ4C-01AyNdc8AZ3VBSSe_DhcHb"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJn5cfIYrATN_GAltETVjlwDWK52zxcZ5QbTaXbrcbSipadQiqs1u5lrbwt8bFLH_z10iKr32CJYc7ahRgj4VjG-vU5lgGp5a8BomT-oqUhC9Oh9-RJiukMn3MZcuwR_ZTEHdHz3coHmu0GkyzSN0rk"
   },
   "AD-57|EST": {
    "nome": "[AD-57][EST][VD][MXP-Fp01]",
@@ -631,7 +631,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-57 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIUTiTra9VuDX5KjuGa2zJAK0HipPHE9Q6eufS7haCRHIaSql149XtEUetaTF7FEpna15FeJP34rRQ8hLak8jaej9Qdfw5ReeHzR1runKuZVVd5OiNpy6KYp31AjPJpRRe1RZRLnq1Z2HI5tu1HjyOj"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLx_ibqqS0wg2lR7m4aS-_S0M4rOXtyzWB29ONlOEmxxfYUgl-e3Pyreqz0BrNq13bhMDLq07Rgqvbm78eNhPmNdKMb4tL__kRqTLT-jOZlLFtB2_dLvLurAxqPirI5vVL5-63tjMSZYTkH03lF_V9v"
   },
   "AD-58|EST": {
    "nome": "[AD-58][EST][VD][MXP-Fp01]",
@@ -640,7 +640,7 @@
    "status": "PAUSED",
    "rotulo": "AD-58 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJJz2RZxKJB2hwVlK4lApSmNHZHPp6UTYRUGQZYQXswUmjPZdqMXIZTM-LUq0s7UsbTgOh2XZ89qxYFhXGQ2BzIAVii0O25c7qiRkcnHSKF0QvKd_6RdukAJmMdFCj0ERP4bX3nOtTrjL7E1t1G6iob"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJmK66ecbYgGfoDgbEFVd11jJfm2tHQn-gtZbCsjYm5HXlBrWKVpoTkJCjD2e0WMnTf1GhFquNHxX82zu_Mxh4dECVh9z32TVNosDN_GaBkHrbFnDd-WDgCBBkhZ_3D2iCdRLwsdw4KykK7XAqYmoCo"
   },
   "AD-59|EST": {
    "nome": "[AD-59][EST][VD][MXP-Fp01]",
@@ -649,7 +649,7 @@
    "status": "PAUSED",
    "rotulo": "AD-59 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKN6JzGkdP9aomWpgTdFnIYpX8BqhHZxd2DJ1kduZOBt1xQykzBtj6Ns3AxtetprRWO_hir9_cs5idMZxnzNMKOlKE6YlJTkAC0vksHV2yxEDg4QRJO3-SQsaC5DQatfjxGpsbagIsXHFiFoCQYVrAZ"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKw54tUGumazP0kBFcHzF9c5tilQJ2qVAjtBABVjdinQtyAWsbZWvwqRhQbGn-PeFjrAoOcJqqHVMVQaPdJAbmkvq7pr_hlCn47zJ2hE-pkgZi6J5HrE_Ota8CrykLST6Z4bI-b1Wxu-ebs3gqBUUok"
   },
   "AD-60|EST": {
    "nome": "[AD-60][EST][VD][MXP-Fp01]",
@@ -658,7 +658,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-60 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKN6JzGkdP9aomWpgTdFnIYpX8BqhHZxd2DJ1kduZOBt1xQykzBtj6Ns3AxtetprRWO_hir9_cs5idMZxnzNMKOlKE6YlJTkAC0vksHV2yxEDg4QRJO3-SQsaC5DQatfjxGpsbagIsXHFiFoCQYVrAZ"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKw54tUGumazP0kBFcHzF9c5tilQJ2qVAjtBABVjdinQtyAWsbZWvwqRhQbGn-PeFjrAoOcJqqHVMVQaPdJAbmkvq7pr_hlCn47zJ2hE-pkgZi6J5HrE_Ota8CrykLST6Z4bI-b1Wxu-ebs3gqBUUok"
   },
   "AD-62|EST": {
    "nome": "[AD-62][EST][VD][MXP-Fp01]",
@@ -667,7 +667,7 @@
    "status": "PAUSED",
    "rotulo": "AD-62 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKH8rp1VtctdaRA_092wxqoPJDA85S2ic-34nLXjtIL-mO0Sb0f5Tkgv9YC-rUHoROqQUf0I9MEU8Ku0La84VDDxQk7cFxtfjJoRz4WNNSUE0K2NpWqF3RwxwgtvXKGsmErM7SlO6DuYT11OvGyEyf8"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJuQ6DxQD68CX3PipQhEr6Y23Ye2xYPpaqTwJvJnL_QZsyw2J454ywZeniMJQeRjk2B4z7oCLN1b1afbu2B8UkZkXQJT4zi0s3h9aqn6Cz_TjbMO546p4DjwuIsf02dd1-itJ3aasCmne1pPKD1NFkH"
   },
   "AD-64|EST": {
    "nome": "[AD-64][EST][VD][MXP-Fp01]",
@@ -676,7 +676,7 @@
    "status": "PAUSED",
    "rotulo": "AD-64 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKhgGUa0wcYsBPslhABsa8aPnPXPMtkUWxnw3GWHGDAC2P4pl2WZ6AtyLo3QlqWGbCf4k_WfN26TcT5cD55Mnu-JIA4ob-ZO6s5qv-nMgFN10NtXvacWUQXDxBhHMg0HcPErHlj7wxPnW0u7prSnDzq"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIXvv6eJ7gNXk-eeOObxFovoklNWx2Bqrag9R0djzE4RQdm6xgrbe8vFEkxBXR2NF1w3mREQgriatEpB_aYgwLkLOUCc4wOWYCrGWklZuA-SxuCUI6h4S-6B57Z7oWIK4fteWmDRptUhu2Y2-xMBviz"
   },
   "AD-66|EST": {
    "nome": "[AD-66][EST][VD][MXP-Fp01]",
@@ -685,7 +685,7 @@
    "status": "PAUSED",
    "rotulo": "AD-66 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJaAGNKpeOQTz1XHoaQxyyEALWMX42SIYjQ4tGukLAibPOWaBF5SlqgV32Dv8EYew4C3OhxGTz3UcmUz_5TjAQwOYE2jRr9_8b7m37Z35VpErpFFCYkkLHF1dvwSbZkpzKDfO5Std7TxCU9fGr5xt_8"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLPUdUDDnUOKAV9Ar3R1cqig10vN88QaS9NCnbD47XbhPkQzu0Eny28599fJ4jJJFBQ7QzdjFdMEYtwM3B-xwyIkTqNLjAF-FRqgYTygqpLrz_yLMv6_ZYgrmrR4bOf9SS9rBPqaMe_w-PZAdAeGidj"
   },
   "AD-68|EST": {
    "nome": "[AD-68][EST][VD][MXP-Fp01]",
@@ -694,7 +694,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-68 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQK53HEydsMFdS8mzwCF9W2jEMXgz0XiT6k1z_Vil4grsnQ4WBNmdduXM4-Olmon4RDC9VlraH5HxIOuKGfk_N2GvgkAVA1txcc66OIFba3cONOOmJzSw87kTicanbrIHm-s5cjIyO-QKURl4HLC2yPm"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIFtPbZ_5ZRkfsRyBGAT0EjoEUst-JJgRNxsXOOnJctUvNA08KpfKjFoveHG7D415eDKrEXNFjX1xeEi2PweNTPKEo7Q8WxjHM_XUwc7RHPQ4Qte7_9ghK0oa8J6BJNcjeAmpm2oRgbLP3ti7Vk4qwV"
   },
   "AD-72|EST": {
    "nome": "[AD-72][EST][VD][MXP-Fp01]",
@@ -703,7 +703,7 @@
    "status": "PAUSED",
    "rotulo": "AD-72 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLTbaizyZ045Pma4IiTR2cUPKYZoOq5XaVrLD436ez1ptRHTWrcCJUnezCujmUWzAVTEUcfXMRPqV9648jfWMJAKxneFCKHyhv4_JPH8XfATdfCmmfdlq11HenjpDGXk0i2RIg2htnH0P9zZpsuB92-"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJqEjXDKqHjwsTv7mCQBH8qj7joHDruYbyDQIwMqh0Cd131qBAb1JbSKjk7q2FqBrob9EU6YFFkeHKPx339V_RA1kJRjPqWBgb3U_L57oEK7ise45xDFjulBlkGEfCPYMJUcRj8pz_Dm8W-BREBfPQd"
   },
   "AD-75|EST": {
    "nome": "[AD-75][EST][VD][MXP-Fp01]",
@@ -712,7 +712,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-75 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKT5uzSme3_hsR5XdhYs1aByzDaOD36z6Z-xrjAICR2nm5CQVaFTUs-ADK0PZxOgvW7TfPw6AiDd2B7L7KlhdgZKTNSfIfw89XTv3yLvBglTiAH4_4OA3Wr4xSNS9O8iTPAUU195hye847Bj3HTl0Zw"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJn4mzb2RSXHa7yplLsnOFWEESVcfhn95ATHCrJxfWKqwhEcb3Z3LmijZuWHv_ak22qFupPexy5Km2x2LYyFqH9fFk2DcAVW6ThclMCWrCkt_cWEyeBpbPlaOYOQHnEpx57ud-X80-TNIGuGSlFooeO"
   },
   "AD-65|EST": {
    "nome": "[AD-65][EST][VD][MXP-Fp01]",
@@ -721,7 +721,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-65 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQL1Nz9jwg50knlaXgcBi6fNcHcCA8rfTAjo8nyc3BYIi2e_WgEscXXLcQH5fYvjYXpAmYR6_gHligBpCklb5A7V8HMrPJEqyj6_oo68gp6k87wffG7D2dFyZXGW5IzWUHtWJho22OK9Lrt4HPZ4DB6U"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKrSGnLyritFueziMR4Jquvaz3LvGhyRMT-Jh2j-LbkJEMCYOS-6HUaljOEDAtaILUa7sO6WwdYpNaQTQetiEVh-Tqo1gbBAQ38wPHX4kNXpjXELjJeqL_lFUz6hTOvDkbRu1sOe0boSFmgYf4dX7XC"
   },
   "AD-73|EST": {
    "nome": "[AD-73][EST][VD][MXP-Fp01]",
@@ -730,7 +730,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-73 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKLnDaTrNPl2Sp8BecNloVy2T99tMZMM0FfcmQOc9Wpz3zdKZRV9D6UZ8HPmHC6U_ecY09jJNJC0zU91Ud6FwtbcGSlhMejfDNxjAfP3vytFc_5w_dUsBZrUuIhRh0UpmK_4th3O4XM57sG1Kn8K_TS"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLPhrGeW08cHsScGc17YduhME2S3K2bDo9a23qGhmFdjKJizWovRmIYbYuXpT-yWHi22T4ha6J-an5tqt6lbqbXg8820ydKKoUn8hxgRD3tXb90KVw4UCArz5VsjhB4sNaF1xWXhc5jSLPQbMRNvhuJ"
   },
   "AD-78|EST": {
    "nome": "[AD-78][EST][VD][MXP-Fp01]",
@@ -739,7 +739,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-78 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIjy4nQ2LZIQI22Fcj5n_pIAGnI_UkuR787haoL8MTGnnb6pijupLCcNVijdksFrgsupijsnZnbzn7rqx-v4fr67c6Ya3e1GndjkeXITpd2i9tYK87CHEzJD1FHwzYHPJbxkoSTGQ06BvPp_Lga9yoQ"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKbhWw1Dy0U4HUDBYmZ6jnuVSeA48EntW31Mu1kBkuda1PImutXZYeDqIRyeWFQw4BJ6ohvMvgY_B885MJh8dJpdTsVeL6WTQa5pC-TdZY8jLg2KA6B7f6qQXeiNk3ZZq1gutbqiKK-1OUdoIMZHCxD"
   },
   "AD-21|VID": {
    "nome": "[AD-21][VID][VD][MXP-Fp01]",
@@ -748,7 +748,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-21 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIduJW5ytdrM3ff6JC3OAQcm3HNUUby4eyen5CMNj_r3bu6x9tnEgYQgl1-cdAD5_5WK-rNIFLZwqJ4poIkSH77YqYAd839OPLlL8GCcwo5kgUgvLINTl6hzOXdcDooc50x7HfRSaajA1z_GrND2Z10"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLVT1wCEZHamYmR31MJRvnoqTpAwTXXzoAOEHzG_8kisCaSlUdqkPM-j6GNu6YjkXndowYgKZuzz4I9G_29I-b8EQCzEDBoGzC-jdpEWaOZvHAMf7fYh_p9F8ByF5SNmOM-Mb4UGC0rCs-bNYAh_O-e"
   },
   "AD-22|VID": {
    "nome": "[AD-22][VID][VD][MXP-Fp01]",
@@ -757,7 +757,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-22 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJ6VGFgSoLeaTkCg1NEEDzius5mpViLW8gRnn63Mp_jq_C7_JkQJQXOO3Slb52t1pIQilH_PgnlL_2bKH-oPKibnCdBTO-gkOAaQZ5_5jbdTIDA_ixZR6B3qaAwipStRqr0yXcKON8I3isaYflJmbmf"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKCx6x83D5RfCXRZxzDrBHCXXaOAd93C5c7F-MerKYu3V7MRpbJuIV6XJvDH8QDzSLOKzJkbSrnLZ_u9Vrfh6pt_3lW2V6MgZjmeOZztqNb8df4NCBwaIcpY-9GBmZLlCNbfqGeMpEp61sRC6QKoJ-V"
   },
   "AD-23|VID": {
    "nome": "[AD-23][VID][VD][MXP-Fp01]",
@@ -766,7 +766,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-23 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQK-jhqPs_eavT3d8PWoWlHHgsgkyjE_uOjDG6xR0FIessV8Y6FrVwhuwyJz1CcZxwelUpDynElzMaSdKCSREiPAqPS7pC57VGO-dM1oOATyw5BtM8Ie2AfOdLSJ1dC-lBGPyxCix07QdYPkRwpnMu5m"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLxK3qVdFkynE6z1UqRkLjd-VZsldLR797JMxxhD9hJSL69UvAUA2T57iXIYkUZE9ACsXhC3wHHUn4totqQUUzKtHHOigf1S7SC6rAXZX25Kwszithtv2mTlm3B-H9xDGnOwjFaqCdmiXCIpErAtz-x"
   },
   "AD-24|VID": {
    "nome": "[AD-24][VID][VD][MXP-Fp01]",
@@ -775,7 +775,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-24 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLYM1ElIayNDA-v7oXIqFERvFaCa9pIqZvUdC-BgExt_VAMYrh3QtaXUiBsqnFEfTqQ-I5iHnZPlAExnx2poI3pRvfokP22Iumls7Wx7-G6_BMsmcEqY579aBrHdHWII22w9J1H_UvvNxVVHYs3bUel"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLPacU0QKoxrg8jO2gcsnwEcQVJCL7UxFKiylwak4FocdtxYt3tvT5sSdka8D359XtKeqZ_2-bCHT_255nYDNL7968Zp4KtpVAILn28oKihYKbTSxHQzHfqJ6kCxrNUDbXeVTRPxY0SUsrdZokokYaj"
   },
   "AD-25|VID": {
    "nome": "[AD-25][VID][VD][MXP-Fp01]",
@@ -784,7 +784,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-25 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKd_zDEJAdjiI59Uz76oFdtMIIN-JFY_AkvIjUCqZdZI38YdkHIH8ZEDP9iMr-R5U9Zr3CDz3YXcp207CRWi4CWBQBNeBx2pAdsksl-aKa5Evz_KuEJdLvHiYOFK8CQtdz5EnuiiEPORr594VR7sehw"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQI7QTwBcWcdQWyrIx7XdLU1JaPcEepMfQ4kFBxPJN6I9sxw5neQlStGgTVvYOPP5ndzOqvkQIrTD8eZU10sCYZ5t5-iS1SdA1x_SqY8evnU8O6foBM4n2s2XbTPTkx-Xh_4mKdXFm35ggx2pQV9JdSz"
   },
   "AD-26|VID": {
    "nome": "[AD-26][VID][VD][MXP-Fp01]",
@@ -793,7 +793,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-26 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLTfsKhptmM3hhjvU9FpMWNF_JZ0DbeHb7hizUpq1zv920mRlXOLJ85ZdawI7FkniQIeXPjS8KpPtH14Xxjlq1VN4Ej--3qxN0jru9k00-QAJmuw611kxqbC4Z-0aYMJ_ZhtEi0OD7wn_SJGkdHD7oa"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIrjuCqciB6nUpcfziR4nLhVVnObG-mpFthdUtlxoop6LoZ-qjRm9_mTaeXQOhufwkkHRIrVXVaALeMPE5FhEtbeBgfOdQZXMWtP1QEq1x0OUfO89inB32_nduoOsKu2eniably9Jloq11fcuEChegk"
   },
   "AD-27|VID": {
    "nome": "[AD-27][VID][VD][MXP-Fp01]",
@@ -802,7 +802,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-27 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJ6VGFgSoLeaTkCg1NEEDzius5mpViLW8gRnn63Mp_jq_C7_JkQJQXOO3Slb52t1pIQilH_PgnlL_2bKH-oPKibnCdBTO-gkOAaQZ5_5jbdTIDA_ixZR6B3qaAwipStRqr0yXcKON8I3isaYflJmbmf"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKCx6x83D5RfCXRZxzDrBHCXXaOAd93C5c7F-MerKYu3V7MRpbJuIV6XJvDH8QDzSLOKzJkbSrnLZ_u9Vrfh6pt_3lW2V6MgZjmeOZztqNb8df4NCBwaIcpY-9GBmZLlCNbfqGeMpEp61sRC6QKoJ-V"
   },
   "AD-28|VID": {
    "nome": "[AD-28][VID][VD][MXP-Fp01]",
@@ -811,7 +811,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-28 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQK-jhqPs_eavT3d8PWoWlHHgsgkyjE_uOjDG6xR0FIessV8Y6FrVwhuwyJz1CcZxwelUpDynElzMaSdKCSREiPAqPS7pC57VGO-dM1oOATyw5BtM8Ie2AfOdLSJ1dC-lBGPyxCix07QdYPkRwpnMu5m"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLxK3qVdFkynE6z1UqRkLjd-VZsldLR797JMxxhD9hJSL69UvAUA2T57iXIYkUZE9ACsXhC3wHHUn4totqQUUzKtHHOigf1S7SC6rAXZX25Kwszithtv2mTlm3B-H9xDGnOwjFaqCdmiXCIpErAtz-x"
   },
   "AD-29|VID": {
    "nome": "[AD-29][VID][VD][MXP-Fp01]",
@@ -820,7 +820,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-29 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLYM1ElIayNDA-v7oXIqFERvFaCa9pIqZvUdC-BgExt_VAMYrh3QtaXUiBsqnFEfTqQ-I5iHnZPlAExnx2poI3pRvfokP22Iumls7Wx7-G6_BMsmcEqY579aBrHdHWII22w9J1H_UvvNxVVHYs3bUel"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLPacU0QKoxrg8jO2gcsnwEcQVJCL7UxFKiylwak4FocdtxYt3tvT5sSdka8D359XtKeqZ_2-bCHT_255nYDNL7968Zp4KtpVAILn28oKihYKbTSxHQzHfqJ6kCxrNUDbXeVTRPxY0SUsrdZokokYaj"
   },
   "AD-31|VID": {
    "nome": "[AD-31][VID][VD][MXP-Fp01]",
@@ -829,7 +829,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-31 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIduJW5ytdrM3ff6JC3OAQcm3HNUUby4eyen5CMNj_r3bu6x9tnEgYQgl1-cdAD5_5WK-rNIFLZwqJ4poIkSH77YqYAd839OPLlL8GCcwo5kgUgvLINTl6hzOXdcDooc50x7HfRSaajA1z_GrND2Z10"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLVT1wCEZHamYmR31MJRvnoqTpAwTXXzoAOEHzG_8kisCaSlUdqkPM-j6GNu6YjkXndowYgKZuzz4I9G_29I-b8EQCzEDBoGzC-jdpEWaOZvHAMf7fYh_p9F8ByF5SNmOM-Mb4UGC0rCs-bNYAh_O-e"
   },
   "AD-32|VID": {
    "nome": "[AD-32][VID][VD][MXP-Fp01]",
@@ -838,7 +838,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-32 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJ6VGFgSoLeaTkCg1NEEDzius5mpViLW8gRnn63Mp_jq_C7_JkQJQXOO3Slb52t1pIQilH_PgnlL_2bKH-oPKibnCdBTO-gkOAaQZ5_5jbdTIDA_ixZR6B3qaAwipStRqr0yXcKON8I3isaYflJmbmf"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKCx6x83D5RfCXRZxzDrBHCXXaOAd93C5c7F-MerKYu3V7MRpbJuIV6XJvDH8QDzSLOKzJkbSrnLZ_u9Vrfh6pt_3lW2V6MgZjmeOZztqNb8df4NCBwaIcpY-9GBmZLlCNbfqGeMpEp61sRC6QKoJ-V"
   },
   "AD-33|VID": {
    "nome": "[AD-33][VID][VD][MXP-Fp01]",
@@ -847,7 +847,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-33 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQK-jhqPs_eavT3d8PWoWlHHgsgkyjE_uOjDG6xR0FIessV8Y6FrVwhuwyJz1CcZxwelUpDynElzMaSdKCSREiPAqPS7pC57VGO-dM1oOATyw5BtM8Ie2AfOdLSJ1dC-lBGPyxCix07QdYPkRwpnMu5m"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLxK3qVdFkynE6z1UqRkLjd-VZsldLR797JMxxhD9hJSL69UvAUA2T57iXIYkUZE9ACsXhC3wHHUn4totqQUUzKtHHOigf1S7SC6rAXZX25Kwszithtv2mTlm3B-H9xDGnOwjFaqCdmiXCIpErAtz-x"
   },
   "AD-34|VID": {
    "nome": "[AD-34][VID][VD][MXP-Fp01]",
@@ -856,7 +856,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-34 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLYM1ElIayNDA-v7oXIqFERvFaCa9pIqZvUdC-BgExt_VAMYrh3QtaXUiBsqnFEfTqQ-I5iHnZPlAExnx2poI3pRvfokP22Iumls7Wx7-G6_BMsmcEqY579aBrHdHWII22w9J1H_UvvNxVVHYs3bUel"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLPacU0QKoxrg8jO2gcsnwEcQVJCL7UxFKiylwak4FocdtxYt3tvT5sSdka8D359XtKeqZ_2-bCHT_255nYDNL7968Zp4KtpVAILn28oKihYKbTSxHQzHfqJ6kCxrNUDbXeVTRPxY0SUsrdZokokYaj"
   },
   "AD-35|VID": {
    "nome": "[AD-35][VID][VD][MXP-Fp01]",
@@ -865,7 +865,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-35 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKd_zDEJAdjiI59Uz76oFdtMIIN-JFY_AkvIjUCqZdZI38YdkHIH8ZEDP9iMr-R5U9Zr3CDz3YXcp207CRWi4CWBQBNeBx2pAdsksl-aKa5Evz_KuEJdLvHiYOFK8CQtdz5EnuiiEPORr594VR7sehw"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQI7QTwBcWcdQWyrIx7XdLU1JaPcEepMfQ4kFBxPJN6I9sxw5neQlStGgTVvYOPP5ndzOqvkQIrTD8eZU10sCYZ5t5-iS1SdA1x_SqY8evnU8O6foBM4n2s2XbTPTkx-Xh_4mKdXFm35ggx2pQV9JdSz"
   },
   "AD-36|VID": {
    "nome": "[AD-36][VID][VD][MXP-Fp01]",
@@ -874,7 +874,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-36 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIduJW5ytdrM3ff6JC3OAQcm3HNUUby4eyen5CMNj_r3bu6x9tnEgYQgl1-cdAD5_5WK-rNIFLZwqJ4poIkSH77YqYAd839OPLlL8GCcwo5kgUgvLINTl6hzOXdcDooc50x7HfRSaajA1z_GrND2Z10"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLVT1wCEZHamYmR31MJRvnoqTpAwTXXzoAOEHzG_8kisCaSlUdqkPM-j6GNu6YjkXndowYgKZuzz4I9G_29I-b8EQCzEDBoGzC-jdpEWaOZvHAMf7fYh_p9F8ByF5SNmOM-Mb4UGC0rCs-bNYAh_O-e"
   },
   "AD-37|VID": {
    "nome": "[AD-37][VID][VD][MXP-Fp01]",
@@ -883,7 +883,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-37 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJ6VGFgSoLeaTkCg1NEEDzius5mpViLW8gRnn63Mp_jq_C7_JkQJQXOO3Slb52t1pIQilH_PgnlL_2bKH-oPKibnCdBTO-gkOAaQZ5_5jbdTIDA_ixZR6B3qaAwipStRqr0yXcKON8I3isaYflJmbmf"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKCx6x83D5RfCXRZxzDrBHCXXaOAd93C5c7F-MerKYu3V7MRpbJuIV6XJvDH8QDzSLOKzJkbSrnLZ_u9Vrfh6pt_3lW2V6MgZjmeOZztqNb8df4NCBwaIcpY-9GBmZLlCNbfqGeMpEp61sRC6QKoJ-V"
   },
   "AD-38|VID": {
    "nome": "[AD-38][VID][VD][MXP-Fp01]",
@@ -892,7 +892,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-38 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQK-jhqPs_eavT3d8PWoWlHHgsgkyjE_uOjDG6xR0FIessV8Y6FrVwhuwyJz1CcZxwelUpDynElzMaSdKCSREiPAqPS7pC57VGO-dM1oOATyw5BtM8Ie2AfOdLSJ1dC-lBGPyxCix07QdYPkRwpnMu5m"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLxK3qVdFkynE6z1UqRkLjd-VZsldLR797JMxxhD9hJSL69UvAUA2T57iXIYkUZE9ACsXhC3wHHUn4totqQUUzKtHHOigf1S7SC6rAXZX25Kwszithtv2mTlm3B-H9xDGnOwjFaqCdmiXCIpErAtz-x"
   },
   "AD-39|VID": {
    "nome": "[AD-39][VID][VD][MXP-Fp01]",
@@ -901,7 +901,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-39 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLYM1ElIayNDA-v7oXIqFERvFaCa9pIqZvUdC-BgExt_VAMYrh3QtaXUiBsqnFEfTqQ-I5iHnZPlAExnx2poI3pRvfokP22Iumls7Wx7-G6_BMsmcEqY579aBrHdHWII22w9J1H_UvvNxVVHYs3bUel"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLPacU0QKoxrg8jO2gcsnwEcQVJCL7UxFKiylwak4FocdtxYt3tvT5sSdka8D359XtKeqZ_2-bCHT_255nYDNL7968Zp4KtpVAILn28oKihYKbTSxHQzHfqJ6kCxrNUDbXeVTRPxY0SUsrdZokokYaj"
   },
   "AD-40|VID": {
    "nome": "[AD-40][VID][VD][MXP-Fp01]",
@@ -910,7 +910,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-40 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKd_zDEJAdjiI59Uz76oFdtMIIN-JFY_AkvIjUCqZdZI38YdkHIH8ZEDP9iMr-R5U9Zr3CDz3YXcp207CRWi4CWBQBNeBx2pAdsksl-aKa5Evz_KuEJdLvHiYOFK8CQtdz5EnuiiEPORr594VR7sehw"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQI7QTwBcWcdQWyrIx7XdLU1JaPcEepMfQ4kFBxPJN6I9sxw5neQlStGgTVvYOPP5ndzOqvkQIrTD8eZU10sCYZ5t5-iS1SdA1x_SqY8evnU8O6foBM4n2s2XbTPTkx-Xh_4mKdXFm35ggx2pQV9JdSz"
   },
   "AD-41|VID": {
    "nome": "[AD-41][VID][VD][MXP-Fp01]",
@@ -919,7 +919,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-41 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIduJW5ytdrM3ff6JC3OAQcm3HNUUby4eyen5CMNj_r3bu6x9tnEgYQgl1-cdAD5_5WK-rNIFLZwqJ4poIkSH77YqYAd839OPLlL8GCcwo5kgUgvLINTl6hzOXdcDooc50x7HfRSaajA1z_GrND2Z10"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLVT1wCEZHamYmR31MJRvnoqTpAwTXXzoAOEHzG_8kisCaSlUdqkPM-j6GNu6YjkXndowYgKZuzz4I9G_29I-b8EQCzEDBoGzC-jdpEWaOZvHAMf7fYh_p9F8ByF5SNmOM-Mb4UGC0rCs-bNYAh_O-e"
   },
   "AD-42|VID": {
    "nome": "[AD-42][VID][VD][MXP-Fp01]",
@@ -928,7 +928,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-42 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJ6VGFgSoLeaTkCg1NEEDzius5mpViLW8gRnn63Mp_jq_C7_JkQJQXOO3Slb52t1pIQilH_PgnlL_2bKH-oPKibnCdBTO-gkOAaQZ5_5jbdTIDA_ixZR6B3qaAwipStRqr0yXcKON8I3isaYflJmbmf"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKCx6x83D5RfCXRZxzDrBHCXXaOAd93C5c7F-MerKYu3V7MRpbJuIV6XJvDH8QDzSLOKzJkbSrnLZ_u9Vrfh6pt_3lW2V6MgZjmeOZztqNb8df4NCBwaIcpY-9GBmZLlCNbfqGeMpEp61sRC6QKoJ-V"
   },
   "AD-43|VID": {
    "nome": "[AD-43][VID][VD][MXP-Fp01]",
@@ -937,7 +937,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-43 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQK-jhqPs_eavT3d8PWoWlHHgsgkyjE_uOjDG6xR0FIessV8Y6FrVwhuwyJz1CcZxwelUpDynElzMaSdKCSREiPAqPS7pC57VGO-dM1oOATyw5BtM8Ie2AfOdLSJ1dC-lBGPyxCix07QdYPkRwpnMu5m"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLxK3qVdFkynE6z1UqRkLjd-VZsldLR797JMxxhD9hJSL69UvAUA2T57iXIYkUZE9ACsXhC3wHHUn4totqQUUzKtHHOigf1S7SC6rAXZX25Kwszithtv2mTlm3B-H9xDGnOwjFaqCdmiXCIpErAtz-x"
   },
   "AD-45|VID": {
    "nome": "[AD-45][VID][VD][MXP-Fp01]",
@@ -946,7 +946,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-45 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKd_zDEJAdjiI59Uz76oFdtMIIN-JFY_AkvIjUCqZdZI38YdkHIH8ZEDP9iMr-R5U9Zr3CDz3YXcp207CRWi4CWBQBNeBx2pAdsksl-aKa5Evz_KuEJdLvHiYOFK8CQtdz5EnuiiEPORr594VR7sehw"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQI7QTwBcWcdQWyrIx7XdLU1JaPcEepMfQ4kFBxPJN6I9sxw5neQlStGgTVvYOPP5ndzOqvkQIrTD8eZU10sCYZ5t5-iS1SdA1x_SqY8evnU8O6foBM4n2s2XbTPTkx-Xh_4mKdXFm35ggx2pQV9JdSz"
   },
   "AD-74|EST": {
    "nome": "[AD-74][EST][VD][MXP-Fp01]",
@@ -955,7 +955,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-74 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJYxWi8IX7CoR_71YGOx5mDPpzK0YUWUwOjG2O76pLV_kA0vbTi2krpf-AzgMFoOY3CK8og5fGSRCT3G0mm-W-L-Fps29i7KYMSruFxx4UyAkZHVWVJQX-EhfeMhJ8pCWmeu_sp6g-PuOHEguKnZ-4d"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLRoME0mwitP0zlcqWdl_QoSCu5tIcQc1SRui9i7Td1KDLppe2BAkl0afbFBa7fsCRwUgaOtm-2y08nOdLjib_xKUjsoOIMuMF5QoJdZPmSGKJUiBIlfc51MGVCzEr7epmcCirCCtARdie_BENCDjsh"
   },
   "AD-61|EST": {
    "nome": "[AD-61][EST][VD][MXP-Fp01]",
@@ -964,7 +964,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-61 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJHfIR0o4SSOZRW7u_TdpH7FsSiLO1nKp_spO8Ml0jt6lnpWipBW6wVJfTEgB-PoDD1BOZXmQ1dOCcAJtQ9y5BSbg4oIi259D_5wzH2msaxsDCztzGW_PjIYqKF8YjPagqzfgXxrctQhBh1bDtrmkqF"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIGwgVaRxiQAZ9qYEGuzoOpPlAm3gupDonpEgKNQ84GTstTkXqkBqQ-9wlXhUAR_DrNYQI0vos8jiDeGyuJtOtNxVkjh26edZEp0HDy_CTncxywPn-Gq69tC-LX5HBgqVvbVG7gVE6zrHcOAVsZ4Dsd"
   },
   "AD-63|EST": {
    "nome": "[AD-63][EST][VD][MXP-Fp01]",
@@ -973,7 +973,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-63 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKx1ggT9nEvrl_2b1LgL8xQops8_Lc0h2kNF47no2rYJzfo-BziCyprX-JWXIOlQ5577UgxI1cQYmok8dZdeXG6Cpdn6v-DgDyHXiMKrF4xz4XqUkbZ5EEikD0gzRPQ5Y_ZId5b-CbyHGuSwvtPAxoh"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLTWGPUfYfqtJzEVkgO6rhTWRU3e8O8PTld3eM-rhpzVKr-_zYo0yX_rgdv5MbaFr0M2BdDSsQzHIWnc3Z2LOmRLNMDCCwIhS2nJAn3NMfbpTwM3TQoj89AtV4RClGX7glwAdrtOlvic8RpZSrWYZ8Z"
   },
   "AD-69|EST": {
    "nome": "[AD-69][EST][VD][MXP-Fp01]",
@@ -982,7 +982,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-69 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKUOMJ-UcUUCju3ol9UIsMSFaXuK2yG1Zua8ZVfOhLw2ii1YtS2jH3B15zVBgH4cWd3EJlWOtz4aNCo27yKb-Vqg7hXoY_7cmx87KuZrW4B_ZFwk3bWzWZRGRbADaw6OcDkjax6xTeP_BAiRIs9b49W"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKTIS13IjZ5Owi2IyOQJYWDdjOfzaY5xosYTIN32fG2CIRJxMmZfjbMTl27-zvmenook5vAplflQGTTRm_dXAu3TDNnfyT1Sb9_8NtTOA7yQ-RQ1WDNychjyyfYDUjOoItnni-K0dF8uqBz4R4uHlJa"
   },
   "AD-70|EST": {
    "nome": "[AD-70][EST][VD][MXP-Fp01]",
@@ -991,7 +991,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-70 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIpQiH_lkzowcUOSmNwiKyPLWyftXEZcYjB10i1sJnzswV4XtGFXbe39zHKtgQWow02L6w2fIJq0RHVZsQpgXne0DaWrAWToAppbdNWXVrQW0TGgr_WEaoz8q9dzofcqRV6rxqzH7kxUegtu69H-R4z"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLUIrW0cM1txCRCUliKykcQeyo190v_ZMqotx8aZH0_kYOAxi3XRWSly0TkdSfcMrlYg4bm59S-VKW-ABAJPNErldAAxCWXRH49tA4sqtX367TdNS7VbPNrv-jTzFGxD2gTZ16GdsdEz5l8eBy3M6o0"
   },
   "AD-71|EST": {
    "nome": "[AD-71][EST][VD][MXP-Fp01]",
@@ -1000,7 +1000,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-71 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIE5teWEI1kWK0pue-7MubnC_KEM_Rg8tkMbdIt0CsED0IvysXkebJoGaopRt09srVSnLdsTg7_PWb8_deZVs_H9tZzAJ2qzeSJl02wuLEwhPES6QW7YjORFg7TRWhb8Zg7JgT3Ga7RTlf5LesjdK2H"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIpite76XKV-iKbvL0rkbNybYl-m0Rp_NgvIehgQ8Vpm2UDuBLMkgQJRlfBwq4yhR26lGsgFpP8VZNf412rUfaUnhzBYuA9zWpKF7zGcTYh6b2CXvJnq23cCYbej-qFqFYTdMzbjVtMQGDAmLmED52-"
   },
   "AD-76|EST": {
    "nome": "[AD-76][EST][VD][MXP-Fp01]",
@@ -1009,7 +1009,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-76 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLbrP3dK-XpBsBUei7cWkGvAy8I288-PD1Ce6TL2JR1CLbxbnsjybPP_tqwpVEhY49H8SoQOAuFUCqwVA8DZOFWnbli3U5UI04miSLfUjaBk39RW-itOjcAguMZLKsej2SUDrc8i_RulEB-ElCZQ3DQ"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJXPChHgr4O2iTJRbf-M1U371GAS9Rs2YYBAOkOHzYweMzArwDUTsvJVF_lLsqPEesQcVPH1i7hfraKvUQpG-aerqi7g_u2uLQSxY6eiumLWe9GQHCbz0ZqFS3wOd12sINre-1p3QUM4zOitH3o-nqd"
   },
   "AD-77|EST": {
    "nome": "[AD-77][EST][VD][MXP-Fp01]",
@@ -1018,7 +1018,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-77 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQL4vlPX7mQ_N1uNZCUBe2oZNH2gGGjo_cWL7uMd7S6cT5KuHPR7tFLiR1J-M7xZLY89gkWw-okPALz8ziFFNwlKaLg9D7ITPwf0YtL8k7BfGUQUs_VP48n1vLi7kjw8Hv6ovvtfaabejspfdMubm3mL"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLNlZSLoVT6lyoU-cpkZgECKX8rdoZxgzzxZDdggxTjXA5Sr4mLvaAiT_gxZtjw-2eD8gK6Q0A0sotSuMEQ3q-9-Hx2r7B-gG-0gmqTa4ewbU1k5h8HhaKv38ETNZQvesx5CugORZGyyU2HCk-DZV1E"
   },
   "AD-79|EST": {
    "nome": "[AD-79][EST][VD][MXP-Fp01]",
@@ -1027,7 +1027,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-79 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLGGXyAQOSxqq0h8XyhW-IqYRtkx99igDOROP0i837x5BjVhlA4JeXv12eHstT7KLm2CjeBtdPWBVj4nVSWGsYoiXEZTIM-rdJejqMHxq9ESbfhVfNaSLgyCqCZXvjc0hxdH1hn5z7enbG8_lSZsdC7"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQK19ZFRWjDiXCbMdvbE89fNUKd5E5rDiu05Q_sJKpbRb6ZwYPDqKiSz2iKJ58fZ_XQ7Ups5cl5vPq49VYphVg9seCIJ60bpCT7P07ztA8I-WFXPA-s335vU2bbNc0-J26LzK_zr0GYNcUKTpA7jsB_0"
   },
   "AD-127|EST": {
    "nome": "[AD-127][EST][VD][MXP-Fp01]",
@@ -1036,7 +1036,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-127 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQK5TKcpPpzcq6v8wYnSvvZkp9RhqkXD5cY6raY0JF5ns20neq0HAY5wey1IBEPYvU7tTMTZ5MaoGjNyXHj-dQwtlk6JPROKAq_spD-Thp9JKx-HgNFiQGdJgS-c6dlwG7Z65ng56DO2LWBUsZP2--4w"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLhpGSFYg1ERJ2VZf5Lq_-IkjkjLyHt0MjBbiJnsEhBhoshqQBBEoK5L3bDrS7OzorrvOdSMqpkZbhKghgMfss_7tcLdxBmIY_VdlliUh-pbpQ5TPUF4WGFS0_ps4iLnsHl-VPD19cU31UBvVjNnDtf"
   },
   "AD-128|EST": {
    "nome": "[AD-128][EST][VD][MXP-Fp01]",
@@ -1045,7 +1045,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-128 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJNJ44X9iq67lbTbIuJqLNJFhFMy_O3Q_b0LYAOGfIGdhD15eklRHp0exWZM6SlImHayau0nkkOqakJ8xDgH9WLFl7hTZMLw9GfLActuBMMyoYeAJnr6ytl1aRryiC5kho1isJ1Hd1myv5ZBgUKWDQA"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLrz7g3dz2DCXdqeUH1esCfsxDG3h0cnfWsWW6msnmilOvE04P7FrLyVpSXaClPr0GfMOz8cKdW9Egt97XyM5H-CId6j5spBS2eDQNALU_rBh7h2lOYxtmcjAZq5R60vgRK0xg6Sczs6kHszoCiq8If"
   },
   "AD-129|EST": {
    "nome": "[AD-129][EST][VD][MXP-Fp01]",
@@ -1054,7 +1054,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-129 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJlwuBhJvJ9B7xSDgXomgZocr3eiq_QCCdZ3BUvyEv48Y9DSuVx_lKDCH7aB1spSYy46qGBs2fZuUKxptkfJca1hmzDWn6ugmMQzLg6dTcXQ5naG8ZQmOom0fdmKPhCMpcAo_ca2SJplk-kD-WkXdnf"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQI69izoVFffmXkBAAjtpuWp4wolc8nTwekuGsgi9QHM9bbyvHHpi3_RWiOWj-53Yktv1GSQ4PMhJzXAmFSpXiadBXkQ957tsXfqrs9I0_drP-_GpnR_dpphrbExT0Lvn3RANqUzr3DO2lCgIKfmd3-m"
   },
   "AD-111|EST": {
    "nome": "[AD-111][EST][VD][MXP-Fp01]",
@@ -1063,7 +1063,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-111 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJCfZyISs848r8SQplLFYpMciBt6ib5oF0oqHkz9YykTzweB03sH2l4GbI-rEe1B48-4lVUy9yOeaY4H86R5xDPRuvN4JutaDOLYRTnFaMdFX61zYcsJvpcz_-CBU0qMLayo5f_kTEPjcxIgM9yQ_es"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKLGBSktaHRrhARiCR0S6ZV-oYmdK4vuHlSWGqgIjWyVF4kTpm9rhAo7ZhWLw564UQAW78ux3FFepisPPy91j3vtZ96cCvQAS_Y9Rxj6IRpmijANkbVULzXkllmP-BXuPsC2y9-mNcnzsd-UKsju-nS"
   },
   "AD-112|EST": {
    "nome": "[AD-112][EST][VD][MXP-Fp01]",
@@ -1072,7 +1072,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-112 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQI-nXoYJDAf45GHWMSblook0bsXDAyGcZpfpWeOVc2kzG7iVVAEbT1garBNsvwbYomuGOfuRPSeKiTYuOKNXGhOA7rdZkHdy2h5jKP5YIHUgOuyWuudjJfrWpDDP9GdjI3ZsDPXGbgQMeJM_mo4fvj7"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQK3uu0rQX-HxYqUX8uoT_k7OTHiA1VFSA9mGYru7CrhFVwUfGudxstn4KbOtpIOx4TOB29ZvDfKbofDe5pEZdpYKesTM7xZyqjvLdoBCmS519c8Y31sPMaHisTJRO0Q65h3xtgWGoOq0sAN5ThjVoRQ"
   },
   "AD-113|EST": {
    "nome": "[AD-113][EST][VD][MXP-Fp01]",
@@ -1081,7 +1081,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-113 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKjA4he_oCwbCLdsVSotiUUKEjBRdpp0y_frqKRN02HL3bAE5CoX0guOuZsVG2JwRO-MwrSE4PPKzpoIFUgtwyJvdL5DPRqoMQDAl52qQkTofHann0tjg0cS4iPOy5oJ3QNtZifQ-UWRZL5So7KjgFV"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQK8LCIcZahh_W-60Le0NWWkYkbMDEXTPOxnLJkdV5f8gZgmrgj6tJ4seOL-JsxokD8fqkueL6YKdTAma4ll6Nhe730NhMDMbenWGeG2lT4rIfHgTntDOYPQbNaHzCAdsadLwC8IMrg0elhZj3RSdGlZ"
   },
   "AD-114|EST": {
    "nome": "[AD-114][EST][VD][MXP-Fp01]",
@@ -1090,7 +1090,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-114 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJSt0wzzPCeFHoC1V-W-fOHFKN3OcINuYMlcdhz_nBKWXVAoKJ9wDuF4PwJj8lnFT_GNsko3IvtiAIh0wvKeiv9f198aI4Y0v7ARZCKU-90nWQllvyfBGwdSV8Q0GDwtJOEDeeL4Kq_rORuYtd_gGdH"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKO_KmUdh6HP1YCFTNCxotHpT_zg0wOD5WYoCLWBf5-2iFBD-icoiJdZpjFW0oVq4WyyQeTg8ENMgRWD_40FJ93VXogjzpkYk8KhJn2oQmVBtPe4qpNdFG_LezePGrgR8pQLLQNPFUMXkZINMCcAPFX"
   },
   "AD-115|EST": {
    "nome": "[AD-115][EST][VD][MXP-Fp01]",
@@ -1099,7 +1099,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-115 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLaY-VAhjn2qCmLOCJDjo3yeIovtH0Aj4qzWfMaaXoo9fi_9f74xgJPGnNFFOJQW_sPlEGEOY6XXOUDBqCO2qiy69lRzCdl6DaZLWMyxFUKieJT1rVoXNSHBOanC6cB0nxCb0DJjHD8UI1oEP9nXRSB"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQL96olEBinF0a1lvb0utLQNtoA5inVBamCILL0tRLDqcZ92AhJfFSFUP4jvMarNM78NrqBB0WBDydpRJgB_7iGBXMWC5JhzH3dBc-XygZrip9ey0GanYQBlrtRwq2oSQPJ-YxmmQ6fRxzombROiYBSr"
   },
   "AD-116|EST": {
    "nome": "[AD-116][EST][VD][MXP-Fp01]",
@@ -1108,7 +1108,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-116 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJHPCcqrYPdMPaehkhN3oQjrrpaan-eqgF82-ldiwaxxUlPHF2tyzeTL8O2m7j_9C7vY0PmYqlnv9TNJS_vxI0qho8BdGyGxH_VjliLE7JKwQKAqKKf2PBqQeGd-VG59myPg74Yo-P7rNohVYv9ZoEA"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQL6xSruLG_Os2DjSEHscN3zBlvcuRbgvfu-ohgR9FGrNhziDMwQ0rWQUbgIU_-in9NUayCEZgN6Jh4fjkDBq0QJTZ7LPRqO5NhCC8RZY0X83oTXhv-7Da0pFXvxtN857tN2UQ5_IXUyDCrbVI59tr1x"
   },
   "AD-117|EST": {
    "nome": "[AD-117][EST][VD][MXP-Fp01]",
@@ -1117,7 +1117,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-117 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIKEHPJYo4N36euAb7lH_B0fr8j-N6iY0rawNs-U69UK7x__TR-L-bMcmMJ7HrE_ozmADYmMuH7oGMMZerts-ZHo1Z4YwT5uKxnmmuk9IRPyO5Eai7Vj7RId20HPzxGOohjV_1i3PRZfvVVe_RwBhX1"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQL-zcdotYog5kMajqLntDpDzhrEKkvcuSMxsKUp92d8quIAGjWdQC7TnOmkKT1nF4hZVLvlGBHMnscl3VfADb2sL1HHTdfpcW-VZ4mbAUxpP35jhp1Eu0V3RE5IxoWoXWZOXIu9fSMg8a2mCkQTF15t"
   },
   "AD-118|EST": {
    "nome": "[AD-118][EST][VD][MXP-Fp01]",
@@ -1126,7 +1126,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-118 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKfgZNBsNpLTYihSk5a6pkEgYTw7_PT5zNwgrsHe2ojv3NBJ6pc4N6z1MeKHqyIGB0VXygD28oWrj35oDktt91M9MPufGb3U3ZWIrJhIHof1V-kz-Gyi_Q-h9U2a0g0DcEOY8_WyESX5Nn3wfzKaV5W"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIWn0_GhWQuIZBUDqF_iSVyTAuWOQik7Hpko2Vi1Jh0IMO23-Xay6I_-rr625DMMB6fSvZRWuojjkdDx4gY0z71Ou247j2XtI60TsWrMMJ-0yafw32cJIcd2sRA1zMsd-e5qZNSGNgjoyB6OfgkLi7p"
   },
   "AD-119|EST": {
    "nome": "[AD-119][EST][VD][MXP-Fp01]",
@@ -1135,7 +1135,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-119 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIdgTBrcwv2qwrMOPHgcE6ZqW8pubFyKB0rFOGI-dtc_rw1aW6KqEA_VBRql1ET5Cj1__PGLaph8bgfPhKweHw_47iI0wFGl3ovSBk4EugrxwwA0cRQIOf3xsRp49bIVnSiXp2nuuIs7zyc6aROq3Je"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIJA2vRKDTAWplHtKjbVX5-ZrD1ulhmCVw-BcM1Qf8O-m82GwXmhADzqQoZPkI-uhfzQI5yBwdzJwJBNmlT4AwshZx58UR1e8Sj_lkhM-r9W_9A0pfgTjr5Lw9wI6el9QjAkqVz7CDYAmvE2Kio5KwT"
   },
   "AD-121|EST": {
    "nome": "[AD-121][EST][VD][MXP-Fp01]",
@@ -1144,7 +1144,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-121 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIIcdul-VAJk7EBhblS7O6VVdUqkyym6YtQoRBLJFUFy09kefsSygn_9t8K2hsVLaRoY45ah2Mir8N4cTa6VHtNKqQyy_zUszFSm8ArGmzvrBjJyiBtDsL4LGOFoIL2fLlJgfXNNC4M7m_uD61HL6Mf"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJUWkT3fXSOmghh5njAcR1URCtBFc7QJl3W0XGVZl8iIk05XmQpWINbmR9MogN7A2GHTnnkZayRr0N7YlU54VvXB9GCwDXSxxRNbERSYb3BHzY62to-hBlkB2ctMFsP_Xqb7k4WqxGUeJlWYFr7FGw8"
   },
   "AD-122|EST": {
    "nome": "[AD-122][EST][VD][MXP-Fp01]",
@@ -1153,7 +1153,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-122 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIyAKc5WLrbuGnKMiOeafUE4oSOM4kGmnLP3sYK4PbzEjxTdO9eLA1rDYyA6YBEV4cpoZklFtBXB4pvCrOV1BTzM1Zj6RoQrOil4kp9OCmlK5lGERQtJwT3eKHUBzUpVKifNpzM053JHC-A7g4F9Pjl"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLr3vVCg3OZxwIQP3kiNQyRvN0g0Y7UkAkB539DQ_LXGe2Tg49egwASow3nYA4_lx76MthPIzO0Tq-ir4480qBVyQNi90G7Gm7stzAZw56k0tgctCNUNXocCRdGrbnYRhTlPAektdnCijH5Pfp7WajV"
   },
   "AD-123|EST": {
    "nome": "[AD-123][EST][VD][MXP-Fp01]",
@@ -1162,7 +1162,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-123 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJPtzvje4FMxqmy2iaviaEDsdO4gzbxCUlm0s0zAq4t-Gsf6kZZ6VFkxboXFHwyGJy9TvVkNTxwZlNm3uXeNOqJfYqJILWtyA_2bIS0N9scBXoWXCNMVgon5DvrinhKeGNRt4sFnfbiLMF9Hib1vvzw"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIMKc7YyJC23vygcDQxF10gkfo1JgLJae3ok7LEw6iNS9IQHKBVi6ApCFaE8ekJOJ0TlJtc4_fgnG2JXkaONctottEQyIxc4YZRQxk-j8B8-CRQe05ukWCaKwIKUYyp9VFa8DibNsll2fINC6M_nqXB"
   },
   "AD-124|EST": {
    "nome": "[AD-124][EST][VD][MXP-Fp01]",
@@ -1171,7 +1171,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-124 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJqINNmSOhCbSF6Tg9X70FrZ5A5ZBWrYbbSQKTMl9KlHMFcdVwxzeGv6ZQiNDtasgV7Fn9cjNaV9liim0lGMHAa0VH-skpBsptr4EkNQfB5BAHsi9jwxjM86jzmy-QNPaSoxpim1eNI9Dw2tvoN6jVw"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLewOZWYEbCMFUEX8squGcotRYFzNq0wBquwmgOxqhRZSCxFOI7moNYubljq5_viISv00YULLS5QHcPtV0xqW7dJeWNHclM-ySROwGqGWTjKerLmj9rLexxYbmJTcvua24asoVZU0yXhRaxaTeR3RRP"
   },
   "AD-125|EST": {
    "nome": "[AD-125][EST][VD][MXP-Fp01]",
@@ -1180,7 +1180,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-125 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQK3flZBiwNydXF1aQFk0vEdyNVUPmqL_r7wabX0wSYr4dwPKwwwteRvqLdFpG79-vAxnE1itl4aF13tgOsDYuJPOG-p0gks4mNY9gAm0WeFDXxaI0fAeGpiETTesp35KhlvJUkeU6UURCDd82UAmIvk"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKnAS6DqYTgj9F15NpJMa8aV5W4WHwUfmgxN6uGKsgAGpqhxISqeT8FOIszJunbxEuORfL2BIpJXcowbU61chEkoh9_aWFu5mOfjeZ3ebG117rpxwD3Eyp9R6qFu34wIV6SE05zB9UrXhLjYiVl5vYB"
   },
   "AD-126|EST": {
    "nome": "[AD-126][EST][VD][MXP-Fp01]",
@@ -1189,7 +1189,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-126 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQK9yCH4fxPROnlAeRu15lFfSKpbDyHiF0W-oxFKnYRtIRkoWVMw2WwC6CoJDpGMYdBaG00M5Iv9IdtEmukXruWAiG4nLUpn__NRn1bUWE9moSU6GvR0Grc0e-YdxUDEg2x0uWWExGfcw4lW5RtOosgJ"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIGMC2meVMsH3hR3C5yo6UpNQV6IeLqGbBcgNncxqwPRd1_ov0KmgC1yr9yceOFaNm4p1RnzZK9t8PJ65UHVnNl_wJzg7hklq5HhjNGr3mqJdOxfz5eamf9dmAHsB2u04PwFMJt84iS6oxfhoXhCYmF"
   },
   "AD-107|EST": {
    "nome": "[AD-107][EST][VD][MXP-Fp01]",
@@ -1198,7 +1198,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-107 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIaIClvMwcXUrLZLdjiVSzNu200lDKD_YWeZEWG6IEVMxQx_Km9jjuAbudgCQCb8N0TGtK3X7pYNFi6-MxxshlqRPcAPkx_BwC2RtKeg2OQA3v-ogKYeXyiEY-jIOIK5vyDvrwVvi89jpqUsBgltJwx"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJ6x-T744T1M4Zy1pf0R8p-1RGUPxpFY0yzOi7BxnHuMLMS8gU14pDn9l-R7pXMSBIkDPTC1INDsF6h8ukFZjnODijmfKeYiLDnDwEB7cyRf1lwp4HKcxeBofQXdhAAaBfVO6vzV2QAV3gACDNlDiGc"
   },
   "AD-108|EST": {
    "nome": "[AD-108][EST][VD][MXP-Fp01]",
@@ -1207,7 +1207,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-108 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQK9GsdsDJ3cbEuoE14JHCp90XbgGDqQ2GCA8oXEZx7NVIiOYZHierrAYUrmRaDU9bZ8El6Af-4t61Joi7XDRDik6KCffEhxZbL452dIUc83fnQHt1HPJmS0qehnbuQJ4Q5k0FhAqHlUbvSPie5686bG"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJM0j2boMbGTzcHGafi1BmGwrvmR9ppkB0AbkEREtsEH8qOaDIcIvSFuqAPwCPRMsE4LvisVhl3dOp9zDwbZjaRnfsWpOju6YnhC9H2yIiNpIBX-b8-Rd1ydzs32U-nb5aJdqvcDwbfeq9Wzfl50XaV"
   },
   "AD-109|EST": {
    "nome": "[AD-109][EST][VD][MXP-Fp01]",
@@ -1216,7 +1216,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-109 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKvapiE-2nrza_vnkfGl1ZpD7188TSDPaA-3ccHiUaRh8QlTQqMKmSetznuttaHP9H3o6mLej3bT952-BHEThu8JS8o97f5Cy_JYxdD0tNuKwm-udZmjwSwUIPYPCsJc2G_ztGO80jaSyUqOjOs2bi6"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKitcicPpNJ5xMFiZTh5BKySpCJV__xJQG13UcUasZJThbVX2XkaLVZfcKVGQtmOrDBy6e04ZUvyDAwe4oDgPVw8rH85PfrEyODkBWWpaXwJtmrVysUzmipLR_QPYBJxiNB-stlF7doA37jh0KFeQbq"
   },
   "AD-110|EST": {
    "nome": "[AD-110][EST][VD][MXP-Fp01]",
@@ -1225,7 +1225,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-110 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKv93V4lg7kr0DJvT2GeT-0OJ4cO0ZnBA5lhglwpHWJAmGm9FSR8qpCj4vQ5a-P5Otw9-C_OePvUWA444eYNJDEyQ_SAepD6aFc2GF7hnUxdIw4yYglMO58-6pfXgq9MdIUhXAReeda6lhQyfKUXeet"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQI9-4D_zAB76-iz0NWldt7kFA47KeEMGfua-ckc8BYMY12XcPUExAsTBg-0hs7R_5RFcr9mlVn75a2GI9ibHx2WBsSzRsgJwPI7KK7eiuhZx1JRD4l6HBa-1XLHhtykFjz8qO9PxrFLSO82GPGgexl9"
   },
   "AD-80|EST": {
    "nome": "[AD-80][EST][VD][MXP-Fp01]",
@@ -1234,7 +1234,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-80 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLhwtpZwrNiAHs4pyXSFeDHIqRyePhGPl9eO7Xh3D6nzUoq7mRKw1L5vvCgdNYR-IJxDBa-iAMTC2iW7YKqKnB4WiXMYmTTlySzSPrXsIzArbjpOjJ63AQRmb8_c2lfBcpvmqSB1RPhGWcNuoyAbvZC"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIyb-gZZDdmAy3sNQn6V8uqEsyb3qcuHNCw9uJKbSczezt4bC6pTNCTuuQR3cZduMUpriIDwOGIMLbGRgweg65BkGkx-NVZLCKF2Zs_gV3LKmOAXsFZ3mWaKbdHhd7xFwmXnSSnHUmfe4HAcKdfU8_T"
   },
   "AD-81|EST": {
    "nome": "[AD-81][EST][VD][MXP-Fp01]",
@@ -1243,7 +1243,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-81 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKHrrFoQwiVYY8WDQM_DJP0aei_jnWO-wey4By6X5mFU-wjKCyU8nzNLaaTvGboqwlq4T11YkWMvjXXG_saCjy2r2II8fCT_4XbQTe-8g1KEcqCPoQmYeHJHq0UQzO_SDe7HG8qEsksBJnDSxTL0BvK"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQI5kqu4sIrjI2vWai1hkWMyGtsZtHjBhcJJkK7ooFnrKn_13xn_bHod-ctDxLizxohz2RB4ECquTOQqP4CwrslqZGF1EPMbWkw-j4PydcbG4PlUsojMcb86NffQehu9Z5pu4x05KXPTOPWtUzKdJaJN"
   },
   "AD-82|EST": {
    "nome": "[AD-82][EST][VD][MXP-Fp01]",
@@ -1252,7 +1252,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-82 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQK6qYRhD2U-XoAWM6TLDyVTgZFPoD7mrs_x4gOv-QNIBRhVtcGqljoYpmRErm4htS-gLQ3BRACexMFElT5nYV4JCptcm9Xjtw7WiowHpejMTYGbevbXCeEpbvPWHd_Z2hXk1B_MHzaMrAEvVVK7d9bL"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJpcQtM8fU0TjM6n95noV3ufNAYCBq8jz5Csnrtog_2acsZ16d8dUCoJtP__VA_e2tbcsrcUER1QQbS_YmABUyQVC8_May1IJ26_B2iyg5GiHoFZ7jrWrnrzt5nD8Cn3tZ6zr0BGsvj_f66qe0bQrCx"
   },
   "AD-83|EST": {
    "nome": "[AD-83][EST][VD][MXP-Fp01]",
@@ -1261,7 +1261,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-83 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIFl6Fb7fFlJZihGLXl_lbBaNtvYVUXfMgpQXapFGbyOR3G45Dk8vt4Mx2dXCz4CE3VARMm3GiGXIjLZAJzGCdlsGAJG2O6oCHUGMt1KVP-k7n4s-dLg32CUiZdbPXgtdwjZzT0W7-QmwG7S4Ki9m3o"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKK6AxzoVdKgYzVirKdkmOnOEGkRXFpSJt24InflEBIuZ73yyoKqjmSbyWQsKlRxnXRUTf9mQZ_AUp73ZP8cvt0mc6Wd07ze3GIcywRydgMfdQ0dAuWFAbDYUDPaMDPokBl4XPSnqbH3DM245aLsnGX"
   },
   "AD-84|EST": {
    "nome": "[AD-84][EST][VD][MXP-Fp01]",
@@ -1270,7 +1270,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-84 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLZR6dypZnjOiekwDOjAeTEKNHeQONCeJhNQ03PTOI_Mj6aSnCTr25DiBT6A1WVi9QLt96ne93PTY506r0BSMMUoGDHy3g4-gGJA27m7AzKLbW72X9tgDZmRzdlnTb8plbFYUpWwynBR_tRuQehbvwo"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLGT9gORa5T6jfxrignzHNp0IEiRBvWQuUxCkBjoNbBPpxAP2m3EEOLCEzESWIwue-s7pugKLveATABqO7vfTj2XvLfg1CvkJMjxCpKg92_-NkRD1BoTwhUrwEkmOoJT2i40ZSA9mLwbB-SuGUi1nBy"
   },
   "AD-85|EST": {
    "nome": "[AD-85][EST][VD][MXP-Fp01]",
@@ -1279,7 +1279,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-85 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJhe6zt6aM18fqRWvRi819Qsd27Tyk6MzasjuvGdAfbGahlmZum1goYuidhToCTujn2RdEqTXcKkVLtD1lU6j04IaF9tVFZkDgbELqdaDIt7T8CrvR7hB7seHrAmVCI0CwuuSnATTaK9dhP99WfXKtj"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJg_kOjIERn5i_SkI7uXxrlEdyhVckuWVJH2SLwhpMjunZPhYqm5kPOw037zOsSsgxDNxay1-4FwKajCv2w1xsBmMu2urg59OOiryzQItG88Z8vFP3xPjAm0mb0ocgOHH5028Np7q7hN1qbt65qyo42"
   },
   "AD-86|EST": {
    "nome": "[AD-86][EST][VD][MXP-Fp01]",
@@ -1288,7 +1288,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-86 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQJFkHNVGFn0nxLHSPt7sSvBgIj470olnPnVCD8RyXXjKLb1TT4OM1SSQNESJmba0DItZr-pBp9MYQZTl1rO2OWkDHU5fttBE23ZXHenZUVCz2nyorqNeoBEAo3lGlqRvMxE9TwNULbmcKKidQLytOUB"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQK2pQcMCtaEtCgx7iiEoMBIaWQMErVKVjCtDDEg897d3awpCv1CEcWe2S9xTB-E3_vAIkjU8gRbd6JyVSPL_kypXCuLhktksGikCsLpwCH0NbAmMEV22rSFNfzs_V0EgVg2lMP2ioA92vfnBmT9YnGs"
   },
   "AD-87|EST": {
    "nome": "[AD-87][EST][VD][MXP-Fp01]",
@@ -1297,7 +1297,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-87 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQI0n2lJsLP7GJQ6I6GSUV6piASL0fTxDoz4HSo0NW_rGw5X910sMgydgsGdfdF8JwHmA8sV15AFMVltNbmcVKKWQ8rZTLTlniKq_QxHpzQaj_Thp5ZofRm8NzMr2Hx6W9fZPJB9wTdK7TaQTJ2QwLSV"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJfzFkImAhGvduVvRWikgBVV1X0AwiEK-YNJk4mNNrZ5Rfe9SnA64GS9zKocgjzlpCio5qqB5TFh5XyuXSMbCCFyehGC1UrmATLxhYjUI5s6KkGd6dHJlYDix_n1GUwUBKG-WfTf9eBy1MqAqj6lfUo"
   },
   "AD-88|EST": {
    "nome": "[AD-88][EST][VD][MXP-Fp01]",
@@ -1306,7 +1306,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-88 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLPSGvGGCtK6-kA4z_UTK4wW4b5VD4ii00_hLfhOL17Gy3IE7_yUedmReIxm1eyjHNIz8-SvVgw5XiJtl4PDnp_Eh2hnkrUoazQF3Fnr8KGRWv4EVejGlOkFZ8CcgYRv7MGh3zFJ5MHEKca-c1a57Ox"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQK8Y3235kJhSbb5qL8z8Zd77L59AYPeZTnQzmX2fB_kFO0HcQui3yBVWvhX8tANYaye_ztGtG2DhRqCtRMkmgMc9KGk1beGVAJo6DDOHjMwbEcVMqJMPbO55dGiCdPuwqJqNMyiYKXpgS1S-OiENifC"
   },
   "AD-89|EST": {
    "nome": "[AD-89][EST][VD][MXP-Fp01]",
@@ -1315,7 +1315,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-89 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIKHFojdzP7IUSXtjRABh4IIVveu5RD2H4lQdRA4rEOvVgjGVFD0kZzJ13weGKjDqSHZVk5OZcxMoFvqSNah1VtEKogmkCJjj5Ws77djK-IC227DKhzHRoVY6mlD2Akk5kgKyiz4bxn5jorrcVwaTiq"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQIJI872JczowFMo-Vt3NIRGRON6jSX7eHio5-TGWUKp9mYclKIODqVXSahe0o30kZW4cl-PUHbviE2bevj-gkMc5GuognVzKpdI48vp1QEFkuOCnLfR6kYs9z3YzyQyGyRSraI-aUbbdQkoktUhKfcE"
   },
   "AD-90|EST": {
    "nome": "[AD-90][EST][VD][MXP-Fp01]",
@@ -1324,7 +1324,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-90 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQInTR2Usu-1q534VnW-c02KyvEEqVHmumSZe3ye0qyY-SCT1MGfGYHNvUvEZr3RKcoIwJELU-lbqcObQXq1YEi-Kt4EZoZrlCx7KQd6GR5xctX-S-ge0dF95N_Fky_cPW4fT12PD6gcmeNdBm6qlyU_"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLVOXT0TO7oWfUY_8rSSoe4Rt_twm81cFw-o6F-YQre_AVX2NO_EAyIeJXNXzR5VNFyAlu1UMLxWXNp8YhkpJnGQYdJxFrCGYheOkvIh37Y8U-NT0yfevV49_NBFGrGEX_oJOAGp4IYCiWlgjE9aHfb"
   },
   "AD-91|EST": {
    "nome": "[AD-91][EST][VD][MXP-Fp01]",
@@ -1333,7 +1333,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-91 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIuF3ZUBHyFtHYuf3fUE29rxSmLFkrCf501Y2GTuKI8TbXROLRn5eNBIFzJ6D1yeBjt5G3AICax9m3AoT_F83os6zBCPa_yESr3yqpVMEUoG56dbnxbSU3HNZtZUM4MOqrz8Ny50ozVfG-6ayNJbNEv"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJ9RRi1eeWAGrapGZpIHQrs4eYBK511Y7X9P_Tcqb-pVRlYHih0_SrhKP_XX-FrC4i97ZqMZPIcPDMUxbqP3Slq3VmmqcrtK1UMZEWEVK9xGEfmqhalonM2e2j9HQUHOfB5SvweVjKQAXCVTSFwbymK"
   },
   "AD-92|EST": {
    "nome": "[AD-92][EST][VD][MXP-Fp01]",
@@ -1342,7 +1342,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-92 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKEPC-mZ5NnNlZXnapsGYilvh6glvZt4fWUBZNlrs4R_eHN1U5h-gk8qFlh--3uMaTBVfWWIvkzWxeRyGpWFPYgCSkHw7rxzoGjHHjEduxyrstWAx7aElmJi_Uv-rei7TK4hlkwTDwjGJXMc6x2k2Ew"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKcj_GT9pwA7qlNsckMn4qVxv7RohbEF3M1gruIot_BI6IR62SPo7yUzaj9RjdFgrIKW0v_Pa6puvkgJVmIcIf1ZTsAnb5SvkxQTce4aJRnOPgmSfwXo7F7miAl4rJpL-im75yBuBu_4y75KfUBmZF7"
   },
   "AD-95|EST": {
    "nome": "[AD-95][EST][VD][MXP-Fp01]",
@@ -1351,7 +1351,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-95 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQLNErTNXncahQM-bitGiIJE-0w2U-5-_4CdwJLMcdL2OamZzAiVdkKv00ZX7ZmdmHAkyR_YcVpf3Lra-T8BTHqEDQqiy0diobVTKDvJFapQF5ixiRiAyLYhHL5w1-307MBtwqVaU7wIuFofGKcVLGtC"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJAVRA3ilYEmUe23gGxXJFLsCDfYripNBQ2BKNcfLssukkGUWsQPNTV5xfuQBSn1yT_KU3hqY7JQ9kXwo1YpEwId6lc4DVt00Roxxz6JDTCPX8pVEo3iFtHYze1GOlaCG97wU5H3fJg_SIVfgmeVuJq"
   },
   "AD-99|EST": {
    "nome": "[AD-99][EST][VD][MXP-Fp01]",
@@ -1360,7 +1360,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-99 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQL1B3ql4ZLdLUOXrWHm8d5crQlD5a0rZOJ50_OgKg1f9FY5yLemtoEGLuet4R7Qgefo6Svz6wYwZo24b403T8e--pKBZmykdrzcKmgl3tpzwjnkkKMibz_aXT6avokf-aEIkmVrZBma8y0Qgs6JUYro"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLRZdnT5jWD09LlrnVm6zi8GkeXM3nEzThPCvjPRyOQyhGpKKHHWvtfipUWfB4A_rzx6tqwA2NpF8NnNvtPwMU1DTwoE1E2pW3jzsJjpCz-KJkiMhb32kPX_H5t51g2SyS7qyTGp24HwtkXdl_8H2KU"
   },
   "AD-30|VID": {
    "nome": "[AD-30][VID][VD][MXP-Fp01]",
@@ -1369,7 +1369,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-30 VID",
    "tipo": "Vídeo",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKd_zDEJAdjiI59Uz76oFdtMIIN-JFY_AkvIjUCqZdZI38YdkHIH8ZEDP9iMr-R5U9Zr3CDz3YXcp207CRWi4CWBQBNeBx2pAdsksl-aKa5Evz_KuEJdLvHiYOFK8CQtdz5EnuiiEPORr594VR7sehw"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQI7QTwBcWcdQWyrIx7XdLU1JaPcEepMfQ4kFBxPJN6I9sxw5neQlStGgTVvYOPP5ndzOqvkQIrTD8eZU10sCYZ5t5-iS1SdA1x_SqY8evnU8O6foBM4n2s2XbTPTkx-Xh_4mKdXFm35ggx2pQV9JdSz"
   },
   "AD-100|EST": {
    "nome": "[AD-100][EST][VD][MXP-Fp01]",
@@ -1378,7 +1378,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-100 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQICx-LOXTWRoCq93EaBXynB1awCMW7hyVfc5QyS7S_3If7ElMs1F8300UczTUg6dUyOA5sl5eR16fvL_Md55GWzrf4fZqA557r1dfnj8_go38XwDm01QaBpwNIpFiQRPaWFH4XjaEtZmYLNLCLZaQB6"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQK9wNgcvAUMEDnv4QFwTUj3u-_rvTYczmC4BZfH1XP5dzC50iXX1fV-POZKjhr_IO5d28bQdqSmwjgi1cpCWzsy_zgKhS9RrXFEzNgNTv6_b0QhdyqslXXyh_vmB9XfNUhCf9b1wlgVFKHExdbkxnoH"
   },
   "AD-101|EST": {
    "nome": "[AD-101][EST][VD][MXP-Fp01]",
@@ -1387,7 +1387,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-101 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIC3dRRwyR63Iwdmu8axSXwIg9bOD9L47IwbjnMx2eNSRLPXEhVzBSGxwnqqebDJxxh0ERANnt8_b33DwfUvZQIfBytvxXEWHbQrEiAUJ0aXjiwVnyOf7oQALgrnQ4NuNy73P9KjireS6bEX4bCeQes"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKwtaJXfblyGSOB9lzbM98-u6Tyfu_08o_iaGk6QtbTsgb63iTWxQ6KO1xQHUdZeRvo4geObI8bznuM6pK72_vXjdmHRRMV00RgFQZ-fBVl013NWilpx_eVX-XrHILm8_f-aUkyImb2kjQOdxzJ8NXi"
   },
   "AD-102|EST": {
    "nome": "[AD-102][EST][VD][MXP-Fp01]",
@@ -1396,7 +1396,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-102 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKu-1yQAcbCHp036tKaKySZvMUtt5SeCejADik5Lw6biLCcwG8MDnOHpyqThk50U4cqwcjUqIOqzT7B7hVj_CcryRgfOPLh1jitIYhKo4puIiN5EUJ03BkjibVegEh1s8xU2NVEpdUsWFFQlZOZe52r"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQKfYQc4lDTqG52WaO_qSU1XsgjUuqTBu1qz9InzUTXRN45sqM-ErFNFVynoTLg2ZJI8LeU8yfHMryHu6qtIkj5m1L7EP9XElZwcdJEcXbn5ph1lGRokZBvGQXvYdheEf9CMJ01uIXmd3rYpve0s5nrS"
   },
   "AD-94|EST": {
    "nome": "[AD-94][EST][VD][MXP-Fp01]",
@@ -1405,7 +1405,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-94 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKdjk0ECBCNo_De8ayxRh9Mr85JXpb3GrLMuzG9usxmkvsLnz8xIl7CHlSeMRC_A2WeN-Skyp0pNQCEpiiU13aHqzesC30Qj8JVWpTqGlAngkSbg34xUR2kb_V1qqbUjfBS9u91WertoS8tsI-5vUlv"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQJtb2ZEgXGhdFZ_oR07snsZlhdyWoU2DUKCDUREdsWg_rS__h9-0lI0DUInGIYxrgF_vblxd7sn8c-krFIzrRWc4Vz0NCoYJNX-AFpAubpM8Osu22WFrZ6j00Hv9nr7yB6Ot2D1O2R5-HchqtGg8CIm"
   },
   "AD-97|EST": {
    "nome": "[AD-97][EST][VD][MXP-Fp01]",
@@ -1414,7 +1414,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-97 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQIIRzi8EMsEiPGfXy00LudhS84_MxEb-iwrw_IfSeiLSyHEuaBRj2PpqEn-5MmluIhhUaC3k0WvDkVLVgfM9icXImtM23WGmz2-2CVUnN9pSRCNEVKL7aV38l3vTdSrhh4Qrjf5oLBHk1fqdWkFkzwG"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLjEg5PWgkP7hEjI5BE5CdbsxnQe3WQA8j8aTgqpzmHeDaIBz41r_CrFMoTuQNZ6967WHviNymSd8L1eGiRzIE_46IuTm49SdsmlvMlJOdcb6Lq2ApdtcPiBm8FwJu_9k1WvPPlTCUSVK9O3V04TEer"
   },
   "AD-98|EST": {
    "nome": "[AD-98][EST][VD][MXP-Fp01]",
@@ -1423,7 +1423,7 @@
    "status": "ACTIVE",
    "rotulo": "AD-98 EST",
    "tipo": "Estático",
-   "thumb": "https://www.facebook.com/ads/image/?d=AQKomZXcviwbE8xqJHNtcK9eVcexxEupxJtD6ao3ef20dEFeK890dZb4VW4Wu-PReIYAw9wdr0rWpzxwZ6hEq9TWF9QxTAYmTDR6WBPvb_KSbExcTyQZfOjyPk9te8KqHQw-_D6GchoA1bGQAv101sF9"
+   "thumb": "https://www.facebook.com/ads/image/?d=AQLmjtmsOSegUSaSlGstbBk9ty1Xo3T09DzSg5S0OfSNq5g0RqANA5hCfnwIzQt38s7teVls0yh0NLaqW6dHvXBYTkesmNAvDklu6vi-1fISTRYItHTTNktaLVGxP-znTL_18iqw11qOsgTtDhSVwGV0"
   }
  },
  "trafego": [
@@ -25599,6 +25599,36 @@
    "o": "LITE",
    "a": "AD-101|EST",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV ][TESTE_ADS][ESTATICOS_80-110][01_09]",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-09-02",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "AD-113|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV ][TESTE_ADS][ESTATICOS_111-120][01_09]",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-09-02",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "AD-111|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV ][TESTE_ADS][ESTATICOS_111-120][01_09]",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-09-02",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 1241.16,
+   "o": "Upgrade Lite para VIP - R$1.000",
+   "a": "AD-111|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV ][TESTE_ADS][ESTATICOS_111-120][01_09]",
    "src": "meta_ads"
   }
  ],
