@@ -1,5 +1,5 @@
 {
- "gerado_em": "02/09/2026 08:25",
+ "gerado_em": "02/09/2026 15:23",
  "hoje": "2026-09-02",
  "dias": [
   "2026-08-01",
@@ -22,14 +22,14 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 145,
+    "realizado": 146,
     "esperado_hoje": 150.0,
-    "pct": 96.7,
+    "pct": 97.3,
     "status": "warn",
     "unidade": "int",
     "direcao": "up",
-    "falta": 5,
-    "nec_dia": 5.0,
+    "falta": 4,
+    "nec_dia": 4.0,
     "obs": "Toda venda registrada na Hubla, de qualquer frente."
    },
    {
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 84381.5,
+    "realizado": 84578.5,
     "esperado_hoje": 29550.0,
-    "pct": 285.6,
+    "pct": 286.2,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 325.14,
+    "realizado": 322.91,
     "esperado_hoje": 150.0,
-    "pct": 216.8,
+    "pct": 215.3,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -84,7 +84,7 @@
     "meta": 1.3,
     "realizado": 1.79,
     "esperado_hoje": 1.3,
-    "pct": 137.7,
+    "pct": 138.0,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 9.67,
+   "vendas_dia": 9.73,
    "spend_dia": 3142.97,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 145,
-   "receita": 84381.5,
+   "vendas": 146,
+   "receita": 84578.5,
    "spend": 47144.59,
-   "pct_meta": 96.7
+   "pct_meta": 97.3
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 581.94
+  "ticket_real": 579.3
  },
  "ads": {
   "AD-01|EST": {
@@ -25629,6 +25629,16 @@
    "o": "Upgrade Lite para VIP - R$1.000",
    "a": "AD-111|EST",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV ][TESTE_ADS][ESTATICOS_111-120][01_09]",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-09-02",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "AD-72|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PAGINA]",
    "src": "meta_ads"
   }
  ],
