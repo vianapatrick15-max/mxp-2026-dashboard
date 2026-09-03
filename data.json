@@ -1,9 +1,9 @@
 {
- "gerado_em": "03/09/2026 01:35",
+ "gerado_em": "03/09/2026 08:19",
  "hoje": "2026-09-03",
  "dias": [
   "2026-08-01",
-  "2026-09-02"
+  "2026-09-03"
  ],
  "dias_trafego": [
   "2026-08-04",
@@ -22,9 +22,9 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 152,
+    "realizado": 155,
     "esperado_hoje": 150.0,
-    "pct": 101.3,
+    "pct": 103.3,
     "status": "pos",
     "unidade": "int",
     "direcao": "up",
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 86658.5,
+    "realizado": 87272.58,
     "esperado_hoje": 29550.0,
-    "pct": 293.3,
+    "pct": 295.3,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 345.57,
+    "realizado": 338.88,
     "esperado_hoje": 150.0,
-    "pct": 230.4,
+    "pct": 225.9,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 1.65,
+    "realizado": 1.66,
     "esperado_hoje": 1.3,
-    "pct": 126.9,
+    "pct": 127.8,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 10.13,
+   "vendas_dia": 10.33,
    "spend_dia": 3501.74,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 152,
-   "receita": 86658.5,
+   "vendas": 155,
+   "receita": 87272.58,
    "spend": 52526.12,
-   "pct_meta": 101.3
+   "pct_meta": 103.3
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 570.12
+  "ticket_real": 563.05
  },
  "ads": {
   "AD-01|EST": {
@@ -26440,6 +26440,36 @@
    "o": "LITE",
    "a": "AD-38|VID",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_ADS][NOVOS][21_08]",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-09-02",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "AD-57|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-09-03",
+   "f": "Sem origem",
+   "t": "indefinido",
+   "v": 220.08,
+   "o": "LITE - Embaixador",
+   "a": "",
+   "c": "",
+   "src": ""
+  },
+  {
+   "d": "2026-09-03",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "AD-57|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
    "src": "meta_ads"
   }
  ],
