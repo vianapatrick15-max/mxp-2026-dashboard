@@ -1,5 +1,5 @@
 {
- "gerado_em": "03/09/2026 18:54",
+ "gerado_em": "03/09/2026 21:57",
  "hoje": "2026-09-03",
  "dias": [
   "2026-08-01",
@@ -22,9 +22,9 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 163,
+    "realizado": 162,
     "esperado_hoje": 150.0,
-    "pct": 108.7,
+    "pct": 108.0,
     "status": "pos",
     "unidade": "int",
     "direcao": "up",
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 89348.22,
+    "realizado": 89151.22,
     "esperado_hoje": 29550.0,
-    "pct": 302.4,
+    "pct": 301.7,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 354.01,
+    "realizado": 356.19,
     "esperado_hoje": 150.0,
-    "pct": 236.0,
+    "pct": 237.5,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 1.55,
+    "realizado": 1.54,
     "esperado_hoje": 1.3,
-    "pct": 119.1,
+    "pct": 118.8,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 10.87,
+   "vendas_dia": 10.8,
    "spend_dia": 3846.88,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 163,
-   "receita": 89348.22,
+   "vendas": 162,
+   "receita": 89151.22,
    "spend": 57703.21,
-   "pct_meta": 108.7
+   "pct_meta": 108.0
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 548.15
+  "ticket_real": 550.32
  },
  "ads": {
   "AD-01|EST": {
@@ -27668,16 +27668,6 @@
   },
   {
    "d": "2026-09-03",
-   "f": "WhatsApp",
-   "t": "proprio",
-   "v": 197.0,
-   "o": "LITE",
-   "a": "",
-   "c": "mxp-26",
-   "src": "whatsapp"
-  },
-  {
-   "d": "2026-09-03",
    "f": "thays_almeida",
    "t": "outros",
    "v": 136.0,
@@ -27717,5 +27707,5 @@
    "src": "email"
   }
  ],
- "reembolsos": 7
+ "reembolsos": 8
 }
