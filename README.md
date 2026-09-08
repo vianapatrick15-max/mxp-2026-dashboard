@@ -54,6 +54,33 @@ mede o plano inteiro.
 Todo cabeçalho ordena: primeiro clique desce, segundo sobe. A ordem padrão é por
 investimento (campanhas e criativos) ou por receita (frentes e ofertas).
 
+## Recorte (filtro cruzado)
+
+Clicar numa linha de **campanha**, **criativo**, **dia**, **frente** ou **oferta** —
+ou numa barra dos gráficos, ou num card da aba Ads — recorta o dashboard inteiro
+por aquele item: KPIs, funil, evolução diária, todas as tabelas e a aba Ads. Os
+recortes ativos viram chips abaixo do filtro de período, saem clicando no `×` ou
+no mesmo item de novo, e se somam entre si (dia + campanha, por exemplo). O
+recorte é uma camada **por cima** do período, nunca no lugar dele; a aba Metas
+ignora os dois.
+
+O recorte roda no `agrega()`, antes de qualquer soma, então tudo que é derivado
+(CPA, ROAS, funil, mediana de custo por visita) recalcula dentro do recorte.
+
+Duas dimensões não existem no lado do tráfego e por isso têm regra própria, com
+aviso no rodapé da barra de chips:
+
+- **Frente**: a frente paga leva toda a mídia do período; frente própria
+  (WhatsApp, e-mail, closers) zera o investimento, porque não há mídia amarrada a ela.
+- **Oferta**: filtra só a venda. O investimento do Meta não é segmentável por
+  oferta, então as colunas de custo continuam sendo o total do período.
+
+## Tooltip nos gráficos
+
+Passar o mouse no gráfico diário mostra o dia inteiro (investido, vendas,
+receita, CAC, ROAS, visitas, checkouts); nas barras horizontais mostra receita,
+participação, ticket e, na frente paga, CPA e ROAS.
+
 ## Aba Ads
 
 Um card por anúncio: imagem do criativo, status, investimento, vendas, receita,

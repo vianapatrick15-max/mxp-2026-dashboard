@@ -171,6 +171,41 @@
   .vazio{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px;
     text-align:center;color:var(--muted);font-size:12.5px;margin-top:14px}
 
+  /* ---- filtro cruzado (drill-down) + tooltip ---- */
+  .fltbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .fltbar:empty{display:none}
+  .fltbar .lbl{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .chipf{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;
+    background:#eef7ff;border:1px solid #bcdcf8;color:var(--blue-d);border-radius:20px;padding:4px 5px 4px 12px;
+    max-width:100%}
+  .chipf i{font-style:normal;font-weight:700;color:var(--muted);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+  .chipf span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:340px}
+  .chipf button{appearance:none;border:0;background:#dbeafb;color:var(--blue-d);cursor:pointer;font:inherit;
+    font-size:13px;font-weight:800;line-height:18px;border-radius:50%;width:19px;height:19px;flex:none;padding:0}
+  .chipf button:hover{background:var(--blue);color:#fff}
+  .fltbar .limpa{appearance:none;font:inherit;font-size:11.5px;font-weight:700;cursor:pointer;color:var(--muted);
+    background:none;border:0;text-decoration:underline;padding:4px 2px}
+  .fltbar .limpa:hover{color:var(--bad)}
+  .fltbar .nota{font-size:11.5px;color:var(--muted);flex-basis:100%}
+
+  tbody tr.clk{cursor:pointer}
+  tbody tr.clk:hover{background:#eef7ff}
+  tbody tr.sel,tbody tr.sel:hover{background:#e2f0fd;box-shadow:inset 3px 0 0 var(--blue)}
+  .adc.clk{cursor:pointer}
+  .adc.clk:hover{border-color:#bcdcf8;box-shadow:0 4px 16px rgba(0,38,86,.10)}
+  .adc.sel{border-color:var(--blue);box-shadow:0 0 0 2px #bcdcf8}
+  .hit{cursor:default}
+  .hit.pk{cursor:pointer}
+  .hit:hover{fill:rgba(1,120,230,.06)}
+
+  .tip{position:fixed;left:0;top:0;z-index:60;pointer-events:none;background:var(--ink);color:#fff;
+    border-radius:10px;padding:9px 12px;font-size:11.5px;line-height:1.55;max-width:300px;
+    box-shadow:0 10px 30px rgba(0,24,56,.28);opacity:0;transition:opacity .09s}
+  .tip.on{opacity:1}
+  .tip b{color:#9fd0ff;font-weight:800}
+  .tip .h{display:block;font-weight:800;font-size:12.5px;color:#fff;margin-bottom:2px}
+  .tip .z{display:block;margin-top:4px;font-size:10.5px;opacity:.7}
+
   footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--line);
     font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 </style>
@@ -204,6 +239,7 @@
     <input type="date" id="ate">
     <span class="info" id="infoPeriodo"></span>
   </div>
+  <div class="fltbar" id="barraFiltros"></div>
 
 
   <section class="tab on" id="tab-desempenho">
@@ -310,6 +346,8 @@
   </footer>
 </div>
 
+<div class="tip" id="tip"></div>
+
 <script>
 const DATA = /*__DATA__*/;
 
@@ -324,10 +362,76 @@ const MD = '<span class="muted">—</span>';
 const DIA_SEMANA = ['dom','seg','ter','qua','qui','sex','sáb'];
 const M = DATA.metas;
 
+/* ================= recorte (filtro cruzado) =================
+   Clicar numa linha de campanha, criativo, frente, oferta ou dia recorta o
+   dashboard inteiro. O recorte vive por cima do periodo, nunca no lugar dele. */
+const FLT = {dia:null, camp:null, ad:null, frente:null, oferta:null};
+const FLT_LBL = {dia:'Dia', camp:'Campanha', ad:'Anúncio', frente:'Frente', oferta:'Oferta'};
+const eqc = (a,b) => !!a && !!b && String(a).toLowerCase()===String(b).toLowerCase();
+// tipo da frente vem da venda: frente sem midia amarrada zera o investimento no recorte
+const tipoFrente = f => (DATA.vendas.filter(v=>v.f===f)[0]||{}).t;
+function toggleFlt(dim, val){
+  FLT[dim] = (FLT[dim]===val || val==null) ? null : val;
+  render();
+}
+function limpaFlt(){ Object.keys(FLT).forEach(k=>FLT[k]=null); render(); }
+
+function renderFiltros(){
+  const el = document.getElementById('barraFiltros');
+  const ativos = Object.keys(FLT).filter(k=>FLT[k]);
+  if (!ativos.length){
+    el.innerHTML = '<span class="nota">Clique em qualquer linha de <b>campanha</b>, <b>criativo</b>, <b>dia</b>, ' +
+      '<b>frente</b> ou <b>oferta</b> — ou numa barra do gráfico — para recortar o dashboard inteiro por ela. ' +
+      'O recorte se soma ao período e sai clicando de novo.</span>';
+    return;
+  }
+  const notas = [];
+  if (FLT.oferta) notas.push('O investimento do Meta não é segmentável por oferta: as colunas de custo seguem o total do período.');
+  if (FLT.frente && tipoFrente(FLT.frente)!=='pago') notas.push('Frente sem mídia amarrada: o investimento aparece zerado de propósito.');
+  el.innerHTML = '<span class="lbl">Recorte</span>' + ativos.map(k=>{
+    const txt = k==='dia' ? dia(FLT[k])
+      : k==='ad' ? ((DATA.ads[FLT[k]]||{}).rotulo || FLT[k])
+      : String(FLT[k]);
+    return `<span class="chipf"><i>${FLT_LBL[k]}</i><span>${esc(txt)}</span>` +
+           `<button data-k="${k}" title="Remover este recorte">×</button></span>`;
+  }).join('') +
+  (ativos.length>1 ? '<button class="limpa" data-k="*">limpar tudo</button>' : '') +
+  (notas.length ? `<span class="nota">${notas.join(' ')}</span>` : '');
+  el.querySelectorAll('button[data-k]').forEach(b=>{
+    b.onclick = () => b.dataset.k==='*' ? limpaFlt() : toggleFlt(b.dataset.k, null);
+  });
+}
+
+/* ================= tooltip dos graficos ================= */
+const TIP = document.getElementById('tip');
+let TIPEL = null;
+function tipMove(ev){
+  const r = TIP.getBoundingClientRect();
+  let x = ev.clientX + 16, y = ev.clientY + 18;
+  if (x + r.width  > innerWidth  - 8) x = Math.max(8, ev.clientX - r.width - 16);
+  if (y + r.height > innerHeight - 8) y = Math.max(8, ev.clientY - r.height - 18);
+  TIP.style.transform = `translate(${x}px,${y}px)`;
+}
+document.addEventListener('mousemove', ev=>{
+  const t = ev.target.closest ? ev.target.closest('[data-tip]') : null;
+  if (t){
+    if (t !== TIPEL){ TIPEL = t; TIP.innerHTML = t.getAttribute('data-tip'); TIP.classList.add('on'); }
+    tipMove(ev);
+  } else if (TIPEL){ TIPEL = null; TIP.classList.remove('on'); }
+}, {passive:true});
+document.addEventListener('scroll', ()=>{ TIPEL=null; TIP.classList.remove('on'); }, {passive:true});
+
 /* ================= agregação por período ================= */
 function agrega(de, ate){
-  const T = DATA.trafego.filter(r => r.d>=de && r.d<=ate);
-  const V = DATA.vendas.filter(r => r.d>=de && r.d<=ate);
+  let T = DATA.trafego.filter(r => r.d>=de && r.d<=ate);
+  let V = DATA.vendas.filter(r => r.d>=de && r.d<=ate);
+  // recorte: dia e campanha existem nos dois lados; oferta so na venda; frente
+  // paga = toda a midia, frente propria = sem midia.
+  if (FLT.dia)   { T = T.filter(r=>r.d===FLT.dia);        V = V.filter(r=>r.d===FLT.dia); }
+  if (FLT.camp)  { T = T.filter(r=>eqc(r.c,FLT.camp));    V = V.filter(r=>eqc(r.c,FLT.camp)); }
+  if (FLT.ad)    { T = T.filter(r=>r.a===FLT.ad);         V = V.filter(r=>r.a===FLT.ad); }
+  if (FLT.frente){ V = V.filter(r=>r.f===FLT.frente);     if (tipoFrente(FLT.frente)!=='pago') T = []; }
+  if (FLT.oferta){ V = V.filter(r=>r.o===FLT.oferta); }
   const t = {s:0,i:0,k:0,l:0,ic:0,p:0};
   T.forEach(r=>{ t.s+=r.s; t.i+=r.i; t.k+=r.k; t.l+=r.l; t.ic+=r.ic; t.p+=r.p; });
 
@@ -414,7 +518,7 @@ function agrega(de, ate){
 
 /* ================= tabelas ordenáveis ================= */
 const SORT = {};
-function tabela(id, cols, rows, def, rodape){
+function tabela(id, cols, rows, def, rodape, pick){
   if (!SORT[id]) SORT[id] = {k:def.k, dir:def.dir||'desc'};
   const st = SORT[id];
   const ord = rows.slice().sort((a,b)=>{
@@ -431,12 +535,23 @@ function tabela(id, cols, rows, def, rodape){
     '<thead><tr>' + cols.map(c=>
       `<th data-k="${c.k}" class="${c.k===st.k?'sorted':''}" title="Ordenar por ${esc(c.lbl)}">${esc(c.lbl)}<span class="arw">${seta(c)}</span></th>`
     ).join('') + '</tr></thead><tbody>' +
-    (ord.length ? ord.map(r=>'<tr>'+cols.map((c,ci)=>{
-      const cls = ((c.cls? c.cls(r) : '') + (ci===0?' name':'')).trim();
-      return `<td class="${cls}">${c.fmt(r)}</td>`;
-    }).join('')+'</tr>').join('')
+    (ord.length ? ord.map(r=>{
+      let tr = '<tr>';
+      if (pick){
+        const pv = String(pick.val(r));
+        tr = `<tr class="clk${FLT[pick.dim]===pv?' sel':''}" data-pk="${esc(pv)}" title="Clique para recortar o dashboard por este item">`;
+      }
+      return tr+cols.map((c,ci)=>{
+        const cls = ((c.cls? c.cls(r) : '') + (ci===0?' name':'')).trim();
+        return `<td class="${cls}">${c.fmt(r)}</td>`;
+      }).join('')+'</tr>';
+    }).join('')
     : `<tr><td colspan="${cols.length}" class="muted" style="text-align:center;padding:22px">Sem dado neste período.</td></tr>`) +
     '</tbody>' + (rodape? `<tfoot><tr>${rodape}</tr></tfoot>` : '');
+  if (pick) el.querySelectorAll('tbody tr[data-pk]').forEach(tr=>{
+    // o link de previa vive dentro da linha: clique nele nao pode virar recorte
+    tr.onclick = e => { if (e.target.closest('a')) return; toggleFlt(pick.dim, tr.dataset.pk); };
+  });
   el.querySelectorAll('th').forEach(th=>{
     th.onclick = () => {
       const k = th.dataset.k;
@@ -452,6 +567,7 @@ let DE = DATA.dias[0], ATE = DATA.dias[1];
 
 function render(){
   const v = agrega(DE, ATE);
+  renderFiltros();
   renderAds(v);
   const nd = v.dias.length || 0;
 
@@ -488,11 +604,17 @@ function render(){
     {k:'roas', lbl:'ROAS', fmt:r=>r.roas==null?MD:xm(r.roas), cls:r=>r.roas==null?'':(r.roas>=M.roas_meta?'pos sig':'neg sig')},
   ], v.frentes, {k:'receita'},
   `<td>Total</td><td>${int(v.vendas)}</td><td>${brl(v.receita)}</td><td>${v.receita?'100,0%':'—'}</td>
-   <td>${brl(v.ticket)}</td><td>${brl(v.t.s)}</td><td>${v.vendas?brl(v.cac):MD}</td><td>${v.t.s?xm(v.roas):MD}</td>`);
+   <td>${brl(v.ticket)}</td><td>${brl(v.t.s)}</td><td>${v.vendas?brl(v.cac):MD}</td><td>${v.t.s?xm(v.roas):MD}</td>`,
+  {dim:'frente', val:r=>r.frente});
 
   chartBarras('chartFrentes', v.frentes.slice().sort((a,b)=>b.receita-a.receita).map(f=>({
     lbl:f.frente, val:f.receita, sub:f.vendas+' venda(s) · '+pct(f.pct_receita),
-    cor:f.tipo==='pago'?'#0178e6':f.tipo==='proprio'?'#0b8fa4':f.tipo==='outros'?'#5e6c7b':'#9aa7b4'})), 150);
+    cor:f.tipo==='pago'?'#0178e6':f.tipo==='proprio'?'#0b8fa4':f.tipo==='outros'?'#5e6c7b':'#9aa7b4',
+    pick:{dim:'frente', val:f.frente},
+    tip:`<span class="h">${esc(f.frente)}</span>Receita <b>${brl0(f.receita)}</b> · ${pct(f.pct_receita)} do total<br>`+
+        `${int(f.vendas)} venda(s) · ticket <b>${brl0(f.ticket)}</b>`+
+        (f.cpa==null?'':`<br>CPA <b>${brl0(f.cpa)}</b> · ROAS <b>${xm(f.roas)}</b>`)+
+        `<span class="z">clique para recortar por esta frente</span>`})), 150);
 
   /* funil */
   const mx = Math.max.apply(null, v.funil.map(x=>x.n).concat([1]));
@@ -531,7 +653,8 @@ function render(){
   ], v.serie, {k:'data'},
   `<td>Total</td><td>${int(v.vendas)}</td><td>${brl(v.receita)}</td><td>${brl(v.ticket)}</td>
    <td>${int(v.pagas)}</td><td>${brl(v.t.s)}</td><td>${v.vendas?brl(v.cac):MD}</td>
-   <td>${v.t.s?xm(v.roas):MD}</td><td>${int(v.t.l)}</td><td>${int(v.t.ic)}</td>`);
+   <td>${v.t.s?xm(v.roas):MD}</td><td>${int(v.t.l)}</td><td>${int(v.t.ic)}</td>`,
+  {dim:'dia', val:r=>r.data});
 
   const comMeta = v.serie.filter(d=>d.vendas>=metaDia).length;
   const melhor = v.serie.slice().sort((a,b)=>b.vendas-a.vendas)[0];
@@ -560,7 +683,7 @@ function render(){
     {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
     {k:'conv_chk', lbl:'Conv. checkout', fmt:r=>r.conv_chk==null?MD:pct(r.conv_chk)},
     {k:'cpa', lbl:'CPA', fmt:r=>r.cpa==null?MD:brl(r.cpa), cls:r=>r.cpa==null?'':(r.cpa<=M.cac_max?'pos sig':'neg sig')},
-  ], v.campanhas, {k:'s'});
+  ], v.campanhas, {k:'s'}, null, {dim:'camp', val:r=>r.id});
 
   /* criativos */
   const lpvs = v.criativos.filter(c=>c.l>0).map(c=>c.custo_lpv).sort((a,b)=>a-b);
@@ -585,7 +708,7 @@ function render(){
     {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
     {k:'conv_chk', lbl:'Conv. checkout', fmt:r=>r.conv_chk==null?MD:pct(r.conv_chk)},
     {k:'cpa', lbl:'CPA', fmt:r=>r.cpa==null?MD:brl(r.cpa), cls:r=>r.cpa==null?'':(r.cpa<=M.cac_max?'pos sig':'neg sig')},
-  ], v.criativos, {k:'s'});
+  ], v.criativos, {k:'s'}, null, {dim:'ad', val:r=>r.id});
 
   const comVenda = v.criativos.filter(c=>c.vendas>0).length;
   const medio = v.criativos.length ? v.t.s/v.criativos.length : 0;
@@ -606,9 +729,13 @@ function render(){
     {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
     {k:'ticket', lbl:'Ticket médio', fmt:r=>brl(r.ticket)},
     {k:'pct', lbl:'% receita', fmt:r=>pct(r.pct)},
-  ], v.ofertas, {k:'receita'});
+  ], v.ofertas, {k:'receita'}, null, {dim:'oferta', val:r=>r.oferta});
   chartBarras('chartOfertas', v.ofertas.slice().sort((a,b)=>b.receita-a.receita).map(o=>({
-    lbl:o.oferta, val:o.receita, sub:o.vendas+' venda(s) · ticket '+brl0(o.ticket), cor:'#0178e6'})), 168);
+    lbl:o.oferta, val:o.receita, sub:o.vendas+' venda(s) · ticket '+brl0(o.ticket), cor:'#0178e6',
+    pick:{dim:'oferta', val:o.oferta},
+    tip:`<span class="h">${esc(o.oferta)}</span>Receita <b>${brl0(o.receita)}</b> · ${pct(o.pct)} do total<br>`+
+        `${int(o.vendas)} venda(s) · ticket <b>${brl0(o.ticket)}</b>`+
+        `<span class="z">clique para recortar por esta oferta</span>`})), 168);
 }
 
 /* ================= gráficos ================= */
@@ -620,12 +747,19 @@ function chartBarras(id, itens, lab){
   let s = `<svg viewBox="0 0 ${W} ${H}">`;
   itens.forEach((x,i)=>{
     const y=i*rowH+8, w=Math.max(bw*x.val/max,2);
+    const sel = x.pick && FLT[x.pick.dim]===String(x.pick.val);
+    const tip = x.tip || `<span class="h">${esc(String(x.lbl))}</span>${(x.fmt||brl0)(x.val)}<br>${esc(x.sub)}`;
     s+=`<text class="axis" x="0" y="${y+13}" style="font-weight:700;fill:#002656">${esc(String(x.lbl).slice(0,22))}</text>`;
-    s+=`<rect x="${lab}" y="${y+2}" width="${w}" height="15" rx="4" fill="${x.cor}"/>`;
+    s+=`<rect x="${lab}" y="${y+2}" width="${w}" height="15" rx="4" fill="${x.cor}"${sel?' stroke="#002656" stroke-width="2"':''}/>`;
     s+=`<text class="axis" x="${lab+w+7}" y="${y+14}">${(x.fmt||brl0)(x.val)}</text>`;
     s+=`<text class="axis" x="0" y="${y+25}" style="font-size:9.5px">${esc(x.sub)}</text>`;
+    s+=`<rect class="hit${x.pick?' pk':''}" x="0" y="${y-2}" width="${W}" height="${rowH-2}" fill="transparent"`+
+       ` data-tip="${esc(tip)}"${x.pick?` data-dim="${x.pick.dim}" data-val="${esc(String(x.pick.val))}"`:''}/>`;
   });
   el.innerHTML = s+'</svg>';
+  el.querySelectorAll('.hit.pk').forEach(h=>{
+    h.onclick = () => toggleFlt(h.getAttribute('data-dim'), h.getAttribute('data-val'));
+  });
 }
 
 function chartDia(d){
@@ -659,7 +793,24 @@ function chartDia(d){
   d.forEach((x,i)=>{const y=pt+ih-ih*x.vendas/maxV;
     s+=`<circle cx="${X(i)}" cy="${y}" r="4.5" fill="#0b8fa4"/>`;
     if(x.vendas) s+=`<text class="vlabel" x="${X(i)}" y="${y-11}" text-anchor="middle" style="fill:${x.vendas>=metaDiaChart?'#12855a':'#08707f'}">${int(x.vendas)}</text>`;});
+  // camada invisivel por dia: hover mostra o dia inteiro, clique recorta por ele
+  const cw = iw/d.length;
+  d.forEach((x,i)=>{
+    const tip = `<span class="h">${DIA_SEMANA[new Date(x.data+'T12:00:00').getDay()]} ${dia(x.data)}</span>`+
+      `Investido <b>${brl0(x.spend)}</b><br>`+
+      `Vendas <b>${int(x.vendas)}</b> · receita <b>${brl0(x.receita)}</b><br>`+
+      `CAC <b>${x.cac==null?'—':brl0(x.cac)}</b> · ROAS <b>${x.roas==null?'—':xm(x.roas)}</b><br>`+
+      `${int(x.lpv)} visitas · ${int(x.ic)} checkouts`+
+      `<span class="z">clique para recortar o dashboard neste dia</span>`;
+    s+=`<rect class="hit pk" x="${pl+cw*i}" y="${pt}" width="${cw}" height="${ih}" fill="transparent"`+
+       ` data-tip="${esc(tip)}" data-d="${x.data}"/>`;
+    if (FLT.dia===x.data)
+      s+=`<rect x="${pl+cw*i}" y="${pt}" width="${cw}" height="${ih}" fill="none" stroke="#002656" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  });
   el.innerHTML = s+'</svg>';
+  el.querySelectorAll('.hit.pk').forEach(h=>{
+    h.onclick = () => toggleFlt('dia', h.getAttribute('data-d'));
+  });
 }
 
 /* ================= aba Ads: cards de criativo ================= */
@@ -696,7 +847,8 @@ function cardAd(r, i){
   const roas = r.roas==null||!r.s ? MD : `<span class="${r.roas>=M.roas_meta?'pos':'neg'}">${xm(r.roas)}</span>`;
   const cvp  = r.conv_pag==null ? MD
     : `<b class="${r.conv_pag>=DATA.bench_lpv_ic?'pos':'neg'}">${pct(r.conv_pag)}</b>`;
-  return `<div class="adc">
+  const sel = FLT.ad === r.id;
+  return `<div class="adc clk${sel?' sel':''}" data-ad="${esc(r.id)}" title="Clique para recortar o dashboard por este anúncio">
     <div class="thumb"><span class="rank">#${i+1}</span>
       <span class="stb ${on?'on':'off'}">${on?'ativo':'pausado'}</span>${thumb}</div>
     <div class="body">
@@ -741,9 +893,14 @@ function renderAds(v){
   const gasto = lista.reduce((a,b)=>a+b.s,0), vendas = lista.reduce((a,b)=>a+b.vendas,0);
   document.getElementById('adsInfo').textContent =
     `${lista.length} de ${todos.length} anúncios · ${brl0(gasto)} · ${int(vendas)} venda(s)`;
-  document.getElementById('adsGrid').innerHTML = lista.length
+  const grid = document.getElementById('adsGrid');
+  grid.innerHTML = lista.length
     ? lista.map(cardAd).join('')
     : '<div class="vazio">Nenhum anúncio com investimento neste período e filtro.</div>';
+  grid.querySelectorAll('.adc[data-ad]').forEach(c=>{
+    // a previa do Instagram e um link dentro do card: clique nele nao vira recorte
+    c.onclick = e => { if (e.target.closest('a')) return; toggleFlt('ad', c.dataset.ad); };
+  });
 
   const comVenda = todos.filter(r=>r.vendas>0).length;
   const maduros = todos.filter(r=>r.s>=200).length;
@@ -813,8 +970,9 @@ document.querySelectorAll('nav.tabs button').forEach(b=>{
     document.querySelectorAll('nav.tabs button').forEach(x=>x.classList.toggle('on', x===b));
     document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on', t.id==='tab-'+b.dataset.tab));
     // a aba Metas mede o plano inteiro, entao o filtro de periodo nao se aplica a ela
-    document.getElementById('barraPeriodo').style.display =
-      b.dataset.tab === 'metas' ? 'none' : '';
+    const semFiltro = b.dataset.tab === 'metas';
+    document.getElementById('barraPeriodo').style.display = semFiltro ? 'none' : '';
+    document.getElementById('barraFiltros').style.display = semFiltro ? 'none' : '';
     window.scrollTo({top:0,behavior:'smooth'});
   };
 });
