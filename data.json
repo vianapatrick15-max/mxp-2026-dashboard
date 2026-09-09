@@ -1,5 +1,5 @@
 {
- "gerado_em": "09/09/2026 08:24",
+ "gerado_em": "09/09/2026 12:07",
  "hoje": "2026-09-09",
  "dias": [
   "2026-08-01",
@@ -22,9 +22,9 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 189,
+    "realizado": 190,
     "esperado_hoje": 150.0,
-    "pct": 126.0,
+    "pct": 126.7,
     "status": "pos",
     "unidade": "int",
     "direcao": "up",
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 99451.32,
+    "realizado": 99648.32,
     "esperado_hoje": 29550.0,
-    "pct": 336.6,
+    "pct": 337.2,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 351.83,
+    "realizado": 349.98,
     "esperado_hoje": 150.0,
-    "pct": 234.6,
+    "pct": 233.3,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -84,7 +84,7 @@
     "meta": 1.3,
     "realizado": 1.5,
     "esperado_hoje": 1.3,
-    "pct": 115.0,
+    "pct": 115.3,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 12.6,
+   "vendas_dia": 12.67,
    "spend_dia": 4433.05,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 189,
-   "receita": 99451.32,
+   "vendas": 190,
+   "receita": 99648.32,
    "spend": 66495.79,
-   "pct_meta": 126.0
+   "pct_meta": 126.7
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 526.2
+  "ticket_real": 524.46
  },
  "ads": {
   "AD-01|EST": {
@@ -30891,6 +30891,16 @@
    "a": "",
    "c": "conteudo",
    "src": "instagram"
+  },
+  {
+   "d": "2026-09-09",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "AD-113|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV ][TESTE_ADS][ESTATICOS_111-120][01_09]",
+   "src": "meta_ads"
   }
  ],
  "reembolsos": 8
