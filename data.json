@@ -1,5 +1,5 @@
 {
- "gerado_em": "10/09/2026 13:50",
+ "gerado_em": "10/09/2026 15:16",
  "hoje": "2026-09-10",
  "dias": [
   "2026-08-01",
@@ -22,9 +22,9 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 201,
+    "realizado": 202,
     "esperado_hoje": 150.0,
-    "pct": 134.0,
+    "pct": 134.7,
     "status": "pos",
     "unidade": "int",
     "direcao": "up",
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 106913.86,
+    "realizado": 107049.86,
     "esperado_hoje": 29550.0,
-    "pct": 361.8,
+    "pct": 362.3,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 344.42,
+    "realizado": 342.71,
     "esperado_hoje": 150.0,
-    "pct": 229.6,
+    "pct": 228.5,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 1.54,
+    "realizado": 1.55,
     "esperado_hoje": 1.3,
-    "pct": 118.8,
+    "pct": 118.9,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 13.4,
+   "vendas_dia": 13.47,
    "spend_dia": 4615.19,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 201,
-   "receita": 106913.86,
+   "vendas": 202,
+   "receita": 107049.86,
    "spend": 69227.88,
-   "pct_meta": 134.0
+   "pct_meta": 134.7
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 531.91
+  "ticket_real": 529.95
  },
  "ads": {
   "AD-01|EST": {
@@ -31658,6 +31658,16 @@
    "o": "IMPERIUM",
    "a": "",
    "c": "organico",
+   "src": "juliana_vieira"
+  },
+  {
+   "d": "2026-09-10",
+   "f": "juliana_vieira",
+   "t": "outros",
+   "v": 136.0,
+   "o": "Upgrade Start para Imperuim - R$136",
+   "a": "",
+   "c": "",
    "src": "juliana_vieira"
   }
  ],
