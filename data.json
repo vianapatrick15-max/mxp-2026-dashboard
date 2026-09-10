@@ -1,5 +1,5 @@
 {
- "gerado_em": "10/09/2026 19:08",
+ "gerado_em": "10/09/2026 21:59",
  "hoje": "2026-09-10",
  "dias": [
   "2026-08-01",
@@ -22,9 +22,9 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 205,
+    "realizado": 207,
     "esperado_hoje": 150.0,
-    "pct": 136.7,
+    "pct": 138.0,
     "status": "pos",
     "unidade": "int",
     "direcao": "up",
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 108159.5,
+    "realizado": 108611.44,
     "esperado_hoje": 29550.0,
-    "pct": 366.0,
+    "pct": 367.6,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 337.7,
+    "realizado": 334.43,
     "esperado_hoje": 150.0,
-    "pct": 225.1,
+    "pct": 223.0,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 1.56,
+    "realizado": 1.57,
     "esperado_hoje": 1.3,
-    "pct": 120.2,
+    "pct": 120.7,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 13.67,
+   "vendas_dia": 13.8,
    "spend_dia": 4615.19,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 205,
-   "receita": 108159.5,
+   "vendas": 207,
+   "receita": 108611.44,
    "spend": 69227.88,
-   "pct_meta": 136.7
+   "pct_meta": 138.0
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 527.61
+  "ticket_real": 524.69
  },
  "ads": {
   "AD-01|EST": {
@@ -31699,6 +31699,26 @@
    "a": "",
    "c": "",
    "src": "thays_almeida"
+  },
+  {
+   "d": "2026-09-10",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 207.38,
+   "o": "LITE",
+   "a": "AD-31|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV ][TESTE_PAGINA][VSL][31_08]",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-09-10",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 244.56,
+   "o": "LITE",
+   "a": "AD-80|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV ][TESTE_ADS][ESTATICOS_80-110][01_09]",
+   "src": "meta_ads"
   }
  ],
  "reembolsos": 9
