@@ -1,6 +1,6 @@
 {
- "gerado_em": "14/09/2026 22:47",
- "hoje": "2026-09-14",
+ "gerado_em": "15/09/2026 01:58",
+ "hoje": "2026-09-15",
  "dias": [
   "2026-08-01",
   "2026-09-14"
@@ -22,9 +22,9 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 240,
+    "realizado": 241,
     "esperado_hoje": 150.0,
-    "pct": 160.0,
+    "pct": 160.7,
     "status": "pos",
     "unidade": "int",
     "direcao": "up",
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 124475.8,
+    "realizado": 124672.8,
     "esperado_hoje": 29550.0,
-    "pct": 421.2,
+    "pct": 421.9,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 342.04,
+    "realizado": 340.62,
     "esperado_hoje": 150.0,
-    "pct": 228.0,
+    "pct": 227.1,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -84,7 +84,7 @@
     "meta": 1.3,
     "realizado": 1.52,
     "esperado_hoje": 1.3,
-    "pct": 116.6,
+    "pct": 116.8,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 16.0,
+   "vendas_dia": 16.07,
    "spend_dia": 5472.64,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 240,
-   "receita": 124475.8,
+   "vendas": 241,
+   "receita": 124672.8,
    "spend": 82089.63,
-   "pct_meta": 160.0
+   "pct_meta": 160.7
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 518.65
+  "ticket_real": 517.31
  },
  "ads": {
   "AD-01|EST": {
@@ -34737,6 +34737,16 @@
    "a": "",
    "c": "",
    "src": "kaua_sequim"
+  },
+  {
+   "d": "2026-09-14",
+   "f": "thaysalmeida",
+   "t": "outros",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "",
+   "c": "",
+   "src": "ThaysAlmeida"
   }
  ],
  "reembolsos": 9
