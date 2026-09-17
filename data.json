@@ -1,6 +1,6 @@
 {
- "gerado_em": "16/09/2026 22:25",
- "hoje": "2026-09-16",
+ "gerado_em": "17/09/2026 01:53",
+ "hoje": "2026-09-17",
  "dias": [
   "2026-08-01",
   "2026-09-16"
@@ -22,9 +22,9 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 252,
+    "realizado": 254,
     "esperado_hoje": 150.0,
-    "pct": 168.0,
+    "pct": 169.3,
     "status": "pos",
     "unidade": "int",
     "direcao": "up",
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 131719.41,
+    "realizado": 132027.8,
     "esperado_hoje": 29550.0,
-    "pct": 445.8,
+    "pct": 446.8,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -52,7 +52,7 @@
     "label": "Investimento",
     "acumula": true,
     "meta": 22500.0,
-    "realizado": 86241.78,
+    "realizado": 86241.88,
     "esperado_hoje": 22500.0,
     "pct": 383.3,
     "status": "pos",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 342.23,
+    "realizado": 339.53,
     "esperado_hoje": 150.0,
-    "pct": 228.2,
+    "pct": 226.4,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -84,7 +84,7 @@
     "meta": 1.3,
     "realizado": 1.53,
     "esperado_hoje": 1.3,
-    "pct": 117.5,
+    "pct": 117.8,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 16.8,
-   "spend_dia": 5749.45,
+   "vendas_dia": 16.93,
+   "spend_dia": 5749.46,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 252,
-   "receita": 131719.41,
-   "spend": 86241.78,
-   "pct_meta": 168.0
+   "vendas": 254,
+   "receita": 132027.8,
+   "spend": 86241.88,
+   "pct_meta": 169.3
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 522.7
+  "ticket_real": 519.79
  },
  "ads": {
   "AD-01|EST": {
@@ -303,7 +303,7 @@
   "AD-31|EST": {
    "nome": "[AD-31][EST][VD][MXP-Fp01]",
    "camp": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
-   "ig": "https://www.instagram.com/p/DdQIngJAONa/",
+   "ig": "https://www.instagram.com/p/DdQIzw5gqwX/",
    "status": "PAUSED",
    "rotulo": "AD-31 EST",
    "tipo": "Estático",
@@ -32472,8 +32472,8 @@
    "d": "2026-09-15",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_ADS][ESTATICOS_80-110][01_09]",
    "a": "AD-102|EST",
-   "s": 258.99,
-   "i": 24125,
+   "s": 259.02,
+   "i": 24128,
    "k": 1012,
    "l": 721,
    "ic": 0,
@@ -32592,8 +32592,8 @@
    "d": "2026-09-15",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][AD-31_VARIACOES][17_08]",
    "a": "AD-31|EST",
-   "s": 420.45,
-   "i": 4100,
+   "s": 420.46,
+   "i": 4101,
    "k": 25,
    "l": 18,
    "ic": 0,
@@ -32724,8 +32724,8 @@
    "d": "2026-09-15",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
    "a": "AD-54|EST",
-   "s": 51.87,
-   "i": 262,
+   "s": 51.92,
+   "i": 263,
    "k": 4,
    "l": 4,
    "ic": 0,
@@ -32832,8 +32832,8 @@
    "d": "2026-09-15",
    "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
    "a": "AD-49|EST",
-   "s": 318.37,
-   "i": 5550,
+   "s": 318.38,
+   "i": 5551,
    "k": 26,
    "l": 19,
    "ic": 0,
@@ -32902,6 +32902,30 @@
   },
   {
    "d": "2026-09-16",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_ADS][ESTATICOS_80-110][01_09]",
+   "a": "AD-106|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-09-16",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_ADS][ESTATICOS_80-110][01_09]",
+   "a": "AD-80|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-09-16",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_CHECKOUT][SUL_SUDESTE][25_08]",
    "a": "AD-51|EST",
    "s": 0.0,
@@ -32928,6 +32952,30 @@
    "d": "2026-09-16",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_PAGINA][VSL][31_08]",
    "a": "AD-60|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-09-16",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][AD-31_VARIACOES][17_08]",
+   "a": "AD-31|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-09-16",
+   "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
+   "a": "AD-31|EST",
    "s": 0.0,
    "i": 0,
    "k": 0,
@@ -34787,16 +34835,6 @@
    "src": "whatsapp"
   },
   {
-   "d": "2026-09-07",
-   "f": "WhatsApp",
-   "t": "proprio",
-   "v": 210.93,
-   "o": "LITE",
-   "a": "",
-   "c": "mxp-26",
-   "src": "whatsapp"
-  },
-  {
    "d": "2026-09-08",
    "f": "isabella_faria",
    "t": "outros",
@@ -35505,7 +35543,37 @@
    "a": "",
    "c": "",
    "src": "juliana_vieira"
+  },
+  {
+   "d": "2026-09-16",
+   "f": "hidson_vieira",
+   "t": "outros",
+   "v": 136.0,
+   "o": "Upgrade Start para Imperuim - R$136",
+   "a": "",
+   "c": "",
+   "src": "hidson_vieira"
+  },
+  {
+   "d": "2026-09-16",
+   "f": "Sem origem",
+   "t": "indefinido",
+   "v": 214.48,
+   "o": "LITE",
+   "a": "",
+   "c": "",
+   "src": ""
+  },
+  {
+   "d": "2026-09-16",
+   "f": "hidson_vieira",
+   "t": "outros",
+   "v": 168.84,
+   "o": "Upgrade Start para Imperuim - R$136",
+   "a": "",
+   "c": "",
+   "src": "hidson_vieira"
   }
  ],
- "reembolsos": 10
+ "reembolsos": 11
 }
