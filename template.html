@@ -214,23 +214,24 @@
 <div class="wrap">
   <header>
     <div class="ttl">
-      <div class="kick">Memorável Experience 2026 · MXP-Fp01</div>
+      <div class="kick">Memorável Experience 2026 · MXP</div>
       <h1>Tráfego x vendas reais</h1>
       <div class="sub" id="sub"></div>
     </div>
     <div class="hero">
       <div class="big" id="heroReceita"></div>
-      <div class="lbl">Receita no período</div>
+      <div class="lbl" id="heroLbl">Receita no período</div>
     </div>
   </header>
 
   <nav class="tabs">
-    <button class="on" data-tab="desempenho">Desempenho</button>
+    <button class="on" data-tab="ano">Ano 2026</button>
+    <button data-tab="desempenho">Desempenho</button>
     <button data-tab="ads">Ads</button>
     <button data-tab="metas">Metas e ritmo</button>
   </nav>
 
-  <div class="filtro" id="barraPeriodo">
+  <div class="filtro" id="barraPeriodo" style="display:none">
     <span class="lbl">Período</span>
     <div class="presets" id="presets"></div>
     <span class="sep">de</span>
@@ -239,10 +240,68 @@
     <input type="date" id="ate">
     <span class="info" id="infoPeriodo"></span>
   </div>
-  <div class="fltbar" id="barraFiltros"></div>
+  <div class="fltbar" id="barraFiltros" style="display:none"></div>
 
 
-  <section class="tab on" id="tab-desempenho">
+  <section class="tab on" id="tab-ano">
+    <div class="seclab">O evento inteiro — <span id="anoPeriodo"></span></div>
+    <div class="kpis" id="anoKpis"></div>
+    <div class="note warn" id="anoNota"></div>
+
+    <div class="seclab">Os ciclos de mídia do ano</div>
+    <div class="tbox tscroll"><table id="tAnoCiclos"></table></div>
+    <div class="note" id="anoNotaCiclos"></div>
+
+    <div class="seclab">Mês a mês</div>
+    <div class="card">
+      <h3>Investimento x receita</h3>
+      <div class="hint">Barra azul é a verba que entrou no Meta no mês; barra verde-água é o que a Hubla registrou de receita, de qualquer frente.</div>
+      <div class="legend">
+        <span><i class="dot" style="background:var(--pago)"></i>Investimento Meta</span>
+        <span><i class="dot" style="background:var(--proprio)"></i>Receita Hubla</span>
+      </div>
+      <div id="chartAnoMes"></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>Curva acumulada</h3>
+      <div class="hint">O mesmo dado somado desde janeiro. A distância entre as duas linhas é o caixa que o evento gerou acima da mídia.</div>
+      <div id="chartAnoAcc"></div>
+    </div>
+    <div class="tbox tscroll" style="margin-top:14px"><table id="tAnoMes"></table></div>
+
+    <div class="seclab">Onde a verba foi parar</div>
+    <div class="cards2">
+      <div class="tbox tscroll"><table id="tAnoConta"></table></div>
+      <div class="card">
+        <h3>Investimento por funil</h3>
+        <div class="hint">Le01 e Le02 captaram para os Meteóricos; o Fp01 vendeu ingresso direto.</div>
+        <div id="chartAnoFunil"></div>
+      </div>
+    </div>
+
+    <div class="seclab">Campanhas do ano</div>
+    <div class="tbox tscroll"><table id="tAnoCamp"></table></div>
+    <div class="note warn" id="anoNotaCamp"></div>
+
+    <div class="seclab">De onde veio a receita</div>
+    <div class="cards2">
+      <div class="tbox tscroll"><table id="tAnoFrente"></table></div>
+      <div class="card">
+        <h3>Participação na receita</h3>
+        <div class="hint">Quanto cada frente colocou no caixa no ano inteiro.</div>
+        <div id="chartAnoFrente"></div>
+      </div>
+    </div>
+
+    <div class="seclab">Time de vendas</div>
+    <div class="tbox tscroll"><table id="tAnoVend"></table></div>
+    <div class="note" id="anoNotaVend"></div>
+
+    <div class="seclab">Mix de ofertas do ano</div>
+    <div class="tbox tscroll"><table id="tAnoOferta"></table></div>
+  </section>
+
+  <section class="tab" id="tab-desempenho">
     <div class="seclab">Visão do negócio</div>
     <div class="kpis" id="kpis"></div>
 
@@ -341,7 +400,7 @@
   </section>
 
   <footer>
-    <div>Fontes: Meta Ads (planilha MXP-Fp01 META ADS, nível anúncio/dia) e Hubla (planilha [MXP-FP01][VENDAS][2026], webhook n8n + backfill do export).</div>
+    <div id="fontes"></div>
     <div id="ger"></div>
   </footer>
 </div>
@@ -490,7 +549,9 @@ function agrega(de, ate){
     if (v.c && v.c.toLowerCase()===c.toLowerCase()){ gc[c].vendas++; gc[c].receita+=v.v; } });
   const campanhas = Object.values(gc).map(derivar);
 
-  const ga = grupo(T,'a');
+  // linha sem `a` e historico agregado por campanha/dia (antes da janela com nivel
+  // de anuncio). Entra no total e na tabela de campanha, nunca na de criativo.
+  const ga = grupo(T.filter(r=>r.a),'a');
   pagas.forEach(v=>{ if (v.a && ga[v.a]){ ga[v.a].vendas++; ga[v.a].receita+=v.v; } });
   const criativos = Object.values(ga).map(o=>{
     const meta = DATA.ads[o.id] || {};
@@ -563,17 +624,25 @@ function tabela(id, cols, rows, def, rodape, pick){
 }
 
 /* ================= render ================= */
-let DE = DATA.dias[0], ATE = DATA.dias[1];
+// as abas de operacao abrem na janela viva (a que tem nivel de anuncio). O ano
+// inteiro tem aba propria — misturar fevereiro no dia a dia so atrapalha.
+let DE = DATA.janela.de || DATA.dias[0], ATE = DATA.janela.ate || DATA.dias[1];
+
+const abaAtiva = () => (document.querySelector('nav.tabs button.on')||{dataset:{}}).dataset.tab;
 
 function render(){
   const v = agrega(DE, ATE);
   renderFiltros();
   renderAds(v);
+  if (typeof renderAno === 'function' && DATA.ano) renderAno();
   const nd = v.dias.length || 0;
 
-  document.getElementById('sub').textContent =
-    'Período ' + dia(DE) + ' a ' + dia(ATE) + '  ·  ' + nd + ' dia(s) com dado';
-  document.getElementById('heroReceita').textContent = brl0(v.receita);
+  // na aba Ano o topo e do ano: render nao pode sobrescrever
+  if (abaAtiva() !== 'ano'){
+    document.getElementById('sub').textContent =
+      'Período ' + dia(DE) + ' a ' + dia(ATE) + '  ·  ' + nd + ' dia(s) com dado';
+    document.getElementById('heroReceita').textContent = brl0(v.receita);
+  }
   document.getElementById('infoPeriodo').textContent =
     v.vendas + ' venda(s) · ' + brl0(v.t.s) + ' investido';
 
@@ -712,7 +781,12 @@ function render(){
 
   const comVenda = v.criativos.filter(c=>c.vendas>0).length;
   const medio = v.criativos.length ? v.t.s/v.criativos.length : 0;
+  // fora da janela viva o dado e campanha/dia: a tabela de criativo fica vazia de
+  // propósito, e o aviso evita que isso pareça anúncio sem verba
+  const foraJanela = DE < JANELA[0];
   document.getElementById('notaCriativos').innerHTML =
+    (foraJanela ? `<b>Parte deste período é anterior a ${dia(JANELA[0])}</b>, quando o dado só existe por campanha/dia — ` +
+      `os criativos de lá não aparecem nesta tabela nem na aba Ads, embora o investimento deles conte nos totais.<br><br>` : '') +
     `<b>Leia com cuidado:</b> ${v.criativos.length} anúncios dividiram ${brl0(v.t.s)} neste período, uma média de ${brl0(medio)} por anúncio, e ${comVenda} tem venda registrada. ` +
     `Com esse volume por criativo, diferença de CTR ou de custo por visita entre anúncios ainda é ruído. ` +
     `A métrica utilizável neste estágio é o <b>custo por visita</b>, e mesmo ela só decide depois de aproximadamente R$ 150 a R$ 200 gastos no mesmo anúncio. ` +
@@ -912,19 +986,207 @@ function renderAds(v){
     `A prévia abre o post do Instagram do anúncio; a imagem do card vem do criativo na Meta.`;
 }
 
+/* ================= aba Ano =================
+   Tudo aqui vem mastigado do build.py e ignora o filtro de período: a pergunta
+   desta aba é sempre "quanto o evento custou e devolveu no ano inteiro". */
+const A = DATA.ano;
+const mesLbl = m => m.slice(5,7)+'/'+m.slice(2,4);
+
+function chartMeses(id, itens){
+  const el = document.getElementById(id);
+  if (!itens.length){ el.innerHTML='<p class="muted" style="font-size:12px;padding:14px 0">Sem dado.</p>'; return; }
+  const W=1100,H=300,pl=78,pr=24,pt=18,pb=38, iw=W-pl-pr, ih=H-pt-pb;
+  const max = Math.max.apply(null, itens.map(x=>Math.max(x.spend,x.receita)).concat([1]));
+  const cw = iw/itens.length, bw = Math.min(46, cw*0.34);
+  let s = `<svg viewBox="0 0 ${W} ${H}">`;
+  for (let g=0; g<=4; g++){ const y=pt+ih*g/4;
+    s+=`<line class="gridline" x1="${pl}" y1="${y}" x2="${W-pr}" y2="${y}"/>`;
+    s+=`<text class="axis" x="${pl-8}" y="${y+4}" text-anchor="end">${brl0(max*(1-g/4))}</text>`; }
+  itens.forEach((x,i)=>{
+    const cx = pl+cw*(i+0.5);
+    [['spend','#0178e6',-1],['receita','#0b8fa4',1]].forEach(([k,cor,lado])=>{
+      const h = ih*x[k]/max, xx = cx + (lado<0 ? -bw-2 : 2);
+      s+=`<rect x="${xx}" y="${pt+ih-h}" width="${bw}" height="${h}" rx="4" fill="${cor}" opacity=".92"/>`;
+      if (x[k]) s+=`<text class="vlabel" x="${xx+bw/2}" y="${pt+ih-h-6}" text-anchor="middle" style="fill:${cor}">${brl0(x[k])}</text>`;
+    });
+    s+=`<text class="axis" x="${cx}" y="${H-20}" text-anchor="middle" style="font-weight:700">${mesLbl(x.mes)}</text>`;
+    s+=`<text class="axis" x="${cx}" y="${H-8}" text-anchor="middle">${int(x.vendas)} venda(s)</text>`;
+    const tip = `<span class="h">${mesLbl(x.mes)}</span>`+
+      `Investido <b>${brl0(x.spend)}</b><br>Receita <b>${brl0(x.receita)}</b> em ${int(x.vendas)} venda(s)<br>`+
+      `CAC <b>${x.cac==null?'—':brl0(x.cac)}</b> · ROAS <b>${x.roas==null?'—':xm(x.roas)}</b><br>`+
+      `Acumulado no ano: <b>${brl0(x.acc_spend)}</b> investido · <b>${brl0(x.acc_receita)}</b> de receita`;
+    s+=`<rect class="hit" x="${pl+cw*i}" y="${pt}" width="${cw}" height="${ih}" fill="transparent" data-tip="${esc(tip)}"/>`;
+  });
+  el.innerHTML = s+'</svg>';
+}
+
+function chartAcumulado(id, itens){
+  const el = document.getElementById(id);
+  if (!itens.length){ el.innerHTML='<p class="muted" style="font-size:12px;padding:14px 0">Sem dado.</p>'; return; }
+  const W=1100,H=280,pl=78,pr=96,pt=18,pb=34, iw=W-pl-pr, ih=H-pt-pb;
+  const max = Math.max.apply(null, itens.map(x=>Math.max(x.acc_spend,x.acc_receita)).concat([1]));
+  const X = i => pl + (itens.length>1 ? iw*i/(itens.length-1) : iw/2);
+  const Y = v => pt+ih-ih*v/max;
+  let s = `<svg viewBox="0 0 ${W} ${H}">`;
+  for (let g=0; g<=4; g++){ const y=pt+ih*g/4;
+    s+=`<line class="gridline" x1="${pl}" y1="${y}" x2="${W-pr}" y2="${y}"/>`;
+    s+=`<text class="axis" x="${pl-8}" y="${y+4}" text-anchor="end">${brl0(max*(1-g/4))}</text>`; }
+  [['acc_receita','#0b8fa4','Receita acumulada'],['acc_spend','#0178e6','Investimento acumulado']].forEach(([k,cor,lbl])=>{
+    s+=`<polyline points="${itens.map((x,i)=>X(i)+','+Y(x[k])).join(' ')}" fill="none" stroke="${cor}" stroke-width="3"/>`;
+    itens.forEach((x,i)=>{ s+=`<circle cx="${X(i)}" cy="${Y(x[k])}" r="4" fill="${cor}"/>`; });
+    const u = itens[itens.length-1];
+    s+=`<text class="axis" x="${W-pr+8}" y="${Y(u[k])+4}" style="font-weight:800;fill:${cor}">${brl0(u[k])}</text>`;
+    s+=`<text class="axis" x="${W-pr+8}" y="${Y(u[k])+16}" style="font-size:9.5px;fill:${cor}">${lbl}</text>`;
+  });
+  itens.forEach((x,i)=>{
+    s+=`<text class="axis" x="${X(i)}" y="${H-12}" text-anchor="middle" style="font-weight:700">${mesLbl(x.mes)}</text>`;
+    const sobra = x.acc_receita - x.acc_spend;
+    const tip = `<span class="h">até ${mesLbl(x.mes)}</span>`+
+      `Investido <b>${brl0(x.acc_spend)}</b><br>Receita <b>${brl0(x.acc_receita)}</b><br>`+
+      `Diferença <b>${brl0(sobra)}</b> · ROAS acumulado <b>${x.acc_spend?xm(x.acc_receita/x.acc_spend):'—'}</b>`;
+    s+=`<rect class="hit" x="${X(i)-iw/(itens.length*2)}" y="${pt}" width="${iw/itens.length}" height="${ih}" fill="transparent" data-tip="${esc(tip)}"/>`;
+  });
+  el.innerHTML = s+'</svg>';
+}
+
+function renderAno(){
+  const g = A.geral;
+  document.getElementById('anoPeriodo').textContent = dia(DATA.dias[0]) + ' a ' + dia(DATA.dias[1]);
+  document.getElementById('anoKpis').innerHTML = [
+    ['Investimento no ano', brl0(g.spend), g.dias_midia+' dias com mídia no ar', false, ''],
+    ['Receita no ano', brl0(g.receita), int(g.vendas)+' vendas · ticket '+brl0(g.ticket), true, ''],
+    ['ROAS do evento', g.roas==null?'—':xm(g.roas), 'receita ÷ investimento, blended', true,
+     g.roas>=1?'pos':'neg'],
+    ['CAC blended', g.cac==null?'—':brl0(g.cac), 'toda venda, de qualquer frente', false, ''],
+    ['Vendas com utm do pago', int(A.vendas_pago), brl0(A.receita_pago)+' de receita direta', false, ''],
+    ['Diferença receita − verba', brl0(g.receita-g.spend), g.receita>g.spend?'caixa acima da mídia':'no vermelho',
+     false, g.receita>g.spend?'pos':'neg'],
+  ].map(a=>`<div class="kpi${a[3]?' hl':''}"><div class="k">${a[0]}</div><div class="v ${a[4]}">${a[1]}</div><div class="d">${a[2]}</div></div>`).join('');
+
+  document.getElementById('anoNota').innerHTML =
+    `<b>Como ler:</b> o investimento soma <b>todas</b> as contas de anúncio que rodaram MXP no ano ` +
+    `(${A.por_conta.filter(c=>c.spend>0).map(c=>esc(c.id)).join(', ')}), e a receita é a Hubla, nunca o pixel. ` +
+    `Só ${int(A.vendas_pago)} das ${int(g.vendas)} vendas chegaram com utm de mídia: o grosso entra pelo WhatsApp e pelo time de vendas, ` +
+    `que fecha o lead que a mídia trouxe. Por isso a leitura honesta do evento é o <b>blended</b> — ` +
+    `CAC ${brl0(g.cac)} e ROAS ${xm(g.roas)} —, e não o ROAS da frente paga isolada.`;
+
+  tabela('tAnoCiclos', [
+    {k:'nome', lbl:'Ciclo', fmt:r=>`${esc(r.nome)}<div style="font-size:10.5px;color:var(--muted);margin-top:3px">${esc(r.obs)}</div>`},
+    {k:'midia_de', lbl:'Mídia no ar', fmt:r=>r.midia_de?dia(r.midia_de)+' a '+dia(r.midia_ate):MD},
+    {k:'spend', lbl:'Investido', fmt:r=>brl(r.spend)},
+    {k:'pct_spend', lbl:'% da verba', fmt:r=>pct(r.pct_spend)},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'ticket', lbl:'Ticket', fmt:r=>brl(r.ticket)},
+    {k:'cac', lbl:'CAC', fmt:r=>r.cac==null?MD:brl(r.cac)},
+    {k:'roas', lbl:'ROAS', fmt:r=>r.roas==null?MD:xm(r.roas), cls:r=>r.roas==null?'':(r.roas>=1?'pos sig':'neg sig')},
+  ], A.por_ciclo, {k:'midia_de', dir:'asc'},
+  `<td>Ano</td><td>—</td><td>${brl(g.spend)}</td><td>100,0%</td><td>${int(g.vendas)}</td>
+   <td>${brl(g.receita)}</td><td>${brl(g.ticket)}</td><td>${brl(g.cac)}</td><td>${xm(g.roas)}</td>`);
+
+  document.getElementById('anoNotaCiclos').innerHTML =
+    `A venda entra no ciclo pelo <b>dia do pagamento</b>, não por clique: não dá para amarrar uma venda de fevereiro ` +
+    `a um criativo de agosto, e o closer costuma fechar dias depois do anúncio. ` +
+    `Cada ciclo é uma investida de mídia com sua própria janela de venda, e é assim que o CAC de cada um deve ser lido.`;
+
+  chartMeses('chartAnoMes', A.por_mes);
+  chartAcumulado('chartAnoAcc', A.por_mes);
+
+  tabela('tAnoMes', [
+    {k:'mes', lbl:'Mês', fmt:r=>mesLbl(r.mes)},
+    {k:'spend', lbl:'Investido', fmt:r=>brl(r.spend)},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'cac', lbl:'CAC', fmt:r=>r.cac==null?MD:brl(r.cac)},
+    {k:'roas', lbl:'ROAS', fmt:r=>r.roas==null?MD:xm(r.roas), cls:r=>r.roas==null?'':(r.roas>=1?'pos sig':'neg sig')},
+    {k:'acc_spend', lbl:'Investido acum.', fmt:r=>brl(r.acc_spend)},
+    {k:'acc_receita', lbl:'Receita acum.', fmt:r=>brl(r.acc_receita)},
+  ], A.por_mes, {k:'mes', dir:'asc'});
+
+  tabela('tAnoConta', [
+    {k:'id', lbl:'Conta de anúncio', fmt:r=>`${esc(r.id)}<span class="bar" style="width:${Math.max(r.pct_spend,1.5)}%;background:var(--pago)"></span>`},
+    {k:'spend', lbl:'Investido', fmt:r=>brl(r.spend)},
+    {k:'pct_spend', lbl:'% da verba', fmt:r=>pct(r.pct_spend)},
+  ], A.por_conta.filter(c=>c.spend>0), {k:'spend'},
+  `<td>Total</td><td>${brl(g.spend)}</td><td>100,0%</td>`);
+
+  chartBarras('chartAnoFunil', A.por_funil.filter(f=>f.spend>0).map(f=>({
+    lbl:f.id, val:f.spend, sub:pct(f.pct_spend)+' da verba do ano',
+    cor:f.id.indexOf('Fp01')>=0?'#0178e6':'#0b8fa4',
+    tip:`<span class="h">${esc(f.id)}</span>Investido <b>${brl0(f.spend)}</b> · ${pct(f.pct_spend)} da verba`+
+        (f.vendas?`<br>${int(f.vendas)} venda(s) com utm desta campanha · <b>${brl0(f.receita)}</b>`:'')})), 110);
+
+  const camps = A.por_campanha.filter(c=>c.spend>0);
+  tabela('tAnoCamp', [
+    {k:'id', lbl:'Campanha', fmt:r=>`${esc(r.id)}<div style="font-size:10.5px;color:var(--muted);margin-top:3px">${esc(r.funil)} · ${esc(r.conta)}</div>`},
+    {k:'spend', lbl:'Investido', fmt:r=>brl(r.spend)},
+    {k:'pct_spend', lbl:'% da verba', fmt:r=>pct(r.pct_spend)},
+    {k:'vendas', lbl:'Vendas c/ utm', fmt:r=>r.vendas?int(r.vendas):MD},
+    {k:'receita', lbl:'Receita c/ utm', fmt:r=>r.receita?brl(r.receita):MD},
+    {k:'cac', lbl:'CPA direto', fmt:r=>r.cac==null?MD:brl(r.cac)},
+  ], camps, {k:'spend'},
+  `<td>Total · ${camps.length} campanhas</td><td>${brl(g.spend)}</td><td>100,0%</td>
+   <td>${int(A.vendas_pago)}</td><td>${brl(A.receita_pago)}</td><td>—</td>`);
+
+  document.getElementById('anoNotaCamp').innerHTML =
+    `As colunas de venda só contam o que chegou na Hubla com o <b>utm_campaign</b> daquela campanha. ` +
+    `Campanha de captação (Le01/Le02) aparece sem venda de propósito: ela entregou lead para o Meteórico, ` +
+    `e a venda veio depois pelo WhatsApp. Use a coluna de investimento para ler peso, não o CPA direto.`;
+
+  tabela('tAnoFrente', [
+    {k:'frente', lbl:'Frente', fmt:r=>`${esc(r.frente)} <span class="tag ${r.tipo}">${r.tipo}</span>
+       <span class="bar" style="width:${Math.max(r.pct,1.5)}%;background:var(--${r.tipo==='pago'?'pago':r.tipo==='proprio'?'proprio':r.tipo==='outros'?'outros':'indef'})"></span>`},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'pct', lbl:'% receita', fmt:r=>pct(r.pct)},
+    {k:'ticket', lbl:'Ticket', fmt:r=>brl(r.ticket)},
+  ], A.por_frente, {k:'receita'},
+  `<td>Total</td><td>${int(g.vendas)}</td><td>${brl(g.receita)}</td><td>100,0%</td><td>${brl(g.ticket)}</td>`);
+
+  chartBarras('chartAnoFrente', A.por_frente.map(f=>({
+    lbl:f.frente, val:f.receita, sub:f.vendas+' venda(s) · '+pct(f.pct),
+    cor:f.tipo==='pago'?'#0178e6':f.tipo==='proprio'?'#0b8fa4':f.tipo==='outros'?'#5e6c7b':'#9aa7b4',
+    tip:`<span class="h">${esc(f.frente)}</span>Receita <b>${brl0(f.receita)}</b> · ${pct(f.pct)} do ano<br>`+
+        `${int(f.vendas)} venda(s) · ticket <b>${brl0(f.ticket)}</b>`})), 150);
+
+  tabela('tAnoVend', [
+    {k:'nome', lbl:'Vendedor (utm_source)', fmt:r=>esc(r.nome)},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'ticket', lbl:'Ticket', fmt:r=>brl(r.ticket)},
+  ], A.vendedores, {k:'receita'});
+
+  document.getElementById('anoNotaVend').innerHTML =
+    `São as vendas em que o <b>utm_source</b> veio com nome de pessoa, ou seja, link pessoal de closer. ` +
+    `O bloco maior continua entrando como "WhatsApp" genérico, sem dono identificado — quem quiser ranking fechado ` +
+    `de time precisa padronizar o link de cada vendedor na origem.`;
+
+  tabela('tAnoOferta', [
+    {k:'oferta', lbl:'Oferta', fmt:r=>`${esc(r.oferta)}<span class="bar" style="width:${Math.max(r.pct,1.5)}%;background:var(--proprio)"></span>`},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'pct', lbl:'% receita', fmt:r=>pct(r.pct)},
+    {k:'ticket', lbl:'Ticket', fmt:r=>brl(r.ticket)},
+  ], A.por_oferta, {k:'receita'},
+  `<td>Total · ${A.por_oferta.length} ofertas</td><td>${int(g.vendas)}</td><td>${brl(g.receita)}</td>
+   <td>100,0%</td><td>${brl(g.ticket)}</td>`);
+}
+
 /* ================= filtro de período ================= */
 const menos = (iso,n) => { const d=new Date(iso+'T12:00:00'); d.setDate(d.getDate()-n);
   return d.toISOString().slice(0,10); };
 const clamp = d => d < DATA.dias[0] ? DATA.dias[0] : (d > DATA.dias[1] ? DATA.dias[1] : d);
 const HOJE = clamp(DATA.hoje);
+const JANELA = [DATA.janela.de || DATA.dias[0], DATA.janela.ate || DATA.dias[1]];
 const PRESETS = [
-  ['Tudo',     () => [DATA.dias[0], DATA.dias[1]]],
+  ['Janela atual', () => JANELA.slice()],
+  ['Ano todo',     () => [DATA.dias[0], DATA.dias[1]]],
   ['Hoje',     () => [HOJE, HOJE]],
   ['Ontem',    () => [clamp(menos(HOJE,1)), clamp(menos(HOJE,1))]],
   ['7 dias',   () => [clamp(menos(HOJE,6)), HOJE]],
   ['14 dias',  () => [clamp(menos(HOJE,13)), HOJE]],
   ['Este mês', () => [clamp(HOJE.slice(0,8)+'01'), HOJE]],
-];
+].concat(DATA.ciclos.map(c=>[c.nome.split('·')[0].trim(), () => [clamp(c.de), clamp(c.ate)]]));
 
 document.getElementById('presets').innerHTML =
   PRESETS.map((p,i)=>`<button data-i="${i}" class="${i===0?'on':''}">${p[0]}</button>`).join('') +
@@ -965,14 +1227,27 @@ document.getElementById('de').value = DE;
 document.getElementById('ate').value = ATE;
 
 /* ================= abas ================= */
+// o topo muda com a aba: no Ano ele mostra o acumulado, nas outras o período
+function cabecalho(aba){
+  const noAno = aba === 'ano';
+  document.getElementById('heroReceita').textContent =
+    noAno ? brl0(A.geral.receita) : brl0(agrega(DE,ATE).receita);
+  document.getElementById('heroLbl').textContent =
+    noAno ? 'Receita no ano' : 'Receita no período';
+  if (noAno) document.getElementById('sub').textContent =
+    'Ano 2026 · ' + int(A.geral.vendas) + ' vendas · ' + brl0(A.geral.spend) + ' investido em mídia';
+}
+
 document.querySelectorAll('nav.tabs button').forEach(b=>{
   b.onclick = () => {
     document.querySelectorAll('nav.tabs button').forEach(x=>x.classList.toggle('on', x===b));
     document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on', t.id==='tab-'+b.dataset.tab));
-    // a aba Metas mede o plano inteiro, entao o filtro de periodo nao se aplica a ela
-    const semFiltro = b.dataset.tab === 'metas';
+    // Metas mede o plano inteiro e Ano mede o ano fechado: nenhuma das duas usa o filtro
+    const semFiltro = b.dataset.tab === 'metas' || b.dataset.tab === 'ano';
     document.getElementById('barraPeriodo').style.display = semFiltro ? 'none' : '';
     document.getElementById('barraFiltros').style.display = semFiltro ? 'none' : '';
+    cabecalho(b.dataset.tab);
+    if (b.dataset.tab !== 'ano') render();
     window.scrollTo({top:0,behavior:'smooth'});
   };
 });
@@ -1035,8 +1310,14 @@ document.querySelectorAll('nav.tabs button').forEach(b=>{
       : `Atenção: o ticket real (${brl0(M.ticket_real)}) está abaixo do que o plano assumiu (${brl0(M.ticket_plano)}), então bater a meta de vendas ainda deixaria o faturamento curto.`);
 })();
 
-document.getElementById('ger').textContent = 'Atualizado em ' + DATA.gerado_em;
+document.getElementById('fontes').innerHTML =
+  'Fontes: Meta Ads — planilha MXP-Fp01 META ADS (nível anúncio/dia, de ' + dia(JANELA[0]) + ' em diante) e ' +
+  'snapshot da API nas contas ' + A.por_conta.filter(c=>c.spend>0).map(c=>esc(c.id)).join(', ') +
+  ' para o resto do ano' + (DATA.fontes.trafego_snapshot ? ' (tirado em ' + esc(DATA.fontes.trafego_snapshot) + ')' : '') + '. ' +
+  'Vendas — Hubla: export do painel para o histórico e webhook n8n na planilha [MXP-FP01][2026][BACKUP] para o que é novo.';
+document.getElementById('ger').textContent = 'Atualizado em ' + DATA.gerado_em + ' · v' + DATA.versao;
 render();
+cabecalho('ano');
 </script>
 </body>
 </html>
