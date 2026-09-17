@@ -22,10 +22,18 @@ jobs:
       - name: Instalar dependencias
         run: pip install --quiet gspread google-auth
 
-      - name: Gerar index.html e data.json
+      - name: Gerar index.html e data.json (janela de venda)
         env:
           GOOGLE_SHEETS_CREDENTIALS_JSON: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS_JSON }}
         run: python build.py
+
+      # o dashboard do ano e outro site, com Pages proprio. Mesma planilha viva,
+      # mais os snapshots commitados em ano/ (que o CI nao tem como gerar: nao ha
+      # token da Meta aqui).
+      - name: Gerar o dashboard do ano
+        env:
+          GOOGLE_SHEETS_CREDENTIALS_JSON: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS_JSON }}
+        run: python ano/build.py
 
       - name: Publicar no Cloudflare Pages
         env:
@@ -35,11 +43,14 @@ jobs:
           mkdir -p _site && cp index.html _site/index.html
           npx --yes wrangler@4 pages deploy _site \
             --project-name mxp-2026-dashboard --branch main --commit-dirty=true
+          mkdir -p ano/_site && cp ano/index.html ano/_site/index.html
+          npx --yes wrangler@4 pages deploy ano/_site \
+            --project-name mxp-2026-ano --branch main --commit-dirty=true
 
       - name: Commitar os dados novos
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html data.json
+          git add index.html data.json ano/index.html ano/data.json
           git diff --staged --quiet || git commit -m "refresh automatico"
           git push

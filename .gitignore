@@ -1,3 +1,6 @@
 _*.png
 __pycache__/
 _site/
+ano/_site/
+.wrangler/
+ano/.wrangler/

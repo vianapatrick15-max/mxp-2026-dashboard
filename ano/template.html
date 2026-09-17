@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MXP 2026 — O ano fechado</title>
+<style>
+  :root{
+    --blue:#0178e6; --blue-d:#0160b8; --ink:#002656; --text:#12243a; --muted:#5e6c7b;
+    --line:#dde8f4; --bg:#f1f6fb; --card:#fff; --soft:#f6fafd; --lav:#eaf2fb;
+    --pago:#0178e6; --proprio:#0b8fa4; --outros:#5e6c7b; --indef:#9aa7b4;
+    --good:#12855a; --good-bg:#e4f6ec; --warn:#a8720f; --warn-bg:#fdf4e4;
+    --bad:#c62740; --bad-bg:#fbe8ec;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.45;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1240px;margin:0 auto;padding:24px 20px 70px}
+  header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;
+    border-bottom:2px solid var(--blue);padding-bottom:16px;margin-bottom:8px}
+  .ttl .kick{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-d)}
+  .ttl h1{font-size:27px;font-weight:800;color:var(--ink);letter-spacing:-.01em;margin-top:3px}
+  .ttl .sub{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .hero{text-align:right}
+  .hero .big{font-size:33px;font-weight:800;color:var(--blue);line-height:1}
+  .hero .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:5px}
+
+  .seclab{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);margin:32px 0 13px;display:flex;align-items:center;gap:10px}
+  .seclab:after{content:"";flex:1;height:1px;background:var(--line)}
+
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(162px,1fr));gap:12px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 16px}
+  .kpi .k{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .kpi .v{font-size:24px;font-weight:800;color:var(--ink);margin-top:5px;line-height:1.1}
+  .kpi .d{font-size:11.5px;color:var(--muted);margin-top:4px}
+  .kpi.hl{background:linear-gradient(180deg,#eef7ff,#fff);border-color:#bcdcf8}
+  .kpi.hl .v{color:var(--blue-d)}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .card h3{font-size:14.5px;font-weight:800;color:var(--ink)}
+  .card .hint{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .cards2{display:grid;grid-template-columns:1.25fr 1fr;gap:14px;align-items:start}
+  @media(max-width:900px){.cards2{grid-template-columns:1fr}}
+
+  svg{display:block;width:100%;height:auto;overflow:visible}
+  .axis{font-size:10.5px;fill:var(--muted)}
+  .gridline{stroke:var(--line);stroke-width:1}
+  .vlabel{font-size:10.5px;font-weight:700;fill:var(--ink);paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin:10px 0 4px;font-size:12px;color:var(--muted)}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block;flex:none}
+
+  table{width:100%;border-collapse:collapse;font-size:12.5px;background:var(--card)}
+  .tbox{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .tscroll{overflow-x:auto}
+  th{text-align:right;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--muted);padding:11px 12px;border-bottom:1px solid var(--line);white-space:nowrap;
+    background:var(--lav);cursor:pointer;user-select:none}
+  th:hover{color:var(--ink);background:#e0ecf9}
+  th.sorted{color:var(--blue-d)}
+  th .arw{opacity:.35;margin-left:4px;font-size:9px}
+  th.sorted .arw{opacity:1}
+  th:first-child,td:first-child{text-align:left}
+  td{padding:9px 12px;border-bottom:1px solid #eef4fa;text-align:right;white-space:nowrap;color:var(--text)}
+  tbody tr:hover{background:var(--soft)}
+  tbody tr:last-child td{border-bottom:none}
+  td.name{white-space:normal;min-width:220px;font-weight:600;color:var(--ink)}
+  tfoot td{font-weight:800;background:var(--lav);color:var(--ink);border-top:1px solid var(--line)}
+  .tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;letter-spacing:.04em}
+  .tag.pago{background:#e2f0fd;color:#0160b8}
+  .tag.proprio{background:#dff6f8;color:#08707f}
+  .tag.outros{background:#eef2f6;color:#4b5a6a}
+  .tag.indefinido{background:#eef2f6;color:#5a6270}
+  .tag.on{background:var(--good-bg);color:#2f7d51}
+  .tag.off{background:#eef2f6;color:#5a6270}
+  .muted{color:var(--muted)}
+  .bar{height:6px;border-radius:3px;display:block;margin-top:5px;background:var(--pago)}
+
+  .prev{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;
+    padding:3px 9px;border-radius:20px;border:1px solid #bcdcf8;background:#eef7ff;color:var(--blue-d);
+    text-decoration:none;margin-left:8px;vertical-align:middle;white-space:nowrap}
+  .prev:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .prev.off{border-color:var(--line);background:#f4f7fa;color:#9aa7b4;cursor:not-allowed}
+
+  .note{border-radius:12px;padding:13px 16px;font-size:12.5px;margin-top:13px;border:1px solid}
+  .note.warn{background:#eef7ff;border-color:#c7e2f8;color:#0f4c81}
+  .note b{font-weight:800}
+
+  .funil{display:flex;flex-direction:column;gap:7px;margin-top:14px}
+  .fstep{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px}
+  .fbar{background:linear-gradient(90deg,var(--ink),var(--blue));border-radius:8px;color:#fff;
+    padding:10px 14px;min-width:130px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .fbar .e{font-size:12.5px;font-weight:700}
+  .fbar .n{font-size:17px;font-weight:800}
+  .fmeta{text-align:right;font-size:11.5px;color:var(--muted);min-width:150px}
+  .fmeta b{display:block;font-size:13px;font-weight:800;color:var(--ink)}
+  .fdrop{font-size:11px;color:var(--muted);padding-left:6px}
+
+  .pos{color:var(--good)} .neg{color:var(--bad)} .wrn{color:var(--warn)}
+  td.sig{font-weight:800}
+
+  nav.tabs{display:flex;gap:4px;margin:16px 0 0;border-bottom:1px solid var(--line)}
+  nav.tabs button{appearance:none;border:0;background:none;cursor:pointer;font:inherit;
+    font-size:13px;font-weight:700;color:var(--muted);padding:10px 16px;border-radius:9px 9px 0 0;
+    border-bottom:2px solid transparent;margin-bottom:-1px}
+  nav.tabs button:hover{color:var(--ink);background:var(--soft)}
+  nav.tabs button.on{color:var(--blue-d);border-bottom-color:var(--blue);background:#fff}
+  .tab{display:none} .tab.on{display:block}
+
+  .filtro{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);
+    border:1px solid var(--line);border-radius:13px;padding:12px 16px;margin-top:16px}
+  .filtro .lbl{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .presets{display:flex;gap:5px;flex-wrap:wrap}
+  .presets button{appearance:none;font:inherit;font-size:12px;font-weight:700;cursor:pointer;
+    padding:6px 12px;border-radius:20px;border:1px solid var(--line);background:#fff;color:var(--muted)}
+  .presets button:hover{border-color:#bcdcf8;color:var(--blue-d)}
+  .presets button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+  .filtro input[type=date]{font:inherit;font-size:12.5px;color:var(--text);padding:6px 10px;
+    border:1px solid var(--line);border-radius:8px;background:#fff}
+  .filtro .sep{color:var(--muted);font-size:12px}
+  .filtro .info{margin-left:auto;font-size:11.5px;color:var(--muted)}
+
+  .prog{height:8px;border-radius:5px;background:#eaf0f7;overflow:hidden;margin-top:6px;position:relative}
+  .prog i{display:block;height:100%;border-radius:5px;background:var(--blue)}
+  .prog i.pos{background:#1ba05f}.prog i.neg{background:#d3455c}.prog i.warn{background:#e0a33a}
+  .prog b{position:absolute;top:-1px;bottom:-1px;width:2px;background:var(--ink);opacity:.55}
+  .bigneed{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:4px}
+  .need{background:linear-gradient(160deg,#002656,#0178e6);color:#fff;border-radius:14px;padding:18px 20px}
+  .need .k{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+  .need .v{font-size:31px;font-weight:800;margin-top:6px;line-height:1}
+  .need .d{font-size:12px;opacity:.85;margin-top:6px}
+  .need.flat{background:#fff;color:var(--text);border:1px solid var(--line)}
+  .need.flat .k{color:var(--muted);opacity:1}
+  .need.flat .v{color:var(--ink)}
+  .need.flat .d{color:var(--muted);opacity:1}
+
+  /* ---- aba Ads: card do criativo (preview + metricas) ---- */
+  .adsbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);
+    border:1px solid var(--line);border-radius:13px;padding:12px 16px;margin-top:12px}
+  .adsbar .lbl{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .adsbar .div{width:1px;align-self:stretch;background:var(--line);margin:0 4px}
+  .adsbar .info{margin-left:auto;font-size:11.5px;color:var(--muted)}
+  .ads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px;margin-top:14px}
+  .adc{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    display:flex;flex-direction:column}
+  .adc:hover{border-color:#bcdcf8}
+    /* 4:5 + contain: o criativo aparece inteiro. Cortar em 1:1 comeria a headline
+     dos 4:5 e decapitaria os 9:16, que e justamente o que se quer conferir aqui. */
+  .adc .thumb{aspect-ratio:4/5;background:#0d1b2c;position:relative;display:flex;
+    align-items:center;justify-content:center;border-bottom:1px solid var(--line)}
+  .adc .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+  .adc .thumb .ph{font-size:12px;color:var(--muted);text-align:center;padding:18px;line-height:1.5}
+  .adc .rank{position:absolute;z-index:2;top:8px;left:8px;background:#fff;color:var(--blue-d);font-size:11.5px;
+    font-weight:800;border-radius:8px;padding:2px 8px;border:1px solid #bcdcf8}
+  .adc .stb{position:absolute;z-index:2;top:8px;right:8px;font-size:10px;font-weight:800;border-radius:6px;
+    padding:3px 8px;text-transform:uppercase;letter-spacing:.04em;background:#fff;border:1px solid var(--line)}
+  .adc .stb.on{color:#2f7d51;border-color:#bfe6cf;background:var(--good-bg)}
+  .adc .stb.off{color:#5a6270}
+  .adc .body{padding:12px 14px 14px;display:flex;flex-direction:column;flex:1}
+  .adc .nm{font-size:14px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:7px}
+  .adc .cp{font-size:10.5px;color:var(--muted);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .adc .mx{display:grid;grid-template-columns:repeat(3,1fr);gap:9px 6px;margin-top:11px}
+  .adc .mx .ml{font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .adc .mx .mv{font-size:15px;font-weight:800;color:var(--ink);margin-top:1px;line-height:1.15}
+  .adc .sec{margin-top:11px;padding-top:9px;border-top:1px solid #eef4fa;font-size:11px;
+    color:var(--muted);display:flex;flex-wrap:wrap;gap:3px 10px}
+  .adc .sec b{color:var(--text);font-weight:700}
+  .adc .lk{margin-top:11px}
+  .adc .lk .prev{margin-left:0}
+  .vazio{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px;
+    text-align:center;color:var(--muted);font-size:12.5px;margin-top:14px}
+
+  /* ---- filtro cruzado (drill-down) + tooltip ---- */
+  .fltbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .fltbar:empty{display:none}
+  .fltbar .lbl{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .chipf{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;
+    background:#eef7ff;border:1px solid #bcdcf8;color:var(--blue-d);border-radius:20px;padding:4px 5px 4px 12px;
+    max-width:100%}
+  .chipf i{font-style:normal;font-weight:700;color:var(--muted);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+  .chipf span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:340px}
+  .chipf button{appearance:none;border:0;background:#dbeafb;color:var(--blue-d);cursor:pointer;font:inherit;
+    font-size:13px;font-weight:800;line-height:18px;border-radius:50%;width:19px;height:19px;flex:none;padding:0}
+  .chipf button:hover{background:var(--blue);color:#fff}
+  .fltbar .limpa{appearance:none;font:inherit;font-size:11.5px;font-weight:700;cursor:pointer;color:var(--muted);
+    background:none;border:0;text-decoration:underline;padding:4px 2px}
+  .fltbar .limpa:hover{color:var(--bad)}
+  .fltbar .nota{font-size:11.5px;color:var(--muted);flex-basis:100%}
+
+  tbody tr.clk{cursor:pointer}
+  tbody tr.clk:hover{background:#eef7ff}
+  tbody tr.sel,tbody tr.sel:hover{background:#e2f0fd;box-shadow:inset 3px 0 0 var(--blue)}
+  .adc.clk{cursor:pointer}
+  .adc.clk:hover{border-color:#bcdcf8;box-shadow:0 4px 16px rgba(0,38,86,.10)}
+  .adc.sel{border-color:var(--blue);box-shadow:0 0 0 2px #bcdcf8}
+  .hit{cursor:default}
+  .hit.pk{cursor:pointer}
+  .hit:hover{fill:rgba(1,120,230,.06)}
+
+  .tip{position:fixed;left:0;top:0;z-index:60;pointer-events:none;background:var(--ink);color:#fff;
+    border-radius:10px;padding:9px 12px;font-size:11.5px;line-height:1.55;max-width:300px;
+    box-shadow:0 10px 30px rgba(0,24,56,.28);opacity:0;transition:opacity .09s}
+  .tip.on{opacity:1}
+  .tip b{color:#9fd0ff;font-weight:800}
+  .tip .h{display:block;font-weight:800;font-size:12.5px;color:#fff;margin-bottom:2px}
+  .tip .z{display:block;margin-top:4px;font-size:10.5px;opacity:.7}
+
+  footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  .irmao{font-size:12px;font-weight:700;color:var(--blue-d);text-decoration:none;white-space:nowrap}
+  .irmao:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="ttl">
+      <div class="kick">Memorável Experience 2026 · o ano fechado</div>
+      <h1>Quanto o evento custou e devolveu</h1>
+      <div class="sub" id="sub"></div>
+    </div>
+    <div class="hero">
+      <div class="big" id="heroReceita"></div>
+      <div class="lbl">Receita no ano</div>
+    </div>
+  </header>
+
+  <div class="filtro" style="justify-content:space-between">
+    <span class="nota" id="linhaFonte"></span>
+    <a class="irmao" href="https://mxp-2026-dashboard.pages.dev/">Ver o dashboard da janela de venda →</a>
+  </div>
+
+  <section>
+    <div class="seclab">O evento inteiro — <span id="anoPeriodo"></span></div>
+    <div class="kpis" id="anoKpis"></div>
+    <div class="note warn" id="anoNota"></div>
+
+    <div class="seclab">Os ciclos de mídia do ano</div>
+    <div class="tbox tscroll"><table id="tAnoCiclos"></table></div>
+    <div class="note" id="anoNotaCiclos"></div>
+
+    <div class="seclab">Mês a mês</div>
+    <div class="card">
+      <h3>Investimento x receita</h3>
+      <div class="hint">Barra azul é a verba que entrou no Meta no mês; barra verde-água é o que a Hubla registrou de receita, de qualquer frente.</div>
+      <div class="legend">
+        <span><i class="dot" style="background:var(--pago)"></i>Investimento Meta</span>
+        <span><i class="dot" style="background:var(--proprio)"></i>Receita Hubla</span>
+      </div>
+      <div id="chartAnoMes"></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>Curva acumulada</h3>
+      <div class="hint">O mesmo dado somado desde janeiro. A distância entre as duas linhas é o caixa que o evento gerou acima da mídia.</div>
+      <div id="chartAnoAcc"></div>
+    </div>
+    <div class="tbox tscroll" style="margin-top:14px"><table id="tAnoMes"></table></div>
+
+    <div class="seclab">Onde a verba foi parar</div>
+    <div class="cards2">
+      <div class="tbox tscroll"><table id="tAnoConta"></table></div>
+      <div class="card">
+        <h3>Investimento por funil</h3>
+        <div class="hint">Le01 e Le02 captaram para os Meteóricos; o Fp01 vendeu ingresso direto.</div>
+        <div id="chartAnoFunil"></div>
+      </div>
+    </div>
+
+    <div class="seclab">Campanhas do ano</div>
+    <div class="tbox tscroll"><table id="tAnoCamp"></table></div>
+    <div class="note warn" id="anoNotaCamp"></div>
+
+    <div class="seclab">De onde veio a receita</div>
+    <div class="cards2">
+      <div class="tbox tscroll"><table id="tAnoFrente"></table></div>
+      <div class="card">
+        <h3>Participação na receita</h3>
+        <div class="hint">Quanto cada frente colocou no caixa no ano inteiro.</div>
+        <div id="chartAnoFrente"></div>
+      </div>
+    </div>
+
+    <div class="seclab">Time de vendas</div>
+    <div class="tbox tscroll"><table id="tAnoVend"></table></div>
+    <div class="note" id="anoNotaVend"></div>
+
+    <div class="seclab">Mix de ofertas do ano</div>
+    <div class="tbox tscroll"><table id="tAnoOferta"></table></div>
+  </section>
+
+  <footer>
+    <div id="fontes"></div>
+    <div id="ger"></div>
+  </footer>
+</div>
+
+<div class="tip" id="tip"></div>
+
+<script>
+const DATA = /*__DATA__*/;
+const A = DATA.ano;
+
+const brl = v => 'R$ ' + (v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const brl0 = v => 'R$ ' + Math.round(v||0).toLocaleString('pt-BR');
+const int = v => Math.round(v||0).toLocaleString('pt-BR');
+const pct = v => (v==null?'—':(v).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%');
+const xm  = v => (v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'x';
+const dia = d => d ? d.slice(8,10)+'/'+d.slice(5,7) : '';
+const esc = s => String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const MD = '<span class="muted">—</span>';
+const mesLbl = m => m.slice(5,7)+'/'+m.slice(2,4);
+
+/* ================= tooltip ================= */
+const TIP = document.getElementById('tip');
+let TIPEL = null;
+function tipMove(ev){
+  const r = TIP.getBoundingClientRect();
+  let x = ev.clientX + 16, y = ev.clientY + 18;
+  if (x + r.width  > innerWidth  - 8) x = Math.max(8, ev.clientX - r.width - 16);
+  if (y + r.height > innerHeight - 8) y = Math.max(8, ev.clientY - r.height - 18);
+  TIP.style.transform = `translate(${x}px,${y}px)`;
+}
+document.addEventListener('mousemove', ev=>{
+  const t = ev.target.closest ? ev.target.closest('[data-tip]') : null;
+  if (t){
+    if (t !== TIPEL){ TIPEL = t; TIP.innerHTML = t.getAttribute('data-tip'); TIP.classList.add('on'); }
+    tipMove(ev);
+  } else if (TIPEL){ TIPEL = null; TIP.classList.remove('on'); }
+}, {passive:true});
+document.addEventListener('scroll', ()=>{ TIPEL=null; TIP.classList.remove('on'); }, {passive:true});
+
+/* ================= tabelas ordenáveis =================
+   Sem recorte cruzado: nesta página não existe período nem filtro, então a tabela
+   só ordena. Quem quiser cruzar dia a dia usa o outro dashboard. */
+const SORT = {};
+function tabela(id, cols, rows, def, rodape){
+  if (!SORT[id]) SORT[id] = {k:def.k, dir:def.dir||'desc'};
+  const st = SORT[id];
+  const ord = rows.slice().sort((a,b)=>{
+    let x = a[st.k], y = b[st.k];
+    if (x==null) x = -Infinity;
+    if (y==null) y = -Infinity;
+    if (typeof x==='string' || typeof y==='string')
+      return (st.dir==='asc'?1:-1)*String(x).localeCompare(String(y),'pt-BR');
+    return (st.dir==='asc'?1:-1)*(x-y);
+  });
+  const seta = c => c.k===st.k ? (st.dir==='asc'?'▲':'▼') : '↕';
+  const el = document.getElementById(id);
+  el.innerHTML =
+    '<thead><tr>' + cols.map(c=>
+      `<th data-k="${c.k}" class="${c.k===st.k?'sorted':''}" title="Ordenar por ${esc(c.lbl)}">${esc(c.lbl)}<span class="arw">${seta(c)}</span></th>`
+    ).join('') + '</tr></thead><tbody>' +
+    (ord.length ? ord.map(r=>'<tr>'+cols.map((c,ci)=>{
+        const cls = ((c.cls? c.cls(r) : '') + (ci===0?' name':'')).trim();
+        return `<td class="${cls}">${c.fmt(r)}</td>`;
+      }).join('')+'</tr>').join('')
+    : `<tr><td colspan="${cols.length}" class="muted" style="text-align:center;padding:22px">Sem dado.</td></tr>`) +
+    '</tbody>' + (rodape? `<tfoot><tr>${rodape}</tr></tfoot>` : '');
+  el.querySelectorAll('th').forEach(th=>{
+    th.onclick = () => {
+      const k = th.dataset.k;
+      if (st.k===k) st.dir = st.dir==='desc' ? 'asc' : 'desc';
+      else { st.k = k; st.dir = 'desc'; }
+      render();
+    };
+  });
+}
+
+/* ================= gráficos ================= */
+function chartBarras(id, itens, lab){
+  const el = document.getElementById(id);
+  if (!itens.length){ el.innerHTML = '<p class="muted" style="font-size:12px;padding:14px 0">Sem dado.</p>'; return; }
+  const W=440, rowH=34, H=itens.length*rowH+10;
+  const max = Math.max.apply(null, itens.map(x=>x.val).concat([1])), bw = W-lab-72;
+  let s = `<svg viewBox="0 0 ${W} ${H}">`;
+  itens.forEach((x,i)=>{
+    const y=i*rowH+8, w=Math.max(bw*x.val/max,2);
+    s+=`<text class="axis" x="0" y="${y+13}" style="font-weight:700;fill:#002656">${esc(String(x.lbl).slice(0,22))}</text>`;
+    s+=`<rect x="${lab}" y="${y+2}" width="${w}" height="15" rx="4" fill="${x.cor}"/>`;
+    s+=`<text class="axis" x="${lab+w+7}" y="${y+14}">${brl0(x.val)}</text>`;
+    s+=`<text class="axis" x="0" y="${y+25}" style="font-size:9.5px">${esc(x.sub)}</text>`;
+    s+=`<rect class="hit" x="0" y="${y-2}" width="${W}" height="${rowH-2}" fill="transparent" data-tip="${esc(x.tip)}"/>`;
+  });
+  el.innerHTML = s+'</svg>';
+}
+
+function chartMeses(id, itens){
+  const el = document.getElementById(id);
+  if (!itens.length){ el.innerHTML='<p class="muted" style="font-size:12px;padding:14px 0">Sem dado.</p>'; return; }
+  const W=1100,H=300,pl=78,pr=24,pt=18,pb=38, iw=W-pl-pr, ih=H-pt-pb;
+  const max = Math.max.apply(null, itens.map(x=>Math.max(x.spend,x.receita)).concat([1]));
+  const cw = iw/itens.length, bw = Math.min(46, cw*0.34);
+  let s = `<svg viewBox="0 0 ${W} ${H}">`;
+  for (let g=0; g<=4; g++){ const y=pt+ih*g/4;
+    s+=`<line class="gridline" x1="${pl}" y1="${y}" x2="${W-pr}" y2="${y}"/>`;
+    s+=`<text class="axis" x="${pl-8}" y="${y+4}" text-anchor="end">${brl0(max*(1-g/4))}</text>`; }
+  itens.forEach((x,i)=>{
+    const cx = pl+cw*(i+0.5);
+    [['spend','#0178e6',-1],['receita','#0b8fa4',1]].forEach(function(par){
+      const k=par[0], cor=par[1], lado=par[2];
+      const h = ih*x[k]/max, xx = cx + (lado<0 ? -bw-2 : 2);
+      s+=`<rect x="${xx}" y="${pt+ih-h}" width="${bw}" height="${h}" rx="4" fill="${cor}" opacity=".92"/>`;
+      if (x[k]) s+=`<text class="vlabel" x="${xx+bw/2}" y="${pt+ih-h-6}" text-anchor="middle" style="fill:${cor}">${brl0(x[k])}</text>`;
+    });
+    s+=`<text class="axis" x="${cx}" y="${H-20}" text-anchor="middle" style="font-weight:700">${mesLbl(x.mes)}</text>`;
+    s+=`<text class="axis" x="${cx}" y="${H-8}" text-anchor="middle">${int(x.vendas)} venda(s)</text>`;
+    const tip = `<span class="h">${mesLbl(x.mes)}</span>`+
+      `Investido <b>${brl0(x.spend)}</b><br>Receita <b>${brl0(x.receita)}</b> em ${int(x.vendas)} venda(s)<br>`+
+      `CAC <b>${x.cac==null?'—':brl0(x.cac)}</b> · ROAS <b>${x.roas==null?'—':xm(x.roas)}</b><br>`+
+      `Acumulado no ano: <b>${brl0(x.acc_spend)}</b> investido · <b>${brl0(x.acc_receita)}</b> de receita`;
+    s+=`<rect class="hit" x="${pl+cw*i}" y="${pt}" width="${cw}" height="${ih}" fill="transparent" data-tip="${esc(tip)}"/>`;
+  });
+  el.innerHTML = s+'</svg>';
+}
+
+function chartAcumulado(id, itens){
+  const el = document.getElementById(id);
+  if (!itens.length){ el.innerHTML='<p class="muted" style="font-size:12px;padding:14px 0">Sem dado.</p>'; return; }
+  const W=1100,H=280,pl=78,pr=96,pt=18,pb=34, iw=W-pl-pr, ih=H-pt-pb;
+  const max = Math.max.apply(null, itens.map(x=>Math.max(x.acc_spend,x.acc_receita)).concat([1]));
+  const X = i => pl + (itens.length>1 ? iw*i/(itens.length-1) : iw/2);
+  const Y = v => pt+ih-ih*v/max;
+  let s = `<svg viewBox="0 0 ${W} ${H}">`;
+  for (let g=0; g<=4; g++){ const y=pt+ih*g/4;
+    s+=`<line class="gridline" x1="${pl}" y1="${y}" x2="${W-pr}" y2="${y}"/>`;
+    s+=`<text class="axis" x="${pl-8}" y="${y+4}" text-anchor="end">${brl0(max*(1-g/4))}</text>`; }
+  [['acc_receita','#0b8fa4','Receita acumulada'],['acc_spend','#0178e6','Investimento acumulado']].forEach(function(par){
+    const k=par[0], cor=par[1], lbl=par[2];
+    s+=`<polyline points="${itens.map((x,i)=>X(i)+','+Y(x[k])).join(' ')}" fill="none" stroke="${cor}" stroke-width="3"/>`;
+    itens.forEach((x,i)=>{ s+=`<circle cx="${X(i)}" cy="${Y(x[k])}" r="4" fill="${cor}"/>`; });
+    const u = itens[itens.length-1];
+    s+=`<text class="axis" x="${W-pr+8}" y="${Y(u[k])+4}" style="font-weight:800;fill:${cor}">${brl0(u[k])}</text>`;
+    s+=`<text class="axis" x="${W-pr+8}" y="${Y(u[k])+16}" style="font-size:9.5px;fill:${cor}">${lbl}</text>`;
+  });
+  itens.forEach((x,i)=>{
+    s+=`<text class="axis" x="${X(i)}" y="${H-12}" text-anchor="middle" style="font-weight:700">${mesLbl(x.mes)}</text>`;
+    const sobra = x.acc_receita - x.acc_spend;
+    const tip = `<span class="h">até ${mesLbl(x.mes)}</span>`+
+      `Investido <b>${brl0(x.acc_spend)}</b><br>Receita <b>${brl0(x.acc_receita)}</b><br>`+
+      `Diferença <b>${brl0(sobra)}</b> · ROAS acumulado <b>${x.acc_spend?xm(x.acc_receita/x.acc_spend):'—'}</b>`;
+    s+=`<rect class="hit" x="${X(i)-iw/(itens.length*2)}" y="${pt}" width="${iw/itens.length}" height="${ih}" fill="transparent" data-tip="${esc(tip)}"/>`;
+  });
+  el.innerHTML = s+'</svg>';
+}
+
+/* ================= render ================= */
+function render(){
+  const g = A.geral;
+  document.getElementById('sub').textContent =
+    'Ano 2026 · ' + int(g.vendas) + ' vendas · ' + brl0(g.spend) + ' investido em mídia';
+  document.getElementById('heroReceita').textContent = brl0(g.receita);
+  document.getElementById('anoPeriodo').textContent = dia(DATA.dias[0]) + ' a ' + dia(DATA.dias[1]);
+  document.getElementById('linhaFonte').innerHTML =
+    'Página única, sem filtro de período: ela responde o ano fechado. O dia a dia, o criativo e as metas da janela de venda ficam no outro dashboard.';
+
+  document.getElementById('anoKpis').innerHTML = [
+    ['Investimento no ano', brl0(g.spend), g.dias_midia+' dias com mídia no ar', false, ''],
+    ['Receita no ano', brl0(g.receita), int(g.vendas)+' vendas · ticket '+brl0(g.ticket), true, ''],
+    ['ROAS do evento', g.roas==null?'—':xm(g.roas), 'receita ÷ investimento, blended', true,
+     g.roas>=1?'pos':'neg'],
+    ['CAC blended', g.cac==null?'—':brl0(g.cac), 'toda venda, de qualquer frente', false, ''],
+    ['Vendas com utm do pago', int(A.vendas_pago), brl0(A.receita_pago)+' de receita direta', false, ''],
+    ['Diferença receita − verba', brl0(g.receita-g.spend), g.receita>g.spend?'caixa acima da mídia':'no vermelho',
+     false, g.receita>g.spend?'pos':'neg'],
+  ].map(a=>`<div class="kpi${a[3]?' hl':''}"><div class="k">${a[0]}</div><div class="v ${a[4]}">${a[1]}</div><div class="d">${a[2]}</div></div>`).join('');
+
+  document.getElementById('anoNota').innerHTML =
+    `<b>Como ler:</b> o investimento soma <b>todas</b> as contas de anúncio que rodaram MXP no ano ` +
+    `(${A.por_conta.filter(c=>c.spend>0).map(c=>esc(c.id)).join(', ')}), e a receita é a Hubla, nunca o pixel. ` +
+    `Só ${int(A.vendas_pago)} das ${int(g.vendas)} vendas chegaram com utm de mídia: o grosso entra pelo WhatsApp e pelo time de vendas, ` +
+    `que fecha o lead que a mídia trouxe. Por isso a leitura honesta do evento é o <b>blended</b> — ` +
+    `CAC ${brl0(g.cac)} e ROAS ${xm(g.roas)} —, e não o ROAS da frente paga isolada.`;
+
+  tabela('tAnoCiclos', [
+    {k:'nome', lbl:'Ciclo', fmt:r=>`${esc(r.nome)}<div style="font-size:10.5px;color:var(--muted);margin-top:3px">${esc(r.obs)}</div>`},
+    {k:'midia_de', lbl:'Mídia no ar', fmt:r=>r.midia_de?dia(r.midia_de)+' a '+dia(r.midia_ate):MD},
+    {k:'spend', lbl:'Investido', fmt:r=>brl(r.spend)},
+    {k:'pct_spend', lbl:'% da verba', fmt:r=>pct(r.pct_spend)},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'ticket', lbl:'Ticket', fmt:r=>brl(r.ticket)},
+    {k:'cac', lbl:'CAC', fmt:r=>r.cac==null?MD:brl(r.cac)},
+    {k:'roas', lbl:'ROAS', fmt:r=>r.roas==null?MD:xm(r.roas), cls:r=>r.roas==null?'':(r.roas>=1?'pos sig':'neg sig')},
+  ], A.por_ciclo, {k:'midia_de', dir:'asc'},
+  `<td>Ano</td><td>—</td><td>${brl(g.spend)}</td><td>100,0%</td><td>${int(g.vendas)}</td>
+   <td>${brl(g.receita)}</td><td>${brl(g.ticket)}</td><td>${brl(g.cac)}</td><td>${xm(g.roas)}</td>`);
+
+  document.getElementById('anoNotaCiclos').innerHTML =
+    `A venda entra no ciclo pelo <b>dia do pagamento</b>, não por clique: não dá para amarrar uma venda de fevereiro ` +
+    `a um criativo de agosto, e o closer costuma fechar dias depois do anúncio. ` +
+    `Cada ciclo é uma investida de mídia com sua própria janela de venda, e é assim que o CAC de cada um deve ser lido.`;
+
+  chartMeses('chartAnoMes', A.por_mes);
+  chartAcumulado('chartAnoAcc', A.por_mes);
+
+  tabela('tAnoMes', [
+    {k:'mes', lbl:'Mês', fmt:r=>mesLbl(r.mes)},
+    {k:'spend', lbl:'Investido', fmt:r=>brl(r.spend)},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'cac', lbl:'CAC', fmt:r=>r.cac==null?MD:brl(r.cac)},
+    {k:'roas', lbl:'ROAS', fmt:r=>r.roas==null?MD:xm(r.roas), cls:r=>r.roas==null?'':(r.roas>=1?'pos sig':'neg sig')},
+    {k:'acc_spend', lbl:'Investido acum.', fmt:r=>brl(r.acc_spend)},
+    {k:'acc_receita', lbl:'Receita acum.', fmt:r=>brl(r.acc_receita)},
+  ], A.por_mes, {k:'mes', dir:'asc'});
+
+  tabela('tAnoConta', [
+    {k:'id', lbl:'Conta de anúncio', fmt:r=>`${esc(r.id)}<span class="bar" style="width:${Math.max(r.pct_spend,1.5)}%;background:var(--pago)"></span>`},
+    {k:'spend', lbl:'Investido', fmt:r=>brl(r.spend)},
+    {k:'pct_spend', lbl:'% da verba', fmt:r=>pct(r.pct_spend)},
+  ], A.por_conta.filter(c=>c.spend>0), {k:'spend'},
+  `<td>Total</td><td>${brl(g.spend)}</td><td>100,0%</td>`);
+
+  chartBarras('chartAnoFunil', A.por_funil.filter(f=>f.spend>0).map(f=>({
+    lbl:f.id, val:f.spend, sub:pct(f.pct_spend)+' da verba do ano',
+    cor:f.id.indexOf('Fp01')>=0?'#0178e6':'#0b8fa4',
+    tip:`<span class="h">${esc(f.id)}</span>Investido <b>${brl0(f.spend)}</b> · ${pct(f.pct_spend)} da verba`+
+        (f.vendas?`<br>${int(f.vendas)} venda(s) com utm desta campanha · <b>${brl0(f.receita)}</b>`:'')})), 110);
+
+  const camps = A.por_campanha.filter(c=>c.spend>0);
+  tabela('tAnoCamp', [
+    {k:'id', lbl:'Campanha', fmt:r=>`${esc(r.id)}<div style="font-size:10.5px;color:var(--muted);margin-top:3px">${esc(r.funil)} · ${esc(r.conta)}</div>`},
+    {k:'spend', lbl:'Investido', fmt:r=>brl(r.spend)},
+    {k:'pct_spend', lbl:'% da verba', fmt:r=>pct(r.pct_spend)},
+    {k:'vendas', lbl:'Vendas c/ utm', fmt:r=>r.vendas?int(r.vendas):MD},
+    {k:'receita', lbl:'Receita c/ utm', fmt:r=>r.receita?brl(r.receita):MD},
+    {k:'cac', lbl:'CPA direto', fmt:r=>r.cac==null?MD:brl(r.cac)},
+  ], camps, {k:'spend'},
+  `<td>Total · ${camps.length} campanhas</td><td>${brl(g.spend)}</td><td>100,0%</td>
+   <td>${int(A.vendas_pago)}</td><td>${brl(A.receita_pago)}</td><td>—</td>`);
+
+  document.getElementById('anoNotaCamp').innerHTML =
+    `As colunas de venda só contam o que chegou na Hubla com o <b>utm_campaign</b> daquela campanha. ` +
+    `Campanha de captação (Le01/Le02) aparece sem venda de propósito: ela entregou lead para o Meteórico, ` +
+    `e a venda veio depois pelo WhatsApp. Use a coluna de investimento para ler peso, não o CPA direto.`;
+
+  tabela('tAnoFrente', [
+    {k:'frente', lbl:'Frente', fmt:r=>`${esc(r.frente)} <span class="tag ${r.tipo}">${r.tipo}</span>
+       <span class="bar" style="width:${Math.max(r.pct,1.5)}%;background:var(--${r.tipo==='pago'?'pago':r.tipo==='proprio'?'proprio':r.tipo==='outros'?'outros':'indef'})"></span>`},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'pct', lbl:'% receita', fmt:r=>pct(r.pct)},
+    {k:'ticket', lbl:'Ticket', fmt:r=>brl(r.ticket)},
+  ], A.por_frente, {k:'receita'},
+  `<td>Total</td><td>${int(g.vendas)}</td><td>${brl(g.receita)}</td><td>100,0%</td><td>${brl(g.ticket)}</td>`);
+
+  chartBarras('chartAnoFrente', A.por_frente.map(f=>({
+    lbl:f.frente, val:f.receita, sub:f.vendas+' venda(s) · '+pct(f.pct),
+    cor:f.tipo==='pago'?'#0178e6':f.tipo==='proprio'?'#0b8fa4':f.tipo==='outros'?'#5e6c7b':'#9aa7b4',
+    tip:`<span class="h">${esc(f.frente)}</span>Receita <b>${brl0(f.receita)}</b> · ${pct(f.pct)} do ano<br>`+
+        `${int(f.vendas)} venda(s) · ticket <b>${brl0(f.ticket)}</b>`})), 150);
+
+  tabela('tAnoVend', [
+    {k:'nome', lbl:'Vendedor (utm_source)', fmt:r=>esc(r.nome)},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'ticket', lbl:'Ticket', fmt:r=>brl(r.ticket)},
+  ], A.vendedores, {k:'receita'});
+
+  document.getElementById('anoNotaVend').innerHTML =
+    `São as vendas em que o <b>utm_source</b> veio com nome de pessoa, ou seja, link pessoal de closer. ` +
+    `O bloco maior continua entrando como "WhatsApp" genérico, sem dono identificado — quem quiser ranking fechado ` +
+    `de time precisa padronizar o link de cada vendedor na origem.`;
+
+  tabela('tAnoOferta', [
+    {k:'oferta', lbl:'Oferta', fmt:r=>`${esc(r.oferta)}<span class="bar" style="width:${Math.max(r.pct,1.5)}%;background:var(--proprio)"></span>`},
+    {k:'vendas', lbl:'Vendas', fmt:r=>int(r.vendas)},
+    {k:'receita', lbl:'Receita', fmt:r=>brl(r.receita)},
+    {k:'pct', lbl:'% receita', fmt:r=>pct(r.pct)},
+    {k:'ticket', lbl:'Ticket', fmt:r=>brl(r.ticket)},
+  ], A.por_oferta, {k:'receita'},
+  `<td>Total · ${A.por_oferta.length} ofertas</td><td>${int(g.vendas)}</td><td>${brl(g.receita)}</td>
+   <td>100,0%</td><td>${brl(g.ticket)}</td>`);
+}
+
+document.getElementById('fontes').innerHTML =
+  'Fontes: Meta Ads — snapshot da API nas contas ' + A.por_conta.filter(c=>c.spend>0).map(c=>esc(c.id)).join(', ') +
+  (DATA.fontes.trafego_snapshot ? ' (tirado em ' + esc(DATA.fontes.trafego_snapshot) + ')' : '') +
+  ', mais a planilha MXP-Fp01 META ADS na janela de venda. ' +
+  'Vendas — Hubla: export do painel para o histórico e webhook n8n na planilha [MXP-FP01][2026][BACKUP] para o que é novo.';
+document.getElementById('ger').textContent = 'Atualizado em ' + DATA.gerado_em + ' · v' + DATA.versao;
+render();
+</script>
+</body>
+</html>

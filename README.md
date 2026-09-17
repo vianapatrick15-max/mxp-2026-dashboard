@@ -1,62 +1,26 @@
-# MXP 2026 — Tráfego x vendas reais (v2)
+# MXP-Fp01 2026 — Tráfego x vendas reais
 
 Dashboard que cruza a mídia paga (Meta) com a venda real da Hubla, separada por frente (`utm_source`).
+No ar em https://mxp-2026-dashboard.pages.dev
 
-**v2 (17/09/2026): o dashboard passou a cobrir o ano inteiro do evento**, não só a
-janela de venda direta de agosto. A aba **Ano 2026** abre primeiro e mostra o
-acumulado — investimento somando as cinco contas de anúncio que rodaram MXP, receita
-de todas as vendas do produto na Hubla desde fevereiro, e o corte por ciclo de mídia.
-As abas de operação (Desempenho, Ads, Metas) continuam abrindo na janela viva.
+**Tem um dashboard irmão em [`ano/`](ano/README.md)** — https://mxp-2026-ano.pages.dev —
+que mede o ano fechado do evento (os três ciclos de mídia, todas as contas de anúncio,
+todas as vendas desde fevereiro). Este aqui continua sendo o da janela de venda: dia a
+dia, criativo a criativo, com metas. Mesmo repositório e mesmo refresh de 4 em 4 horas,
+perguntas diferentes.
 
 - `index.html` — dashboard pronto (dados embutidos, abre com duplo clique)
 - `data.json` — dataset agregado (sem PII)
-- `build.py` — junta as quatro fontes e gera `data.json` + `index.html`
+- `build.py` — lê as duas planilhas e gera `data.json` + `index.html`
 - `template.html` — layout/JS; `build.py` injeta os dados no lugar de `/*__DATA__*/`
 - `thumbs.json` — imagem de cada criativo (enriquecimento manual, `pull_thumbs.py`)
-- `trafego_ano.json` — snapshot do ano na Meta API (`pull_trafego_ano.py`)
-- `vendas_ano.json` — histórico de vendas do export da Hubla (`import_vendas_hubla.py`)
 
 ## Fontes
 
-Duas vivas (o CI relê a cada 4h) e duas de base fixa (snapshot commitado, gerado na mão):
-
-| O quê | Origem | Cobertura |
+| O quê | Planilha | Aba |
 |---|---|---|
-| Tráfego nível anúncio/dia | planilha `12ldEcVBAyIWcX2APu3CVS82aeswbwxsbJZCYIGN4KKY`, aba `dados_trafego` | 04/08 em diante |
-| Vendas novas | planilha `1JmhAHqs8kdDSuhWtZGw721GOIZec0MN9QjhLnuL3V1U`, aba `VENDAS` | 01/08 em diante |
-| Tráfego do ano | `trafego_ano.json` (Meta API, 9 contas das duas BMs) | o ano todo |
-| Vendas do ano | `vendas_ano.json` (export XLSX do painel Hubla) | o ano todo |
-
-O motivo das duas bases fixas: **o CI não tem token da Meta** (só segredo do Sheets e
-do Cloudflare) e **a Hubla não tem API de listagem** — só webhook, que começou em
-06/08. Sem os snapshots o dashboard enxergaria apenas agosto em diante e perderia os
-dois Meteóricos (fev e abr), que são 62% do investimento do ano.
-
-### Como atualizar os snapshots
-
-```bash
-/usr/bin/python3 pull_trafego_ano.py                      # relê o ano todo na Meta API
-/usr/bin/python3 import_vendas_hubla.py ~/Downloads/<export>.xlsx
-/usr/bin/python3 build.py && git add -A && git commit && git push
-```
-
-`pull_trafego_ano.py` varre as 9 contas das duas BMs filtrando campanha com "mxp" no
-nome, mês a mês (o ano inteiro de uma vez a Meta derruba com "Service temporarily
-unavailable"). `import_vendas_hubla.py` ignora o produto "Palestras MXP 2025", que é
-outro evento e aparece no mesmo export.
-
-### Regra de merge
-
-Onde a planilha viva tem dado, ela manda — é ela que traz o nível de anúncio que os
-cards de criativo precisam. O snapshot entra só no que ela não cobre (todo o
-histórico, a conta que ficou fora da coleta, qualquer dia que ainda não chegou), e aí
-vira campanha/dia: criativo de fevereiro não tem thumb nem venda por `utm_content`, só
-engordaria o arquivo. Nas vendas, a planilha ganha por `id_fatura` — o export só lista
-fatura paga, então **reembolso de venda antiga só existe do lado vivo**.
-
-**A conta de anúncio nunca é inferida da planilha.** Depois da migração de 27/08 a
-mesma campanha rodou na C3 e na C4 Mem; chutar a conta infla uma e zera a outra. Quem
-responde "quanto cada conta gastou" é o snapshot.
+| Tráfego (Meta, nível anúncio/dia) | `12ldEcVBAyIWcX2APu3CVS82aeswbwxsbJZCYIGN4KKY` | `dados_trafego` |
+| Vendas (Hubla) | `1JmhAHqs8kdDSuhWtZGw721GOIZec0MN9QjhLnuL3V1U` | `VENDAS` |
 
 Em 18/08/2026 a planilha de vendas mudou: a antiga (`13uDvw...`) parou de aceitar escrita do n8n
 e foi substituída pela `[MXP-FP01][2026][BACKUP]`, com todo o histórico copiado. A conta que o n8n
@@ -73,24 +37,6 @@ A aba VENDAS é alimentada em tempo real pelo workflow n8n `[MXP-FP01] VENDAS HU
 - **Venda por criativo** cruza `utm_content` da Hubla com o Ad Name do Meta pelo código `AD-nn`.
 - ROAS geral do topo é leitura de **caixa**, não de eficiência de mídia, sempre que a janela de vendas começar antes da janela de tráfego.
 
-## Aba Ano 2026
-
-Ignora o filtro de período: a pergunta dela é sempre "quanto o evento custou e
-devolveu no ano". Traz KPIs do acumulado, os três ciclos de mídia, mês a mês com
-curva acumulada, verba por conta e por funil, campanhas do ano, origem da receita,
-time de vendas e mix de ofertas.
-
-**Ciclo é janela de data, não clique.** O evento teve três investidas de mídia
-(Mxp-Le01 em fev, Mxp-Le02 em mar-abr, MXP-Fp01 de ago até o evento) e a venda entra
-no ciclo pelo dia do pagamento — não dá para amarrar venda de fevereiro a criativo de
-agosto, e o closer fecha dias depois do anúncio. As bordas estão no dict `CICLOS` do
-`build.py`.
-
-**A leitura do evento é blended.** Só ~18% das vendas chegam com `utm` de mídia: o
-grosso entra por WhatsApp e pelo time de vendas, que fecha o lead que a mídia trouxe.
-Por isso o CAC e o ROAS do topo dividem tudo por tudo, e o ROAS da frente paga
-isolada não responde pelo evento. Campanha de captação aparece sem venda de propósito.
-
 ## Metas (revisar 15/08)
 
 Fechadas com o cliente e travadas no topo do `build.py` (dict `METAS`):
@@ -106,14 +52,9 @@ sem rateio por dia. Vendas, faturamento e investimento acumulam e por isso têm
 
 Todo o cálculo da aba Desempenho é feito no navegador a partir dos dados crus
 (`DATA.trafego` = uma linha por anúncio/dia, `DATA.vendas` = uma linha por venda).
-Por isso qualquer intervalo funciona: atalhos (Janela atual, Ano todo, Hoje, Ontem,
-7 dias, 14 dias, Este mês, um por ciclo) ou as duas datas livres. O padrão é a
-**janela atual** — a parte com nível de anúncio —, porque misturar fevereiro no dia a
-dia só atrapalha. As abas Metas e Ano ignoram o filtro de propósito: uma mede o plano
-inteiro, a outra o ano fechado.
-
-Fora da janela viva o tráfego é campanha/dia, sem nível de anúncio: a tabela de
-criativos e a aba Ads ficam vazias nesses períodos, e o total continua certo.
+Por isso qualquer intervalo funciona: atalhos (Tudo, Hoje, Ontem, 7 dias, 14 dias,
+Este mês) ou as duas datas livres. A aba Metas ignora o filtro de propósito — ela
+mede o plano inteiro.
 
 ## Tabelas
 
