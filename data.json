@@ -1,5 +1,5 @@
 {
- "gerado_em": "17/09/2026 08:56",
+ "gerado_em": "17/09/2026 15:42",
  "hoje": "2026-09-17",
  "dias": [
   "2026-08-01",
@@ -22,9 +22,9 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 255,
+    "realizado": 257,
     "esperado_hoje": 150.0,
-    "pct": 170.0,
+    "pct": 171.3,
     "status": "pos",
     "unidade": "int",
     "direcao": "up",
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 132163.8,
+    "realizado": 132557.8,
     "esperado_hoje": 29550.0,
-    "pct": 447.3,
+    "pct": 448.6,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -52,7 +52,7 @@
     "label": "Investimento",
     "acumula": true,
     "meta": 22500.0,
-    "realizado": 86241.89,
+    "realizado": 86241.91,
     "esperado_hoje": 22500.0,
     "pct": 383.3,
     "status": "pos",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 338.2,
+    "realizado": 335.57,
     "esperado_hoje": 150.0,
-    "pct": 225.5,
+    "pct": 223.7,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 1.53,
+    "realizado": 1.54,
     "esperado_hoje": 1.3,
-    "pct": 117.9,
+    "pct": 118.2,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 17.0,
+   "vendas_dia": 17.13,
    "spend_dia": 5749.46,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 255,
-   "receita": 132163.8,
-   "spend": 86241.89,
-   "pct_meta": 170.0
+   "vendas": 257,
+   "receita": 132557.8,
+   "spend": 86241.91,
+   "pct_meta": 171.3
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 518.29
+  "ticket_real": 515.79
  },
  "ads": {
   "AD-01|EST": {
@@ -303,7 +303,7 @@
   "AD-31|EST": {
    "nome": "[AD-31][EST][VD][MXP-Fp01]",
    "camp": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
-   "ig": "https://www.instagram.com/p/DdQI0ELAyoz/",
+   "ig": "https://www.instagram.com/p/DdQIsjAAD0g/",
    "status": "PAUSED",
    "rotulo": "AD-31 EST",
    "tipo": "Estático",
@@ -1095,7 +1095,7 @@
   "AD-115|EST": {
    "nome": "[AD-115][EST][VD][MXP-Fp01]",
    "camp": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_ADS][ESTATICOS_111-120][01_09]",
-   "ig": "https://www.instagram.com/p/DcvksCTgQrN/",
+   "ig": "https://www.instagram.com/p/DdEe7VAgd80/",
    "status": "CAMPAIGN_PAUSED",
    "rotulo": "AD-115 EST",
    "tipo": "Estático",
@@ -32472,8 +32472,8 @@
    "d": "2026-09-15",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_ADS][ESTATICOS_80-110][01_09]",
    "a": "AD-102|EST",
-   "s": 259.02,
-   "i": 24130,
+   "s": 259.04,
+   "i": 24133,
    "k": 1012,
    "l": 721,
    "ic": 0,
@@ -33070,8 +33070,92 @@
   },
   {
    "d": "2026-09-17",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_ADS][ESTATICOS_111-120][01_09]",
+   "a": "AD-115|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-09-17",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_ADS][ESTATICOS_80-110][01_09]",
+   "a": "AD-101|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-09-17",
    "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_CHECKOUT][SUL_SUDESTE][25_08]",
    "a": "AD-51|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-09-17",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_PAGINA][VSL][31_08]",
+   "a": "AD-31|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-09-17",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_PAGINA][VSL][31_08]",
+   "a": "AD-31|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-09-17",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][AD-31_VARIACOES][17_08]",
+   "a": "AD-31|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-09-17",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][AD-31_VARIACOES][17_08]",
+   "a": "AD-31|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-09-17",
+   "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
+   "a": "AD-49|EST",
    "s": 0.0,
    "i": 0,
    "k": 0,
@@ -35631,6 +35715,26 @@
    "a": "",
    "c": "",
    "src": "juliana_vieira"
+  },
+  {
+   "d": "2026-09-17",
+   "f": "Meta Ads",
+   "t": "pago",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "AD-80|EST",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV ][TESTE_ADS][ESTATICOS_80-110][01_09]",
+   "src": "meta_ads"
+  },
+  {
+   "d": "2026-09-17",
+   "f": "julianavieira",
+   "t": "outros",
+   "v": 197.0,
+   "o": "LITE",
+   "a": "",
+   "c": "",
+   "src": "JulianaVieira"
   }
  ],
  "reembolsos": 11
