@@ -1,13 +1,13 @@
 {
- "gerado_em": "19/09/2026 14:52",
+ "gerado_em": "19/09/2026 18:14",
  "hoje": "2026-09-19",
  "dias": [
   "2026-08-01",
-  "2026-09-18"
+  "2026-09-19"
  ],
  "dias_trafego": [
   "2026-08-04",
-  "2026-09-18"
+  "2026-09-19"
  ],
  "bench_lpv_ic": 3.0,
  "metas": {
@@ -555,7 +555,7 @@
   "AD-49|EST": {
    "nome": "[AD-49][EST][VD][MXP-Fp01]",
    "camp": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
-   "ig": "https://www.instagram.com/p/DcfNaXaATHc/",
+   "ig": "https://www.instagram.com/p/DcfNaabgt28/",
    "status": "CAMPAIGN_PAUSED",
    "rotulo": "AD-49 EST",
    "tipo": "Estático",
@@ -1095,7 +1095,7 @@
   "AD-115|EST": {
    "nome": "[AD-115][EST][VD][MXP-Fp01]",
    "camp": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_ADS][ESTATICOS_111-120][01_09]",
-   "ig": "https://www.instagram.com/p/DdEe7VAgd80/",
+   "ig": "https://www.instagram.com/p/DcvksCTgQrN/",
    "status": "CAMPAIGN_PAUSED",
    "rotulo": "AD-115 EST",
    "tipo": "Estático",
@@ -33406,6 +33406,30 @@
   },
   {
    "d": "2026-09-18",
+   "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
+   "a": "AD-49|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-09-19",
+   "c": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_ADS][ESTATICOS_111-120][01_09]",
+   "a": "AD-115|EST",
+   "s": 0.0,
+   "i": 0,
+   "k": 0,
+   "l": 0,
+   "ic": 0,
+   "p": 0,
+   "v": 0
+  },
+  {
+   "d": "2026-09-19",
    "c": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
    "a": "AD-49|EST",
    "s": 0.0,
