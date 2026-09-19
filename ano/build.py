@@ -74,6 +74,20 @@ CICLOS = [
      "obs": "MXP-Fp01: venda direta de ingresso até o evento."},
 ]
 
+# ---------------------------------------------------------------- imposto
+# O `spend` da API e a midia liquida — a linha "Valor de campanha" da fatura, nao
+# o boleto. A Meta fatura o Brasil com ISS 2,9% + PIS 1,65% + COFINS 7,6%
+# calculados POR DENTRO (incidem sobre o Valor Total, nao sobre a midia), entao o
+# custo real do anuncio e midia / (1 - 0,1215) = midia x 1,1383. Aqui a pergunta e
+# quanto o evento custou, entao todo `s` deste dashboard ja entra com imposto:
+# o gross-up e aplicado na ingestao (planilha viva e snapshot), antes de qualquer
+# soma, pra CAC, ROAS e % de verba sairem sobre o valor que de fato foi pago.
+ALIQUOTAS = {"ISS": 0.029, "PIS": 0.0165, "COFINS": 0.076}
+GROSS_UP = 1 / (1 - sum(ALIQUOTAS.values()))  # 1,1383
+
+def com_imposto(v):
+    return v * GROSS_UP
+
 # utm_source -> rotulo de frente. O que nao casar e parecer nome de gente entra
 # como time de vendas; o resto vira "outros".
 FRENTES = {
@@ -199,6 +213,14 @@ def ler_snapshot(path, campo):
               f"janela viva. Rode o script que gera esse arquivo.")
         return {campo: [], "ate": "", "gerado_em": ""}
 
+def imposto_no_snapshot(snap):
+    """Mesma regra da planilha, aplicada uma vez na leitura: o snapshot da Meta
+    tambem vem liquido. Tem que ser aqui e nao no montar_trafego porque a verba
+    por conta e por campanha le o snapshot direto."""
+    for r in snap.get("linhas", []):
+        r["s"] = com_imposto(r["s"])
+    return snap
+
 def coletar():
     gc = get_gspread_client()
 
@@ -214,7 +236,7 @@ def coletar():
             "ad": r[th["Ad Name"]].strip(),
             "ad_code": ad_code(r[th["Ad Name"]]),
             "conta": "",
-            "spend": num(r[th["Spend (Cost, Amount Spent)"]]),
+            "spend": com_imposto(num(r[th["Spend (Cost, Amount Spent)"]])),
             "impr": num(r[th["Impressions"]]),
             "clicks": num(r[th["Action Link Clicks"]]),
             "lpv": num(r[th["Action Landing Page View"]]),
@@ -377,6 +399,9 @@ def resumo_ano(trafego, vendas, snap_t):
     spend_total = sum(r["s"] for r in trafego)
     geral = bloco(spend_total, vendas)
     geral["dias_midia"] = len({r["d"] for r in trafego if r["s"] > 0})
+    # spend ja vem com imposto; aqui desfaz o gross-up so pra mostrar a quebra
+    geral["midia"] = round(spend_total / GROSS_UP, 2)
+    geral["imposto"] = round(spend_total - geral["midia"], 2)
 
     por_ciclo = []
     for c in CICLOS:
@@ -498,7 +523,7 @@ def resumo_ano(trafego, vendas, snap_t):
 
 def build():
     planilha, vivas = coletar()
-    snap_t = ler_snapshot(SNAP_TRAFEGO, "linhas")
+    snap_t = imposto_no_snapshot(ler_snapshot(SNAP_TRAFEGO, "linhas"))
     snap_v = ler_snapshot(SNAP_VENDAS, "vendas")
 
     traf = montar_trafego(planilha, snap_t)
@@ -521,6 +546,10 @@ def build():
             "vendas_snapshot": snap_v.get("gerado_em", ""),
             "vendas_origem": snap_v.get("origem", ""),
         },
+        "imposto": {
+            "aliquota": round(GROSS_UP - 1, 4),
+            "componentes": ALIQUOTAS,
+        },
         "ano": ano,
         "reembolsos": reembolsos,
     }
@@ -538,6 +567,8 @@ def build():
     g = ano["geral"]
     print(f"trafego: {len(traf)} linhas ({len(planilha)} da planilha) | vendas: {len(vds)}"
           f" ({novas} so na planilha, {reembolsos} perdidas)")
+    print(f"ANO: midia R$ {g['midia']:,.2f} + imposto R$ {g['imposto']:,.2f}"
+          f" ({100*(GROSS_UP-1):.2f}%)")
     print(f"ANO: investido R$ {g['spend']:,.2f} | receita R$ {g['receita']:,.2f}"
           f" | {g['vendas']} vendas | CAC R$ {g['cac'] or 0:,.2f} | ROAS {g['roas'] or 0:.2f}x")
     for c in ano["por_ciclo"]:

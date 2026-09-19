@@ -449,14 +449,15 @@ function chartAcumulado(id, itens){
 function render(){
   const g = A.geral;
   document.getElementById('sub').textContent =
-    'Ano 2026 · ' + int(g.vendas) + ' vendas · ' + brl0(g.spend) + ' investido em mídia';
+    'Ano 2026 · ' + int(g.vendas) + ' vendas · ' + brl0(g.spend) + ' investido (mídia + imposto)';
   document.getElementById('heroReceita').textContent = brl0(g.receita);
   document.getElementById('anoPeriodo').textContent = dia(DATA.dias[0]) + ' a ' + dia(DATA.dias[1]);
   document.getElementById('linhaFonte').innerHTML =
     'Página única, sem filtro de período: ela responde o ano fechado. O dia a dia, o criativo e as metas da janela de venda ficam no outro dashboard.';
 
   document.getElementById('anoKpis').innerHTML = [
-    ['Investimento no ano', brl0(g.spend), g.dias_midia+' dias com mídia no ar', false, ''],
+    ['Investimento no ano', brl0(g.spend), 'mídia + imposto · '+g.dias_midia+' dias com mídia no ar', false, ''],
+    ['Imposto da Meta', brl0(g.imposto), brl0(g.midia)+' de mídia + '+pct(100*DATA.imposto.aliquota), false, ''],
     ['Receita no ano', brl0(g.receita), int(g.vendas)+' vendas · ticket '+brl0(g.ticket), true, ''],
     ['ROAS do evento', g.roas==null?'—':xm(g.roas), 'receita ÷ investimento, blended', true,
      g.roas>=1?'pos':'neg'],
@@ -471,7 +472,12 @@ function render(){
     `(${A.por_conta.filter(c=>c.spend>0).map(c=>esc(c.id)).join(', ')}), e a receita é a Hubla, nunca o pixel. ` +
     `Só ${int(A.vendas_pago)} das ${int(g.vendas)} vendas chegaram com utm de mídia: o grosso entra pelo WhatsApp e pelo time de vendas, ` +
     `que fecha o lead que a mídia trouxe. Por isso a leitura honesta do evento é o <b>blended</b> — ` +
-    `CAC ${brl0(g.cac)} e ROAS ${xm(g.roas)} —, e não o ROAS da frente paga isolada.`;
+    `CAC ${brl0(g.cac)} e ROAS ${xm(g.roas)} —, e não o ROAS da frente paga isolada.<br>` +
+    `<b>Imposto incluído:</b> todo valor de investimento desta página é o <b>custo real do anúncio</b> — ` +
+    `${brl0(g.midia)} de mídia mais ${brl0(g.imposto)} de imposto da Meta. A Meta fatura o Brasil com ` +
+    `ISS 2,9% + PIS 1,65% + COFINS 7,6% calculados por dentro, o que dá ${pct(100*DATA.imposto.aliquota)} sobre a mídia. ` +
+    `CAC, ROAS e % de verba já saem sobre esse valor; o dashboard da janela de venda continua em mídia pura, ` +
+    `porque lá a verba é comparada com o plano.`;
 
   tabela('tAnoCiclos', [
     {k:'nome', lbl:'Ciclo', fmt:r=>`${esc(r.nome)}<div style="font-size:10.5px;color:var(--muted);margin-top:3px">${esc(r.obs)}</div>`},
