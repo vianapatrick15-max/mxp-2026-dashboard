@@ -1,6 +1,6 @@
 {
  "versao": "1.0",
- "gerado_em": "18/09/2026 21:58",
+ "gerado_em": "18/09/2026 21:27",
  "hoje": "2026-09-18",
  "dias": [
   "2026-02-04",
@@ -39,25 +39,35 @@
   "vendas_snapshot": "17/09/2026 17:06",
   "vendas_origem": "fba6b5a9-6aa9-5aff-a4d1-c8a0ee23522e.xlsx"
  },
+ "imposto": {
+  "aliquota": 0.1383,
+  "componentes": {
+   "ISS": 0.029,
+   "PIS": 0.0165,
+   "COFINS": 0.076
+  }
+ },
  "ano": {
   "geral": {
-   "spend": 225120.78,
+   "spend": 256255.55,
    "vendas": 496,
    "receita": 383639.07,
-   "cac": 453.87,
-   "roas": 1.704,
+   "cac": 516.64,
+   "roas": 1.497,
    "ticket": 773.47,
-   "dias_midia": 67
+   "dias_midia": 67,
+   "midia": 225120.5,
+   "imposto": 31135.05
   },
   "receita_pago": 42796.05,
   "vendas_pago": 90,
   "por_ciclo": [
    {
-    "spend": 41275.8,
+    "spend": 46984.42,
     "vendas": 158,
     "receita": 154438.4,
-    "cac": 261.24,
-    "roas": 3.742,
+    "cac": 297.37,
+    "roas": 3.287,
     "ticket": 977.46,
     "chave": "c1",
     "nome": "Ciclo 1 · Meteórico fev",
@@ -69,11 +79,11 @@
     "pago_vendas": 0
    },
    {
-    "spend": 97468.4,
+    "spend": 110948.66,
     "vendas": 78,
     "receita": 96077.84,
-    "cac": 1249.59,
-    "roas": 0.986,
+    "cac": 1422.42,
+    "roas": 0.866,
     "ticket": 1231.77,
     "chave": "c2",
     "nome": "Ciclo 2 · Meteórico abr",
@@ -85,11 +95,11 @@
     "pago_vendas": 5
    },
    {
-    "spend": 86376.58,
+    "spend": 98322.47,
     "vendas": 260,
     "receita": 133122.83,
-    "cac": 332.22,
-    "roas": 1.541,
+    "cac": 378.16,
+    "roas": 1.354,
     "ticket": 512.01,
     "chave": "c3",
     "nome": "Ciclo 3 · Reta final",
@@ -104,7 +114,7 @@
   "por_conta": [
    {
     "id": "C3 Inst",
-    "spend": 138439.15,
+    "spend": 157585.83,
     "vendas": 0,
     "receita": 0.0,
     "cac": null,
@@ -113,7 +123,7 @@
    },
    {
     "id": "C3 Mem",
-    "spend": 54293.45,
+    "spend": 61802.45,
     "vendas": 0,
     "receita": 0.0,
     "cac": null,
@@ -122,7 +132,7 @@
    },
    {
     "id": "C4 Mem",
-    "spend": 31948.48,
+    "spend": 36367.08,
     "vendas": 0,
     "receita": 0.0,
     "cac": null,
@@ -131,7 +141,7 @@
    },
    {
     "id": "C1 Inst",
-    "spend": 305.05,
+    "spend": 347.24,
     "vendas": 0,
     "receita": 0.0,
     "cac": null,
@@ -140,7 +150,7 @@
    },
    {
     "id": "C1 Mem",
-    "spend": 134.65,
+    "spend": 153.27,
     "vendas": 0,
     "receita": 0.0,
     "cac": null,
@@ -151,7 +161,7 @@
   "por_funil": [
    {
     "id": "Mxp-Le02",
-    "spend": 93726.17,
+    "spend": 106688.86,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 41.6,
@@ -160,7 +170,7 @@
    },
    {
     "id": "MXP-Fp01",
-    "spend": 90118.81,
+    "spend": 102582.27,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 40.0,
@@ -169,7 +179,7 @@
    },
    {
     "id": "Mxp-Le01",
-    "spend": 41275.8,
+    "spend": 46984.42,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 18.3,
@@ -180,7 +190,7 @@
   "por_campanha": [
    {
     "id": "[Mxp-Le02][CBO][CAPTAÇÃO][QUENTE][ESCALA][VIDEOS]_02_04",
-    "spend": 22459.71,
+    "spend": 25565.97,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 10.0,
@@ -191,7 +201,7 @@
    },
    {
     "id": "[Mxp-Le02][CBO][CAPTAÇÃO][QUENTE][TESTE_CRIATIVOS][ESTATICOS]_31_03",
-    "spend": 18111.03,
+    "spend": 20615.86,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 8.0,
@@ -202,29 +212,29 @@
    },
    {
     "id": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PUBLICOS]",
-    "spend": 17293.99,
+    "spend": 19685.79,
     "vendas": 21,
     "receita": 13226.4,
     "pct_spend": 7.7,
-    "cac": 823.52,
-    "roas": 0.765,
+    "cac": 937.42,
+    "roas": 0.672,
     "funil": "MXP-Fp01",
     "conta": "C3 Mem + C4 Mem"
    },
    {
     "id": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][03_08]",
-    "spend": 16439.89,
+    "spend": 18713.59,
     "vendas": 16,
     "receita": 5821.94,
     "pct_spend": 7.3,
-    "cac": 1027.49,
-    "roas": 0.354,
+    "cac": 1169.6,
+    "roas": 0.311,
     "funil": "MXP-Fp01",
     "conta": "C3 Mem + C4 Mem"
    },
    {
     "id": "[Mxp-Le02][CBO][CAPTAÇÃO][QUENTE][ESCALA][VIDEOS]_05_04",
-    "spend": 14469.74,
+    "spend": 16470.96,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 6.4,
@@ -235,7 +245,7 @@
    },
    {
     "id": "[Mxp-Le02][ABO][CAPTAÇÃO][QUENTE][TESTE_CRIATIVOS][VIDEOS][DUPLICADA]_03_04",
-    "spend": 13824.29,
+    "spend": 15736.24,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 6.1,
@@ -246,7 +256,7 @@
    },
    {
     "id": "[Mxp-Le01][CBO][CAPTAÇÃO][QUENTE][TESTE_CRIATIVOS][ESTATICOS]_17_02",
-    "spend": 13052.03,
+    "spend": 14857.18,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 5.8,
@@ -257,18 +267,18 @@
    },
    {
     "id": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][AD-31_VARIACOES][17_08]",
-    "spend": 9955.44,
+    "spend": 11332.27,
     "vendas": 11,
     "receita": 4978.89,
     "pct_spend": 4.4,
-    "cac": 905.04,
-    "roas": 0.5,
+    "cac": 1030.21,
+    "roas": 0.439,
     "funil": "MXP-Fp01",
     "conta": "C3 Mem + C4 Mem"
    },
    {
     "id": "[Mxp-Le02][ABO][CAPTAÇÃO][QUENTE][TESTE_CRIATIVOS][VIDEOS]_31_03",
-    "spend": 8779.0,
+    "spend": 9993.17,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 3.9,
@@ -279,7 +289,7 @@
    },
    {
     "id": "[Mxp-Le01][ABO][CAPTAÇÃO][QUENTE][TESTE_CRIATIVOS][ESTATICOS]_16_02",
-    "spend": 7340.67,
+    "spend": 8355.91,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 3.3,
@@ -290,7 +300,7 @@
    },
    {
     "id": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_ADS][ESTATICOS_111-120][01_09]",
-    "spend": 7031.12,
+    "spend": 8003.57,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 3.1,
@@ -301,7 +311,7 @@
    },
    {
     "id": "[Mxp-Le01][ABO][CAPTAÇÃO][QUENTE][TESTE_CRIATIVOS][VIDEOS]_19_02",
-    "spend": 6808.94,
+    "spend": 7750.64,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 3.0,
@@ -312,7 +322,7 @@
    },
    {
     "id": "[Mxp-Le02][ABO][CAPTAÇÃO][QUENTE][TESTE_CRIATIVOS][ESTATICOS]_29_03",
-    "spend": 6464.87,
+    "spend": 7358.99,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 2.9,
@@ -323,7 +333,7 @@
    },
    {
     "id": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_ADS][ESTATICOS_80-110][01_09]",
-    "spend": 6038.88,
+    "spend": 6874.04,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 2.7,
@@ -334,18 +344,18 @@
    },
    {
     "id": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][VIDEOS][04_08]",
-    "spend": 5577.81,
+    "spend": 6349.21,
     "vendas": 1,
     "receita": 197.0,
     "pct_spend": 2.5,
-    "cac": 5577.81,
-    "roas": 0.035,
+    "cac": 6349.21,
+    "roas": 0.031,
     "funil": "MXP-Fp01",
     "conta": "C3 Mem"
    },
    {
     "id": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_PAGINA][VSL][31_08]",
-    "spend": 5019.5,
+    "spend": 5713.7,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 2.2,
@@ -356,7 +366,7 @@
    },
    {
     "id": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_CHECKOUT][SUL_SUDESTE][25_08]",
-    "spend": 4867.61,
+    "spend": 5540.8,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 2.2,
@@ -367,29 +377,29 @@
    },
    {
     "id": "[MXP-Fp01][CBO][VENDA][FRIO][ADV][TESTE_ADS][NOVOS][21_08]",
-    "spend": 4325.28,
+    "spend": 4923.41,
     "vendas": 3,
     "receita": 788.0,
     "pct_spend": 1.9,
-    "cac": 1441.76,
-    "roas": 0.182,
+    "cac": 1641.14,
+    "roas": 0.16,
     "funil": "MXP-Fp01",
     "conta": "C3 Mem + C4 Mem"
    },
    {
     "id": "[MXP-Fp01][CBO][VENDA][QUENTE][TESTE_PAGINA]",
-    "spend": 3995.32,
+    "spend": 4547.84,
     "vendas": 3,
     "receita": 656.04,
     "pct_spend": 1.8,
-    "cac": 1331.77,
-    "roas": 0.164,
+    "cac": 1515.95,
+    "roas": 0.144,
     "funil": "MXP-Fp01",
     "conta": "C3 Mem + C4 Mem"
    },
    {
     "id": "[Mxp-Le02][CBO][CAPTAÇÃO][FRIO][ADV+][ESCALA][VIDEOS]_06_04",
-    "spend": 3422.69,
+    "spend": 3896.06,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 1.5,
@@ -400,7 +410,7 @@
    },
    {
     "id": "[Mxp-Le02][CBO][CAPTAÇÃO][QUENTE][ESCALA][VIDEOS]_07_04",
-    "spend": 3031.75,
+    "spend": 3451.05,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 1.3,
@@ -411,7 +421,7 @@
    },
    {
     "id": "[Mxp-Le02][CBO][CAPTAÇÃO][TESTE_PUBLICOS][ESTATICOS]_31_03",
-    "spend": 2858.04,
+    "spend": 3253.32,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 1.3,
@@ -422,7 +432,7 @@
    },
    {
     "id": "[Mxp-Le01][CBO][CAPTAÇÃO][QUENTE][TESTE_PIXEL]_23_02",
-    "spend": 2708.94,
+    "spend": 3083.6,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 1.2,
@@ -433,7 +443,7 @@
    },
    {
     "id": "[Mxp-Le01][ABO][CAPTAÇÃO][QUENTE][TESTE_CRIATIVOS][NOVOS ESTATICOS]_17_02",
-    "spend": 2426.7,
+    "spend": 2762.33,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 1.1,
@@ -444,7 +454,7 @@
    },
    {
     "id": "[MXP-Fp01][CBO][VENDA][QUENTE][RMKT][CHECKOUT_DIRETO]",
-    "spend": 2250.21,
+    "spend": 2561.4,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 1.0,
@@ -455,18 +465,18 @@
    },
    {
     "id": "[MXP-FP01][01-21][VENDA][TESTE_CRIATIVOS][ESTATICOS]_13_04",
-    "spend": 1948.6,
+    "spend": 2218.1,
     "vendas": 1,
     "receita": 1770.0,
     "pct_spend": 0.9,
-    "cac": 1948.6,
-    "roas": 0.908,
+    "cac": 2218.1,
+    "roas": 0.798,
     "funil": "MXP-Fp01",
     "conta": "C3 Inst"
    },
    {
     "id": "[Mxp-Le01][ABO][CAPTAÇÃO][QUENTE][TESTE_CRIATIVOS][VIDEOS]_19_02_2",
-    "spend": 1912.78,
+    "spend": 2177.32,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.8,
@@ -477,7 +487,7 @@
    },
    {
     "id": "[MXP-Fp01][ABO][VENDA][FRIO][TESTE_PAGINA][V14_V15_V16][01_09]",
-    "spend": 1822.81,
+    "spend": 2074.92,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.8,
@@ -488,18 +498,18 @@
    },
    {
     "id": "[MXP-FP01][01-21][VENDA][TESTE_CRIATIVOS][ESTATICOS]_09_04",
-    "spend": 1674.34,
+    "spend": 1905.92,
     "vendas": 1,
     "receita": 824.37,
     "pct_spend": 0.7,
-    "cac": 1674.34,
-    "roas": 0.492,
+    "cac": 1905.92,
+    "roas": 0.433,
     "funil": "MXP-Fp01",
     "conta": "C3 Inst"
    },
    {
     "id": "[Mxp-Le01][ABO][CAPTAÇÃO][QUENTE][TESTE_PUBLICOS]_22_02",
-    "spend": 1575.54,
+    "spend": 1793.45,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.7,
@@ -510,7 +520,7 @@
    },
    {
     "id": "[Mxp-Le01][cBO][CAPTAÇÃO][FRIO][TESTE_PUBLICOS]_18_02",
-    "spend": 952.31,
+    "spend": 1084.02,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.4,
@@ -521,7 +531,7 @@
    },
    {
     "id": "[Mxp-Le01][ABO][CAPTAÇÃO][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS]_18_02",
-    "spend": 940.74,
+    "spend": 1070.85,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.4,
@@ -532,7 +542,7 @@
    },
    {
     "id": "[MXP-Fp01][CBO][VENDA][FRIO][ADV+][TESTE_ADS][ESTATICOS_121-126][01_09]",
-    "spend": 887.44,
+    "spend": 1010.14,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.4,
@@ -543,7 +553,7 @@
    },
    {
     "id": "[Mxp-Le01][CBO][CAPTAÇÃO][QUENTE][RMKT][TOP_ADS]_21_02",
-    "spend": 767.79,
+    "spend": 873.97,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.3,
@@ -554,7 +564,7 @@
    },
    {
     "id": "[MXP-Fp01][CBO][MENSAGEM][QUENTE][RMKT][WHATSAPP][01_09]",
-    "spend": 736.63,
+    "spend": 838.52,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.3,
@@ -565,7 +575,7 @@
    },
    {
     "id": "[Mxp-Le01][CBO][CAPTAÇÃO][FRIO][ADV][TOP_ADS]_21_02",
-    "spend": 730.18,
+    "spend": 831.17,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.3,
@@ -576,7 +586,7 @@
    },
    {
     "id": "[Mxp-Le01][ABO][CAPTAÇÃO][QUENTE][TESTE_CRIATIVOS][ESTATICOS]_16_02_2",
-    "spend": 536.12,
+    "spend": 610.27,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.2,
@@ -587,7 +597,7 @@
    },
    {
     "id": "[Mxp-Le01][ABO][CAPTAÇÃO][FRIO][TESTE_CRIATIVOS][VIDEOS]_21_02",
-    "spend": 516.32,
+    "spend": 587.73,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.2,
@@ -598,7 +608,7 @@
    },
    {
     "id": "[Mxp-Le01][CBO][CAPTAÇÃO][QUENTE][ESCALA_CRIATIVOS_1][ESTATICOS]_17_02",
-    "spend": 488.41,
+    "spend": 555.96,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.2,
@@ -609,7 +619,7 @@
    },
    {
     "id": "[Mxp-Le02][CBO][CAPTAÇÃO][QUENTE][MELHORES_CRIATIVOS]_02_04",
-    "spend": 305.05,
+    "spend": 347.24,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.1,
@@ -620,7 +630,7 @@
    },
    {
     "id": "[Mxp-Le01][CBO][CAPTAÇÃO][QUENTE][TESTE_CRIATIVOS][ESTATICOS]_16_02",
-    "spend": 266.77,
+    "spend": 303.67,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.1,
@@ -631,7 +641,7 @@
    },
    {
     "id": "[Mxp-Le01][CBO][CAPTAÇÃO][ADV][TESTE_CONVERSAO][COMPRA]_23_02",
-    "spend": 251.56,
+    "spend": 286.35,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.1,
@@ -642,7 +652,7 @@
    },
    {
     "id": "[MXP-Fp01][VENDA][EVENTO][FRIO][TESTE_CRIATIVOS]",
-    "spend": 134.65,
+    "spend": 153.27,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.1,
@@ -653,7 +663,7 @@
    },
    {
     "id": "[MXP-FP01][CBO][VENDA][FRIO][ADV][TESTE_CRIATIVOS][ESTATICOS][01-21]_09_04",
-    "spend": 118.68,
+    "spend": 135.09,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.1,
@@ -664,7 +674,7 @@
    },
    {
     "id": "[MXP-FP01][01-21][VENDA][TESTE_CRIATIVOS][ESTATICOS]_16_04",
-    "spend": 0.61,
+    "spend": 0.69,
     "vendas": 0,
     "receita": 0.0,
     "pct_spend": 0.0,
@@ -677,40 +687,40 @@
   "por_mes": [
    {
     "mes": "2026-02",
-    "spend": 41275.8,
+    "spend": 46984.42,
     "vendas": 146,
     "receita": 141475.82,
-    "acc_spend": 41275.8,
+    "acc_spend": 46984.42,
     "acc_receita": 141475.82,
-    "cac": 282.71,
-    "roas": 3.428
+    "cac": 321.81,
+    "roas": 3.011
    },
    {
     "mes": "2026-03",
-    "spend": 3898.34,
+    "spend": 4437.5,
     "vendas": 13,
     "receita": 13959.58,
-    "acc_spend": 45174.14,
+    "acc_spend": 51421.92,
     "acc_receita": 155435.4,
-    "cac": 299.87,
-    "roas": 3.581
+    "cac": 341.35,
+    "roas": 3.146
    },
    {
     "mes": "2026-04",
-    "spend": 93570.06,
+    "spend": 106511.16,
     "vendas": 67,
     "receita": 80111.41,
-    "acc_spend": 138744.2,
+    "acc_spend": 157933.08,
     "acc_receita": 235546.81,
-    "cac": 1396.57,
-    "roas": 0.856
+    "cac": 1589.72,
+    "roas": 0.752
    },
    {
     "mes": "2026-05",
     "spend": 0.0,
     "vendas": 4,
     "receita": 6618.8,
-    "acc_spend": 138744.2,
+    "acc_spend": 157933.08,
     "acc_receita": 242165.61,
     "cac": 0.0,
     "roas": null
@@ -720,30 +730,30 @@
     "spend": 0.0,
     "vendas": 6,
     "receita": 8350.63,
-    "acc_spend": 138744.2,
+    "acc_spend": 157933.08,
     "acc_receita": 250516.24,
     "cac": 0.0,
     "roas": null
    },
    {
     "mes": "2026-08",
-    "spend": 41608.35,
+    "spend": 47362.79,
     "vendas": 128,
     "receita": 75700.79,
-    "acc_spend": 180352.55,
+    "acc_spend": 205295.87,
     "acc_receita": 326217.03,
-    "cac": 325.07,
-    "roas": 1.819
+    "cac": 370.02,
+    "roas": 1.598
    },
    {
     "mes": "2026-09",
-    "spend": 44768.23,
+    "spend": 50959.68,
     "vendas": 132,
     "receita": 57422.04,
-    "acc_spend": 225120.78,
+    "acc_spend": 256255.55,
     "acc_receita": 383639.07,
-    "cac": 339.15,
-    "roas": 1.283
+    "cac": 386.06,
+    "roas": 1.127
    }
   ],
   "por_frente": [
