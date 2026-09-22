@@ -1,6 +1,6 @@
 {
  "versao": "1.0",
- "gerado_em": "22/09/2026 08:50",
+ "gerado_em": "22/09/2026 11:43",
  "hoje": "2026-09-22",
  "dias": [
   "2026-02-04",
@@ -34,8 +34,8 @@
   }
  ],
  "fontes": {
-  "trafego_snapshot": "17/09/2026 17:15",
-  "trafego_ate": "2026-09-17",
+  "trafego_snapshot": "22/09/2026 11:43",
+  "trafego_ate": "2026-09-22",
   "vendas_snapshot": "17/09/2026 17:06",
   "vendas_origem": "fba6b5a9-6aa9-5aff-a4d1-c8a0ee23522e.xlsx"
  },
