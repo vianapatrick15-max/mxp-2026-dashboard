@@ -1,7 +1,7 @@
 {
  "versao": "1.0",
- "gerado_em": "23/09/2026 22:30",
- "hoje": "2026-09-23",
+ "gerado_em": "24/09/2026 01:44",
+ "hoje": "2026-09-24",
  "dias": [
   "2026-02-04",
   "2026-09-21"
@@ -50,11 +50,11 @@
  "ano": {
   "geral": {
    "spend": 256255.55,
-   "vendas": 496,
-   "receita": 383639.07,
-   "cac": 516.64,
-   "roas": 1.497,
-   "ticket": 773.47,
+   "vendas": 494,
+   "receita": 383334.23,
+   "cac": 518.74,
+   "roas": 1.496,
+   "ticket": 775.98,
    "dias_midia": 67,
    "midia": 225120.5,
    "imposto": 31135.05
@@ -91,23 +91,23 @@
     "midia_de": "2026-03-30",
     "midia_ate": "2026-04-16",
     "pct_spend": 43.3,
-    "pct_receita": 25.0,
+    "pct_receita": 25.1,
     "pago_vendas": 5
    },
    {
     "spend": 98322.47,
-    "vendas": 260,
-    "receita": 133122.83,
-    "cac": 378.16,
-    "roas": 1.354,
-    "ticket": 512.01,
+    "vendas": 258,
+    "receita": 132817.99,
+    "cac": 381.09,
+    "roas": 1.351,
+    "ticket": 514.8,
     "chave": "c3",
     "nome": "Ciclo 3 · Reta final",
     "obs": "MXP-Fp01: venda direta de ingresso até o evento.",
     "midia_de": "2026-08-04",
     "midia_ate": "2026-09-15",
     "pct_spend": 38.4,
-    "pct_receita": 34.7,
+    "pct_receita": 34.6,
     "pago_vendas": 85
    }
   ],
@@ -748,12 +748,12 @@
    {
     "mes": "2026-09",
     "spend": 50959.68,
-    "vendas": 132,
-    "receita": 57422.04,
+    "vendas": 130,
+    "receita": 57117.2,
     "acc_spend": 256255.55,
-    "acc_receita": 383639.07,
-    "cac": 386.06,
-    "roas": 1.127
+    "acc_receita": 383334.23,
+    "cac": 392.0,
+    "roas": 1.121
    }
   ],
   "por_frente": [
@@ -768,10 +768,10 @@
    {
     "frente": "Time de vendas",
     "tipo": "proprio",
-    "vendas": 106,
-    "receita": 87485.07,
-    "ticket": 825.33,
-    "pct": 22.8
+    "vendas": 104,
+    "receita": 87180.23,
+    "ticket": 838.27,
+    "pct": 22.7
    },
    {
     "frente": "Meta Ads",
@@ -869,7 +869,7 @@
     "vendas": 23,
     "receita": 17066.68,
     "ticket": 742.03,
-    "pct": 4.4
+    "pct": 4.5
    },
    {
     "oferta": "Upgrade Lite para VIP - R$1.000",
@@ -921,13 +921,6 @@
     "pct": 0.8
    },
    {
-    "oferta": "Upgrade Start para Imperuim - R$136",
-    "vendas": 22,
-    "receita": 3101.14,
-    "ticket": 140.96,
-    "pct": 0.8
-   },
-   {
     "oferta": "LOTE 1 START - Meteórico (2º cadeira 50%)",
     "vendas": 12,
     "receita": 3092.22,
@@ -939,6 +932,13 @@
     "vendas": 3,
     "receita": 2804.46,
     "ticket": 934.82,
+    "pct": 0.7
+   },
+   {
+    "oferta": "Upgrade Start para Imperuim - R$136",
+    "vendas": 20,
+    "receita": 2796.3,
+    "ticket": 139.81,
     "pct": 0.7
    },
    {
@@ -1105,16 +1105,16 @@
     "ticket": 965.37
    },
    {
-    "nome": "Hidson Vieira",
-    "vendas": 5,
-    "receita": 2763.76,
-    "ticket": 552.75
-   },
-   {
     "nome": "Thays",
     "vendas": 2,
     "receita": 2507.2,
     "ticket": 1253.6
+   },
+   {
+    "nome": "Hidson Vieira",
+    "vendas": 3,
+    "receita": 2458.92,
+    "ticket": 819.64
    },
    {
     "nome": "Wallace Macedo",
@@ -1166,5 +1166,5 @@
    }
   ]
  },
- "reembolsos": 11
+ "reembolsos": 13
 }

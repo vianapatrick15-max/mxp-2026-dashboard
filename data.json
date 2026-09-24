@@ -1,6 +1,6 @@
 {
- "gerado_em": "23/09/2026 22:30",
- "hoje": "2026-09-23",
+ "gerado_em": "24/09/2026 01:44",
+ "hoje": "2026-09-24",
  "dias": [
   "2026-08-01",
   "2026-09-21"
@@ -22,9 +22,9 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 257,
+    "realizado": 255,
     "esperado_hoje": 150.0,
-    "pct": 171.3,
+    "pct": 170.0,
     "status": "pos",
     "unidade": "int",
     "direcao": "up",
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 132557.8,
+    "realizado": 132252.96,
     "esperado_hoje": 29550.0,
-    "pct": 448.6,
+    "pct": 447.6,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 335.57,
+    "realizado": 338.2,
     "esperado_hoje": 150.0,
-    "pct": 223.7,
+    "pct": 225.5,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 1.54,
+    "realizado": 1.53,
     "esperado_hoje": 1.3,
-    "pct": 118.2,
+    "pct": 118.0,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 17.13,
+   "vendas_dia": 17.0,
    "spend_dia": 5749.46,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 257,
-   "receita": 132557.8,
+   "vendas": 255,
+   "receita": 132252.96,
    "spend": 86241.93,
-   "pct_meta": 171.3
+   "pct_meta": 170.0
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 515.79
+  "ticket_real": 518.64
  },
  "ads": {
   "AD-01|EST": {
@@ -35996,16 +35996,6 @@
   },
   {
    "d": "2026-09-16",
-   "f": "hidson_vieira",
-   "t": "outros",
-   "v": 136.0,
-   "o": "Upgrade Start para Imperuim - R$136",
-   "a": "",
-   "c": "",
-   "src": "hidson_vieira"
-  },
-  {
-   "d": "2026-09-16",
    "f": "juliana_vieira",
    "t": "outros",
    "v": 136.0,
@@ -36046,16 +36036,6 @@
   },
   {
    "d": "2026-09-16",
-   "f": "hidson_vieira",
-   "t": "outros",
-   "v": 168.84,
-   "o": "Upgrade Start para Imperuim - R$136",
-   "a": "",
-   "c": "",
-   "src": "hidson_vieira"
-  },
-  {
-   "d": "2026-09-16",
    "f": "juliana_vieira",
    "t": "outros",
    "v": 136.0,
@@ -36085,5 +36065,5 @@
    "src": "JulianaVieira"
   }
  ],
- "reembolsos": 11
+ "reembolsos": 13
 }
