@@ -1,5 +1,5 @@
 {
- "gerado_em": "24/09/2026 08:47",
+ "gerado_em": "24/09/2026 15:57",
  "hoje": "2026-09-24",
  "dias": [
   "2026-08-01",
@@ -22,9 +22,9 @@
     "label": "Vendas",
     "acumula": true,
     "meta": 150,
-    "realizado": 255,
+    "realizado": 254,
     "esperado_hoje": 150.0,
-    "pct": 170.0,
+    "pct": 169.3,
     "status": "pos",
     "unidade": "int",
     "direcao": "up",
@@ -37,9 +37,9 @@
     "label": "Faturamento",
     "acumula": true,
     "meta": 29550.0,
-    "realizado": 132252.96,
+    "realizado": 129943.32,
     "esperado_hoje": 29550.0,
-    "pct": 447.6,
+    "pct": 439.7,
     "status": "pos",
     "unidade": "brl",
     "direcao": "up",
@@ -67,9 +67,9 @@
     "label": "CAC",
     "acumula": false,
     "meta": 150.0,
-    "realizado": 338.2,
+    "realizado": 339.54,
     "esperado_hoje": 150.0,
-    "pct": 225.5,
+    "pct": 226.4,
     "status": "neg",
     "unidade": "brl",
     "direcao": "down",
@@ -82,9 +82,9 @@
     "label": "ROAS",
     "acumula": false,
     "meta": 1.3,
-    "realizado": 1.53,
+    "realizado": 1.51,
     "esperado_hoje": 1.3,
-    "pct": 118.0,
+    "pct": 115.9,
     "status": "pos",
     "unidade": "x",
     "direcao": "up",
@@ -94,21 +94,21 @@
    }
   ],
   "ritmo": {
-   "vendas_dia": 17.0,
+   "vendas_dia": 16.93,
    "spend_dia": 5749.46,
    "vendas_dia_plano": 10,
    "spend_dia_plano": 1500.0
   },
   "projecao": {
-   "vendas": 255,
-   "receita": 132252.96,
+   "vendas": 254,
+   "receita": 129943.32,
    "spend": 86241.93,
-   "pct_meta": 170.0
+   "pct_meta": 169.3
   },
   "cac_max": 150.0,
   "roas_meta": 1.3,
   "ticket_plano": 197.0,
-  "ticket_real": 518.64
+  "ticket_real": 511.59
  },
  "ads": {
   "AD-01|EST": {
@@ -35916,16 +35916,6 @@
   },
   {
    "d": "2026-09-15",
-   "f": "Sem origem",
-   "t": "indefinido",
-   "v": 2309.64,
-   "o": "[VIP] Escassez Eterna",
-   "a": "",
-   "c": "",
-   "src": ""
-  },
-  {
-   "d": "2026-09-15",
    "f": "thays_almeida",
    "t": "outros",
    "v": 168.84,
@@ -36065,5 +36055,5 @@
    "src": "JulianaVieira"
   }
  ],
- "reembolsos": 13
+ "reembolsos": 14
 }

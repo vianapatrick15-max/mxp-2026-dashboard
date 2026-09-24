@@ -1,6 +1,6 @@
 {
  "versao": "1.0",
- "gerado_em": "24/09/2026 08:47",
+ "gerado_em": "24/09/2026 15:57",
  "hoje": "2026-09-24",
  "dias": [
   "2026-02-04",
@@ -50,11 +50,11 @@
  "ano": {
   "geral": {
    "spend": 256255.55,
-   "vendas": 494,
-   "receita": 383334.23,
-   "cac": 518.74,
-   "roas": 1.496,
-   "ticket": 775.98,
+   "vendas": 493,
+   "receita": 381024.59,
+   "cac": 519.79,
+   "roas": 1.487,
+   "ticket": 772.87,
    "dias_midia": 67,
    "midia": 225120.5,
    "imposto": 31135.05
@@ -75,7 +75,7 @@
     "midia_de": "2026-02-16",
     "midia_ate": "2026-02-25",
     "pct_spend": 18.3,
-    "pct_receita": 40.3,
+    "pct_receita": 40.5,
     "pago_vendas": 0
    },
    {
@@ -91,23 +91,23 @@
     "midia_de": "2026-03-30",
     "midia_ate": "2026-04-16",
     "pct_spend": 43.3,
-    "pct_receita": 25.1,
+    "pct_receita": 25.2,
     "pago_vendas": 5
    },
    {
     "spend": 98322.47,
-    "vendas": 258,
-    "receita": 132817.99,
-    "cac": 381.09,
-    "roas": 1.351,
-    "ticket": 514.8,
+    "vendas": 257,
+    "receita": 130508.35,
+    "cac": 382.58,
+    "roas": 1.327,
+    "ticket": 507.81,
     "chave": "c3",
     "nome": "Ciclo 3 · Reta final",
     "obs": "MXP-Fp01: venda direta de ingresso até o evento.",
     "midia_de": "2026-08-04",
     "midia_ate": "2026-09-15",
     "pct_spend": 38.4,
-    "pct_receita": 34.6,
+    "pct_receita": 34.3,
     "pago_vendas": 85
    }
   ],
@@ -748,12 +748,12 @@
    {
     "mes": "2026-09",
     "spend": 50959.68,
-    "vendas": 130,
-    "receita": 57117.2,
+    "vendas": 129,
+    "receita": 54807.56,
     "acc_spend": 256255.55,
-    "acc_receita": 383334.23,
-    "cac": 392.0,
-    "roas": 1.121
+    "acc_receita": 381024.59,
+    "cac": 395.04,
+    "roas": 1.076
    }
   ],
   "por_frente": [
@@ -763,7 +763,7 @@
     "vendas": 252,
     "receita": 217155.32,
     "ticket": 861.73,
-    "pct": 56.6
+    "pct": 57.0
    },
    {
     "frente": "Time de vendas",
@@ -771,7 +771,7 @@
     "vendas": 104,
     "receita": 87180.23,
     "ticket": 838.27,
-    "pct": 22.7
+    "pct": 22.9
    },
    {
     "frente": "Meta Ads",
@@ -792,10 +792,10 @@
    {
     "frente": "Sem origem",
     "tipo": "indefinido",
-    "vendas": 19,
-    "receita": 14317.01,
-    "ticket": 753.53,
-    "pct": 3.7
+    "vendas": 18,
+    "receita": 12007.37,
+    "ticket": 667.08,
+    "pct": 3.2
    },
    {
     "frente": "Embaixador",
@@ -820,14 +820,14 @@
     "vendas": 49,
     "receita": 90206.08,
     "ticket": 1840.94,
-    "pct": 23.5
+    "pct": 23.7
    },
    {
     "oferta": "[VIP] Escassez Eterna",
-    "vendas": 23,
-    "receita": 48385.0,
-    "ticket": 2103.7,
-    "pct": 12.6
+    "vendas": 22,
+    "receita": 46075.36,
+    "ticket": 2094.33,
+    "pct": 12.1
    },
    {
     "oferta": "LOTE 1 START - Meteórico",
@@ -841,7 +841,7 @@
     "vendas": 19,
     "receita": 37686.5,
     "ticket": 1983.5,
-    "pct": 9.8
+    "pct": 9.9
    },
    {
     "oferta": "LITE",
@@ -876,14 +876,14 @@
     "vendas": 10,
     "receita": 11299.08,
     "ticket": 1129.91,
-    "pct": 2.9
+    "pct": 3.0
    },
    {
     "oferta": "[START] Escassez Eterna",
     "vendas": 12,
     "receita": 10524.16,
     "ticket": 877.01,
-    "pct": 2.7
+    "pct": 2.8
    },
    {
     "oferta": "VIP -Diferença de Golp",
@@ -1030,7 +1030,7 @@
     "vendas": 3,
     "receita": 574.74,
     "ticket": 191.58,
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "oferta": "LOTE 1 VIP - Entrada R$407",
@@ -1166,5 +1166,5 @@
    }
   ]
  },
- "reembolsos": 13
+ "reembolsos": 14
 }
